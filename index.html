@@ -600,7 +600,7 @@ function detectLang() {
     const code = l.split('-')[0].toLowerCase();
     if (supported.includes(code)) return code;
   }
-  return 'es';
+  return 'en';
 }
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
@@ -989,7 +989,10 @@ function openTest(id) {
     <h2>${activeTest.fullName}</h2>
     <p>${activeTest.instructions}</p>
     <div class="disclaimer">
-      <strong>Nota importante:</strong> Este test es una herramienta de autoevaluación y no sustituye el diagnóstico de un profesional de salud mental. Si sientes que necesitas ayuda, por favor consulta a un especialista.
+      <strong>${t('ui.disclaimerTitle')}</strong> ${t('ui.disclaimerText')}
+    </div>
+    <div class="disclaimer" style="border-left-color:#6B8F71;background:#F0F8F0">
+      🔒 <strong>${t('ui.privacyTitle')}</strong> ${t('ui.privacyText')}
     </div>
     <button class="btn btn-primary" onclick="startTest()">Comenzar evaluación</button>
     <br><br>
