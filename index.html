@@ -515,6 +515,15 @@
       <button class="lang-btn active" onclick="setLang('es')" data-lang="es">ES</button>
       <button class="lang-btn" onclick="setLang('en')" data-lang="en">EN</button>
       <button class="lang-btn" onclick="setLang('pt')" data-lang="pt">PT</button>
+      <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">FR</button>
+      <button class="lang-btn" onclick="setLang('de')" data-lang="de">DE</button>
+      <button class="lang-btn" onclick="setLang('it')" data-lang="it">IT</button>
+      <button class="lang-btn" onclick="setLang('zh')" data-lang="zh">中</button>
+      <button class="lang-btn" onclick="setLang('ja')" data-lang="ja">日</button>
+      <button class="lang-btn" onclick="setLang('ar')" data-lang="ar">عر</button>
+      <button class="lang-btn" onclick="setLang('ru')" data-lang="ru">RU</button>
+      <button class="lang-btn" onclick="setLang('ko')" data-lang="ko">한</button>
+      <button class="lang-btn" onclick="setLang('hi')" data-lang="hi">हि</button>
     </div>
   </header>
 
@@ -563,6 +572,15 @@
 <script src="i18n/es.js"></script>
 <script src="i18n/en.js"></script>
 <script src="i18n/pt.js"></script>
+<script src="i18n/fr.js"></script>
+<script src="i18n/de.js"></script>
+<script src="i18n/it.js"></script>
+<script src="i18n/zh.js"></script>
+<script src="i18n/ja.js"></script>
+<script src="i18n/ar.js"></script>
+<script src="i18n/ru.js"></script>
+<script src="i18n/ko.js"></script>
+<script src="i18n/hi.js"></script>
 <script src="tests/bfi44.js"></script>
 <script src="tests/mbti.js"></script>
 <script src="tests/ipip300.js"></script>
@@ -570,11 +588,12 @@
 <script src="tests/ipip_mmpi.js"></script>
 <script src="tests/clinical1.js"></script>
 <script src="tests/clinical2.js"></script>
+<script src="tests/triage.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
 // I18N
 // ═══════════════════════════════════════════════════════════════
-const LANGS = { es: LANG_ES, en: LANG_EN, pt: LANG_PT };
+const LANGS = { es: LANG_ES, en: LANG_EN, pt: LANG_PT, fr: LANG_FR, de: LANG_DE, it: LANG_IT, zh: LANG_ZH, ja: LANG_JA, ar: LANG_AR, ru: LANG_RU, ko: LANG_KO, hi: LANG_HI };
 let currentLang = localStorage.getItem('mental_health_lang') || 'es';
 function t(key) {
   const keys = key.split('.');
@@ -587,6 +606,7 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mental_health_lang', lang);
   document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
@@ -859,7 +879,8 @@ const TESTS = {
   mdq: TEST_MDQ,
   spin: TEST_SPIN,
   rosenberg: TEST_ROSENBERG,
-  who5: TEST_WHO5
+  who5: TEST_WHO5,
+  triage: TEST_TRIAGE
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -908,6 +929,7 @@ function setAccentColor(color) {
 // HOME GRID
 // ═══════════════════════════════════════════════════════════════
 const TEST_CATEGORIES = [
+  { key: 'triage', label: '¿Por dónde empezar?', ids: ['triage'] },
   { key: 'clinical', label: 'Evaluaciones Clínicas', ids: ['bdi','phq9','bai','gad7','pss','pcl5','isi','spin'] },
   { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','audit','eat26','ocir'] },
   { key: 'wellbeing', label: 'Bienestar y Autoestima', ids: ['who5','rosenberg'] },
@@ -925,7 +947,7 @@ function renderHome() {
         <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${cat.label}</h2>
       </div>
       ${tests.map(t => `
-        <div class="test-card" onclick="openTest('${t.id}')" style="--card-accent:${t.color}">
+        <div class="test-card" onclick="openTest('${t.id}')" style="--card-accent:${t.color}${t.id==='triage'?';grid-column:1/-1':''}">
           <div class="card-accent" style="background:${t.color}"></div>
           <div class="test-card-icon" style="background:${t.color}18">${t.icon}</div>
           <div class="card-abbr">${t.abbr}</div>
@@ -1120,7 +1142,7 @@ function calcScore() {
 function showResults() {
   const test = activeTest;
   const score = calcScore();
-  const needsAnswers = ['type','dimensions','domains','scales'].includes(test.maxScore);
+  const needsAnswers = ['type','dimensions','domains','scales','triage'].includes(test.maxScore);
   const result = needsAnswers ? test.getResult(score, answers) : test.getResult(score);
 
   // Save
@@ -1359,6 +1381,64 @@ function showResults() {
         <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
         <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
         <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+      </div>
+    `;
+    showScreen('screen-results');
+    setTimeout(() => {
+      document.querySelectorAll('.breakdown-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 50 + i * 50);
+      });
+    }, 50);
+    return;
+  }
+
+  // ─── Triage result ───
+  if (test.maxScore === 'triage' && result.recommendations) {
+    const priorityLabels = { high: '🔴 Alta prioridad', medium: '🟡 Recomendado', suggested: '🟢 Sugerido' };
+    const priorityOrder = { high: 0, medium: 1, suggested: 2 };
+    const sortedRecs = [...result.recommendations].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+
+    rc.innerHTML = `
+      <div>
+        <div class="score-category" style="color:${result.color};font-size:1.3rem">${result.label}</div>
+      </div>
+      <p class="score-description">${result.desc}</p>
+
+      <div class="breakdown" style="margin-top:1rem">
+        <h3>Áreas evaluadas</h3>
+        ${result.domainScores.map(d => {
+          const pct = Math.round((d.score / d.maxScore) * 100);
+          const c = d.score >= 3 ? '#A65D57' : d.score >= 2 ? '#C9A227' : '#6B8F71';
+          return `<div class="breakdown-item">
+            <span class="breakdown-name">${d.name}</span>
+            <div class="breakdown-bar-bg">
+              <div class="breakdown-bar-fill" style="width:0%;background:${c}" data-width="${pct}"></div>
+            </div>
+            <span class="breakdown-value" style="background:${c}20;color:${c}">${d.score}/4</span>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div style="margin-top:1.5rem">
+        <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:0.75rem">Evaluaciones recomendadas (${sortedRecs.length})</h3>
+        ${sortedRecs.map(rec => {
+          const rt = TESTS[rec.testId];
+          if (!rt) return '';
+          return `<div class="test-card" onclick="openTest('${rec.testId}')" style="--card-accent:${rt.color};cursor:pointer;margin-bottom:0.5rem">
+            <div class="card-accent" style="background:${rt.color}"></div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
+              <span style="font-size:1.2rem">${rt.icon}</span>
+              <strong>${rt.abbr}</strong>
+              <span style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:${rec.priority==='high'?'#A65D5720':rec.priority==='medium'?'#C9A22720':'#6B8F7120'};color:${rec.priority==='high'?'#A65D57':rec.priority==='medium'?'#C9A227':'#6B8F71'}">${priorityLabels[rec.priority]}</span>
+            </div>
+            <div style="font-size:0.8rem;color:var(--text-secondary)">${rt.name}</div>
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem">${rec.reason}</div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-ghost" onclick="goHome()">← Ver todos los tests</button>
       </div>
     `;
     showScreen('screen-results');
