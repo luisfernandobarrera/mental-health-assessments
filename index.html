@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salud Mental — Autoevaluación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <style>
+    :root {
+      --bg-primary: #F7F4F0;
+      --bg-secondary: #FFFFFF;
+      --bg-tertiary: #EDE8E1;
+      --text-primary: #2D2A26;
+      --text-secondary: #5C5650;
+      --text-muted: #8A847C;
+      --accent: #6B8F71;
+      --accent-light: #8BAF91;
+      --accent-dark: #4A6B50;
+      --accent-glow: rgba(107, 143, 113, 0.15);
+      --border: rgba(45, 42, 38, 0.08);
+      --shadow-sm: 0 2px 8px rgba(45, 42, 38, 0.06);
+      --shadow-md: 0 8px 24px rgba(45, 42, 38, 0.08);
+      --shadow-lg: 0 16px 48px rgba(45, 42, 38, 0.12);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+
+    /* ─── Header ─── */
+    .app-header { text-align: center; margin-bottom: 1.5rem; }
+    .app-header h1 {
+      font-family: var(--font-display); font-size: 1.75rem;
+      color: var(--text-primary); letter-spacing: -0.02em; cursor: pointer;
+    }
+    .app-header p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* ─── Tabs ─── */
+    .tabs {
+      display: flex; gap: 0.25rem; background: var(--bg-tertiary);
+      padding: 4px; border-radius: var(--radius-sm); margin-bottom: 1.5rem;
+    }
+    .tab {
+      flex: 1; padding: 0.55rem 0.75rem; border: none; background: transparent;
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+      color: var(--text-muted); cursor: pointer; border-radius: 8px;
+      transition: all 0.25s var(--ease-out);
+    }
+    .tab:hover { color: var(--text-primary); }
+    .tab.active {
+      background: var(--bg-secondary); color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ─── Screens ─── */
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeUp 0.35s var(--ease-out); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Test Grid ─── */
+    .test-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (max-width: 480px) { .test-grid { grid-template-columns: 1fr; } }
+
+    .test-card {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 1.5rem; box-shadow: var(--shadow-sm); cursor: pointer;
+      transition: all 0.3s var(--ease-out); border: 2px solid transparent;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+      animation: cardReveal 0.5s var(--ease-out) forwards;
+    }
+    .category-header {
+      opacity: 0; animation: cardReveal 0.4s var(--ease-out) forwards;
+    }
+    .category-header:first-child { margin-top: 0 !important; }
+    @keyframes cardReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .test-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(120% 120% at 0% 0%, var(--card-accent, var(--accent)) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .test-card:hover::before { opacity: 0.08; }
+    .test-card:hover {
+      transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-md);
+      border-color: var(--card-accent, var(--accent));
+    }
+    .test-card:active { transform: translateY(-1px) scale(0.99); }
+    .test-card .card-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .test-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem; font-size: 1.25rem;
+    }
+    .test-card h3 {
+      font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.15rem;
+    }
+    .test-card .card-abbr {
+      font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;
+    }
+    .test-card p {
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .test-card .card-meta {
+      font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;
+      display: flex; gap: 0.75rem;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; font-family: var(--font-body); font-size: 0.9rem;
+      font-weight: 600; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+    .btn-primary {
+      background: var(--accent); color: white;
+      box-shadow: 0 4px 12px rgba(107, 143, 113, 0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark); transform: translateY(-1px);
+    }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-outline {
+      background: transparent; color: var(--accent); border: 2px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent-glow); }
+    .btn-ghost {
+      background: transparent; color: var(--text-muted);
+      padding: 0.5rem 0.75rem; font-size: 0.8rem;
+    }
+    .btn-ghost:hover { color: var(--text-primary); }
+
+    /* ─── Welcome Card ─── */
+    .welcome-card {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 2rem 1.75rem; box-shadow: var(--shadow-md); text-align: center;
+    }
+    .welcome-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem; font-size: 1.5rem;
+    }
+    .welcome-card h2 { font-family: var(--font-display); font-size: 1.35rem; margin-bottom: 0.75rem; }
+    .welcome-card p {
+      color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem; line-height: 1.7;
+    }
+    .disclaimer {
+      background: #FFF8F0; border-left: 3px solid #C9A227;
+      padding: 0.85rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0; text-align: left; font-size: 0.78rem;
+      color: var(--text-secondary); line-height: 1.6;
+    }
+
+    /* ─── Progress ─── */
+    .progress-section { margin-bottom: 1.25rem; }
+    .progress-info {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.4rem; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;
+    }
+    .progress-bar {
+      width: 100%; height: 5px; background: var(--bg-tertiary);
+      border-radius: 100px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 100px;
+      transition: width 0.5s var(--ease-out); position: relative;
+    }
+    .progress-fill::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      animation: shimmer 2.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ─── Question Card ─── */
+    .question-card {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 1.75rem; box-shadow: var(--shadow-md);
+      min-height: 340px; display: flex; flex-direction: column;
+    }
+    .question-number {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 0.6rem;
+    }
+    .question-title {
+      font-family: var(--font-display); font-size: 1.1rem;
+      margin-bottom: 1rem; color: var(--text-primary);
+    }
+    .options { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+    .option { position: relative; }
+    .option input { position: absolute; opacity: 0; pointer-events: none; }
+    .option label {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      padding: 0.75rem 0.85rem; border: 2px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer;
+      transition: all 0.2s var(--ease-out); font-size: 0.85rem;
+      line-height: 1.45; color: var(--text-secondary);
+    }
+    .option label:hover { border-color: var(--accent-light); background: var(--accent-glow); }
+    .option input:checked + label {
+      border-color: var(--accent); background: var(--accent-glow);
+      color: var(--text-primary); font-weight: 500;
+    }
+    .option-radio {
+      width: 18px; height: 18px; min-width: 18px;
+      border: 2px solid var(--border); border-radius: 50%; margin-top: 1px;
+      transition: all 0.2s var(--ease-out);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .option input:checked + label .option-radio {
+      border-color: var(--accent); background: var(--accent);
+    }
+    .option input:checked + label .option-radio::after {
+      content: ''; width: 7px; height: 7px; background: white;
+      border-radius: 50%; animation: popIn 0.25s var(--ease-spring);
+    }
+    @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+    .question-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px solid var(--border);
+    }
+    .question-content { animation: slideIn 0.3s var(--ease-out); }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ─── Results ─── */
+    .results-card {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 2rem 1.75rem; box-shadow: var(--shadow-md); text-align: center;
+    }
+    .score-circle {
+      width: 110px; height: 110px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; margin: 0 auto 1rem;
+      animation: scaleIn 0.5s var(--ease-spring);
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .score-number {
+      font-family: var(--font-display); font-size: 2.25rem; color: white; line-height: 1;
+    }
+    .score-label {
+      font-size: 0.65rem; color: rgba(255,255,255,0.85);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .score-category {
+      font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.4rem;
+    }
+    .score-description {
+      color: var(--text-secondary); font-size: 0.85rem;
+      max-width: 440px; margin: 0 auto 1.5rem; line-height: 1.7;
+    }
+    .breakdown {
+      text-align: left; border-top: 1px solid var(--border);
+      padding-top: 1.25rem; margin-top: 0.75rem;
+    }
+    .breakdown h3 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.75rem; }
+    .breakdown-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem 0; font-size: 0.8rem; border-bottom: 1px solid var(--border);
+    }
+    .breakdown-item:last-child { border-bottom: none; }
+    .breakdown-name { color: var(--text-secondary); flex: 1; }
+    .breakdown-value {
+      font-weight: 600; padding: 0.15rem 0.55rem;
+      border-radius: 100px; font-size: 0.75rem;
+    }
+    .results-actions {
+      display: flex; gap: 0.75rem; justify-content: center;
+      margin-top: 1.5rem; flex-wrap: wrap;
+    }
+    .resources-box {
+      background: #F0F7F1; border-radius: var(--radius-sm);
+      padding: 1rem; margin-top: 1.25rem; text-align: left;
+    }
+    .resources-box h4 {
+      font-size: 0.8rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.35rem;
+    }
+    .resources-box p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ─── History ─── */
+    .history-empty { text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); }
+    .history-filter {
+      display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .filter-btn {
+      padding: 0.35rem 0.75rem; border: 1.5px solid var(--border);
+      border-radius: 100px; background: transparent; font-family: var(--font-body);
+      font-size: 0.7rem; font-weight: 500; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s var(--ease-out);
+    }
+    .filter-btn:hover { border-color: var(--text-muted); }
+    .filter-btn.active {
+      background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary);
+    }
+    .chart-container {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      padding: 1.25rem; box-shadow: var(--shadow-sm); margin-bottom: 1.25rem;
+    }
+    .chart-container h3 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.75rem; }
+    .chart-wrapper { position: relative; height: 200px; }
+    .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .history-entry {
+      background: var(--bg-secondary); border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem; box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 0.75rem;
+      transition: all 0.2s var(--ease-out);
+    }
+    .history-entry:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .history-dot { width: 8px; height: 8px; border-radius: 50%; min-width: 8px; }
+    .history-info { flex: 1; }
+    .history-date { font-size: 0.72rem; color: var(--text-muted); }
+    .history-score-text { font-weight: 600; font-size: 0.82rem; }
+    .history-test-name { font-size: 0.68rem; color: var(--text-muted); }
+    .history-badge {
+      font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.5rem;
+      border-radius: 100px; color: white; white-space: nowrap;
+    }
+    .history-trend { font-size: 1rem; min-width: 24px; text-align: center; }
+    .clear-history { text-align: center; margin-top: 1.25rem; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 480px) {
+      .container { padding: 1rem 0.75rem 3rem; }
+      .app-header h1 { font-size: 1.4rem; }
+      .question-card { padding: 1.25rem; min-height: 300px; }
+      .welcome-card, .results-card { padding: 1.5rem 1rem; }
+      .results-actions { flex-direction: column; }
+      .results-actions .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.15s !important;
+      }
+    }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ─── Breadcrumb ─── */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .breadcrumb a {
+      color: var(--text-muted); text-decoration: none; cursor: pointer;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--text-primary); }
+    .breadcrumb .bc-sep { opacity: 0.4; }
+    .breadcrumb .bc-current { color: var(--accent); font-weight: 500; }
+
+    /* ─── SVG Score Ring ─── */
+    .score-ring-container {
+      position: relative; width: 130px; height: 130px;
+      margin: 0 auto 1.25rem;
+      animation: scaleIn 0.5s var(--ease-spring);
+    }
+    .score-ring-bg {
+      fill: none; stroke: var(--bg-tertiary); stroke-width: 8;
+    }
+    .score-ring-fill {
+      fill: none; stroke-width: 8; stroke-linecap: round;
+      transform: rotate(-90deg); transform-origin: center;
+      stroke-dasharray: 339.292;
+      stroke-dashoffset: 339.292;
+      transition: stroke-dashoffset 1.2s var(--ease-out);
+    }
+    .score-ring-text {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .score-ring-number {
+      font-family: var(--font-display); font-size: 2.25rem;
+      color: var(--text-primary); line-height: 1;
+    }
+    .score-ring-label {
+      font-size: 0.65rem; color: var(--text-muted);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    /* ─── Resume Banner ─── */
+    .resume-banner {
+      background: var(--bg-secondary); border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem; box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem; border-left: 3px solid var(--accent);
+      animation: fadeUp 0.35s var(--ease-out);
+    }
+    .resume-banner p { flex: 1; font-size: 0.8rem; color: var(--text-secondary); }
+    .resume-banner .btn { padding: 0.4rem 0.85rem; font-size: 0.75rem; }
+
+    /* ─── Breakdown bars ─── */
+    .breakdown-bar-bg {
+      flex: 0 0 60px; height: 6px; background: var(--bg-tertiary);
+      border-radius: 100px; overflow: hidden; margin-left: 0.5rem;
+    }
+    .breakdown-bar-fill {
+      height: 100%; border-radius: 100px;
+      transition: width 0.6s var(--ease-out);
+    }
+
+    /* ─── Option active press ─── */
+    .option label:active { transform: scale(0.98); }
+
+    /* ─── Smooth scroll ─── */
+    html { scroll-behavior: smooth; }
+
+    /* ─── Language Selector ─── */
+    .lang-selector { display: flex; gap: 0.25rem; justify-content: center; }
+    .lang-btn {
+      padding: 0.25rem 0.55rem; border: 1.5px solid var(--border);
+      border-radius: 6px; background: transparent; font-family: var(--font-body);
+      font-size: 0.65rem; font-weight: 600; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s var(--ease-out);
+      letter-spacing: 0.03em;
+    }
+    .lang-btn:hover { border-color: var(--text-muted); }
+    .lang-btn.active {
+      background: var(--text-primary); color: var(--bg-primary);
+      border-color: var(--text-primary);
+    }
+
+    /* ─── Dimension Results (Big5 / MBTI) ─── */
+    .dimension-result {
+      margin-bottom: 1rem; text-align: left;
+    }
+    .dimension-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.35rem;
+    }
+    .dimension-name { font-weight: 600; font-size: 0.85rem; }
+    .dimension-score {
+      font-family: var(--font-display); font-size: 1rem;
+    }
+    .dimension-bar {
+      height: 8px; background: var(--bg-tertiary); border-radius: 100px;
+      overflow: hidden; margin-bottom: 0.25rem;
+    }
+    .dimension-bar-fill {
+      height: 100%; border-radius: 100px;
+      transition: width 0.8s var(--ease-out);
+    }
+    .dimension-desc {
+      font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
+    }
+
+    /* ─── MBTI Type Display ─── */
+    .type-display {
+      font-family: var(--font-display); font-size: 3rem;
+      letter-spacing: 0.1em; margin-bottom: 0.25rem;
+    }
+    .type-name {
+      font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.5rem;
+    }
+    .dichotomy-row {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.75rem; font-size: 0.8rem;
+    }
+    .dichotomy-label { width: 80px; text-align: right; font-size: 0.72rem; color: var(--text-muted); }
+    .dichotomy-bar {
+      flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 100px;
+      position: relative; overflow: hidden;
+    }
+    .dichotomy-bar-fill {
+      position: absolute; top: 0; height: 100%; border-radius: 100px;
+      transition: width 0.8s var(--ease-out);
+    }
+    .dichotomy-label-right { width: 80px; font-size: 0.72rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="app-header">
+    <h1 onclick="goHome()" id="app-title">Salud Mental</h1>
+    <p id="app-subtitle">Herramientas de autoevaluación clínica</p>
+    <div class="lang-selector" style="margin-top:0.5rem">
+      <button class="lang-btn active" onclick="setLang('es')" data-lang="es">ES</button>
+      <button class="lang-btn" onclick="setLang('en')" data-lang="en">EN</button>
+      <button class="lang-btn" onclick="setLang('pt')" data-lang="pt">PT</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" role="tab" data-tab="tests" onclick="switchTab('tests')" id="tab-tests">Tests</button>
+    <button class="tab" role="tab" data-tab="history" onclick="switchTab('history')" id="tab-history">Historial</button>
+  </nav>
+
+  <section id="screen-home" class="screen active">
+    <div class="test-grid" id="test-grid"></div>
+  </section>
+
+  <section id="screen-welcome" class="screen">
+    <div class="welcome-card" id="welcome-content"></div>
+  </section>
+
+  <section id="screen-test" class="screen">
+    <nav class="breadcrumb" id="test-breadcrumb"></nav>
+    <div class="progress-section">
+      <div class="progress-info">
+        <span id="progress-text"></span>
+        <span id="progress-pct"></span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div id="question-area" class="question-content"></div>
+      <div class="question-nav">
+        <button class="btn btn-ghost" id="btn-prev" onclick="prevQuestion()">&larr; Anterior</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Siguiente &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-results" class="screen">
+    <div class="results-card" id="results-content"></div>
+  </section>
+
+  <section id="screen-history" class="screen">
+    <div id="history-content"></div>
+  </section>
+</div>
+
+<script src="i18n/es.js"></script>
+<script src="i18n/en.js"></script>
+<script src="i18n/pt.js"></script>
+<script src="tests/bfi44.js"></script>
+<script src="tests/mbti.js"></script>
+<script src="tests/ipip300.js"></script>
+<script src="tests/pid5.js"></script>
+<script src="tests/ipip_mmpi.js"></script>
+<script src="tests/clinical1.js"></script>
+<script src="tests/clinical2.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// I18N
+// ═══════════════════════════════════════════════════════════════
+const LANGS = { es: LANG_ES, en: LANG_EN, pt: LANG_PT };
+let currentLang = localStorage.getItem('mental_health_lang') || 'es';
+function t(key) {
+  const keys = key.split('.');
+  let val = LANGS[currentLang];
+  for (const k of keys) { val = val?.[k]; }
+  return val || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mental_health_lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.getElementById('app-title').textContent = t('ui.appTitle');
+  document.getElementById('app-subtitle').textContent = t('ui.appSubtitle');
+  document.getElementById('tab-tests').textContent = t('ui.tabTests');
+  document.getElementById('tab-history').textContent = t('ui.tabHistory');
+  renderHome();
+  if (activeTest && document.getElementById('screen-test').classList.contains('active')) {
+    renderQuestion();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TEST REGISTRY
+// ═══════════════════════════════════════════════════════════════
+const TESTS = {
+  bdi: {
+    id: 'bdi', abbr: 'BDI-II', name: 'Depresión de Beck',
+    fullName: 'Inventario de Depresión de Beck',
+    desc: 'Evalúa la presencia y gravedad de síntomas depresivos en las últimas dos semanas.',
+    color: '#6B8F71', icon: '🌿', items: 21, time: '5-10 min',
+    instructions: 'Lee cada grupo de afirmaciones cuidadosamente y selecciona la que mejor describa cómo te has sentido durante las <strong>últimas dos semanas</strong>, incluyendo hoy.',
+    sharedOptions: null,
+    questions: [
+      { title:"Tristeza", options:["No me siento triste.","Me siento triste gran parte del tiempo.","Estoy triste todo el tiempo.","Estoy tan triste o soy tan infeliz que no puedo soportarlo."] },
+      { title:"Pesimismo", options:["No estoy desalentado/a respecto a mi futuro.","Me siento más desalentado/a respecto a mi futuro que antes.","No espero que las cosas funcionen para mí.","Siento que mi futuro es desesperanzador y que solo va a empeorar."] },
+      { title:"Fracaso", options:["No me siento como un/a fracasado/a.","He fracasado más de lo que debería.","Cuando miro hacia atrás veo muchos fracasos.","Siento que como persona soy un fracaso total."] },
+      { title:"Pérdida de placer", options:["Obtengo tanto placer como siempre de las cosas que disfruto.","No disfruto tanto de las cosas como solía hacerlo.","Obtengo muy poco placer de las cosas que solía disfrutar.","No puedo obtener ningún placer de las cosas que solía disfrutar."] },
+      { title:"Sentimientos de culpa", options:["No me siento particularmente culpable.","Me siento culpable respecto a varias cosas que he hecho o debería haber hecho.","Me siento bastante culpable la mayor parte del tiempo.","Me siento culpable todo el tiempo."] },
+      { title:"Sentimientos de castigo", options:["No siento que esté siendo castigado/a.","Siento que tal vez pueda ser castigado/a.","Espero ser castigado/a.","Siento que estoy siendo castigado/a."] },
+      { title:"Disconformidad con uno mismo", options:["Siento acerca de mí lo mismo que siempre.","He perdido la confianza en mí mismo/a.","Estoy decepcionado/a conmigo mismo/a.","No me gusto a mí mismo/a."] },
+      { title:"Autocrítica", options:["No me critico ni me culpo más de lo habitual.","Estoy más crítico/a conmigo mismo/a de lo que solía estarlo.","Me critico a mí mismo/a por todos mis errores.","Me culpo a mí mismo/a por todo lo malo que sucede."] },
+      { title:"Pensamientos o deseos suicidas", options:["No tengo ningún pensamiento de matarme.","He tenido pensamientos de matarme pero no lo haría.","Quisiera matarme.","Me mataría si tuviera la oportunidad de hacerlo."] },
+      { title:"Llanto", options:["No lloro más de lo que solía hacerlo.","Lloro más de lo que solía hacerlo.","Lloro por cualquier pequeñez.","Siento ganas de llorar pero no puedo."] },
+      { title:"Agitación", options:["No estoy más inquieto/a o tenso/a que lo habitual.","Me siento más inquieto/a o tenso/a que lo habitual.","Estoy tan inquieto/a o agitado/a que me es difícil quedarme quieto/a.","Estoy tan inquieto/a o agitado/a que tengo que estar siempre en movimiento o haciendo algo."] },
+      { title:"Pérdida de interés", options:["No he perdido el interés en otras actividades o personas.","Estoy menos interesado/a que antes en otras personas o cosas.","He perdido casi todo el interés en otras personas o cosas.","Me es difícil interesarme por algo."] },
+      { title:"Indecisión", options:["Tomo mis propias decisiones tan bien como siempre.","Me resulta más difícil que de costumbre tomar decisiones.","Encuentro mucha más dificultad que antes para tomar decisiones.","Tengo problemas para tomar cualquier decisión."] },
+      { title:"Desvalorización", options:["No siento que yo no sea valioso/a.","No me considero a mí mismo/a tan valioso/a y útil como antes.","Me siento menos valioso/a cuando me comparo con otros.","Siento que no valgo nada."] },
+      { title:"Pérdida de energía", options:["Tengo tanta energía como siempre.","Tengo menos energía de la que solía tener.","No tengo suficiente energía para hacer demasiado.","No tengo energía suficiente para hacer nada."] },
+      { title:"Cambios en el sueño", options:["No he experimentado ningún cambio en mis hábitos de sueño.","Duermo un poco más/menos de lo habitual.","Duermo mucho más/menos de lo habitual.","Duermo la mayor parte del día o me despierto 1-2 horas antes y no puedo volver a dormir."] },
+      { title:"Irritabilidad", options:["No estoy más irritable que lo habitual.","Estoy más irritable que lo habitual.","Estoy mucho más irritable que lo habitual.","Estoy irritable todo el tiempo."] },
+      { title:"Cambios en el apetito", options:["No he experimentado ningún cambio en mi apetito.","Mi apetito es un poco mayor/menor de lo habitual.","Mi apetito es mucho mayor/menor de lo habitual.","No tengo apetito en absoluto o quiero comer todo el tiempo."] },
+      { title:"Dificultad de concentración", options:["Puedo concentrarme tan bien como siempre.","No puedo concentrarme tan bien como habitualmente.","Me es difícil mantener la mente en algo por mucho tiempo.","Encuentro que no puedo concentrarme en nada."] },
+      { title:"Cansancio o fatiga", options:["No estoy más cansado/a o fatigado/a que lo habitual.","Me fatigo o me canso más fácilmente que lo habitual.","Estoy demasiado fatigado/a o cansado/a para hacer muchas de las cosas que solía hacer.","Estoy demasiado fatigado/a o cansado/a para hacer la mayoría de las cosas que solía hacer."] },
+      { title:"Pérdida de interés en el sexo", options:["No he notado ningún cambio reciente en mi interés por el sexo.","Estoy menos interesado/a en el sexo de lo que solía estarlo.","Ahora estoy mucho menos interesado/a en el sexo.","He perdido completamente el interés en el sexo."] }
+    ],
+    maxScore: 63,
+    getResult(score) {
+      if (score <= 13) return { label:'Depresión mínima', key:'minimal', color:'#6B8F71', desc:'Tu puntuación sugiere síntomas depresivos mínimos o ausentes.' };
+      if (score <= 19) return { label:'Depresión leve', key:'mild', color:'#C9A227', desc:'Tu puntuación indica la presencia de algunos síntomas depresivos leves. Podría ser beneficioso hablar con alguien de confianza.' };
+      if (score <= 28) return { label:'Depresión moderada', key:'moderate', color:'#D4764A', desc:'Tu puntuación sugiere síntomas depresivos moderados. Se recomienda consultar con un profesional de salud mental.' };
+      return { label:'Depresión grave', key:'severe', color:'#A65D57', desc:'Tu puntuación indica síntomas depresivos significativos. Es importante buscar ayuda profesional lo antes posible.' };
+    }
+  },
+
+  bai: {
+    id: 'bai', abbr: 'BAI', name: 'Ansiedad de Beck',
+    fullName: 'Inventario de Ansiedad de Beck',
+    desc: 'Mide la gravedad de los síntomas de ansiedad experimentados en la última semana.',
+    color: '#5B8DB8', icon: '🌊', items: 21, time: '5-10 min',
+    instructions: 'Indica cuánto te ha molestado cada uno de los siguientes síntomas durante la <strong>última semana, incluyendo hoy</strong>.',
+    sharedOptions: ["En absoluto", "Levemente, no me molestó mucho", "Moderadamente, fue muy desagradable", "Severamente, casi no podía soportarlo"],
+    questions: [
+      {title:"Entumecimiento u hormigueo"}, {title:"Sensación de calor"}, {title:"Temblor en las piernas"},
+      {title:"Incapacidad de relajarse"}, {title:"Temor a que ocurra lo peor"}, {title:"Mareo o aturdimiento"},
+      {title:"Palpitaciones o taquicardia"}, {title:"Sensación de inestabilidad"}, {title:"Sensación de terror o pánico"},
+      {title:"Nerviosismo"}, {title:"Sensación de ahogo"}, {title:"Temblor en las manos"},
+      {title:"Temblor generalizado"}, {title:"Miedo a perder el control"}, {title:"Dificultad para respirar"},
+      {title:"Miedo a morir"}, {title:"Susto"}, {title:"Molestias digestivas o abdominales"},
+      {title:"Palidez"}, {title:"Rubor facial"}, {title:"Sudoración (no debida al calor)"}
+    ],
+    maxScore: 63,
+    getResult(score) {
+      if (score <= 7) return { label:'Ansiedad mínima', key:'minimal', color:'#6B8F71', desc:'Tu puntuación sugiere un nivel mínimo de ansiedad.' };
+      if (score <= 15) return { label:'Ansiedad leve', key:'mild', color:'#C9A227', desc:'Tu puntuación indica ansiedad leve. Técnicas de relajación y manejo del estrés pueden ser beneficiosas.' };
+      if (score <= 25) return { label:'Ansiedad moderada', key:'moderate', color:'#D4764A', desc:'Tu puntuación sugiere ansiedad moderada. Considera consultar con un profesional de salud mental.' };
+      return { label:'Ansiedad grave', key:'severe', color:'#A65D57', desc:'Tu puntuación indica ansiedad significativa. Se recomienda buscar ayuda profesional.' };
+    }
+  },
+
+  gad7: {
+    id: 'gad7', abbr: 'GAD-7', name: 'Ansiedad Generalizada',
+    fullName: 'Escala de Trastorno de Ansiedad Generalizada',
+    desc: 'Evalúa la frecuencia de síntomas de ansiedad generalizada en las últimas dos semanas.',
+    color: '#5BA5A5', icon: '🍃', items: 7, time: '2-3 min',
+    instructions: 'Durante las <strong>últimas 2 semanas</strong>, ¿con qué frecuencia te han molestado los siguientes problemas?',
+    sharedOptions: ["Nunca", "Varios días", "Más de la mitad de los días", "Casi todos los días"],
+    questions: [
+      {title:"Sentirme nervioso/a, ansioso/a o con los nervios de punta"},
+      {title:"No poder dejar de preocuparme o no poder controlar la preocupación"},
+      {title:"Preocuparme demasiado por diferentes cosas"},
+      {title:"Dificultad para relajarme"},
+      {title:"Estar tan inquieto/a que es difícil quedarme quieto/a"},
+      {title:"Molestarme o irritarme fácilmente"},
+      {title:"Sentir miedo como si algo terrible pudiera pasar"}
+    ],
+    maxScore: 21,
+    getResult(score) {
+      if (score <= 4) return { label:'Ansiedad mínima', key:'minimal', color:'#6B8F71', desc:'Tu puntuación sugiere un nivel mínimo de ansiedad generalizada.' };
+      if (score <= 9) return { label:'Ansiedad leve', key:'mild', color:'#C9A227', desc:'Tu puntuación indica ansiedad leve. Monitorea tus síntomas y considera estrategias de autocuidado.' };
+      if (score <= 14) return { label:'Ansiedad moderada', key:'moderate', color:'#D4764A', desc:'Tu puntuación sugiere ansiedad moderada. Se recomienda una evaluación profesional.' };
+      return { label:'Ansiedad grave', key:'severe', color:'#A65D57', desc:'Tu puntuación indica ansiedad significativa. Se recomienda tratamiento activo con un profesional.' };
+    }
+  },
+
+  msibpd: {
+    id: 'msibpd', abbr: 'MSI-BPD', name: 'Screening de TLP',
+    fullName: 'Instrumento de Detección McLean para TLP',
+    desc: 'Detección rápida de rasgos asociados al Trastorno Límite de la Personalidad.',
+    color: '#8B7BB5', icon: '🔮', items: 10, time: '2-3 min',
+    instructions: 'Responde sí o no a cada una de las siguientes preguntas. Piensa en cómo te has sentido y comportado <strong>a lo largo de tu vida</strong>.',
+    sharedOptions: ["No", "Sí"],
+    questions: [
+      {title:"¿Has tenido relaciones muy intensas pero inestables?"},
+      {title:"¿Has hecho esfuerzos desesperados para evitar el abandono real o imaginario?"},
+      {title:"¿Has tenido cambios rápidos en tu sentido de identidad o autoimagen?"},
+      {title:"¿Has sido impulsivo/a de formas que podrían ser dañinas (gastos excesivos, sexo de riesgo, sustancias, conducción temeraria, atracones)?"},
+      {title:"¿Has tenido comportamientos suicidas recurrentes o autolesiones?"},
+      {title:"¿Has tenido cambios de humor intensos que duran horas o pocos días?"},
+      {title:"¿Sientes un vacío crónico?"},
+      {title:"¿Tienes dificultad para controlar la ira o te enfadas con frecuencia desproporcionada?"},
+      {title:"¿En momentos de estrés, has tenido pensamientos paranoides o síntomas disociativos (sentirte irreal)?"},
+      {title:"¿Has tenido al menos dos de los siguientes: bulimia, abuso de sustancias, gastos excesivos, conducción temeraria o promiscuidad?"}
+    ],
+    maxScore: 10,
+    getResult(score) {
+      if (score <= 4) return { label:'Baja probabilidad', key:'minimal', color:'#6B8F71', desc:'Tu puntuación no sugiere la presencia significativa de rasgos asociados al TLP.' };
+      if (score <= 6) return { label:'Probabilidad moderada', key:'moderate', color:'#D4764A', desc:'Tu puntuación sugiere algunos rasgos que podrían estar asociados al TLP. Considera una evaluación profesional.' };
+      return { label:'Alta probabilidad', key:'severe', color:'#A65D57', desc:'Tu puntuación sugiere una alta probabilidad de rasgos de TLP (punto de corte clínico ≥7). Se recomienda una evaluación diagnóstica completa con un profesional.' };
+    }
+  },
+
+  pss: {
+    id: 'pss', abbr: 'PSS-10', name: 'Estrés Percibido',
+    fullName: 'Escala de Estrés Percibido',
+    desc: 'Mide el grado en que las situaciones de la vida se perciben como estresantes.',
+    color: '#C4875B', icon: '🍂', items: 10, time: '3-5 min',
+    instructions: 'Indica con qué frecuencia te has sentido o pensado de la siguiente manera durante el <strong>último mes</strong>.',
+    sharedOptions: ["Nunca", "Casi nunca", "A veces", "Frecuentemente", "Muy frecuentemente"],
+    reverseItems: [3, 4, 6, 7], // 0-indexed
+    questions: [
+      {title:"¿Con qué frecuencia te has sentido molesto/a por algo que ocurrió inesperadamente?"},
+      {title:"¿Con qué frecuencia has sentido que no podías controlar las cosas importantes de tu vida?"},
+      {title:"¿Con qué frecuencia te has sentido nervioso/a y estresado/a?"},
+      {title:"¿Con qué frecuencia has manejado con éxito los pequeños problemas irritantes de la vida?"},
+      {title:"¿Con qué frecuencia has sentido que afrontabas efectivamente los cambios importantes en tu vida?"},
+      {title:"¿Con qué frecuencia has dudado de tu capacidad para manejar tus problemas personales?"},
+      {title:"¿Con qué frecuencia has sentido que las cosas te iban bien?"},
+      {title:"¿Con qué frecuencia has sentido que podías controlar las dificultades de tu vida?"},
+      {title:"¿Con qué frecuencia te has enfadado por cosas que estaban fuera de tu control?"},
+      {title:"¿Con qué frecuencia has sentido que las dificultades se acumulaban tanto que no podías superarlas?"}
+    ],
+    maxScore: 40,
+    getResult(score) {
+      if (score <= 13) return { label:'Estrés bajo', key:'minimal', color:'#6B8F71', desc:'Tu nivel de estrés percibido es bajo. Esto indica un buen manejo de las situaciones cotidianas.' };
+      if (score <= 26) return { label:'Estrés moderado', key:'moderate', color:'#C9A227', desc:'Tu nivel de estrés es moderado. Considera incorporar técnicas de manejo del estrés a tu rutina.' };
+      return { label:'Estrés alto', key:'severe', color:'#A65D57', desc:'Tu nivel de estrés percibido es alto. Se recomienda buscar estrategias activas de manejo y considerar apoyo profesional.' };
+    },
+    scoreAnswer(qIdx, val) {
+      if (this.reverseItems.includes(qIdx)) return (this.sharedOptions.length - 1) - val;
+      return val;
+    }
+  },
+
+  asrs: {
+    id: 'asrs', abbr: 'ASRS-v1.1', name: 'Screening de TDAH',
+    fullName: 'Escala de Autoinforme de TDAH del Adulto',
+    desc: 'Herramienta de detección rápida para el Trastorno por Déficit de Atención e Hiperactividad en adultos.',
+    color: '#C47B7B', icon: '⚡', items: 6, time: '1-2 min',
+    instructions: 'Indica con qué frecuencia experimentas cada una de las siguientes situaciones. No hay respuestas correctas ni incorrectas.',
+    sharedOptions: ["Nunca", "Raramente", "A veces", "Frecuentemente", "Muy frecuentemente"],
+    questions: [
+      {title:"¿Con qué frecuencia tienes dificultad para terminar los detalles finales de un proyecto una vez que las partes difíciles ya están hechas?"},
+      {title:"¿Con qué frecuencia tienes dificultad para poner las cosas en orden cuando tienes que hacer una tarea que requiere organización?"},
+      {title:"¿Con qué frecuencia tienes problemas para recordar citas u obligaciones?"},
+      {title:"Cuando tienes una tarea que requiere mucho pensamiento, ¿con qué frecuencia la evitas o la retrasas?"},
+      {title:"¿Con qué frecuencia mueves o retuerces las manos o los pies cuando tienes que estar sentado/a mucho tiempo?"},
+      {title:"¿Con qué frecuencia te sientes demasiado activo/a y obligado/a a hacer cosas, como si te impulsara un motor?"}
+    ],
+    maxScore: 24,
+    getResult(score) {
+      if (score <= 10) return { label:'Bajo riesgo de TDAH', key:'minimal', color:'#6B8F71', desc:'Tu puntuación no sugiere la presencia significativa de síntomas de TDAH.' };
+      if (score <= 16) return { label:'Riesgo moderado', key:'moderate', color:'#C9A227', desc:'Tu puntuación sugiere algunos síntomas compatibles con TDAH. Una evaluación profesional podría ser útil.' };
+      return { label:'Alto riesgo de TDAH', key:'severe', color:'#A65D57', desc:'Tu puntuación es consistente con TDAH. Se recomienda una evaluación diagnóstica completa con un especialista.' };
+    }
+  },
+
+  ocir: {
+    id: 'ocir', abbr: 'OCI-R', name: 'Obsesiones y Compulsiones',
+    fullName: 'Inventario Obsesivo-Compulsivo Revisado',
+    desc: 'Evalúa la presencia y severidad de síntomas obsesivo-compulsivos.',
+    color: '#6B73A8', icon: '🔄', items: 18, time: '5-7 min',
+    instructions: 'Indica cuánto te han molestado o afectado las siguientes experiencias <strong>durante el último mes</strong>.',
+    sharedOptions: ["Nada", "Un poco", "Moderadamente", "Mucho", "Extremadamente"],
+    questions: [
+      {title:"Acumulo tantas cosas que me estorban"},
+      {title:"Compruebo las cosas más a menudo de lo necesario"},
+      {title:"Me molesta si los objetos no están bien ordenados"},
+      {title:"Siento la necesidad de contar mientras hago cosas"},
+      {title:"Me resulta difícil tocar un objeto cuando sé que ha sido tocado por desconocidos"},
+      {title:"Me resulta difícil controlar mis propios pensamientos"},
+      {title:"Acumulo cosas que no necesito"},
+      {title:"Compruebo repetidamente puertas, ventanas, cajones, etc."},
+      {title:"Me molesta si otros cambian el orden de mis cosas"},
+      {title:"Siento la necesidad de repetir ciertos números"},
+      {title:"A veces tengo que lavarme simplemente porque me siento contaminado/a"},
+      {title:"Me molestan pensamientos desagradables que vienen a mi mente contra mi voluntad"},
+      {title:"Evito tirar cosas porque temo necesitarlas después"},
+      {title:"Compruebo repetidamente las llaves del gas, del agua y de la luz"},
+      {title:"Necesito que las cosas estén ordenadas de una manera determinada"},
+      {title:"Siento que hay números buenos y malos"},
+      {title:"Me lavo las manos más a menudo o durante más tiempo de lo necesario"},
+      {title:"Frecuentemente tengo pensamientos desagradables y me cuesta librarme de ellos"}
+    ],
+    maxScore: 72,
+    getResult(score) {
+      if (score <= 20) return { label:'Síntomas bajos', key:'minimal', color:'#6B8F71', desc:'Tu puntuación no sugiere la presencia significativa de síntomas obsesivo-compulsivos.' };
+      if (score <= 41) return { label:'Síntomas moderados', key:'moderate', color:'#C9A227', desc:'Tu puntuación sugiere la presencia de algunos síntomas obsesivo-compulsivos. Punto de corte clínico ≥21. Considera una evaluación profesional.' };
+      return { label:'Síntomas significativos', key:'severe', color:'#A65D57', desc:'Tu puntuación indica síntomas obsesivo-compulsivos significativos. Se recomienda una evaluación diagnóstica con un especialista.' };
+    }
+  },
+
+  pcl5: {
+    id: 'pcl5', abbr: 'PCL-5', name: 'Estrés Postraumático',
+    fullName: 'Lista de Verificación de TEPT',
+    desc: 'Evalúa los síntomas del Trastorno de Estrés Postraumático según el DSM-5.',
+    color: '#7B8FA1', icon: '🛡️', items: 20, time: '5-10 min',
+    instructions: 'En el <strong>último mes</strong>, ¿cuánto te han molestado los siguientes problemas en relación con una experiencia estresante o traumática?',
+    sharedOptions: ["Nada", "Un poco", "Moderadamente", "Bastante", "Extremadamente"],
+    questions: [
+      {title:"Recuerdos repetidos, perturbadores e involuntarios de la experiencia estresante"},
+      {title:"Sueños repetidos y perturbadores sobre la experiencia estresante"},
+      {title:"De repente sentirse o actuar como si la experiencia estresante estuviera ocurriendo de nuevo (reviviscencias)"},
+      {title:"Sentirse muy mal cuando algo te recordaba la experiencia estresante"},
+      {title:"Tener fuertes reacciones físicas cuando algo te recordaba la experiencia (palpitaciones, dificultad para respirar, sudoración)"},
+      {title:"Evitar recuerdos, pensamientos o sentimientos relacionados con la experiencia estresante"},
+      {title:"Evitar cosas externas que te recuerden la experiencia (personas, lugares, conversaciones, actividades, objetos)"},
+      {title:"Problemas para recordar partes importantes de la experiencia estresante"},
+      {title:"Tener creencias negativas fuertes sobre ti mismo/a, otras personas o el mundo"},
+      {title:"Culparte a ti mismo/a o a otra persona por la experiencia estresante o lo que ocurrió después"},
+      {title:"Tener sentimientos negativos fuertes como miedo, horror, enfado, culpa o vergüenza"},
+      {title:"Pérdida de interés en actividades que antes disfrutabas"},
+      {title:"Sentirte distante o alejado/a de otras personas"},
+      {title:"Dificultad para experimentar sentimientos positivos (incapacidad de sentir felicidad, amor, satisfacción)"},
+      {title:"Comportamiento irritable, arrebatos de enfado o actuar agresivamente"},
+      {title:"Correr demasiados riesgos o hacer cosas que podrían causarte daño"},
+      {title:"Estar 'súper alerta', vigilante o en guardia"},
+      {title:"Sobresaltarte fácilmente"},
+      {title:"Dificultad para concentrarte"},
+      {title:"Problemas para quedarte dormido/a o para seguir durmiendo"}
+    ],
+    maxScore: 80,
+    getResult(score) {
+      if (score <= 32) return { label:'Síntomas bajos de TEPT', key:'minimal', color:'#6B8F71', desc:'Tu puntuación no alcanza el punto de corte clínico para TEPT. Sin embargo, si experimentas malestar, una consulta profesional siempre es recomendable.' };
+      if (score <= 49) return { label:'TEPT probable', key:'moderate', color:'#D4764A', desc:'Tu puntuación supera el punto de corte clínico (≥33). Se recomienda una evaluación diagnóstica completa con un profesional.' };
+      return { label:'Síntomas graves de TEPT', key:'severe', color:'#A65D57', desc:'Tu puntuación indica síntomas significativos de TEPT. Es importante buscar ayuda profesional especializada en trauma.' };
+    }
+  },
+
+  bfi44: TEST_BFI44,
+  mbti: TEST_MBTI,
+  ipip300: TEST_IPIP300,
+  pid5: TEST_PID5,
+  ipip_mmpi: TEST_IPIP_MMPI,
+  phq9: TEST_PHQ9,
+  audit: TEST_AUDIT,
+  isi: TEST_ISI,
+  eat26: TEST_EAT26,
+  mdq: TEST_MDQ,
+  spin: TEST_SPIN,
+  rosenberg: TEST_ROSENBERG,
+  who5: TEST_WHO5
+};
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let activeTest = null;
+let currentQ = 0;
+let answers = [];
+let historyFilter = 'all';
+let chartInstance = null;
+
+// ═══════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  if (tab === 'tests') {
+    goHome();
+  } else {
+    showScreen('screen-history');
+    renderHistory();
+  }
+}
+
+function goHome() {
+  activeTest = null;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('[data-tab="tests"]').classList.add('active');
+  showScreen('screen-home');
+}
+
+function setAccentColor(color) {
+  document.documentElement.style.setProperty('--accent', color);
+  document.documentElement.style.setProperty('--accent-light', color + 'BB');
+  document.documentElement.style.setProperty('--accent-dark', color);
+  document.documentElement.style.setProperty('--accent-glow', color + '22');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HOME GRID
+// ═══════════════════════════════════════════════════════════════
+const TEST_CATEGORIES = [
+  { key: 'clinical', label: 'Evaluaciones Clínicas', ids: ['bdi','phq9','bai','gad7','pss','pcl5','isi','spin'] },
+  { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','audit','eat26','ocir'] },
+  { key: 'wellbeing', label: 'Bienestar y Autoestima', ids: ['who5','rosenberg'] },
+  { key: 'personality', label: 'Personalidad', ids: ['bfi44','mbti','ipip300'] },
+  { key: 'advanced', label: 'Evaluación Avanzada', ids: ['pid5','ipip_mmpi'] },
+];
+
+function renderHome() {
+  const grid = document.getElementById('test-grid');
+  grid.innerHTML = TEST_CATEGORIES.map(cat => {
+    const tests = cat.ids.filter(id => TESTS[id]).map(id => TESTS[id]);
+    if (!tests.length) return '';
+    return `
+      <div class="category-header" style="grid-column:1/-1;margin-top:0.75rem">
+        <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${cat.label}</h2>
+      </div>
+      ${tests.map(t => `
+        <div class="test-card" onclick="openTest('${t.id}')" style="--card-accent:${t.color}">
+          <div class="card-accent" style="background:${t.color}"></div>
+          <div class="test-card-icon" style="background:${t.color}18">${t.icon}</div>
+          <div class="card-abbr">${t.abbr}</div>
+          <h3>${t.name}</h3>
+          <p>${t.desc}</p>
+          <div class="card-meta">
+            <span>${t.items} ítems</span>
+            <span>${t.time}</span>
+          </div>
+        </div>
+      `).join('')}
+    `;
+  }).join('');
+  // Stagger animations
+  grid.querySelectorAll('.test-card, .category-header').forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.04}s`;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TEST FLOW
+// ═══════════════════════════════════════════════════════════════
+function openTest(id) {
+  activeTest = TESTS[id];
+  setAccentColor(activeTest.color);
+  const wc = document.getElementById('welcome-content');
+  wc.innerHTML = `
+    <div class="welcome-icon" style="background:${activeTest.color}18">
+      <span>${activeTest.icon}</span>
+    </div>
+    <h2>${activeTest.fullName}</h2>
+    <p>${activeTest.instructions}</p>
+    <div class="disclaimer">
+      <strong>Nota importante:</strong> Este test es una herramienta de autoevaluación y no sustituye el diagnóstico de un profesional de salud mental. Si sientes que necesitas ayuda, por favor consulta a un especialista.
+    </div>
+    <button class="btn btn-primary" onclick="startTest()">Comenzar evaluación</button>
+    <br><br>
+    <button class="btn btn-ghost" onclick="goHome()">← Volver a tests</button>
+  `;
+  showScreen('screen-welcome');
+}
+
+function startTest() {
+  currentQ = 0;
+  answers = new Array(activeTest.questions.length).fill(null);
+  showScreen('screen-test');
+  document.getElementById('progress-fill').style.background =
+    `linear-gradient(90deg, ${activeTest.color}BB, ${activeTest.color})`;
+  updateBreadcrumb();
+  renderQuestion();
+  saveProgress();
+}
+
+function updateBreadcrumb() {
+  document.getElementById('test-breadcrumb').innerHTML = `
+    <a onclick="goHome()">Tests</a>
+    <span class="bc-sep">›</span>
+    <span class="bc-current">${activeTest.abbr}</span>
+  `;
+}
+
+function saveProgress() {
+  if (!activeTest) return;
+  localStorage.setItem('mental_health_progress', JSON.stringify({
+    testId: activeTest.id, currentQ, answers
+  }));
+}
+
+function clearProgress() {
+  localStorage.removeItem('mental_health_progress');
+}
+
+function checkResume() {
+  const saved = localStorage.getItem('mental_health_progress');
+  if (!saved) return;
+  const data = JSON.parse(saved);
+  if (!TESTS[data.testId] || data.answers.every(a => a === null)) {
+    clearProgress(); return;
+  }
+  const t = TESTS[data.testId];
+  const grid = document.getElementById('test-grid');
+  const banner = document.createElement('div');
+  banner.className = 'resume-banner';
+  banner.id = 'resume-banner';
+  banner.innerHTML = `
+    <p>Tienes un test de <strong>${t.abbr}</strong> en progreso (${data.answers.filter(a=>a!==null).length}/${t.questions.length} preguntas)</p>
+    <button class="btn btn-primary" onclick="resumeTest()">Continuar</button>
+    <button class="btn btn-ghost" onclick="dismissResume()">✕</button>
+  `;
+  grid.parentNode.insertBefore(banner, grid);
+}
+
+function resumeTest() {
+  const data = JSON.parse(localStorage.getItem('mental_health_progress'));
+  if (!data) return;
+  activeTest = TESTS[data.testId];
+  currentQ = data.currentQ;
+  answers = data.answers;
+  setAccentColor(activeTest.color);
+  showScreen('screen-test');
+  document.getElementById('progress-fill').style.background =
+    `linear-gradient(90deg, ${activeTest.color}BB, ${activeTest.color})`;
+  updateBreadcrumb();
+  renderQuestion();
+  const banner = document.getElementById('resume-banner');
+  if (banner) banner.remove();
+}
+
+function dismissResume() {
+  clearProgress();
+  const banner = document.getElementById('resume-banner');
+  if (banner) banner.remove();
+}
+
+function renderQuestion() {
+  const test = activeTest;
+  const q = test.questions[currentQ];
+  const total = test.questions.length;
+  const pct = Math.round((currentQ / total) * 100);
+  const opts = test.sharedOptions || q.options;
+
+  document.getElementById('progress-text').textContent = `Pregunta ${currentQ + 1} de ${total}`;
+  document.getElementById('progress-pct').textContent = `${pct}%`;
+  document.getElementById('progress-fill').style.width = `${pct}%`;
+
+  const area = document.getElementById('question-area');
+  area.innerHTML = `
+    <div class="question-number" style="color:${test.color}">Pregunta ${currentQ + 1} · ${q.title || test.abbr}</div>
+    <div class="question-title">${q.title}</div>
+    <div class="options" role="radiogroup" aria-label="${q.title}">
+      ${opts.map((opt, i) => `
+        <div class="option">
+          <input type="radio" name="q${currentQ}" id="q${currentQ}_${i}" value="${i}"
+            ${answers[currentQ] === i ? 'checked' : ''}
+            onchange="selectAnswer(${i})">
+          <label for="q${currentQ}_${i}">
+            <span class="option-radio"></span>
+            <span>${opt}</span>
+          </label>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  area.style.animation = 'none'; area.offsetHeight; area.style.animation = '';
+
+  document.getElementById('btn-prev').disabled = currentQ === 0;
+  const btnNext = document.getElementById('btn-next');
+  btnNext.disabled = answers[currentQ] === null;
+  btnNext.textContent = currentQ === total - 1 ? 'Ver resultados' : 'Siguiente →';
+}
+
+function selectAnswer(val) {
+  answers[currentQ] = val;
+  document.getElementById('btn-next').disabled = false;
+  saveProgress();
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) return;
+  if (currentQ < activeTest.questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+    saveProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+    saveProgress();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════════════════════════
+function calcScore() {
+  const test = activeTest;
+  let score = 0;
+  answers.forEach((val, i) => {
+    if (val === null) return;
+    if (test.scoreAnswer) score += test.scoreAnswer(i, val);
+    else score += val;
+  });
+  return score;
+}
+
+function showResults() {
+  const test = activeTest;
+  const score = calcScore();
+  const needsAnswers = ['type','dimensions','domains','scales'].includes(test.maxScore);
+  const result = needsAnswers ? test.getResult(score, answers) : test.getResult(score);
+
+  // Save
+  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+  const histEntry = {
+    testId: test.id, testName: test.abbr, date: new Date().toISOString(),
+    score, maxScore: test.maxScore, resultKey: result.key,
+    resultLabel: result.label, resultColor: result.color, answers: [...answers]
+  };
+  if (result.typeDetails) histEntry.typeCode = result.typeDetails.type;
+  history.push(histEntry);
+  localStorage.setItem('mental_health_history', JSON.stringify(history));
+  clearProgress();
+
+  const rc = document.getElementById('results-content');
+
+  // ─── MBTI type result ───
+  if (test.maxScore === 'type' && result.typeDetails) {
+    const td = result.typeDetails;
+    rc.innerHTML = `
+      <div>
+        <div class="type-display" style="color:${result.color}">${td.type}</div>
+        <div class="type-name">${td.name}</div>
+      </div>
+      <p class="score-description">${td.description}</p>
+
+      <div class="breakdown" style="margin-top:1.5rem">
+        <h3>${t('ui.detailByItem')}</h3>
+        ${td.dimensions.map(d => {
+          const total = d.score1 + d.score2;
+          const pct1 = Math.round((d.score1 / total) * 100);
+          return `<div class="dichotomy-row">
+            <span class="dichotomy-label">${d.pole1}</span>
+            <div class="dichotomy-bar">
+              <div class="dichotomy-bar-fill" style="width:${pct1}%;background:${result.color};left:0" data-width="${pct1}"></div>
+            </div>
+            <span class="dichotomy-label-right">${d.pole2}</span>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
+        <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
+        <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+      </div>
+    `;
+    showScreen('screen-results');
+    setTimeout(() => {
+      document.querySelectorAll('.dichotomy-bar-fill').forEach((bar, i) => {
+        const w = bar.dataset.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = w + '%'; }, 100 + i * 150);
+      });
+    }, 50);
+    return;
+  }
+
+  // ─── Dimensions result (BFI-44 / IPIP-300) ───
+  if (test.maxScore === 'dimensions' && result.dimensions) {
+    const hasFacets = result.dimensions.some(d => d.facets);
+    rc.innerHTML = `
+      <div>
+        <div class="score-category" style="color:${result.color};font-size:1.4rem">${result.label}</div>
+      </div>
+      <p class="score-description">${result.desc}</p>
+
+      <div class="breakdown" style="margin-top:1rem">
+        ${result.dimensions.map(d => {
+          const pct = Math.round((d.score / 5) * 100);
+          let facetsHTML = '';
+          if (d.facets) {
+            facetsHTML = '<div style="margin:0.5rem 0 0.75rem 0.5rem">' + d.facets.map(f => {
+              const fp = Math.round((f.score / 5) * 100);
+              return `<div style="margin-bottom:0.4rem">
+                <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-bottom:0.15rem">
+                  <span>${f.name}</span><span>${f.score.toFixed(1)}</span>
+                </div>
+                <div class="dimension-bar" style="height:5px">
+                  <div class="dimension-bar-fill" style="width:0%;background:${result.color}88" data-width="${fp}"></div>
+                </div>
+              </div>`;
+            }).join('') + '</div>';
+          }
+          return `<div class="dimension-result">
+            <div class="dimension-header">
+              <span class="dimension-name">${d.name}</span>
+              <span class="dimension-score" style="color:${result.color}">${d.score.toFixed(1)}/5</span>
+            </div>
+            <div class="dimension-bar">
+              <div class="dimension-bar-fill" style="width:0%;background:${result.color}" data-width="${pct}"></div>
+            </div>
+            <div class="dimension-desc">${d.description}</div>
+            ${facetsHTML}
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
+        <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
+        <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+      </div>
+    `;
+    showScreen('screen-results');
+    setTimeout(() => {
+      document.querySelectorAll('.dimension-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 50 + i * 60);
+      });
+    }, 50);
+    return;
+  }
+
+  // ─── PID-5 domains result ───
+  if (test.maxScore === 'domains' && result.domains) {
+    const elevated = result.domains.filter(d => d.elevated).length;
+    rc.innerHTML = `
+      <div>
+        <div class="score-ring-container">
+          <svg width="130" height="130" viewBox="0 0 120 120">
+            <circle class="score-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="score-ring-fill" cx="60" cy="60" r="54"
+              stroke="${result.color}" id="score-ring-anim"/>
+          </svg>
+          <div class="score-ring-text">
+            <span class="score-ring-number" style="font-size:1.5rem">${elevated}/5</span>
+            <span class="score-ring-label">elevados</span>
+          </div>
+        </div>
+        <div class="score-category" style="color:${result.color}">${result.label}</div>
+      </div>
+      <p class="score-description">${result.desc}</p>
+
+      <div class="breakdown" style="margin-top:1rem">
+        ${result.domains.map(d => {
+          const pct = Math.round((d.score / 3) * 100);
+          const domColor = d.elevated ? '#A65D57' : '#6B8F71';
+          let facetsHTML = '<div style="margin:0.4rem 0 0.75rem 0.5rem">' + d.facets.map(f => {
+            const fp = Math.round((f.score / 3) * 100);
+            const fc = f.elevated ? '#A65D57' : 'var(--text-muted)';
+            return `<div style="margin-bottom:0.35rem">
+              <div style="display:flex;justify-content:space-between;font-size:0.68rem;margin-bottom:0.1rem">
+                <span style="color:${fc};${f.elevated?'font-weight:600':''}">${f.name}${f.elevated?' ⚠':''}️</span>
+                <span style="color:${fc}">${f.score.toFixed(1)}/3</span>
+              </div>
+              <div class="dimension-bar" style="height:4px">
+                <div class="dimension-bar-fill" style="width:0%;background:${f.elevated?'#A65D57':result.color+'88'}" data-width="${fp}"></div>
+              </div>
+            </div>`;
+          }).join('') + '</div>';
+          return `<div class="dimension-result">
+            <div class="dimension-header">
+              <span class="dimension-name" style="color:${domColor}">${d.name}${d.elevated?' ⚠':''}️</span>
+              <span class="dimension-score" style="color:${domColor}">${d.score.toFixed(2)}/3</span>
+            </div>
+            <div class="dimension-bar">
+              <div class="dimension-bar-fill" style="width:0%;background:${domColor}" data-width="${pct}"></div>
+            </div>
+            ${facetsHTML}
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="resources-box">
+        <h4>${t('ui.helpResources')}</h4>
+        <p>${t('ui.helpText')}</p>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
+        <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
+        <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+      </div>
+    `;
+    showScreen('screen-results');
+    const circ = 339.292;
+    const off = circ - ((elevated / 5) * circ);
+    requestAnimationFrame(() => {
+      const ring = document.getElementById('score-ring-anim');
+      if (ring) ring.style.strokeDashoffset = off;
+    });
+    setTimeout(() => {
+      document.querySelectorAll('.dimension-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 30 + i * 40);
+      });
+    }, 50);
+    return;
+  }
+
+  // ─── IPIP-MMPI scales result ───
+  if (test.maxScore === 'scales' && result.clinicalScales) {
+    const elevatedCount = result.clinicalScales.filter(s => s.elevated).length;
+    rc.innerHTML = `
+      <div>
+        <div class="score-category" style="color:${result.color};font-size:1.3rem">${result.label}</div>
+      </div>
+      <p class="score-description">${result.desc}</p>
+
+      ${result.validityScales ? `
+      <div class="breakdown" style="margin-top:1rem">
+        <h3>Escalas de Validez</h3>
+        ${result.validityScales.map(s => {
+          const pct = Math.min(100, Math.round(((s.tScore || 50) / 100) * 100));
+          const c = (s.tScore||50) >= 65 ? '#A65D57' : '#6B8F71';
+          return `<div class="breakdown-item">
+            <span class="breakdown-name" style="color:${c};${(s.tScore||50)>=65?'font-weight:600':''}">${s.name}</span>
+            <div class="breakdown-bar-bg" style="flex:0 0 80px">
+              <div class="breakdown-bar-fill" style="width:${pct}%;background:${c}" data-width="${pct}"></div>
+            </div>
+            <span class="breakdown-value" style="background:${c}20;color:${c}">T=${s.tScore||50}</span>
+          </div>`;
+        }).join('')}
+      </div>` : ''}
+
+      <div class="breakdown" style="margin-top:1rem">
+        <h3>Escalas Clínicas${elevatedCount>0?` (${elevatedCount} elevada${elevatedCount>1?'s':''})</h3>`:' </h3>'}
+        ${result.clinicalScales.map(s => {
+          const pct = Math.min(100, Math.round(((s.tScore || 50) / 100) * 100));
+          const c = s.elevated ? '#A65D57' : (s.tScore||50) >= 55 ? '#C9A227' : '#6B8F71';
+          return `<div class="breakdown-item">
+            <span class="breakdown-name" style="color:${c};${s.elevated?'font-weight:600':''}">${s.name}${s.elevated?' ⚠️':''}</span>
+            <div class="breakdown-bar-bg" style="flex:0 0 80px">
+              <div class="breakdown-bar-fill" style="width:0%;background:${c}" data-width="${pct}"></div>
+            </div>
+            <span class="breakdown-value" style="background:${c}20;color:${c}">T=${s.tScore||50}</span>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="resources-box">
+        <h4>${t('ui.helpResources')}</h4>
+        <p>${t('ui.helpText')}</p>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
+        <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
+        <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+      </div>
+    `;
+    showScreen('screen-results');
+    setTimeout(() => {
+      document.querySelectorAll('.breakdown-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 50 + i * 50);
+      });
+    }, 50);
+    return;
+  }
+
+  // ─── Standard score result ───
+  const pctScore = Math.round((score / test.maxScore) * 100);
+  const circumference = 339.292;
+  const offset = circumference - (pctScore / 100) * circumference;
+
+  rc.innerHTML = `
+    <div>
+      <div class="score-ring-container">
+        <svg width="130" height="130" viewBox="0 0 120 120">
+          <circle class="score-ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="score-ring-fill" cx="60" cy="60" r="54"
+            stroke="${result.color}" id="score-ring-anim"/>
+        </svg>
+        <div class="score-ring-text">
+          <span class="score-ring-number">${score}</span>
+          <span class="score-ring-label">${t('ui.outOf')} ${test.maxScore}</span>
+        </div>
+      </div>
+      <div class="score-category" style="color:${result.color}">${result.label}</div>
+    </div>
+    <p class="score-description">${result.desc}</p>
+
+    <div class="breakdown">
+      <h3>${t('ui.detailByItem')}</h3>
+      ${test.questions.map((q, i) => {
+        const val = answers[i] ?? 0;
+        const maxOpt = (test.sharedOptions || q.options).length - 1;
+        const scored = test.scoreAnswer ? test.scoreAnswer(i, val) : val;
+        const pct = maxOpt > 0 ? scored / maxOpt : 0;
+        const barPct = Math.round(pct * 100);
+        const c = pct <= 0.33 ? '#6B8F71' : pct <= 0.66 ? '#C9A227' : '#A65D57';
+        return `<div class="breakdown-item">
+          <span class="breakdown-name">${q.title}</span>
+          <div class="breakdown-bar-bg">
+            <div class="breakdown-bar-fill" style="width:${barPct}%;background:${c}" data-width="${barPct}"></div>
+          </div>
+          <span class="breakdown-value" style="background:${c}20;color:${c}">${scored}/${maxOpt}</span>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <div class="resources-box">
+      <h4>${t('ui.helpResources')}</h4>
+      <p>${t('ui.helpText')}</p>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn-primary" onclick="startTest()">${t('ui.repeatTest')}</button>
+      <button class="btn btn-outline" onclick="switchTab('history')">${t('ui.viewHistory')}</button>
+      <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
+    </div>
+  `;
+  showScreen('screen-results');
+
+  // Animate SVG ring
+  requestAnimationFrame(() => {
+    const ring = document.getElementById('score-ring-anim');
+    if (ring) ring.style.strokeDashoffset = offset;
+  });
+
+  // Animate breakdown bars (stagger)
+  document.querySelectorAll('.breakdown-bar-fill').forEach((bar, i) => {
+    bar.style.width = '0%';
+    setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 100 + i * 40);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HISTORY
+// ═══════════════════════════════════════════════════════════════
+function renderHistory() {
+  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+  const container = document.getElementById('history-content');
+
+  if (history.length === 0) {
+    container.innerHTML = `
+      <div class="history-empty">
+        <div style="font-size:2rem;opacity:0.4;margin-bottom:0.75rem">📊</div>
+        <p>Aún no tienes registros.</p>
+        <p style="font-size:0.78rem;margin-top:0.25rem;color:var(--text-muted)">Completa tu primera evaluación para comenzar el seguimiento.</p>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="switchTab('tests')">Ir a tests</button>
+      </div>
+    `;
+    return;
+  }
+
+  // Get unique test types in history
+  const testTypes = [...new Set(history.map(h => h.testId))];
+
+  // Filter
+  const filtered = historyFilter === 'all' ? history : history.filter(h => h.testId === historyFilter);
+  const sorted = [...filtered].reverse();
+
+  // Chart
+  let chartHTML = '';
+  if (filtered.length >= 2) {
+    chartHTML = `
+      <div class="chart-container">
+        <h3>Tendencia</h3>
+        <div class="chart-wrapper"><canvas id="trend-chart"></canvas></div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="history-filter">
+      <button class="filter-btn ${historyFilter==='all'?'active':''}" onclick="setFilter('all')">Todos</button>
+      ${testTypes.map(id => {
+        const t = TESTS[id];
+        return `<button class="filter-btn ${historyFilter===id?'active':''}" onclick="setFilter('${id}')">${t.abbr}</button>`;
+      }).join('')}
+    </div>
+    ${chartHTML}
+    <div class="history-list">
+      ${sorted.map((entry, idx) => {
+        const date = new Date(entry.date);
+        const dateStr = date.toLocaleDateString('es', { day:'numeric', month:'short', year:'numeric' });
+        const timeStr = date.toLocaleTimeString('es', { hour:'2-digit', minute:'2-digit' });
+        const prev = sorted[idx + 1];
+        let trend = '';
+        if (prev && prev.testId === entry.testId) {
+          if (entry.score < prev.score) trend = '<span class="history-trend" style="color:#6B8F71">▲</span>';
+          else if (entry.score > prev.score) trend = '<span class="history-trend" style="color:#A65D57">▼</span>';
+          else trend = '<span class="history-trend" style="color:var(--text-muted)">—</span>';
+        }
+        return `
+          <div class="history-entry">
+            <div class="history-dot" style="background:${entry.resultColor}"></div>
+            <div class="history-info">
+              <div class="history-date">${dateStr} · ${timeStr}</div>
+              <div class="history-score-text">Puntuación: ${entry.score}/${entry.maxScore}</div>
+              <div class="history-test-name">${TESTS[entry.testId]?.name || entry.testName}</div>
+            </div>
+            <span class="history-badge" style="background:${entry.resultColor}">${entry.resultLabel}</span>
+            ${trend}
+          </div>
+        `;
+      }).join('')}
+    </div>
+    <div class="clear-history">
+      <button class="btn btn-ghost" onclick="clearHistory()">Borrar historial</button>
+    </div>
+  `;
+
+  if (filtered.length >= 2) setTimeout(() => renderChart(filtered), 80);
+}
+
+function setFilter(f) { historyFilter = f; renderHistory(); }
+
+function renderChart(data) {
+  const canvas = document.getElementById('trend-chart');
+  if (!canvas) return;
+  if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+
+  const ctx = canvas.getContext('2d');
+  const labels = data.map(e => {
+    const d = new Date(e.date);
+    return d.toLocaleDateString('es', { day:'numeric', month:'short' });
+  });
+
+  // Group by test type
+  const byTest = {};
+  data.forEach(e => {
+    if (!byTest[e.testId]) byTest[e.testId] = [];
+    byTest[e.testId].push(e);
+  });
+
+  const datasets = Object.entries(byTest).map(([id, entries]) => {
+    const t = TESTS[id];
+    const d = new Array(data.length).fill(null);
+    entries.forEach(e => {
+      const idx = data.indexOf(e);
+      d[idx] = Math.round((e.score / e.maxScore) * 100);
+    });
+    return {
+      label: t.abbr,
+      data: d,
+      borderColor: t.color,
+      backgroundColor: t.color + '18',
+      fill: false,
+      tension: 0.35,
+      pointBackgroundColor: t.color,
+      pointRadius: 4,
+      pointHoverRadius: 6,
+      borderWidth: 2,
+      spanGaps: true,
+    };
+  });
+
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: {
+          min: 0, max: 100,
+          grid: { color: 'rgba(0,0,0,0.04)' },
+          ticks: { font: { family:"'DM Sans',sans-serif", size:10 }, color:'#8A847C', callback: v => v+'%' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { font: { family:"'DM Sans',sans-serif", size:10 }, color:'#8A847C' }
+        }
+      },
+      plugins: {
+        legend: {
+          display: datasets.length > 1,
+          labels: { font: { family:"'DM Sans',sans-serif", size:11 }, usePointStyle: true, pointStyle:'circle' }
+        },
+        tooltip: {
+          backgroundColor: '#2D2A26',
+          titleFont: { family:"'DM Sans',sans-serif" },
+          bodyFont: { family:"'DM Sans',sans-serif" },
+          padding: 8, cornerRadius: 8,
+          callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%` }
+        }
+      }
+    }
+  });
+}
+
+function clearHistory() {
+  if (confirm('¿Estás seguro de que deseas borrar todo el historial?')) {
+    localStorage.removeItem('mental_health_history');
+    renderHistory();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// KEYBOARD NAV
+// ═══════════════════════════════════════════════════════════════
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('screen-test').classList.contains('active')) return;
+  const opts = activeTest.sharedOptions || activeTest.questions[currentQ].options;
+  if (e.key >= '1' && e.key <= String(opts.length)) {
+    const idx = parseInt(e.key) - 1;
+    const r = document.getElementById(`q${currentQ}_${idx}`);
+    if (r) { r.checked = true; selectAnswer(idx); }
+  }
+  if (e.key === 'ArrowRight' || e.key === 'Enter') { if (answers[currentQ] !== null) nextQuestion(); }
+  if (e.key === 'ArrowLeft') prevQuestion();
+  if (e.key === 'Escape') goHome();
+});
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+renderHome();
+checkResume();
+</script>
+</body>
+</html>
