@@ -594,7 +594,15 @@
 // I18N
 // ═══════════════════════════════════════════════════════════════
 const LANGS = { es: LANG_ES, en: LANG_EN, pt: LANG_PT, fr: LANG_FR, de: LANG_DE, it: LANG_IT, zh: LANG_ZH, ja: LANG_JA, ar: LANG_AR, ru: LANG_RU, ko: LANG_KO, hi: LANG_HI };
-let currentLang = localStorage.getItem('mental_health_lang') || 'es';
+function detectLang() {
+  const supported = Object.keys(LANGS);
+  for (const l of navigator.languages || [navigator.language]) {
+    const code = l.split('-')[0].toLowerCase();
+    if (supported.includes(code)) return code;
+  }
+  return 'es';
+}
+let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
   const keys = key.split('.');
   let val = LANGS[currentLang];
@@ -1698,7 +1706,7 @@ document.addEventListener('keydown', e => {
 // ═══════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════
-renderHome();
+setLang(currentLang);
 checkResume();
 </script>
 </body>
