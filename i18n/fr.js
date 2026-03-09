@@ -1,100 +1,70 @@
 const LANG_FR = {
-  ui: {
-    appTitle: "Évaluations de Santé Mentale",
-    appSubtitle: "Outils d'auto-évaluation psychologique",
-    tabTests: "Tests",
-    tabHistory: "Historique",
-    welcome: "Bienvenue. Sélectionnez une évaluation pour commencer.",
-    startTest: "Commencer le test",
-    nextQuestion: "Suivant",
-    prevQuestion: "Précédent",
-    viewResults: "Voir les résultats",
-    question: "Question",
-    of: "sur",
-    items: "items",
-    backToTests: "Retour aux tests",
-    repeatTest: "Refaire le test",
-    viewHistory: "Voir l'historique",
-    otherTests: "Autres tests",
-    detailByItem: "Détail par item",
-    helpResources: "Ressources d'aide",
-    helpText: "Si vous traversez une crise émotionnelle, cherchez de l'aide professionnelle. Numéro d'urgence : 3114 (France) ou contactez un professionnel de santé mentale.",
-    disclaimerTitle: 'Note importante :',
-    disclaimerText: 'Ce test est un outil d\'auto-évaluation et ne remplace pas le diagnostic d\'un professionnel de santé mentale. Si vous sentez que vous avez besoin d\'aide, veuillez consulter un spécialiste.',
-    privacyTitle: 'Votre vie privée :',
-    privacyText: 'Vos résultats sont stockés uniquement dans votre navigateur (localStorage). Aucune donnée n\'est envoyée à un serveur ni ne quitte votre ordinateur.',
-    cat_triage: 'Par où commencer ?',
-    cat_clinical: 'Évaluations Cliniques',
-    cat_screening: 'Dépistage et Détection',
-    cat_wellbeing: 'Bien-Être et Estime de Soi',
-    cat_personality: 'Personnalité',
-    cat_advanced: 'Évaluation Avancée',
-    noRecords: "Aucun enregistrement sauvegardé.",
-    completeFirst: "Complétez au moins un test pour voir l'historique.",
-    goToTests: "Aller aux tests",
-    trend: "Tendance",
-    all: "Tous",
-    clearHistory: "Effacer l'historique",
-    clearConfirm: "Êtes-vous sûr(e) de vouloir effacer tout l'historique ? Cette action est irréversible.",
-    score: "Score",
-    outOf: "sur",
-    disclaimer: "Cet outil est uniquement indicatif et ne remplace pas une évaluation professionnelle. Consultez un spécialiste en santé mentale pour un diagnostic approprié.",
-    resumePrompt: "Vous avez un test en cours",
-    continueTest: "Continuer le test",
-    resumeMessage: "Vous avez un test {test} en cours ({n}/{total} questions)",
-    dismiss: "Fermer",
-    questionsAnswered: "questions répondues",
-    inProgress: "En cours",
-    testBy: "Tests",
+  "ui": {
+    "appTitle": "Évaluations de Santé Mentale",
+    "appSubtitle": "Outils d'auto-évaluation psychologique",
+    "tabTests": "Tests",
+    "tabHistory": "Historique",
+    "welcome": "Bienvenue. Sélectionnez une évaluation pour commencer.",
+    "startTest": "Commencer le test",
+    "nextQuestion": "Suivant",
+    "prevQuestion": "Précédent",
+    "viewResults": "Voir les résultats",
+    "question": "Question",
+    "of": "sur",
+    "items": "items",
+    "backToTests": "Retour aux tests",
+    "repeatTest": "Refaire le test",
+    "viewHistory": "Voir l'historique",
+    "otherTests": "Autres tests",
+    "detailByItem": "Détail par item",
+    "helpResources": "Ressources d'aide",
+    "helpText": "Si vous traversez une crise émotionnelle, cherchez de l'aide professionnelle. Numéro d'urgence : 3114 (France) ou contactez un professionnel de santé mentale.",
+    "disclaimerTitle": "Note importante :",
+    "disclaimerText": "Ce test est un outil d'auto-évaluation et ne remplace pas le diagnostic d'un professionnel de santé mentale. Si vous sentez que vous avez besoin d'aide, veuillez consulter un spécialiste.",
+    "privacyTitle": "Votre vie privée :",
+    "privacyText": "Vos résultats sont stockés uniquement dans votre navigateur (localStorage). Aucune donnée n'est envoyée à un serveur ni ne quitte votre ordinateur.",
+    "cat_triage": "Par où commencer ?",
+    "cat_clinical": "Évaluations Cliniques",
+    "cat_screening": "Dépistage et Détection",
+    "cat_wellbeing": "Bien-Être et Estime de Soi",
+    "cat_personality": "Personnalité",
+    "cat_advanced": "Évaluation Avancée",
+    "noRecords": "Aucun enregistrement sauvegardé.",
+    "completeFirst": "Complétez au moins un test pour voir l'historique.",
+    "goToTests": "Aller aux tests",
+    "trend": "Tendance",
+    "all": "Tous",
+    "clearHistory": "Effacer l'historique",
+    "clearConfirm": "Êtes-vous sûr(e) de vouloir effacer tout l'historique ? Cette action est irréversible.",
+    "score": "Score",
+    "outOf": "sur",
+    "disclaimer": "Cet outil est uniquement indicatif et ne remplace pas une évaluation professionnelle. Consultez un spécialiste en santé mentale pour un diagnostic approprié.",
+    "resumePrompt": "Vous avez un test en cours",
+    "continueTest": "Continuer le test",
+    "resumeMessage": "Vous avez un test {test} en cours ({n}/{total} questions)",
+    "dismiss": "Fermer",
+    "questionsAnswered": "questions répondues",
+    "inProgress": "En cours",
+    "testBy": "Tests"
   },
-
-  scales: {
-    agreement5: [
-      "Tout à fait en désaccord",
-      "En désaccord",
-      "Ni en accord ni en désaccord",
-      "D'accord",
-      "Tout à fait d'accord"
-    ],
-    frequency4: [
-      "Jamais",
-      "Plusieurs jours",
-      "Plus de la moitié des jours",
-      "Presque tous les jours"
-    ],
-    frequency5: [
-      "Jamais",
-      "Presque jamais",
-      "Parfois",
-      "Assez souvent",
-      "Très souvent"
-    ],
-    severity4: [
-      "Pas du tout",
-      "Légèrement",
-      "Modérément",
-      "Sévèrement"
-    ],
-    severity5: [
-      "Pas du tout",
-      "Un peu",
-      "Modérément",
-      "Beaucoup",
-      "Extrêmement"
-    ],
-    yesNo: ["Non", "Oui"],
+  "scales": {
+    "agreement5": ["Tout à fait en désaccord","En désaccord","Ni en accord ni en désaccord","D'accord","Tout à fait d'accord"],
+    "frequency4": ["Jamais","Plusieurs jours","Plus de la moitié des jours","Presque tous les jours"],
+    "frequency5": ["Jamais","Presque jamais","Parfois","Assez souvent","Très souvent"],
+    "severity4": ["Pas du tout","Légèrement","Modérément","Sévèrement"],
+    "severity5": ["Pas du tout","Un peu","Modérément","Beaucoup","Extrêmement"],
+    "yesNo": ["Non","Oui"]
   },
-
-  tests: {
-    bdi: {
-      name: "BDI-II",
-      fullName: "Inventaire de Dépression de Beck-II",
-      desc: "Évalue la présence et la sévérité des symptômes dépressifs au cours des deux dernières semaines.",
-      instructions: "Lisez chaque groupe d'affirmations attentivement et sélectionnez celle qui décrit le mieux comment vous vous êtes senti(e) au cours des deux dernières semaines, y compris aujourd'hui.",
-      questions: [
+  "tests": {
+    "bdi": {
+      "name": "BDI-II",
+      "fullName": "Inventaire de Dépression de Beck-II",
+      "desc": "Évalue la présence et la sévérité des symptômes dépressifs au cours des deux dernières semaines.",
+      "instructions": "Lisez chaque groupe d'affirmations attentivement et sélectionnez celle qui décrit le mieux comment vous vous êtes senti(e) au cours des deux dernières semaines, y compris aujourd'hui.",
+      "questions": [
         {
-          title: "Tristesse",
-          options: [
+          "title": "Tristesse",
+          "options": [
             "Je ne me sens pas triste.",
             "Je me sens triste une grande partie du temps.",
             "Je me sens triste tout le temps.",
@@ -102,8 +72,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Pessimisme",
-          options: [
+          "title": "Pessimisme",
+          "options": [
             "Je ne suis pas découragé(e) face à mon avenir.",
             "Je me sens plus découragé(e) face à mon avenir qu'avant.",
             "Je ne m'attends pas à ce que les choses s'arrangent pour moi.",
@@ -111,8 +81,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Échec",
-          options: [
+          "title": "Échec",
+          "options": [
             "Je ne me sens pas comme un(e) raté(e).",
             "J'ai échoué plus que je n'aurais dû.",
             "Quand je regarde en arrière, je vois beaucoup d'échecs.",
@@ -120,8 +90,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Perte de plaisir",
-          options: [
+          "title": "Perte de plaisir",
+          "options": [
             "Je retire autant de plaisir qu'avant des choses que j'apprécie.",
             "Je ne profite pas des choses autant qu'avant.",
             "Je retire très peu de plaisir des choses que j'avais l'habitude d'apprécier.",
@@ -129,8 +99,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Sentiments de culpabilité",
-          options: [
+          "title": "Sentiments de culpabilité",
+          "options": [
             "Je ne me sens pas particulièrement coupable.",
             "Je me sens coupable de beaucoup de choses que j'ai faites ou que j'aurais dû faire.",
             "Je me sens assez coupable la plupart du temps.",
@@ -138,8 +108,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Sentiments de punition",
-          options: [
+          "title": "Sentiments de punition",
+          "options": [
             "Je n'ai pas le sentiment d'être puni(e).",
             "Je sens que je pourrais être puni(e).",
             "Je m'attends à être puni(e).",
@@ -147,8 +117,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Insatisfaction envers soi-même",
-          options: [
+          "title": "Insatisfaction envers soi-même",
+          "options": [
             "Mes sentiments envers moi-même n'ont pas changé.",
             "J'ai perdu confiance en moi.",
             "Je suis déçu(e) de moi-même.",
@@ -156,8 +126,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Autocritique",
-          options: [
+          "title": "Autocritique",
+          "options": [
             "Je ne me critique pas ou ne me blâme pas plus que d'habitude.",
             "Je suis plus critique envers moi-même que je ne l'étais.",
             "Je me critique pour toutes mes fautes.",
@@ -165,8 +135,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Pensées ou désirs suicidaires",
-          options: [
+          "title": "Pensées ou désirs suicidaires",
+          "options": [
             "Je n'ai aucune pensée de me tuer.",
             "J'ai des pensées de me tuer, mais je ne les mettrais pas à exécution.",
             "Je voudrais me tuer.",
@@ -174,8 +144,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Pleurs",
-          options: [
+          "title": "Pleurs",
+          "options": [
             "Je ne pleure pas plus que d'habitude.",
             "Je pleure plus que d'habitude.",
             "Je pleure pour la moindre petite chose.",
@@ -183,8 +153,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Agitation",
-          options: [
+          "title": "Agitation",
+          "options": [
             "Je ne suis pas plus agité(e) ou tendu(e) que d'habitude.",
             "Je me sens plus agité(e) ou tendu(e) que d'habitude.",
             "Je suis si agité(e) ou tendu(e) que j'ai du mal à rester tranquille.",
@@ -192,8 +162,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Perte d'intérêt",
-          options: [
+          "title": "Perte d'intérêt",
+          "options": [
             "Je n'ai pas perdu d'intérêt pour les activités ou les gens.",
             "Je m'intéresse moins aux gens ou aux choses qu'avant.",
             "J'ai perdu presque tout intérêt pour les gens ou les choses.",
@@ -201,8 +171,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Indécision",
-          options: [
+          "title": "Indécision",
+          "options": [
             "Je prends des décisions aussi bien que d'habitude.",
             "Il m'est plus difficile de prendre des décisions que d'habitude.",
             "J'ai beaucoup plus de difficulté à prendre des décisions qu'avant.",
@@ -210,8 +180,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Dévalorisation",
-          options: [
+          "title": "Dévalorisation",
+          "options": [
             "Je ne me sens pas sans valeur.",
             "Je ne me considère pas aussi valable et utile qu'avant.",
             "Je me sens moins valable par rapport aux autres.",
@@ -219,8 +189,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Perte d'énergie",
-          options: [
+          "title": "Perte d'énergie",
+          "options": [
             "J'ai autant d'énergie que d'habitude.",
             "J'ai moins d'énergie qu'avant.",
             "Je n'ai pas assez d'énergie pour faire grand-chose.",
@@ -228,8 +198,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Changements dans les habitudes de sommeil",
-          options: [
+          "title": "Changements dans les habitudes de sommeil",
+          "options": [
             "Je n'ai pas remarqué de changement dans mes habitudes de sommeil.",
             "Je dors un peu plus ou un peu moins que d'habitude.",
             "Je dors beaucoup plus ou beaucoup moins que d'habitude.",
@@ -237,8 +207,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Irritabilité",
-          options: [
+          "title": "Irritabilité",
+          "options": [
             "Je ne suis pas plus irritable que d'habitude.",
             "Je suis plus irritable que d'habitude.",
             "Je suis beaucoup plus irritable que d'habitude.",
@@ -246,8 +216,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Changements d'appétit",
-          options: [
+          "title": "Changements d'appétit",
+          "options": [
             "Je n'ai pas remarqué de changement dans mon appétit.",
             "Mon appétit est un peu moindre ou un peu plus grand que d'habitude.",
             "Mon appétit est beaucoup moindre ou beaucoup plus grand que d'habitude.",
@@ -255,8 +225,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Difficulté de concentration",
-          options: [
+          "title": "Difficulté de concentration",
+          "options": [
             "Je peux me concentrer aussi bien que d'habitude.",
             "Je ne peux pas me concentrer aussi bien que d'habitude.",
             "Il m'est difficile de me concentrer longtemps sur quoi que ce soit.",
@@ -264,8 +234,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Fatigue",
-          options: [
+          "title": "Fatigue",
+          "options": [
             "Je ne suis pas plus fatigué(e) que d'habitude.",
             "Je me fatigue plus facilement que d'habitude.",
             "Je suis trop fatigué(e) pour faire beaucoup de choses que je faisais avant.",
@@ -273,8 +243,8 @@ const LANG_FR = {
           ]
         },
         {
-          title: "Perte d'intérêt pour le sexe",
-          options: [
+          "title": "Perte d'intérêt pour le sexe",
+          "options": [
             "Je n'ai pas remarqué de changement récent dans mon intérêt pour le sexe.",
             "Je suis moins intéressé(e) par le sexe qu'avant.",
             "Je suis beaucoup moins intéressé(e) par le sexe maintenant.",
@@ -282,439 +252,1520 @@ const LANG_FR = {
           ]
         }
       ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère un niveau minimal de dépression. Il est normal de connaître des hauts et des bas émotionnels."
-        },
-        mild: {
-          label: "Légère",
-          desc: "Votre score suggère des symptômes dépressifs légers. Envisagez de consulter un professionnel si les symptômes persistent."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère des symptômes dépressifs modérés. Il est recommandé de consulter un professionnel de santé mentale."
-        },
-        severe: {
-          label: "Sévère",
-          desc: "Votre score suggère des symptômes dépressifs sévères. Il est important de chercher de l'aide professionnelle dès que possible."
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère un niveau minimal de dépression. Il est normal de connaître des hauts et des bas émotionnels." },
+        "mild": { "label": "Légère", "desc": "Votre score suggère des symptômes dépressifs légers. Envisagez de consulter un professionnel si les symptômes persistent." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère des symptômes dépressifs modérés. Il est recommandé de consulter un professionnel de santé mentale." },
+        "severe": {
+          "label": "Sévère",
+          "desc": "Votre score suggère des symptômes dépressifs sévères. Il est important de chercher de l'aide professionnelle dès que possible."
         }
       }
     },
-
-    bai: {
-      name: "BAI",
-      fullName: "Inventaire d'Anxiété de Beck",
-      desc: "Évalue la sévérité des symptômes d'anxiété au cours de la dernière semaine.",
-      instructions: "Indiquez à quel point chaque symptôme vous a gêné(e) au cours de la dernière semaine, y compris aujourd'hui.",
-      questions: [
-        { title: "Engourdissement ou picotements" },
-        { title: "Bouffées de chaleur" },
-        { title: "Tremblements dans les jambes" },
-        { title: "Incapacité de se détendre" },
-        { title: "Crainte que le pire se produise" },
-        { title: "Étourdissements ou vertiges" },
-        { title: "Battements cardiaques forts et rapides" },
-        { title: "Instabilité" },
-        { title: "Terreur ou frayeur" },
-        { title: "Nervosité" },
-        { title: "Sensation de blocage" },
-        { title: "Tremblements des mains" },
-        { title: "Agitation, insécurité" },
-        { title: "Peur de perdre le contrôle" },
-        { title: "Sensation d'étouffement" },
-        { title: "Peur de mourir" },
-        { title: "Peur" },
-        { title: "Problèmes digestifs" },
-        { title: "Évanouissements" },
-        { title: "Rougissement du visage" },
-        { title: "Transpiration, chaude ou froide" }
+    "bai": {
+      "name": "BAI",
+      "fullName": "Inventaire d'Anxiété de Beck",
+      "desc": "Évalue la sévérité des symptômes d'anxiété au cours de la dernière semaine.",
+      "instructions": "Indiquez à quel point chaque symptôme vous a gêné(e) au cours de la dernière semaine, y compris aujourd'hui.",
+      "questions": [
+        { "title": "Engourdissement ou picotements" },
+        { "title": "Bouffées de chaleur" },
+        { "title": "Tremblements dans les jambes" },
+        { "title": "Incapacité de se détendre" },
+        { "title": "Crainte que le pire se produise" },
+        { "title": "Étourdissements ou vertiges" },
+        { "title": "Battements cardiaques forts et rapides" },
+        { "title": "Instabilité" },
+        { "title": "Terreur ou frayeur" },
+        { "title": "Nervosité" },
+        { "title": "Sensation de blocage" },
+        { "title": "Tremblements des mains" },
+        { "title": "Agitation, insécurité" },
+        { "title": "Peur de perdre le contrôle" },
+        { "title": "Sensation d'étouffement" },
+        { "title": "Peur de mourir" },
+        { "title": "Peur" },
+        { "title": "Problèmes digestifs" },
+        { "title": "Évanouissements" },
+        { "title": "Rougissement du visage" },
+        { "title": "Transpiration, chaude ou froide" }
       ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère un niveau minimal d'anxiété."
-        },
-        mild: {
-          label: "Légère",
-          desc: "Votre score suggère une anxiété légère. Surveillez vos symptômes."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère une anxiété modérée. Envisagez de consulter un professionnel."
-        },
-        severe: {
-          label: "Sévère",
-          desc: "Votre score suggère une anxiété sévère. Il est recommandé de chercher de l'aide professionnelle."
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère un niveau minimal d'anxiété." },
+        "mild": { "label": "Légère", "desc": "Votre score suggère une anxiété légère. Surveillez vos symptômes." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère une anxiété modérée. Envisagez de consulter un professionnel." },
+        "severe": { "label": "Sévère", "desc": "Votre score suggère une anxiété sévère. Il est recommandé de chercher de l'aide professionnelle." }
+      }
+    },
+    "gad7": {
+      "name": "GAD-7",
+      "fullName": "Échelle du Trouble d'Anxiété Généralisée-7",
+      "desc": "Évalue la sévérité de l'anxiété généralisée au cours des deux dernières semaines.",
+      "instructions": "Au cours des 2 dernières semaines, à quelle fréquence avez-vous été gêné(e) par les problèmes suivants ?",
+      "questions": [
+        { "title": "Se sentir nerveux(se), anxieux(se) ou à bout de nerfs" },
+        { "title": "Ne pas être capable d'arrêter ou de contrôler ses inquiétudes" },
+        { "title": "S'inquiéter trop à propos de différentes choses" },
+        { "title": "Difficulté à se détendre" },
+        { "title": "Être si agité(e) qu'il est difficile de rester assis(e)" },
+        { "title": "S'irriter ou se mettre en colère facilement" },
+        { "title": "Avoir peur comme si quelque chose de terrible allait se produire" }
+      ],
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère un niveau minimal d'anxiété." },
+        "mild": { "label": "Légère", "desc": "Votre score suggère une anxiété légère." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère une anxiété modérée. Envisagez de consulter un professionnel." },
+        "severe": { "label": "Sévère", "desc": "Votre score suggère une anxiété sévère. Il est recommandé de chercher de l'aide professionnelle." }
+      }
+    },
+    "msibpd": {
+      "name": "MSI-BPD",
+      "fullName": "Inventaire de Dépistage McLean pour le Trouble de la Personnalité Borderline",
+      "desc": "Outil de dépistage des traits associés au trouble de la personnalité borderline.",
+      "instructions": "Répondez oui ou non à chacune des questions suivantes.",
+      "questions": [
+        { "title": "Vous êtes-vous déjà coupé(e), brûlé(e) ou blessé(e) volontairement ?" },
+        { "title": "Avez-vous déjà tenté de vous suicider ?" },
+        { "title": "Avez-vous eu au moins deux relations (ou tentatives de relation) très intenses mais instables ?" },
+        { "title": "Votre sens de qui vous êtes change-t-il souvent de manière dramatique ?" },
+        { "title": "Votre humeur change-t-elle souvent de manière soudaine ?" },
+        { "title": "Ressentez-vous souvent une colère intense que vous avez du mal à contrôler ?" },
+        { "title": "Éprouvez-vous souvent de la méfiance envers les autres ?" },
+        { "title": "Vous sentez-vous souvent irréel(le) ou comme si les choses autour de vous étaient irréelles ?" },
+        { "title": "Vous sentez-vous souvent vide ?" },
+        { "title": "Faites-vous souvent des efforts désespérés pour éviter que quelqu'un vous abandonne ?" }
+      ],
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère une faible présence de traits associés au trouble borderline." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère certains traits associés au trouble borderline. Envisagez de consulter un professionnel." },
+        "severe": {
+          "label": "Significative",
+          "desc": "Votre score suggère une présence significative de traits borderline. Une évaluation professionnelle complète est recommandée."
         }
       }
     },
-
-    gad7: {
-      name: "GAD-7",
-      fullName: "Échelle du Trouble d'Anxiété Généralisée-7",
-      desc: "Évalue la sévérité de l'anxiété généralisée au cours des deux dernières semaines.",
-      instructions: "Au cours des 2 dernières semaines, à quelle fréquence avez-vous été gêné(e) par les problèmes suivants ?",
-      questions: [
-        { title: "Se sentir nerveux(se), anxieux(se) ou à bout de nerfs" },
-        { title: "Ne pas être capable d'arrêter ou de contrôler ses inquiétudes" },
-        { title: "S'inquiéter trop à propos de différentes choses" },
-        { title: "Difficulté à se détendre" },
-        { title: "Être si agité(e) qu'il est difficile de rester assis(e)" },
-        { title: "S'irriter ou se mettre en colère facilement" },
-        { title: "Avoir peur comme si quelque chose de terrible allait se produire" }
+    "pss": {
+      "name": "PSS-10",
+      "fullName": "Échelle de Stress Perçu-10",
+      "desc": "Évalue le degré auquel les situations de la vie sont perçues comme stressantes au cours du dernier mois.",
+      "instructions": "Les questions suivantes portent sur vos sentiments et pensées au cours du dernier mois. Indiquez à quelle fréquence vous vous êtes senti(e) ou avez pensé d'une certaine manière.",
+      "questions": [
+        { "title": "À quelle fréquence avez-vous été affecté(e) par quelque chose qui s'est produit de manière inattendue ?" },
+        { "title": "À quelle fréquence avez-vous eu le sentiment de ne pas pouvoir contrôler les choses importantes de votre vie ?" },
+        { "title": "À quelle fréquence vous êtes-vous senti(e) nerveux(se) ou stressé(e) ?" },
+        { "title": "À quelle fréquence avez-vous géré avec succès les petits problèmes irritants de la vie ?" },
+        { "title": "À quelle fréquence avez-vous senti que vous avez fait face efficacement aux changements importants qui se produisaient dans votre vie ?" },
+        { "title": "À quelle fréquence avez-vous été sûr(e) de votre capacité à gérer vos problèmes personnels ?" },
+        { "title": "À quelle fréquence avez-vous senti que les choses allaient bien pour vous ?" },
+        { "title": "À quelle fréquence avez-vous senti que vous ne pouviez pas faire face à tout ce que vous aviez à faire ?" },
+        { "title": "À quelle fréquence avez-vous pu contrôler les difficultés de votre vie ?" },
+        { "title": "À quelle fréquence avez-vous senti que vous aviez tout sous contrôle ?" }
       ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère un niveau minimal d'anxiété."
-        },
-        mild: {
-          label: "Légère",
-          desc: "Votre score suggère une anxiété légère."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère une anxiété modérée. Envisagez de consulter un professionnel."
-        },
-        severe: {
-          label: "Sévère",
-          desc: "Votre score suggère une anxiété sévère. Il est recommandé de chercher de l'aide professionnelle."
+      "results": {
+        "minimal": { "label": "Faible", "desc": "Votre niveau de stress perçu est faible. Continuez avec vos stratégies d'adaptation actuelles." },
+        "moderate": { "label": "Modéré", "desc": "Votre niveau de stress perçu est modéré. Envisagez d'intégrer des techniques de gestion du stress." },
+        "severe": {
+          "label": "Élevé",
+          "desc": "Votre niveau de stress perçu est élevé. Il est recommandé de chercher un soutien professionnel et des techniques de réduction du stress."
         }
       }
     },
-
-    msibpd: {
-      name: "MSI-BPD",
-      fullName: "Inventaire de Dépistage McLean pour le Trouble de la Personnalité Borderline",
-      desc: "Outil de dépistage des traits associés au trouble de la personnalité borderline.",
-      instructions: "Répondez oui ou non à chacune des questions suivantes.",
-      questions: [
-        { title: "Vous êtes-vous déjà coupé(e), brûlé(e) ou blessé(e) volontairement ?" },
-        { title: "Avez-vous déjà tenté de vous suicider ?" },
-        { title: "Avez-vous eu au moins deux relations (ou tentatives de relation) très intenses mais instables ?" },
-        { title: "Votre sens de qui vous êtes change-t-il souvent de manière dramatique ?" },
-        { title: "Votre humeur change-t-elle souvent de manière soudaine ?" },
-        { title: "Ressentez-vous souvent une colère intense que vous avez du mal à contrôler ?" },
-        { title: "Éprouvez-vous souvent de la méfiance envers les autres ?" },
-        { title: "Vous sentez-vous souvent irréel(le) ou comme si les choses autour de vous étaient irréelles ?" },
-        { title: "Vous sentez-vous souvent vide ?" },
-        { title: "Faites-vous souvent des efforts désespérés pour éviter que quelqu'un vous abandonne ?" }
+    "asrs": {
+      "name": "ASRS v1.1",
+      "fullName": "Échelle d'Auto-Évaluation du TDAH chez l'Adulte v1.1",
+      "desc": "Outil de dépistage des symptômes du trouble du déficit de l'attention avec hyperactivité chez l'adulte.",
+      "instructions": "Répondez aux questions suivantes en pensant à la manière dont vous vous êtes senti(e) et comporté(e) au cours des 6 derniers mois.",
+      "questions": [
+        { "title": "À quelle fréquence avez-vous de la difficulté à finaliser les derniers détails d'un projet, une fois que les parties difficiles sont terminées ?" },
+        { "title": "À quelle fréquence avez-vous de la difficulté à mettre les choses en ordre lorsque vous devez faire une tâche qui nécessite de l'organisation ?" },
+        { "title": "À quelle fréquence avez-vous des problèmes pour vous souvenir de rendez-vous ou d'obligations ?" },
+        { "title": "Lorsque vous avez une tâche qui demande beaucoup de concentration, à quelle fréquence évitez-vous ou retardez-vous le moment de la commencer ?" },
+        { "title": "À quelle fréquence remuez-vous ou tortillez-vous les mains ou les pieds lorsque vous devez rester assis(e) longtemps ?" },
+        { "title": "À quelle fréquence vous sentez-vous excessivement actif(ve) ou poussé(e) à faire des choses, comme si vous étiez mû(e) par un moteur ?" }
       ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère une faible présence de traits associés au trouble borderline."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère certains traits associés au trouble borderline. Envisagez de consulter un professionnel."
-        },
-        severe: {
-          label: "Significative",
-          desc: "Votre score suggère une présence significative de traits borderline. Une évaluation professionnelle complète est recommandée."
+      "results": {
+        "minimal": { "label": "Peu probable", "desc": "Votre score suggère une faible probabilité de TDAH." },
+        "moderate": { "label": "Possible", "desc": "Votre score suggère certains symptômes compatibles avec le TDAH. Envisagez une évaluation professionnelle." },
+        "severe": {
+          "label": "Probable",
+          "desc": "Votre score suggère une forte probabilité de symptômes de TDAH. Une évaluation professionnelle complète est recommandée."
         }
       }
     },
-
-    pss: {
-      name: "PSS-10",
-      fullName: "Échelle de Stress Perçu-10",
-      desc: "Évalue le degré auquel les situations de la vie sont perçues comme stressantes au cours du dernier mois.",
-      instructions: "Les questions suivantes portent sur vos sentiments et pensées au cours du dernier mois. Indiquez à quelle fréquence vous vous êtes senti(e) ou avez pensé d'une certaine manière.",
-      questions: [
-        { title: "À quelle fréquence avez-vous été affecté(e) par quelque chose qui s'est produit de manière inattendue ?" },
-        { title: "À quelle fréquence avez-vous eu le sentiment de ne pas pouvoir contrôler les choses importantes de votre vie ?" },
-        { title: "À quelle fréquence vous êtes-vous senti(e) nerveux(se) ou stressé(e) ?" },
-        { title: "À quelle fréquence avez-vous géré avec succès les petits problèmes irritants de la vie ?" },
-        { title: "À quelle fréquence avez-vous senti que vous avez fait face efficacement aux changements importants qui se produisaient dans votre vie ?" },
-        { title: "À quelle fréquence avez-vous été sûr(e) de votre capacité à gérer vos problèmes personnels ?" },
-        { title: "À quelle fréquence avez-vous senti que les choses allaient bien pour vous ?" },
-        { title: "À quelle fréquence avez-vous senti que vous ne pouviez pas faire face à tout ce que vous aviez à faire ?" },
-        { title: "À quelle fréquence avez-vous pu contrôler les difficultés de votre vie ?" },
-        { title: "À quelle fréquence avez-vous senti que vous aviez tout sous contrôle ?" }
+    "ocir": {
+      "name": "OCI-R",
+      "fullName": "Inventaire Obsessionnel-Compulsif Révisé",
+      "desc": "Évalue les symptômes du trouble obsessionnel-compulsif.",
+      "instructions": "Les affirmations suivantes se réfèrent à des expériences que beaucoup de personnes vivent au quotidien. Indiquez à quel point elles vous ont gêné(e) au cours du dernier mois.",
+      "questions": [
+        { "title": "J'ai accumulé tellement de choses qu'elles me gênent" },
+        { "title": "Je vérifie les choses plus que nécessaire" },
+        { "title": "Je suis contrarié(e) quand les objets ne sont pas bien rangés" },
+        { "title": "Je ressens le besoin de compter en faisant certaines choses" },
+        { "title": "Il m'est difficile de toucher un objet quand je sais qu'il a été touché par des inconnus ou certaines personnes" },
+        { "title": "Il m'est difficile de contrôler mes propres pensées" },
+        { "title": "J'accumule des choses dont je n'ai pas besoin" },
+        { "title": "Je vérifie de manière répétée les portes, les fenêtres, les tiroirs, etc." },
+        { "title": "Je suis contrarié(e) si les autres changent l'ordre dans lequel j'ai placé les choses" },
+        { "title": "Je sens que je dois répéter certains nombres" },
+        { "title": "Parfois je dois me laver ou me nettoyer simplement parce que je me sens contaminé(e)" },
+        { "title": "Je suis gêné(e) par des pensées désagréables qui viennent à mon esprit contre ma volonté" },
+        { "title": "J'évite de jeter des choses parce que j'ai peur d'en avoir besoin plus tard" },
+        { "title": "Je vérifie de manière répétée le gaz, l'eau et les lumières après les avoir éteints" },
+        { "title": "J'ai besoin que les choses soient rangées d'une certaine manière" },
+        { "title": "Je sens qu'il y a de bons et de mauvais nombres" },
+        { "title": "Je me lave les mains plus que nécessaire" },
+        { "title": "J'ai souvent des pensées horribles et j'ai du mal à m'en débarrasser" }
       ],
-      results: {
-        minimal: {
-          label: "Faible",
-          desc: "Votre niveau de stress perçu est faible. Continuez avec vos stratégies d'adaptation actuelles."
-        },
-        moderate: {
-          label: "Modéré",
-          desc: "Votre niveau de stress perçu est modéré. Envisagez d'intégrer des techniques de gestion du stress."
-        },
-        severe: {
-          label: "Élevé",
-          desc: "Votre niveau de stress perçu est élevé. Il est recommandé de chercher un soutien professionnel et des techniques de réduction du stress."
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère un niveau minimal de symptômes obsessionnels-compulsifs." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère des symptômes obsessionnels-compulsifs modérés. Envisagez de consulter un professionnel." },
+        "severe": {
+          "label": "Significative",
+          "desc": "Votre score suggère des symptômes obsessionnels-compulsifs significatifs. Une évaluation professionnelle est recommandée."
         }
       }
     },
-
-    asrs: {
-      name: "ASRS v1.1",
-      fullName: "Échelle d'Auto-Évaluation du TDAH chez l'Adulte v1.1",
-      desc: "Outil de dépistage des symptômes du trouble du déficit de l'attention avec hyperactivité chez l'adulte.",
-      instructions: "Répondez aux questions suivantes en pensant à la manière dont vous vous êtes senti(e) et comporté(e) au cours des 6 derniers mois.",
-      questions: [
-        { title: "À quelle fréquence avez-vous de la difficulté à finaliser les derniers détails d'un projet, une fois que les parties difficiles sont terminées ?" },
-        { title: "À quelle fréquence avez-vous de la difficulté à mettre les choses en ordre lorsque vous devez faire une tâche qui nécessite de l'organisation ?" },
-        { title: "À quelle fréquence avez-vous des problèmes pour vous souvenir de rendez-vous ou d'obligations ?" },
-        { title: "Lorsque vous avez une tâche qui demande beaucoup de concentration, à quelle fréquence évitez-vous ou retardez-vous le moment de la commencer ?" },
-        { title: "À quelle fréquence remuez-vous ou tortillez-vous les mains ou les pieds lorsque vous devez rester assis(e) longtemps ?" },
-        { title: "À quelle fréquence vous sentez-vous excessivement actif(ve) ou poussé(e) à faire des choses, comme si vous étiez mû(e) par un moteur ?" }
+    "pcl5": {
+      "name": "PCL-5",
+      "fullName": "Liste de Vérification du Trouble de Stress Post-Traumatique pour le DSM-5",
+      "desc": "Évalue les symptômes de stress post-traumatique au cours du dernier mois.",
+      "instructions": "Voici une liste de problèmes que les gens rencontrent parfois en réponse à une expérience très stressante. Indiquez à quel point ce problème vous a gêné(e) au cours du dernier mois.",
+      "questions": [
+        { "title": "Souvenirs répétés, perturbants et involontaires de l'expérience stressante" },
+        { "title": "Rêves répétés et perturbants concernant l'expérience stressante" },
+        { "title": "Se sentir ou agir soudainement comme si l'expérience stressante se reproduisait" },
+        { "title": "Se sentir très mal quand quelque chose vous rappelle l'expérience stressante" },
+        { "title": "Avoir des réactions physiques fortes quand quelque chose vous rappelle l'expérience stressante (par exemple, cœur qui bat vite, difficulté à respirer, transpiration)" },
+        { "title": "Éviter les souvenirs, pensées ou sentiments liés à l'expérience stressante" },
+        { "title": "Éviter les choses extérieures qui rappellent l'expérience stressante (par exemple, personnes, lieux, conversations, activités, objets ou situations)" },
+        { "title": "Difficulté à se souvenir de parties importantes de l'expérience stressante" },
+        { "title": "Avoir des croyances négatives fortes sur soi-même, les autres ou le monde" },
+        { "title": "Se blâmer soi-même ou blâmer quelqu'un d'autre pour l'expérience stressante ou ce qui s'est passé après" },
+        { "title": "Avoir des sentiments négatifs forts comme la peur, l'horreur, la colère, la culpabilité ou la honte" },
+        { "title": "Perte d'intérêt pour les activités que vous appréciiez avant" },
+        { "title": "Se sentir distant(e) ou éloigné(e) des autres" },
+        { "title": "Difficulté à éprouver des sentiments positifs" },
+        { "title": "Comportement irritable, accès de colère ou comportement agressif" },
+        { "title": "Prendre trop de risques ou faire des choses qui pourraient vous nuire" },
+        { "title": "Être en état de super-alerte, de vigilance ou sur ses gardes" },
+        { "title": "Se sentir sursauter ou s'effrayer facilement" },
+        { "title": "Avoir des difficultés de concentration" },
+        { "title": "Problèmes pour s'endormir ou rester endormi(e)" }
       ],
-      results: {
-        minimal: {
-          label: "Peu probable",
-          desc: "Votre score suggère une faible probabilité de TDAH."
-        },
-        moderate: {
-          label: "Possible",
-          desc: "Votre score suggère certains symptômes compatibles avec le TDAH. Envisagez une évaluation professionnelle."
-        },
-        severe: {
-          label: "Probable",
-          desc: "Votre score suggère une forte probabilité de symptômes de TDAH. Une évaluation professionnelle complète est recommandée."
+      "results": {
+        "minimal": { "label": "Minimale", "desc": "Votre score suggère un faible niveau de symptômes de stress post-traumatique." },
+        "moderate": { "label": "Modérée", "desc": "Votre score suggère des symptômes modérés de stress post-traumatique. Envisagez de consulter un professionnel." },
+        "severe": {
+          "label": "Significative",
+          "desc": "Votre score suggère des symptômes significatifs de stress post-traumatique. Il est recommandé de chercher de l'aide professionnelle."
         }
       }
     },
-
-    ocir: {
-      name: "OCI-R",
-      fullName: "Inventaire Obsessionnel-Compulsif Révisé",
-      desc: "Évalue les symptômes du trouble obsessionnel-compulsif.",
-      instructions: "Les affirmations suivantes se réfèrent à des expériences que beaucoup de personnes vivent au quotidien. Indiquez à quel point elles vous ont gêné(e) au cours du dernier mois.",
-      questions: [
-        { title: "J'ai accumulé tellement de choses qu'elles me gênent" },
-        { title: "Je vérifie les choses plus que nécessaire" },
-        { title: "Je suis contrarié(e) quand les objets ne sont pas bien rangés" },
-        { title: "Je ressens le besoin de compter en faisant certaines choses" },
-        { title: "Il m'est difficile de toucher un objet quand je sais qu'il a été touché par des inconnus ou certaines personnes" },
-        { title: "Il m'est difficile de contrôler mes propres pensées" },
-        { title: "J'accumule des choses dont je n'ai pas besoin" },
-        { title: "Je vérifie de manière répétée les portes, les fenêtres, les tiroirs, etc." },
-        { title: "Je suis contrarié(e) si les autres changent l'ordre dans lequel j'ai placé les choses" },
-        { title: "Je sens que je dois répéter certains nombres" },
-        { title: "Parfois je dois me laver ou me nettoyer simplement parce que je me sens contaminé(e)" },
-        { title: "Je suis gêné(e) par des pensées désagréables qui viennent à mon esprit contre ma volonté" },
-        { title: "J'évite de jeter des choses parce que j'ai peur d'en avoir besoin plus tard" },
-        { title: "Je vérifie de manière répétée le gaz, l'eau et les lumières après les avoir éteints" },
-        { title: "J'ai besoin que les choses soient rangées d'une certaine manière" },
-        { title: "Je sens qu'il y a de bons et de mauvais nombres" },
-        { title: "Je me lave les mains plus que nécessaire" },
-        { title: "J'ai souvent des pensées horribles et j'ai du mal à m'en débarrasser" }
+    "bfi44": {
+      "name": "BFI-44",
+      "fullName": "Inventaire des Cinq Grands Facteurs de Personnalité",
+      "desc": "Évalue cinq dimensions principales de la personnalité : Extraversion, Agréabilité, Conscienciosité, Névrosisme et Ouverture à l'expérience.",
+      "instructions": "Je me vois comme quelqu'un qui... Indiquez dans quelle mesure vous êtes d'accord ou en désaccord avec chaque affirmation.",
+      "questions": [
+        { "title": "Est bavard(e)" },
+        { "title": "A tendance à critiquer" },
+        { "title": "Est minutieux(se) dans son travail" },
+        { "title": "Est déprimé(e), mélancolique" },
+        { "title": "Est original(e), a des idées nouvelles" },
+        { "title": "Est réservé(e)" },
+        { "title": "Est généreux(se) et aide les autres" },
+        { "title": "Peut être un peu négligent(e)" },
+        { "title": "Est calme, gère bien le stress" },
+        { "title": "Est curieux(se) de beaucoup de choses différentes" },
+        { "title": "Est plein(e) d'énergie" },
+        { "title": "Provoque des disputes avec les autres" },
+        { "title": "Est un(e) travailleur(se) fiable" },
+        { "title": "Peut être tendu(e)" },
+        { "title": "Est ingénieux(se), un(e) penseur(se) profond(e)" },
+        { "title": "Génère beaucoup d'enthousiasme" },
+        { "title": "A tendance à pardonner" },
+        { "title": "A tendance à être désorganisé(e)" },
+        { "title": "S'inquiète beaucoup" },
+        { "title": "A une imagination active" },
+        { "title": "A tendance à être silencieux(se)" },
+        { "title": "Est généralement digne de confiance" },
+        { "title": "A tendance à être paresseux(se)" },
+        { "title": "Est émotionnellement stable, ne se perturbe pas facilement" },
+        { "title": "Est inventif(ve)" },
+        { "title": "A une personnalité affirmée" },
+        { "title": "Peut être froid(e) et distant(e)" },
+        { "title": "Persévère jusqu'à ce que la tâche soit terminée" },
+        { "title": "Peut être capricieux(se)" },
+        { "title": "Apprécie les expériences artistiques et esthétiques" },
+        { "title": "Est parfois timide, inhibé(e)" },
+        { "title": "Est prévenant(e) et aimable avec presque tout le monde" },
+        { "title": "Fait les choses de manière efficace" },
+        { "title": "Reste calme dans les situations tendues" },
+        { "title": "Préfère un travail routinier" },
+        { "title": "Est sociable, extraverti(e)" },
+        { "title": "Est parfois impoli(e) avec les autres" },
+        { "title": "Fait des plans et les suit" },
+        { "title": "Devient nerveux(se) facilement" },
+        { "title": "Aime réfléchir, jouer avec les idées" },
+        { "title": "A peu d'intérêts artistiques" },
+        { "title": "Aime coopérer avec les autres" },
+        { "title": "Se laisse facilement distraire" },
+        { "title": "Est sophistiqué(e) en art, musique ou littérature" }
       ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère un niveau minimal de symptômes obsessionnels-compulsifs."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère des symptômes obsessionnels-compulsifs modérés. Envisagez de consulter un professionnel."
-        },
-        severe: {
-          label: "Significative",
-          desc: "Votre score suggère des symptômes obsessionnels-compulsifs significatifs. Une évaluation professionnelle est recommandée."
-        }
-      }
-    },
-
-    pcl5: {
-      name: "PCL-5",
-      fullName: "Liste de Vérification du Trouble de Stress Post-Traumatique pour le DSM-5",
-      desc: "Évalue les symptômes de stress post-traumatique au cours du dernier mois.",
-      instructions: "Voici une liste de problèmes que les gens rencontrent parfois en réponse à une expérience très stressante. Indiquez à quel point ce problème vous a gêné(e) au cours du dernier mois.",
-      questions: [
-        { title: "Souvenirs répétés, perturbants et involontaires de l'expérience stressante" },
-        { title: "Rêves répétés et perturbants concernant l'expérience stressante" },
-        { title: "Se sentir ou agir soudainement comme si l'expérience stressante se reproduisait" },
-        { title: "Se sentir très mal quand quelque chose vous rappelle l'expérience stressante" },
-        { title: "Avoir des réactions physiques fortes quand quelque chose vous rappelle l'expérience stressante (par exemple, cœur qui bat vite, difficulté à respirer, transpiration)" },
-        { title: "Éviter les souvenirs, pensées ou sentiments liés à l'expérience stressante" },
-        { title: "Éviter les choses extérieures qui rappellent l'expérience stressante (par exemple, personnes, lieux, conversations, activités, objets ou situations)" },
-        { title: "Difficulté à se souvenir de parties importantes de l'expérience stressante" },
-        { title: "Avoir des croyances négatives fortes sur soi-même, les autres ou le monde" },
-        { title: "Se blâmer soi-même ou blâmer quelqu'un d'autre pour l'expérience stressante ou ce qui s'est passé après" },
-        { title: "Avoir des sentiments négatifs forts comme la peur, l'horreur, la colère, la culpabilité ou la honte" },
-        { title: "Perte d'intérêt pour les activités que vous appréciiez avant" },
-        { title: "Se sentir distant(e) ou éloigné(e) des autres" },
-        { title: "Difficulté à éprouver des sentiments positifs" },
-        { title: "Comportement irritable, accès de colère ou comportement agressif" },
-        { title: "Prendre trop de risques ou faire des choses qui pourraient vous nuire" },
-        { title: "Être en état de super-alerte, de vigilance ou sur ses gardes" },
-        { title: "Se sentir sursauter ou s'effrayer facilement" },
-        { title: "Avoir des difficultés de concentration" },
-        { title: "Problèmes pour s'endormir ou rester endormi(e)" }
-      ],
-      results: {
-        minimal: {
-          label: "Minimale",
-          desc: "Votre score suggère un faible niveau de symptômes de stress post-traumatique."
-        },
-        moderate: {
-          label: "Modérée",
-          desc: "Votre score suggère des symptômes modérés de stress post-traumatique. Envisagez de consulter un professionnel."
-        },
-        severe: {
-          label: "Significative",
-          desc: "Votre score suggère des symptômes significatifs de stress post-traumatique. Il est recommandé de chercher de l'aide professionnelle."
-        }
-      }
-    },
-
-    bfi44: {
-      name: "BFI-44",
-      fullName: "Inventaire des Cinq Grands Facteurs de Personnalité",
-      desc: "Évalue cinq dimensions principales de la personnalité : Extraversion, Agréabilité, Conscienciosité, Névrosisme et Ouverture à l'expérience.",
-      instructions: "Je me vois comme quelqu'un qui... Indiquez dans quelle mesure vous êtes d'accord ou en désaccord avec chaque affirmation.",
-      questions: [
-        { title: "Est bavard(e)" },
-        { title: "A tendance à critiquer" },
-        { title: "Est minutieux(se) dans son travail" },
-        { title: "Est déprimé(e), mélancolique" },
-        { title: "Est original(e), a des idées nouvelles" },
-        { title: "Est réservé(e)" },
-        { title: "Est généreux(se) et aide les autres" },
-        { title: "Peut être un peu négligent(e)" },
-        { title: "Est calme, gère bien le stress" },
-        { title: "Est curieux(se) de beaucoup de choses différentes" },
-        { title: "Est plein(e) d'énergie" },
-        { title: "Provoque des disputes avec les autres" },
-        { title: "Est un(e) travailleur(se) fiable" },
-        { title: "Peut être tendu(e)" },
-        { title: "Est ingénieux(se), un(e) penseur(se) profond(e)" },
-        { title: "Génère beaucoup d'enthousiasme" },
-        { title: "A tendance à pardonner" },
-        { title: "A tendance à être désorganisé(e)" },
-        { title: "S'inquiète beaucoup" },
-        { title: "A une imagination active" },
-        { title: "A tendance à être silencieux(se)" },
-        { title: "Est généralement digne de confiance" },
-        { title: "A tendance à être paresseux(se)" },
-        { title: "Est émotionnellement stable, ne se perturbe pas facilement" },
-        { title: "Est inventif(ve)" },
-        { title: "A une personnalité affirmée" },
-        { title: "Peut être froid(e) et distant(e)" },
-        { title: "Persévère jusqu'à ce que la tâche soit terminée" },
-        { title: "Peut être capricieux(se)" },
-        { title: "Apprécie les expériences artistiques et esthétiques" },
-        { title: "Est parfois timide, inhibé(e)" },
-        { title: "Est prévenant(e) et aimable avec presque tout le monde" },
-        { title: "Fait les choses de manière efficace" },
-        { title: "Reste calme dans les situations tendues" },
-        { title: "Préfère un travail routinier" },
-        { title: "Est sociable, extraverti(e)" },
-        { title: "Est parfois impoli(e) avec les autres" },
-        { title: "Fait des plans et les suit" },
-        { title: "Devient nerveux(se) facilement" },
-        { title: "Aime réfléchir, jouer avec les idées" },
-        { title: "A peu d'intérêts artistiques" },
-        { title: "Aime coopérer avec les autres" },
-        { title: "Se laisse facilement distraire" },
-        { title: "Est sophistiqué(e) en art, musique ou littérature" }
-      ],
-      dimensionNames: {
-        E: "Extraversion",
-        A: "Agréabilité",
-        C: "Conscienciosité",
-        N: "Névrosisme",
-        O: "Ouverture à l'expérience"
+      "dimensionNames": {
+        "E": "Extraversion",
+        "A": "Agréabilité",
+        "C": "Conscienciosité",
+        "N": "Névrosisme",
+        "O": "Ouverture à l'expérience"
       },
-      dimensionDescs: {
-        E: {
-          low: "Vous avez tendance à être réservé(e), calme et à préférer les activités en solitaire.",
-          mid: "Vous montrez un équilibre entre la sociabilité et le besoin de temps seul(e).",
-          high: "Vous avez tendance à être sociable, énergique et à apprécier les interactions avec les autres."
+      "dimensionDescs": {
+        "E": {
+          "low": "Vous avez tendance à être réservé(e), calme et à préférer les activités en solitaire.",
+          "mid": "Vous montrez un équilibre entre la sociabilité et le besoin de temps seul(e).",
+          "high": "Vous avez tendance à être sociable, énergique et à apprécier les interactions avec les autres."
         },
-        A: {
-          low: "Vous avez tendance à être plus compétitif(ve) et direct(e) dans vos interactions.",
-          mid: "Vous montrez un équilibre entre coopération et affirmation de soi.",
-          high: "Vous avez tendance à être coopératif(ve), compatissant(e) et attentionné(e) envers les autres."
+        "A": {
+          "low": "Vous avez tendance à être plus compétitif(ve) et direct(e) dans vos interactions.",
+          "mid": "Vous montrez un équilibre entre coopération et affirmation de soi.",
+          "high": "Vous avez tendance à être coopératif(ve), compatissant(e) et attentionné(e) envers les autres."
         },
-        C: {
-          low: "Vous avez tendance à être plus flexible et spontané(e) dans votre approche.",
-          mid: "Vous montrez un équilibre entre structure et flexibilité.",
-          high: "Vous avez tendance à être organisé(e), discipliné(e) et orienté(e) vers les objectifs."
+        "C": {
+          "low": "Vous avez tendance à être plus flexible et spontané(e) dans votre approche.",
+          "mid": "Vous montrez un équilibre entre structure et flexibilité.",
+          "high": "Vous avez tendance à être organisé(e), discipliné(e) et orienté(e) vers les objectifs."
         },
-        N: {
-          low: "Vous avez tendance à être émotionnellement stable et calme face aux situations stressantes.",
-          mid: "Vous éprouvez une gamme normale d'émotions positives et négatives.",
-          high: "Vous avez tendance à éprouver davantage d'émotions négatives et une plus grande sensibilité au stress."
+        "N": {
+          "low": "Vous avez tendance à être émotionnellement stable et calme face aux situations stressantes.",
+          "mid": "Vous éprouvez une gamme normale d'émotions positives et négatives.",
+          "high": "Vous avez tendance à éprouver davantage d'émotions négatives et une plus grande sensibilité au stress."
         },
-        O: {
-          low: "Vous avez tendance à préférer le conventionnel et le pratique.",
-          mid: "Vous montrez un équilibre entre curiosité et intérêts pratiques.",
-          high: "Vous avez tendance à être créatif(ve), curieux(se) et ouvert(e) aux nouvelles expériences."
+        "O": {
+          "low": "Vous avez tendance à préférer le conventionnel et le pratique.",
+          "mid": "Vous montrez un équilibre entre curiosité et intérêts pratiques.",
+          "high": "Vous avez tendance à être créatif(ve), curieux(se) et ouvert(e) aux nouvelles expériences."
         }
       }
     },
-
-    mbti: {
-      name: "MBTI",
-      fullName: "Indicateur de Type de Personnalité Myers-Briggs",
-      desc: "Identifie les préférences de personnalité dans quatre dimensions : Énergie, Perception, Prise de décision et Mode de vie.",
-      instructions: "Sélectionnez l'option qui vous décrit le mieux dans la plupart des situations. Il n'y a pas de bonnes ou de mauvaises réponses.",
-      questions: [
-        { title: "Lors de réunions sociales, vous préférez interagir avec beaucoup de personnes, y compris des inconnus" },
-        { title: "Vous avez tendance à être plus réaliste qu'imaginatif(ve)" },
-        { title: "Il est pire d'être injuste que sans pitié" },
-        { title: "Vous préférez normalement faire les choses selon un plan établi" },
-        { title: "Après avoir passé du temps avec un groupe, vous vous sentez plein(e) d'énergie" },
-        { title: "Vous préférez vous concentrer sur les détails spécifiques plutôt que sur la vue d'ensemble" },
-        { title: "Lorsque vous prenez des décisions, vous considérez d'abord les sentiments des personnes" },
-        { title: "Vous aimez que les choses soient décidées et réglées" },
-        { title: "Vous préférez engager la conversation avec de nouvelles personnes" },
-        { title: "Vous faites plus confiance à votre expérience qu'à votre intuition" },
-        { title: "Vous accordez plus d'importance à la compassion qu'à la vérité objective" },
-        { title: "Vous préférez suivre un emploi du temps strict" },
-        { title: "Il vous est facile de parler à des inconnus" },
-        { title: "Vous prêtez plus attention à ce qui est réel et actuel qu'à ce qui pourrait être" },
-        { title: "L'harmonie du groupe vous importe plus que les résultats objectifs" },
-        { title: "Vous préférez terminer un projet avant d'en commencer un autre" },
-        { title: "Vous avez besoin de temps seul(e) pour recharger vos batteries" },
-        { title: "Vous aimez réfléchir à des concepts abstraits et des théories" },
-        { title: "Pour résoudre des problèmes, vous privilégiez la logique plutôt que les sentiments" },
-        { title: "Vous préférez garder vos options ouvertes plutôt que vous engager" },
-        { title: "Pendant votre temps libre, vous préférez être avec des amis" },
-        { title: "Vous vous intéressez davantage aux possibilités futures qu'aux faits présents" },
-        { title: "Vous préférez prendre des décisions basées sur des principes logiques" },
-        { title: "Vous vous sentez plus à l'aise avec une structure et des routines" },
-        { title: "Vous êtes l'âme des fêtes" },
-        { title: "Vous êtes plus attiré(e) par les significations symboliques que par les faits littéraux" },
-        { title: "Dans un conflit, vous cherchez la solution la plus juste même si quelqu'un est contrarié" },
-        { title: "Vous aimez planifier vos vacances à l'avance et en détail" },
-        { title: "Vous vous sentez à l'aise en étant au centre de l'attention" },
-        { title: "Vous appréciez davantage explorer de nouvelles idées que d'appliquer des méthodes éprouvées" },
-        { title: "Vous avez tendance à décider avec la tête plutôt qu'avec le cœur" },
-        { title: "Vous préférez la spontanéité à la planification" },
-        { title: "Il vous est épuisant de passer beaucoup de temps seul(e)" },
-        { title: "Vous préférez apprendre des concepts théoriques avant de voir des exemples pratiques" },
-        { title: "Vous considérez que la diplomatie est plus importante que la franchise" },
-        { title: "Vous vous sentez mal à l'aise quand les plans changent brusquement" },
-        { title: "Vous parlez plus que vous n'écoutez dans les conversations" },
-        { title: "Vous faites confiance à vos pressentiments et intuitions" },
-        { title: "Vous accordez plus d'importance à l'efficacité qu'à la coopération" },
-        { title: "Vous appréciez l'improvisation et l'adaptation au fur et à mesure" }
+    "mbti": {
+      "name": "MBTI",
+      "fullName": "Indicateur de Type de Personnalité Myers-Briggs",
+      "desc": "Identifie les préférences de personnalité dans quatre dimensions : Énergie, Perception, Prise de décision et Mode de vie.",
+      "instructions": "Sélectionnez l'option qui vous décrit le mieux dans la plupart des situations. Il n'y a pas de bonnes ou de mauvaises réponses.",
+      "questions": [
+        { "title": "Lors de réunions sociales, vous préférez interagir avec beaucoup de personnes, y compris des inconnus" },
+        { "title": "Vous avez tendance à être plus réaliste qu'imaginatif(ve)" },
+        { "title": "Il est pire d'être injuste que sans pitié" },
+        { "title": "Vous préférez normalement faire les choses selon un plan établi" },
+        { "title": "Après avoir passé du temps avec un groupe, vous vous sentez plein(e) d'énergie" },
+        { "title": "Vous préférez vous concentrer sur les détails spécifiques plutôt que sur la vue d'ensemble" },
+        { "title": "Lorsque vous prenez des décisions, vous considérez d'abord les sentiments des personnes" },
+        { "title": "Vous aimez que les choses soient décidées et réglées" },
+        { "title": "Vous préférez engager la conversation avec de nouvelles personnes" },
+        { "title": "Vous faites plus confiance à votre expérience qu'à votre intuition" },
+        { "title": "Vous accordez plus d'importance à la compassion qu'à la vérité objective" },
+        { "title": "Vous préférez suivre un emploi du temps strict" },
+        { "title": "Il vous est facile de parler à des inconnus" },
+        { "title": "Vous prêtez plus attention à ce qui est réel et actuel qu'à ce qui pourrait être" },
+        { "title": "L'harmonie du groupe vous importe plus que les résultats objectifs" },
+        { "title": "Vous préférez terminer un projet avant d'en commencer un autre" },
+        { "title": "Vous avez besoin de temps seul(e) pour recharger vos batteries" },
+        { "title": "Vous aimez réfléchir à des concepts abstraits et des théories" },
+        { "title": "Pour résoudre des problèmes, vous privilégiez la logique plutôt que les sentiments" },
+        { "title": "Vous préférez garder vos options ouvertes plutôt que vous engager" },
+        { "title": "Pendant votre temps libre, vous préférez être avec des amis" },
+        { "title": "Vous vous intéressez davantage aux possibilités futures qu'aux faits présents" },
+        { "title": "Vous préférez prendre des décisions basées sur des principes logiques" },
+        { "title": "Vous vous sentez plus à l'aise avec une structure et des routines" },
+        { "title": "Vous êtes l'âme des fêtes" },
+        { "title": "Vous êtes plus attiré(e) par les significations symboliques que par les faits littéraux" },
+        { "title": "Dans un conflit, vous cherchez la solution la plus juste même si quelqu'un est contrarié" },
+        { "title": "Vous aimez planifier vos vacances à l'avance et en détail" },
+        { "title": "Vous vous sentez à l'aise en étant au centre de l'attention" },
+        { "title": "Vous appréciez davantage explorer de nouvelles idées que d'appliquer des méthodes éprouvées" },
+        { "title": "Vous avez tendance à décider avec la tête plutôt qu'avec le cœur" },
+        { "title": "Vous préférez la spontanéité à la planification" },
+        { "title": "Il vous est épuisant de passer beaucoup de temps seul(e)" },
+        { "title": "Vous préférez apprendre des concepts théoriques avant de voir des exemples pratiques" },
+        { "title": "Vous considérez que la diplomatie est plus importante que la franchise" },
+        { "title": "Vous vous sentez mal à l'aise quand les plans changent brusquement" },
+        { "title": "Vous parlez plus que vous n'écoutez dans les conversations" },
+        { "title": "Vous faites confiance à vos pressentiments et intuitions" },
+        { "title": "Vous accordez plus d'importance à l'efficacité qu'à la coopération" },
+        { "title": "Vous appréciez l'improvisation et l'adaptation au fur et à mesure" }
       ],
-      typeDescriptions: {
-        ISTJ: "Responsable et fiable. Vous valorisez la tradition, la loyauté et l'ordre. Vous êtes méticuleux(se) et travaillez de manière constante pour remplir vos obligations.",
-        ISFJ: "Protecteur(trice) et dévoué(e). Vous êtes aimable, responsable et attentif(ve) aux besoins des autres. Vous valorisez l'harmonie et la stabilité.",
-        INFJ: "Idéaliste et visionnaire. Vous avez une compréhension profonde des personnes et un fort désir d'aider les autres à atteindre leur potentiel.",
-        INTJ: "Stratège et indépendant(e). Vous avez un esprit analytique et une vision claire de comment améliorer les choses. Vous valorisez la compétence et le savoir.",
-        ISTP: "Pratique et observateur(trice). Vous aimez comprendre comment fonctionnent les choses et résoudre les problèmes de manière efficace.",
-        ISFP: "Artiste et sensible. Vous valorisez l'authenticité et l'harmonie. Vous appréciez la beauté et avez un fort sens esthétique.",
-        INFP: "Idéaliste et empathique. Vous avez de fortes valeurs personnelles et un désir de rendre le monde meilleur.",
-        INTP: "Logique et créatif(ve). Vous aimez analyser des systèmes complexes et générer des idées innovantes.",
-        ESTP: "Énergique et pragmatique. Vous aimez l'action et vivez dans le moment présent. Vous êtes habile pour résoudre des problèmes pratiques.",
-        ESFP: "Spontané(e) et enthousiaste. Vous profitez de la vie et transmettez votre joie aux autres. Vous êtes généreux(se) et optimiste.",
-        ENFP: "Enthousiaste et créatif(ve). Vous voyez des possibilités partout et avez une énergie contagieuse pour inspirer les autres.",
-        ENTP: "Innovateur(trice) et provocateur(trice). Vous appréciez le débat intellectuel et cherchez constamment de nouvelles idées et possibilités.",
-        ESTJ: "Organisateur(trice) et décidé(e). Vous valorisez l'efficacité et l'ordre. Vous êtes naturellement fait(e) pour diriger et administrer.",
-        ESFJ: "Sociable et serviable. Vous vous souciez profondément des autres et travaillez pour créer de l'harmonie dans votre entourage.",
-        ENFJ: "Charismatique et empathique. Vous inspirez les autres et avez un talent naturel pour diriger avec compassion.",
-        ENTJ: "Leader né(e) et stratégique. Vous êtes décidé(e), efficace et appréciez les défis organisationnels et de leadership."
+      "typeDescriptions": {
+        "ISTJ": "Responsable et fiable. Vous valorisez la tradition, la loyauté et l'ordre. Vous êtes méticuleux(se) et travaillez de manière constante pour remplir vos obligations.",
+        "ISFJ": "Protecteur(trice) et dévoué(e). Vous êtes aimable, responsable et attentif(ve) aux besoins des autres. Vous valorisez l'harmonie et la stabilité.",
+        "INFJ": "Idéaliste et visionnaire. Vous avez une compréhension profonde des personnes et un fort désir d'aider les autres à atteindre leur potentiel.",
+        "INTJ": "Stratège et indépendant(e). Vous avez un esprit analytique et une vision claire de comment améliorer les choses. Vous valorisez la compétence et le savoir.",
+        "ISTP": "Pratique et observateur(trice). Vous aimez comprendre comment fonctionnent les choses et résoudre les problèmes de manière efficace.",
+        "ISFP": "Artiste et sensible. Vous valorisez l'authenticité et l'harmonie. Vous appréciez la beauté et avez un fort sens esthétique.",
+        "INFP": "Idéaliste et empathique. Vous avez de fortes valeurs personnelles et un désir de rendre le monde meilleur.",
+        "INTP": "Logique et créatif(ve). Vous aimez analyser des systèmes complexes et générer des idées innovantes.",
+        "ESTP": "Énergique et pragmatique. Vous aimez l'action et vivez dans le moment présent. Vous êtes habile pour résoudre des problèmes pratiques.",
+        "ESFP": "Spontané(e) et enthousiaste. Vous profitez de la vie et transmettez votre joie aux autres. Vous êtes généreux(se) et optimiste.",
+        "ENFP": "Enthousiaste et créatif(ve). Vous voyez des possibilités partout et avez une énergie contagieuse pour inspirer les autres.",
+        "ENTP": "Innovateur(trice) et provocateur(trice). Vous appréciez le débat intellectuel et cherchez constamment de nouvelles idées et possibilités.",
+        "ESTJ": "Organisateur(trice) et décidé(e). Vous valorisez l'efficacité et l'ordre. Vous êtes naturellement fait(e) pour diriger et administrer.",
+        "ESFJ": "Sociable et serviable. Vous vous souciez profondément des autres et travaillez pour créer de l'harmonie dans votre entourage.",
+        "ENFJ": "Charismatique et empathique. Vous inspirez les autres et avez un talent naturel pour diriger avec compassion.",
+        "ENTJ": "Leader né(e) et stratégique. Vous êtes décidé(e), efficace et appréciez les défis organisationnels et de leadership."
       }
+    },
+    "phq9": {
+      "name": "PHQ-9",
+      "fullName": "Questionnaire de Santé du Patient-9",
+      "desc": "Dépistage rapide de la dépression largement utilisé en soins primaires. 9 questions.",
+      "instructions": "Au cours des 2 dernières semaines, à quelle fréquence avez-vous été gêné(e) par les problèmes suivants ?",
+      "sharedOptions": ["Jamais","Plusieurs jours","Plus de la moitié des jours","Presque tous les jours"],
+      "questions": [
+        { "title": "Peu d'intérêt ou de plaisir à faire des choses" },
+        { "title": "Se sentir découragé(e), déprimé(e) ou sans espoir" },
+        { "title": "Problèmes pour dormir ou dormir trop" },
+        { "title": "Se sentir fatigué(e) ou avoir peu d'énergie" },
+        { "title": "Peu d'appétit ou manger trop" },
+        { "title": "Se sentir mal avec soi-même" },
+        { "title": "Difficulté à se concentrer" },
+        { "title": "Bouger ou parler si lentement que d'autres le remarquent, ou le contraire" },
+        { "title": "Pensées de se faire du mal ou que l'on serait mieux mort(e)" }
+      ],
+      "results": {
+        "minima": { "label": "Minime", "desc": "Aucun symptôme significatif de dépression n'est détecté. Continuez à prendre soin de votre bien-être émotionnel." },
+        "leve": { "label": "Légère", "desc": "Des symptômes légers de dépression sont détectés. Envisagez de surveiller votre humeur et d'adopter des habitudes saines." },
+        "moderada": { "label": "Modérée", "desc": "Des symptômes modérés de dépression sont détectés. Il est recommandé de consulter un professionnel de la santé mentale." },
+        "moderadamente_grave": {
+          "label": "Modérément grave",
+          "desc": "Des symptômes modérément graves de dépression sont détectés. Il est important de rechercher une aide professionnelle dès que possible."
+        },
+        "grave": {
+          "label": "Grave",
+          "desc": "Des symptômes graves de dépression sont détectés. Il est recommandé de rechercher une attention professionnelle de manière urgente."
+        }
+      }
+    },
+    "who5": {
+      "name": "WHO-5",
+      "fullName": "Indice de Bien-être WHO-5",
+      "desc": "Brève mesure du bien-être émotionnel développée par l'OMS. Seulement 5 questions.",
+      "instructions": "Indiquez comment vous vous êtes senti(e) au cours des deux dernières semaines.",
+      "sharedOptions": [
+        "À aucun moment",
+        "De temps en temps",
+        "Moins de la moitié du temps",
+        "Plus de la moitié du temps",
+        "La plupart du temps",
+        "Tout le temps"
+      ],
+      "questions": [
+        { "title": "Je me suis senti(e) joyeux(se) et de bonne humeur." },
+        { "title": "Je me suis senti(e) calme et détendu(e)." },
+        { "title": "Je me suis senti(e) actif(ve) et plein(e) d'énergie." },
+        { "title": "Je me suis réveillé(e) en me sentant frais(fraîche) et reposé(e)." },
+        { "title": "Ma vie quotidienne a été remplie de choses qui m'intéressent." }
+      ],
+      "results": {
+        "low": {
+          "label": "Bien-être faible",
+          "desc": "Indique un faible niveau de bien-être émotionnel. Il est recommandé de consulter un professionnel pour une évaluation."
+        },
+        "reduced": { "label": "Bien-être réduit", "desc": "Indique un bien-être émotionnel réduit. Envisagez de parler à un professionnel de la santé mentale." },
+        "moderate": { "label": "Bien-être modéré", "desc": "Indique un niveau modéré de bien-être émotionnel." },
+        "high": { "label": "Bien-être élevé", "desc": "Indique un niveau élevé de bien-être émotionnel." }
+      }
+    },
+    "audit": {
+      "name": "AUDIT",
+      "fullName": "Test d'Identification des Troubles liés à la Consommation d'Alcool",
+      "desc": "Développé par l'OMS pour détecter une consommation problématique d'alcool.",
+      "instructions": "Répondez aux questions suivantes concernant votre consommation d'alcool. Soyez aussi honnête que possible.",
+      "questions": [
+        {
+          "title": "À quelle fréquence consommez-vous des boissons alcoolisées ?",
+          "options": ["Jamais","Une fois par mois ou moins","2 à 4 fois par mois","2 à 3 fois par semaine","4 fois ou plus par semaine"]
+        },
+        {
+          "title": "Combien de consommations de boissons alcoolisées prenez-vous habituellement lors d'une journée normale ?",
+          "options": ["1 ou 2","3 ou 4","5 ou 6","7 à 9","10 ou plus"]
+        },
+        {
+          "title": "À quelle fréquence, lors d'une seule occasion, buvez-vous 6 boissons alcoolisées ou plus ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Au cours de la dernière année, à quelle fréquence avez-vous été incapable d'arrêter de boire une fois que vous aviez commencé ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Au cours de la dernière année, à quelle fréquence n'avez-vous pas pu faire ce qui était attendu de vous parce que vous aviez bu ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Au cours de la dernière année, à quelle fréquence avez-vous eu besoin de boire à jeun pour récupérer après avoir beaucoup bu la veille ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Au cours de la dernière année, à quelle fréquence avez-vous eu des remords ou des sentiments de culpabilité après avoir bu ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Au cours de la dernière année, à quelle fréquence n'avez-vous pas pu vous souvenir de ce qui s'était passé la nuit précédente parce que vous aviez bu ?",
+          "options": ["Jamais","Moins d'une fois par mois","Mensuellement","Hebdomadairement","Quotidiennement ou presque quotidiennement"]
+        },
+        {
+          "title": "Vous-même ou une autre personne avez-vous été blessé(e) parce que vous aviez bu ?",
+          "options": ["Non","Oui, mais pas au cours de la dernière année","Oui, au cours de la dernière année"]
+        },
+        {
+          "title": "Un membre de votre famille, un ami, un médecin ou un professionnel de la santé a-t-il exprimé des inquiétudes quant à votre consommation d'alcool ou vous a-t-il suggéré d'arrêter de boire ?",
+          "options": ["Non","Oui, mais pas au cours de la dernière année","Oui, au cours de la dernière année"]
+        }
+      ],
+      "results": {
+        "faible_risque": { "label": "Risque faible", "desc": "Votre consommation d'alcool se situe dans les limites de faible risque. Maintenez des habitudes saines." },
+        "risque_modere": {
+          "label": "Risque modéré",
+          "desc": "Votre consommation d'alcool présente un risque modéré. Envisagez de réduire votre consommation et consultez un professionnel."
+        },
+        "risque_eleve": {
+          "label": "Risque élevé",
+          "desc": "Votre consommation d'alcool présente un risque élevé. Il est recommandé de demander un avis professionnel pour réduire votre consommation."
+        },
+        "dependance_possible": {
+          "label": "Dépendance possible",
+          "desc": "Les résultats suggèrent une possible dépendance à l'alcool. Il est important de rechercher une aide professionnelle spécialisée."
+        }
+      }
+    },
+    "isi": {
+      "name": "ISI",
+      "fullName": "Indice de Gravité de l'Insomnie",
+      "desc": "Évalue la nature, la gravité et l'impact de l'insomnie au cours des deux dernières semaines.",
+      "instructions": "Évaluez la gravité de vos problèmes de sommeil au cours des 2 dernières semaines.",
+      "questions": [
+        {
+          "title": "Difficulté à s'endormir",
+          "options": ["Aucune","Légère","Modérée","Sévère","Très sévère"]
+        },
+        {
+          "title": "Difficulté à maintenir le sommeil",
+          "options": ["Aucune","Légère","Modérée","Sévère","Très sévère"]
+        },
+        {
+          "title": "Réveil très tôt le matin",
+          "options": ["Aucune","Légère","Modérée","Sévère","Très sévère"]
+        },
+        {
+          "title": "À quel point êtes-vous satisfait(e) de votre schéma de sommeil actuel ?",
+          "options": ["Très satisfait(e)","Satisfait(e)","Modérément satisfait(e)","Insatisfait(e)","Très insatisfait(e)"]
+        },
+        {
+          "title": "Dans quelle mesure votre problème de sommeil interfère-t-il avec votre fonctionnement quotidien ?",
+          "options": ["Pas du tout","Un peu","Modérément","Beaucoup","Énormément"]
+        },
+        {
+          "title": "Dans quelle mesure pensez-vous que les autres remarquent votre problème de sommeil dans votre qualité de vie ?",
+          "options": ["Pas du tout","Un peu","Modérément","Beaucoup","Énormément"]
+        },
+        {
+          "title": "À quel point êtes-vous préoccupé(e) par votre problème de sommeil actuel ?",
+          "options": ["Pas du tout","Un peu","Modérément","Beaucoup","Énormément"]
+        }
+      ],
+      "results": {
+        "sin_insomnio": { "label": "Pas d'insomnie clinique", "desc": "Aucun problème d'insomnie clinique détecté. Votre sommeil semble être dans les paramètres normaux." },
+        "subclinico": {
+          "label": "Insomnie subclinique",
+          "desc": "Quelques symptômes d'insomnie sont détectés, mais n'atteignent pas des niveaux cliniques. Envisagez d'améliorer votre hygiène de sommeil."
+        },
+        "clinico_moderado": {
+          "label": "Insomnie clinique modérée",
+          "desc": "Une insomnie clinique de gravité modérée est détectée. Il est recommandé de consulter un professionnel de la santé."
+        },
+        "clinico_grave": {
+          "label": "Insomnie clinique sévère",
+          "desc": "Une insomnie clinique sévère est détectée. Il est important de rechercher une aide professionnelle pour traiter les problèmes de sommeil."
+        }
+      }
+    },
+    "eat26": {
+      "name": "EAT-26",
+      "fullName": "Test d'Attitudes Alimentaires-26",
+      "desc": "Détecte les attitudes et comportements caractéristiques des troubles alimentaires.",
+      "instructions": "Indiquez la fréquence à laquelle vous présentez chacune des attitudes ou comportements suivants. Répondez honnêtement.",
+      "sharedOptions": ["Jamais","Rarement","Parfois","Souvent","Très souvent","Toujours"],
+      "questions": [
+        { "title": "L'idée d'être en surpoids me terrifie" },
+        { "title": "J'évite de manger quand j'ai faim" },
+        { "title": "Je me préoccupe de la nourriture" },
+        { "title": "J'ai eu des crises de boulimie où j'avais l'impression de ne pas pouvoir m'arrêter" },
+        { "title": "Je coupe ma nourriture en petits morceaux" },
+        { "title": "Je connais les calories des aliments que je mange" },
+        { "title": "J'évite particulièrement les aliments riches en glucides" },
+        { "title": "J'ai l'impression que les autres préféreraient que je mange plus" },
+        { "title": "Je vomis après avoir mangé" },
+        { "title": "Je me sens très coupable après avoir mangé" },
+        { "title": "Je suis préoccupé(e) par le désir d'être plus mince" },
+        { "title": "Je pense à brûler des calories quand je fais de l'exercice" },
+        { "title": "Les autres pensent que je suis trop maigre" },
+        { "title": "L'idée d'avoir de la graisse dans mon corps me préoccupe" },
+        { "title": "Je mange plus lentement que les autres" },
+        { "title": "J'évite les aliments contenant du sucre" },
+        { "title": "Je mange des aliments diététiques" },
+        { "title": "J'ai l'impression que la nourriture contrôle ma vie" },
+        { "title": "Je fais preuve d'autocontrôle par rapport à la nourriture" },
+        { "title": "J'ai l'impression que les autres me poussent à manger" },
+        { "title": "Je passe trop de temps et de réflexion à la nourriture" },
+        { "title": "Je me sens mal à l'aise après avoir mangé des sucreries" },
+        { "title": "Je suis au régime" },
+        { "title": "J'aime sentir mon estomac vide" },
+        { "title": "J'aime essayer de nouveaux plats savoureux" },
+        { "title": "J'ai l'envie de vomir après les repas" }
+      ],
+      "results": {
+        "bajo_riesgo": { "label": "Faible risque", "desc": "Aucune attitude alimentaire à risque significatif détectée. Maintenez une relation saine avec la nourriture." },
+        "riesgo_significativo": {
+          "label": "Risque significatif",
+          "desc": "Des attitudes alimentaires ont été détectées qui pourraient indiquer un trouble alimentaire. Il est recommandé de consulter un professionnel de la santé spécialisé."
+        }
+      }
+    },
+    "mdq": {
+      "name": "MDQ",
+      "fullName": "Questionnaire sur les troubles de l'humeur",
+      "desc": "Outil de dépistage rapide du trouble bipolaire et du spectre bipolaire.",
+      "instructions": "Répondez aux questions suivantes concernant des expériences que vous avez vécues à un moment donné de votre vie.",
+      "questions": [
+        {
+          "title": "Avez-vous déjà eu une période où vous vous sentiez tellement bien ou tellement hyperactif(ve) que les autres pensaient que ce n'était pas vous ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez tellement irritable que vous criiez sur les gens ou que vous commenciez des disputes ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous vous sentiez beaucoup plus sûr(e) de vous que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous dormiez beaucoup moins que d'habitude et où cela ne vous manquait pas ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez beaucoup plus bavard(e) ou parliez plus vite que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vos pensées allaient très vite dans votre esprit ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez tellement facilement distrait(e) que vous aviez du mal à vous concentrer ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous aviez beaucoup plus d'énergie que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez beaucoup plus actif(ve) ou faisiez beaucoup plus de choses que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez beaucoup plus sociable ou extraverti(e) que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous étiez beaucoup plus intéressé(e) par le sexe que d'habitude ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous faisiez des choses inhabituelles pour vous, ou que d'autres considéraient comme excessives ou risquées ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Avez-vous déjà eu une période où vous dépensiez de l'argent d'une manière qui vous a causé des problèmes, à vous ou à votre famille ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Plusieurs de ces expériences se sont-elles produites pendant la même période ?",
+          "options": ["Non","Oui"]
+        },
+        {
+          "title": "Si vous avez répondu OUI à une question précédente, quel problème cela vous a-t-il causé ?",
+          "options": ["Aucun problème","Problème mineur","Problème modéré","Problème grave"]
+        }
+      ],
+      "results": {
+        "positive": {
+          "label": "Dépistage positif pour le trouble bipolaire",
+          "desc": "Vos réponses suggèrent la possibilité d'un trouble du spectre bipolaire. Ce résultat N'EST PAS un diagnostic. Une évaluation professionnelle complète par un psychiatre est fortement recommandée."
+        },
+        "negative": {
+          "label": "Dépistage négatif",
+          "desc": "Vos réponses ne suggèrent pas la présence d'un trouble du spectre bipolaire selon cet outil de dépistage. N'oubliez pas que ce questionnaire n'est qu'un outil de dépistage et ne remplace pas une évaluation professionnelle."
+        }
+      }
+    },
+    "spin": {
+      "name": "SPIN",
+      "fullName": "Inventaire de Phobie Sociale",
+      "desc": "Évalue la présence et la gravité des symptômes d'anxiété sociale.",
+      "instructions": "Indiquez à quel point les problèmes suivants vous ont dérangé au cours de la dernière semaine.",
+      "sharedOptions": ["Pas du tout","Un peu","Modérément","Beaucoup","Extrêmement"],
+      "questions": [
+        { "title": "J'ai peur des personnes en position d'autorité." },
+        { "title": "Être rouge devant les autres me dérange." },
+        { "title": "Les fêtes et les événements sociaux m'effraient." },
+        { "title": "J'évite de parler aux gens que je ne connais pas." },
+        { "title": "J'ai très peur d'être critiqué(e)." },
+        { "title": "La peur de me sentir embarrassé(e) m'amène à éviter de faire des choses ou de parler aux gens." },
+        { "title": "Transpirer devant les autres me cause de l'angoisse." },
+        { "title": "J'évite d'aller aux fêtes." },
+        { "title": "J'évite les activités où je suis le centre de l'attention." },
+        { "title": "Parler à des inconnus m'effraie." },
+        { "title": "Je crains de devoir parler en public." },
+        { "title": "Je ferais n'importe quoi pour éviter d'être critiqué(e)." },
+        { "title": "Les palpitations cardiaques me dérangent lorsque je suis avec des gens." },
+        { "title": "J'ai peur de faire des choses quand d'autres personnes pourraient me regarder." },
+        { "title": "Mes plus grandes peurs sont d'avoir honte ou de faire le ridicule." },
+        { "title": "J'évite de parler à toute personne en position d'autorité." },
+        { "title": "Trembler ou vaciller devant les autres me cause de l'angoisse." }
+      ],
+      "results": {
+        "low": { "label": "Anxiété sociale faible", "desc": "Votre score indique un faible niveau d'anxiété sociale." },
+        "mild": { "label": "Anxiété sociale légère", "desc": "Votre score suggère un niveau léger d'anxiété sociale." },
+        "moderate": {
+          "label": "Anxiété sociale modérée",
+          "desc": "Votre score indique un niveau modéré d'anxiété sociale. Il pourrait vous être bénéfique de chercher un soutien professionnel."
+        },
+        "severe": {
+          "label": "Anxiété sociale sévère",
+          "desc": "Votre score suggère un niveau sévère d'anxiété sociale. Il est recommandé de chercher une aide professionnelle."
+        },
+        "very_severe": {
+          "label": "Anxiété sociale très sévère",
+          "desc": "Votre score indique un niveau très sévère d'anxiété sociale. Il est fortement recommandé de chercher une aide professionnelle."
+        }
+      }
+    },
+    "rosenberg": {
+      "name": "RSE",
+      "fullName": "Échelle de Rosenberg sur l'Estime de Soi",
+      "desc": "La mesure la plus utilisée de l'estime de soi globale. Elle évalue les sentiments de valeur personnelle.",
+      "instructions": "Indiquez votre degré d'accord avec chacune des affirmations suivantes.",
+      "sharedOptions": ["Fortement en désaccord","En désaccord","D'accord","Fortement d'accord"],
+      "questions": [
+        { "title": "Je sens que je suis une personne digne d'être appréciée, au moins autant que les autres." },
+        { "title": "Je sens que j'ai des qualités positives." },
+        { "title": "En général, j'ai tendance à penser que je suis un échec." },
+        { "title": "Je suis capable de faire les choses aussi bien que la plupart des gens." },
+        { "title": "Je sens que je n'ai pas grand-chose dont je puisse être fier(e)." },
+        { "title": "J'ai une attitude positive envers moi-même." },
+        { "title": "En général, je suis satisfait(e) de moi." },
+        { "title": "J'aimerais pouvoir avoir plus de respect pour moi-même." },
+        { "title": "Parfois, je me sens vraiment inutile." },
+        { "title": "Parfois, je pense que je ne suis bon(ne) à rien." }
+      ],
+      "results": {
+        "low": {
+          "label": "Faible estime de soi",
+          "desc": "Votre score suggère un faible niveau d'estime de soi. Il est recommandé de rechercher un soutien professionnel."
+        },
+        "normal": { "label": "Estime de soi normale", "desc": "Votre score indique un niveau d'estime de soi normal et sain." },
+        "high": { "label": "Haute estime de soi", "desc": "Votre score indique un niveau élevé d'estime de soi." }
+      }
+    },
+    "triage": {
+      "name": "Guide",
+      "fullName": "Questionnaire d'Orientation Initiale",
+      "desc": "Vous ne savez pas par où commencer ? Ce bref questionnaire vous recommande les évaluations les plus pertinentes pour vous.",
+      "instructions": "Répondez honnêtement aux questions suivantes sur la façon dont vous vous êtes senti(e) récemment. À la fin, vous recevrez des recommandations personnalisées sur les évaluations à effectuer.",
+      "sharedOptions": ["Pas du tout","Un peu","Modérément","Assez","Beaucoup"],
+      "questions": [
+        { "title": "Je me suis senti(e) triste, découragé(e) ou sans espoir" },
+        { "title": "J'ai perdu l'intérêt ou le plaisir pour les choses que j'aimais auparavant" },
+        { "title": "Je me sens sans énergie ou fatigué(e) la majeure partie du temps" },
+        { "title": "Je me sens nerveux(se), anxieux(se) ou sur les nerfs" },
+        { "title": "J'ai des préoccupations excessives que je ne peux pas contrôler" },
+        { "title": "Je ressens des symptômes physiques d'anxiété (palpitations, transpiration, tremblements)" },
+        { "title": "J'évite les situations sociales par peur d'être jugé(e) ou de faire le ridicule" },
+        { "title": "Il m'est très difficile de parler en public ou à des inconnus" },
+        { "title": "Je sens que les situations de ma vie me dépassent" },
+        { "title": "J'ai du mal à gérer les problèmes quotidiens" },
+        { "title": "J'ai vécu une expérience traumatisante qui me suit encore" },
+        { "title": "J'ai des souvenirs perturbants ou des cauchemars sur des événements passés" },
+        { "title": "J'ai du mal à m'endormir ou à rester endormi(e)" },
+        { "title": "La qualité de mon sommeil affecte mon fonctionnement quotidien" },
+        { "title": "Je suis excessivement préoccupé(e) par mon poids ou mon image corporelle" },
+        { "title": "J'ai une relation problématique avec la nourriture (restrictions, crises de boulimie, vomissements provoqués)" },
+        { "title": "Ma consommation d'alcool m'inquiète ou a causé des problèmes" },
+        { "title": "J'ai du mal à me concentrer, à organiser des tâches ou à terminer ce que je commence" },
+        { "title": "Je suis excessivement agité(e) ou j'ai du mal à rester immobile" },
+        { "title": "J'ai des pensées intrusives répétitives qui me causent de l'angoisse" },
+        { "title": "Je ressens le besoin de répéter certaines actions ou rituels" },
+        { "title": "J'ai eu des périodes d'euphorie ou d'énergie excessive suivies de périodes de dépression" },
+        { "title": "J'ai eu des épisodes où je me sentais inhabituellement hyperactif(ve) ou impulsif(ve)" },
+        { "title": "Mes relations interpersonnelles sont intenses et instables" },
+        { "title": "Mes émotions changent rapidement et j'ai du mal à les réguler" }
+      ],
+      "domainNames": {
+        "Estado de ánimo": "Humeur",
+        "Ansiedad": "Anxiété",
+        "Ansiedad social": "Anxiété sociale",
+        "Estrés": "Stress",
+        "Trauma": "Traumatisme",
+        "Sueño": "Sommeil",
+        "Alimentación": "Alimentation",
+        "Alcohol": "Alcool",
+        "Atención y concentración": "Attention et concentration",
+        "Obsesiones y compulsiones": "Obsessions et compulsions",
+        "Cambios de ánimo": "Changements d'humeur",
+        "Regulación emocional": "Régulation émotionnelle"
+      },
+      "domainReasons": {
+        "Estado de ánimo": "Score élevé aux indicateurs d'humeur",
+        "Ansiedad": "Score élevé aux indicateurs d'anxiété",
+        "Ansiedad social": "Score élevé aux indicateurs d'anxiété sociale",
+        "Estrés": "Score élevé aux indicateurs de stress perçu",
+        "Trauma": "Score élevé aux indicateurs de traumatisme et de stress post-traumatique",
+        "Sueño": "Score élevé aux indicateurs de problèmes de sommeil",
+        "Alimentación": "Score élevé aux indicateurs de comportement alimentaire",
+        "Alcohol": "Score élevé aux indicateurs de consommation d'alcool",
+        "Atención y concentración": "Score élevé aux indicateurs d'inattention et d'hyperactivité",
+        "Obsesiones y compulsiones": "Score élevé aux indicateurs obsessionnels-compulsifs",
+        "Cambios de ánimo": "Score élevé aux indicateurs de changements de l'humeur",
+        "Regulación emocional": "Score élevé aux indicateurs d'instabilité émotionnelle et interpersonnelle"
+      }
+    },
+    "ipip300": {
+      "name": "IPIP-300",
+      "fullName": "IPIP-NEO-300 — Inventaire de personnalité à 300 items",
+      "desc": "L'évaluation de personnalité la plus complète disponible. Mesure 30 facettes regroupées dans les 5 grands traits avec une haute précision.",
+      "instructions": "Indiquez dans quelle mesure chaque affirmation vous décrit en général. Il n'y a pas de bonnes ou de mauvaises réponses. Répondez honnêtement.",
+      "sharedOptions": ["Très inexact","Inexact","Ni exact ni inexact","Exact","Très exact"],
+      "questions": [
+        { "title": "Je m'inquiète pour les choses." },
+        { "title": "Je suis détendu(e) la plupart du temps." },
+        { "title": "Je crains le pire dans chaque situation." },
+        { "title": "Je me sens rarement anxieux(se)." },
+        { "title": "Je deviens nerveux(se) facilement." },
+        { "title": "Je ne m'inquiète pas des choses passées." },
+        { "title": "Je m'inquiète de ce qui pourrait mal tourner." },
+        { "title": "Je reste calme face à l'incertitude." },
+        { "title": "Je ressens souvent de l'anxiété." },
+        { "title": "Je ne suis pas facilement effrayé(e)." },
+        { "title": "Je m'irrite facilement." },
+        { "title": "Je perds rarement mon sang-froid." },
+        { "title": "Je me mets en colère quand les choses ne vont pas comme je veux." },
+        { "title": "Il est difficile de me provoquer." },
+        { "title": "Je me frustre facilement." },
+        { "title": "Je garde mon sang-froid dans les situations difficiles." },
+        { "title": "Beaucoup de choses me dérangent." },
+        { "title": "Je ne me mets pas facilement en colère." },
+        { "title": "J'explose quand on me provoque." },
+        { "title": "Je contrôle bien mon tempérament." },
+        { "title": "Je me sens souvent triste." },
+        { "title": "Je me sens bien dans ma peau." },
+        { "title": "Je me sens découragé(e) fréquemment." },
+        { "title": "Je me sens rarement abattu(e)." },
+        { "title": "Je suis insatisfait(e) de ma vie." },
+        { "title": "Je me sens généralement content(e)." },
+        { "title": "Je me sens parfois vide à l'intérieur." },
+        { "title": "Je ne me laisse pas envahir par les pensées négatives." },
+        { "title": "J'ai tendance à voir le côté sombre des choses." },
+        { "title": "Je profite de la vie telle qu'elle est." },
+        { "title": "Je suis facilement gêné(e)." },
+        { "title": "Je me sens à l'aise dans les situations sociales." },
+        { "title": "Je me soucie de ce que les autres pensent de moi." },
+        { "title": "Cela ne me dérange pas d'être le centre de l'attention." },
+        { "title": "Je me sens mal à l'aise quand on m'observe." },
+        { "title": "Je me sens rarement intimidé(e)." },
+        { "title": "J'ai du mal à parler devant un groupe." },
+        { "title": "Je ne m'inquiète pas de me ridiculiser." },
+        { "title": "Je rougis facilement." },
+        { "title": "Je me comporte naturellement avec les inconnus." },
+        { "title": "J'ai du mal à résister aux tentations." },
+        { "title": "Je contrôle bien mes impulsions." },
+        { "title": "Je mange ou bois trop quand je suis stressé(e)." },
+        { "title": "Je sais quand m'arrêter." },
+        { "title": "Je dépense de l'argent pour des choses dont je n'ai pas besoin." },
+        { "title": "Je résiste bien aux tentations." },
+        { "title": "Je cède à mes envies." },
+        { "title": "Je garde mes habitudes sous contrôle." },
+        { "title": "Je fais des choses que je regrette ensuite." },
+        { "title": "Je ne tombe pas facilement dans l'excès." },
+        { "title": "Je m'effondre sous la pression." },
+        { "title": "Je gère bien les situations stressantes." },
+        { "title": "Je me sens submergé(e) par les difficultés." },
+        { "title": "Je ne me laisse pas vaincre par les problèmes." },
+        { "title": "Je me paralyse sous forte pression." },
+        { "title": "Je fonctionne bien même sous stress." },
+        { "title": "J'ai du mal à me remettre des revers." },
+        { "title": "Je suis résilient(e) face à l'adversité." },
+        { "title": "Je perds le contrôle sous forte pression." },
+        { "title": "J'affronte les problèmes avec sérénité." },
+        { "title": "Je me fais des amis facilement." },
+        { "title": "J'ai du mal à m'approcher des autres." },
+        { "title": "Je me sens à l'aise avec les gens." },
+        { "title": "Je suis distant(e) avec les inconnus." },
+        { "title": "Je me connecte rapidement avec les gens." },
+        { "title": "Je garde mes distances avec les autres." },
+        { "title": "Je traite tout le monde avec chaleur." },
+        { "title": "J'ai du mal à faire confiance aux nouvelles personnes." },
+        { "title": "Je fais en sorte que les gens se sentent bienvenus." },
+        { "title": "Je ne suis pas une personne très chaleureuse." },
+        { "title": "J'aime être entouré(e) de gens." },
+        { "title": "Je préfère être seul(e)." },
+        { "title": "J'aime aller aux fêtes et aux réunions." },
+        { "title": "J'évite les foules." },
+        { "title": "Je recherche la compagnie des autres." },
+        { "title": "J'apprécie la solitude." },
+        { "title": "Je me sens bien dans les grands groupes." },
+        { "title": "Je préfère les activités solitaires." },
+        { "title": "J'adore socialiser." },
+        { "title": "Les réunions sociales m'épuisent." },
+        { "title": "Je prends les choses en main." },
+        { "title": "Je reste en retrait." },
+        { "title": "Je dis ce que je pense sans hésiter." },
+        { "title": "J'ai du mal à exprimer mes opinions." },
+        { "title": "J'assume naturellement le rôle de leader." },
+        { "title": "Je laisse les autres prendre les décisions." },
+        { "title": "Je défends mes idées avec fermeté." },
+        { "title": "J'ai du mal à dire non." },
+        { "title": "Je prends l'initiative dans les conversations." },
+        { "title": "J'évite d'imposer mon point de vue." },
+        { "title": "Je suis toujours occupé(e)." },
+        { "title": "Je prends les choses calmement." },
+        { "title": "J'ai un rythme de vie rapide." },
+        { "title": "J'aime prendre mon temps." },
+        { "title": "Je fais beaucoup de choses dans la journée." },
+        { "title": "Je préfère un rythme de vie tranquille." },
+        { "title": "Je passe rapidement d'une activité à l'autre." },
+        { "title": "Je n'aime pas me presser." },
+        { "title": "Je suis une personne très active." },
+        { "title": "J'aime me détendre sans rien faire." },
+        { "title": "Je recherche l'aventure et les sensations fortes." },
+        { "title": "Je préfère ce qui est prévisible et sûr." },
+        { "title": "J'adore les expériences palpitantes." },
+        { "title": "J'évite les situations risquées." },
+        { "title": "J'aime essayer des choses nouvelles et risquées." },
+        { "title": "Je préfère la routine aux surprises." },
+        { "title": "J'apprécie la vitesse et l'adrénaline." },
+        { "title": "Je n'aime pas les activités dangereuses." },
+        { "title": "Je m'ennuie s'il n'y a pas d'excitation." },
+        { "title": "Je me contente d'une vie tranquille." },
+        { "title": "Je suis une personne joyeuse." },
+        { "title": "Je suis rarement de bonne humeur." },
+        { "title": "Je rayonne d'optimisme." },
+        { "title": "Je ne suis pas une personne particulièrement joyeuse." },
+        { "title": "Je ris facilement." },
+        { "title": "J'ai du mal à ressentir de l'enthousiasme." },
+        { "title": "Je vois le côté positif des choses." },
+        { "title": "Je ne m'enthousiasme pas facilement." },
+        { "title": "Je transmets ma joie aux autres." },
+        { "title": "Je suis plus sérieux(se) que la plupart des gens." },
+        { "title": "J'ai une imagination très active." },
+        { "title": "Je fantasme rarement." },
+        { "title": "J'aime rêvasser." },
+        { "title": "Je suis très pratique et ne me perds pas dans les fantasmes." },
+        { "title": "Je crée des mondes imaginaires dans mon esprit." },
+        { "title": "Je ne perds pas de temps avec l'imagination." },
+        { "title": "Le monde des idées me fascine." },
+        { "title": "Je préfère les faits aux fantasmes." },
+        { "title": "Mon esprit est plein d'idées créatives." },
+        { "title": "Je n'ai pas beaucoup d'imagination." },
+        { "title": "J'apprécie l'art et la beauté." },
+        { "title": "Les manifestations artistiques ne m'intéressent pas." },
+        { "title": "La musique m'émeut." },
+        { "title": "Je ne vois pas l'intérêt de l'art abstrait." },
+        { "title": "J'aime visiter les musées et les galeries." },
+        { "title": "L'art m'ennuie." },
+        { "title": "J'aime contempler la nature." },
+        { "title": "Je ne fais pas attention aux détails esthétiques." },
+        { "title": "Je valorise l'expression artistique sous toutes ses formes." },
+        { "title": "Je préfère le fonctionnel au beau." },
+        { "title": "Je ressens les émotions très intensément." },
+        { "title": "Je suis rarement profondément ému(e)." },
+        { "title": "Les films et les livres m'affectent profondément." },
+        { "title": "Je ne suis pas une personne particulièrement émotive." },
+        { "title": "Je peux pleurer en écoutant une belle chanson." },
+        { "title": "Je ne me laisse pas emporter par les émotions." },
+        { "title": "Je ressens une empathie profonde pour les autres." },
+        { "title": "Je contrôle mes sentiments par la raison." },
+        { "title": "Mes émotions sont très variées et intenses." },
+        { "title": "Je suis une personne émotionnellement réservée." },
+        { "title": "J'aime explorer de nouveaux endroits." },
+        { "title": "Je préfère le familier à l'inconnu." },
+        { "title": "J'aime goûter des cuisines d'autres cultures." },
+        { "title": "Je me sens à l'aise avec mes routines." },
+        { "title": "Je suis attiré(e) par les voyages dans des lieux exotiques." },
+        { "title": "Je n'aime pas sortir de ma zone de confort." },
+        { "title": "Je cherche constamment de nouvelles expériences." },
+        { "title": "Je préfère faire les choses de la manière habituelle." },
+        { "title": "Je m'adapte bien aux situations nouvelles." },
+        { "title": "Les changements me mettent mal à l'aise." },
+        { "title": "J'aime résoudre des problèmes complexes." },
+        { "title": "J'évite les discussions philosophiques." },
+        { "title": "J'aime réfléchir à des idées abstraites." },
+        { "title": "Les débats intellectuels ne m'intéressent pas." },
+        { "title": "Je lis beaucoup sur des sujets variés." },
+        { "title": "Je préfère les activités pratiques aux théoriques." },
+        { "title": "Apprendre de nouvelles choses me fascine." },
+        { "title": "La philosophie ne m'intéresse pas." },
+        { "title": "Je suis curieux(se) de comprendre comment tout fonctionne." },
+        { "title": "Je n'aime pas les énigmes ni les casse-tête." },
+        { "title": "Je crois que les lois devraient s'adapter aux temps." },
+        { "title": "Je respecte les traditions établies." },
+        { "title": "Je suis ouvert(e) aux remises en question sociales." },
+        { "title": "Je crois que la société fonctionne mieux avec des règles strictes." },
+        { "title": "Je remets en question les normes établies." },
+        { "title": "Je préfère suivre les conventions sociales." },
+        { "title": "Je soutiens les changements sociaux progressistes." },
+        { "title": "Je trouve important de préserver les coutumes." },
+        { "title": "Je crois qu'il faut remettre en cause l'ordre établi." },
+        { "title": "Les traditions donnent de la stabilité à la société." },
+        { "title": "Je fais confiance aux autres." },
+        { "title": "Je me méfie des intentions des gens." },
+        { "title": "Je crois que la plupart des gens sont honnêtes." },
+        { "title": "Je soupçonne les autres d'avoir des motifs cachés." },
+        { "title": "Je donne aux gens le bénéfice du doute." },
+        { "title": "Je crois que les gens cherchent à profiter de moi." },
+        { "title": "Je crois en la bonté des gens." },
+        { "title": "J'ai du mal à faire confiance à quelqu'un." },
+        { "title": "Je suppose que les gens ont de bonnes intentions." },
+        { "title": "Je suis sceptique face à la gentillesse des inconnus." },
+        { "title": "Je suis honnête en tout temps." },
+        { "title": "Il m'arrive de manipuler les autres pour obtenir ce que je veux." },
+        { "title": "Je ne mentirais pas pour obtenir un avantage." },
+        { "title": "J'utilise des ruses pour amener les gens à faire ce que je veux." },
+        { "title": "Je traite les autres avec équité." },
+        { "title": "Il m'arrive de prétendre être ce que je ne suis pas." },
+        { "title": "Je dis la vérité même quand c'est inconfortable." },
+        { "title": "Je ne suis pas toujours complètement sincère." },
+        { "title": "J'agis selon mes principes." },
+        { "title": "Je recours à la flatterie quand cela m'arrange." },
+        { "title": "J'aime aider les autres." },
+        { "title": "Je ne m'implique pas dans les problèmes des autres." },
+        { "title": "Je ressens de la satisfaction quand je fais quelque chose pour quelqu'un." },
+        { "title": "Je veille d'abord à mes propres intérêts." },
+        { "title": "Je me soucie du bien-être des autres." },
+        { "title": "Je n'aime pas qu'on me demande des faveurs." },
+        { "title": "J'aide ceux qui en ont besoin sans rien attendre en retour." },
+        { "title": "Je ne me sens pas obligé(e) d'aider les autres." },
+        { "title": "Je donne mon temps généreusement." },
+        { "title": "Je préfère ne pas me mêler des affaires des autres." },
+        { "title": "J'évite les conflits." },
+        { "title": "Discuter avec les gens ne me dérange pas." },
+        { "title": "Je cherche l'accord dans les discussions." },
+        { "title": "J'apprécie un bon débat même s'il est tendu." },
+        { "title": "Je cède pour maintenir la paix." },
+        { "title": "J'insiste sur mon point de vue même si cela crée un conflit." },
+        { "title": "Je préfère l'harmonie à avoir raison." },
+        { "title": "Cela ne me dérange pas de contredire les autres." },
+        { "title": "J'essaie de trouver des solutions qui satisfont tout le monde." },
+        { "title": "Je peux être assez têtu(e) dans les discussions." },
+        { "title": "Je n'aime pas me vanter." },
+        { "title": "Je crois que je suis meilleur(e) que la plupart des gens." },
+        { "title": "Je suis une personne humble." },
+        { "title": "J'aime être le centre de l'attention." },
+        { "title": "Je ne me considère pas comme spécial(e)." },
+        { "title": "Je crois mériter plus de reconnaissance que je n'en reçois." },
+        { "title": "Je minimise mes réalisations." },
+        { "title": "J'aime parler de mes succès." },
+        { "title": "Je ne cherche pas l'admiration." },
+        { "title": "Je sais que je vaux plus que la plupart des gens." },
+        { "title": "Je suis ému(e) par les personnes qui souffrent." },
+        { "title": "Les problèmes des autres ne m'affectent pas beaucoup." },
+        { "title": "Je ressens de la compassion pour les moins fortunés." },
+        { "title": "Je crois que chacun doit résoudre ses propres problèmes." },
+        { "title": "Je me soucie de ceux qui sont défavorisés." },
+        { "title": "Les histoires tristes ne m'émeuvent pas facilement." },
+        { "title": "Je crois que la société doit protéger les plus vulnérables." },
+        { "title": "Les gens exagèrent leurs problèmes." },
+        { "title": "Cela me fait mal de voir des animaux souffrir." },
+        { "title": "Je ne suis pas très sentimental(e) envers les causes sociales." },
+        { "title": "Je sais que je peux gérer n'importe quelle situation." },
+        { "title": "Je doute de mes capacités." },
+        { "title": "Je mène les tâches à bien." },
+        { "title": "Je ne me sens pas préparé(e) pour les défis." },
+        { "title": "J'ai confiance en ma capacité à résoudre les problèmes." },
+        { "title": "Je me sens en insécurité face aux tâches difficiles." },
+        { "title": "Je sais comment bien faire les choses." },
+        { "title": "Je me sens parfois incompétent(e)." },
+        { "title": "Je gère les difficultés avec habileté." },
+        { "title": "Je crains de ne pas être à la hauteur des attentes." },
+        { "title": "Je garde mes affaires en ordre." },
+        { "title": "Je laisse tout en désordre." },
+        { "title": "J'aime que tout soit à sa place." },
+        { "title": "Le désordre ne me dérange pas." },
+        { "title": "Je suis une routine organisée." },
+        { "title": "Je suis assez désorganisé(e)." },
+        { "title": "Je nettoie et range souvent." },
+        { "title": "Je ne me soucie pas de garder les choses en ordre." },
+        { "title": "Le chaos autour de moi me dérange." },
+        { "title": "Mon espace de travail est souvent en désordre." },
+        { "title": "Je remplis mes obligations." },
+        { "title": "Il m'arrive de ne pas suivre les règles." },
+        { "title": "Je tiens mes promesses." },
+        { "title": "Je ne fais pas toujours ce qu'on attend de moi." },
+        { "title": "Je prends mes responsabilités au sérieux." },
+        { "title": "Il m'arrive de manquer à mes engagements." },
+        { "title": "Je fais ce que je dis que je vais faire." },
+        { "title": "Les règles ne me préoccupent pas beaucoup." },
+        { "title": "Je suis une personne de parole." },
+        { "title": "Il m'arrive de négliger mes devoirs." },
+        { "title": "Je travaille dur pour atteindre mes objectifs." },
+        { "title": "Je me contente du minimum." },
+        { "title": "Je vise l'excellence." },
+        { "title": "Le succès ne m'importe pas beaucoup." },
+        { "title": "Je cherche constamment à m'améliorer." },
+        { "title": "Je ne suis pas très ambitieux(se)." },
+        { "title": "J'ai des objectifs clairs et je travaille pour les atteindre." },
+        { "title": "Je fais seulement le nécessaire pour m'en sortir." },
+        { "title": "Je suis motivé(e) par l'accomplissement de grandes choses." },
+        { "title": "Je ne fais pas plus d'efforts que nécessaire." },
+        { "title": "Je termine ce que je commence." },
+        { "title": "J'ai du mal à rester concentré(e)." },
+        { "title": "Je persévère jusqu'à l'achèvement de la tâche." },
+        { "title": "Je procrastine souvent." },
+        { "title": "Je me mets au travail immédiatement." },
+        { "title": "Je me laisse facilement distraire." },
+        { "title": "Je ne laisse pas les tâches à moitié faites." },
+        { "title": "Je perds du temps sur des choses sans importance." },
+        { "title": "Je reste concentré(e) sur mes objectifs." },
+        { "title": "J'ai du mal à commencer les tâches difficiles." },
+        { "title": "Je réfléchis avant d'agir." },
+        { "title": "J'agis sans penser aux conséquences." },
+        { "title": "Je considère toutes les options avant de décider." },
+        { "title": "Je prends des décisions de manière impulsive." },
+        { "title": "J'évalue les risques avec soin." },
+        { "title": "Je me lance dans les choses sans planifier." },
+        { "title": "Je planifie avant d'agir." },
+        { "title": "Je fais les choses sans trop y réfléchir." },
+        { "title": "Je réfléchis aux conséquences possibles." },
+        { "title": "Je dis des choses sans mesurer les conséquences." }
+      ]
+    },
+    "pid5": {
+      "name": "PID-5",
+      "fullName": "Inventaire de la Personnalité du DSM-5",
+      "desc": "Évaluation complète des traits pathologiques de la personnalité selon le modèle dimensionnel du DSM-5. Mesure 25 facettes dans 5 domaines.",
+      "instructions": "Lisez chaque affirmation et sélectionnez dans quelle mesure elle vous décrit en général, pas seulement comment vous vous sentez en ce moment.",
+      "sharedOptions": ["Très faux ou souvent faux","Parfois ou quelque peu faux","Parfois ou quelque peu vrai","Très vrai ou souvent vrai"],
+      "questions": [
+        { "title": "Mes émotions changent sans raison apparente." },
+        { "title": "Mon humeur change radicalement d'un moment à l'autre." },
+        { "title": "Je passe rapidement de la joie à la tristesse sans raison claire." },
+        { "title": "Les personnes proches de moi me disent que je suis trop émotif/émotive." },
+        { "title": "J'ai du mal à contrôler mes réactions émotionnelles." },
+        { "title": "Je m'énerve facilement dans des situations que les autres gèrent sans problème." },
+        { "title": "Mes sentiments sont imprévisibles, même pour moi." },
+        { "title": "Je m'inquiète pour presque tout." },
+        { "title": "Je m'attends toujours à ce que quelque chose de mauvais arrive." },
+        { "title": "Je deviens nerveux/nerveuse très facilement." },
+        { "title": "J'ai beaucoup de mal à arrêter de m'inquiéter." },
+        { "title": "Je ressens une anxiété constante que je ne peux pas expliquer." },
+        { "title": "Je m'inquiète excessivement pour des choses qui n'arriveront probablement pas." },
+        { "title": "Des pensées anxieuses envahissent fréquemment mon esprit." },
+        { "title": "J'ai peur que les choses tournent mal dans presque toutes les situations." },
+        { "title": "Je me sens tendu/e et nerveux/nerveuse la plupart du temps." },
+        { "title": "L'idée d'être seul/e me terrifie." },
+        { "title": "J'ai très peur que les personnes importantes de ma vie m'abandonnent." },
+        { "title": "J'ai constamment besoin de la proximité des personnes que j'aime." },
+        { "title": "Je me sens vulnérable quand je ne suis pas près de quelqu'un qui m'est cher." },
+        { "title": "Être séparé/e des personnes auxquelles je suis attaché/e me cause une grande détresse." },
+        { "title": "Je fais tout ce que je peux pour empêcher les gens de s'éloigner de moi." },
+        { "title": "Quand je suis loin de quelqu'un d'important pour moi, j'ai du mal à fonctionner." },
+        { "title": "Je change mes opinions pour correspondre à celles des autres." },
+        { "title": "J'ai beaucoup de mal à dire non, même quand je le veux." },
+        { "title": "Je laisse les autres prendre les décisions pour moi afin d'éviter les conflits." },
+        { "title": "Je préfère céder aux autres plutôt que de défendre ma position." },
+        { "title": "Je m'irrite facilement pour des petites choses." },
+        { "title": "Je me sens souvent en colère sans savoir exactement pourquoi." },
+        { "title": "Les gens me disent que j'ai mauvais caractère." },
+        { "title": "Je perds patience avec les autres plus que je ne le devrais." },
+        { "title": "Ça me dérange quand les gens ne font pas les choses à ma façon." },
+        { "title": "Je garde du ressentiment envers les personnes qui m'ont fait du mal." },
+        { "title": "J'ai tendance à réagir avec colère à la moindre provocation." },
+        { "title": "Je deviens furieux/furieuse quand les choses ne se passent pas comme je le veux." },
+        { "title": "Je ressens une irritation constante que j'ai du mal à contrôler." },
+        { "title": "Quand quelqu'un m'offense, j'ai beaucoup de mal à passer outre." },
+        { "title": "Je reste bloqué/e sur les mêmes pensées encore et encore." },
+        { "title": "J'ai beaucoup de mal à arrêter de penser à mes problèmes." },
+        { "title": "Je repasse mentalement les mêmes situations sans pouvoir m'arrêter." },
+        { "title": "Je suis obsédé/e par les erreurs que j'ai commises dans le passé." },
+        { "title": "Quand quelque chose me dérange, je ne peux pas m'empêcher d'y penser pendant des jours." },
+        { "title": "Mes pensées se répètent comme un disque rayé." },
+        { "title": "J'ai du mal à lâcher prise sur un sujet même quand je sais que je devrais." },
+        { "title": "Je continue à penser aux mêmes choses même si cela ne sert à rien." },
+        { "title": "Les gens me disent que je réfléchis trop." },
+        { "title": "Je montre rarement mes émotions aux autres." },
+        { "title": "Les gens me disent que je parais froid/e ou émotionnellement distant/e." },
+        { "title": "Je ne ressens généralement pas d'émotions fortes, ni positives ni négatives." },
+        { "title": "J'ai du mal à exprimer ce que je ressens, même avec des personnes proches." },
+        { "title": "Les situations qui enthousiasment les autres me laissent indifférent/e." },
+        { "title": "Les histoires tristes et les films émouvants ne me touchent pas." },
+        { "title": "Je préfère ne pas montrer ce que je ressens car je considère cela comme une faiblesse." },
+        { "title": "Je préfère être seul/e la plupart du temps." },
+        { "title": "J'évite les rassemblements sociaux autant que possible." },
+        { "title": "Je n'ai aucun intérêt à me faire de nouveaux amis." },
+        { "title": "Je me sens mal à l'aise quand je dois interagir avec d'autres personnes." },
+        { "title": "Je préfère faire les choses seul/e plutôt qu'en groupe." },
+        { "title": "Je m'isole des autres intentionnellement." },
+        { "title": "Les conversations avec les autres sont épuisantes pour moi." },
+        { "title": "Je me sens mieux quand je n'ai pas à interagir avec qui que ce soit." },
+        { "title": "J'évite les situations où je dois socialiser." },
+        { "title": "Passer de longues périodes sans contact social ne me dérange pas." },
+        { "title": "Peu de choses dans la vie me procurent un réel plaisir." },
+        { "title": "J'ai perdu l'intérêt pour des activités que j'appréciais auparavant." },
+        { "title": "J'ai du mal à trouver quelque chose qui me motive vraiment." },
+        { "title": "La vie me semble vide et dénuée de sens la plupart du temps." },
+        { "title": "Je ne ressens pas de joie, même lors d'occasions qui devraient être heureuses." },
+        { "title": "Je me sens émotionnellement vide presque tout le temps." },
+        { "title": "Rien ne m'enthousiasme vraiment." },
+        { "title": "J'ai l'impression que mes émotions positives se sont éteintes." },
+        { "title": "Je me sens sans valeur en tant que personne." },
+        { "title": "Je crois que le monde se porterait mieux sans moi." },
+        { "title": "Je me sens désespéré/e quant à l'avenir." },
+        { "title": "Je me critique constamment pour tout ce que je fais." },
+        { "title": "Je ressens une tristesse profonde qui ne disparaît pas." },
+        { "title": "Je me considère comme un échec dans presque tout ce que j'entreprends." },
+        { "title": "Je crois que les choses ne s'amélioreront jamais pour moi." },
+        { "title": "Je me sens coupable de choses qui ne sont pas vraiment de ma faute." },
+        { "title": "J'ai une vision très négative de moi-même." },
+        { "title": "Je pense souvent que je ne mérite pas d'être heureux/heureuse." },
+        { "title": "Je me sens inutile et incapable de bien faire quoi que ce soit." },
+        { "title": "Je pleure souvent ou j'ai envie de pleurer." },
+        { "title": "Je me sens complètement seul/e même quand je suis entouré/e de gens." },
+        { "title": "J'ai l'impression que ma vie n'a ni but ni direction." },
+        { "title": "J'évite les relations amoureuses parce qu'elles me rendent vulnérable." },
+        { "title": "Je ne suis pas intéressé/e par une relation intime avec qui que ce soit." },
+        { "title": "La proximité émotionnelle avec une autre personne me met très mal à l'aise." },
+        { "title": "Je préfère garder les gens à distance émotionnellement." },
+        { "title": "Les relations intimes me semblent étouffantes." },
+        { "title": "Je n'ai besoin de personne dans ma vie de façon proche." },
+        { "title": "Je me méfie des intentions de la plupart des gens." },
+        { "title": "Je crois que les gens ont des arrière-pensées la plupart du temps." },
+        { "title": "Je soupçonne que les gens parlent mal de moi dans mon dos." },
+        { "title": "J'ai du mal à croire que quelqu'un veuille m'aider sans rien attendre en retour." },
+        { "title": "Je suis toujours sur mes gardes car je crois que quelqu'un pourrait essayer de profiter de moi." },
+        { "title": "Je doute de la sincérité des compliments ou des éloges que je reçois." },
+        { "title": "J'ai le sentiment que je ne peux faire entièrement confiance à personne." },
+        { "title": "Je suis doué/e pour manipuler les gens afin d'obtenir ce que je veux." },
+        { "title": "J'utilise la flatterie pour amener les gens à faire ce que je veux." },
+        { "title": "Utiliser les autres pour atteindre mes objectifs ne me dérange pas." },
+        { "title": "Je sais exactement quoi dire pour influencer les décisions des autres." },
+        { "title": "J'aime contrôler subtilement les gens." },
+        { "title": "Je mens fréquemment si cela m'arrange." },
+        { "title": "Je n'ai pas de mal à tromper les gens." },
+        { "title": "J'invente des histoires pour arriver à mes fins." },
+        { "title": "Parfois je fais semblant d'être quelqu'un que je ne suis pas pour impressionner les autres." },
+        { "title": "J'exagère mes réalisations pour faire bonne impression." },
+        { "title": "Je retiens des informations importantes quand cela m'avantage." },
+        { "title": "Je suis capable de jouer la comédie de manière convaincante même quand je mens." },
+        { "title": "Être malhonnête ne me dérange pas si cela m'aide." },
+        { "title": "J'ai trompé ou escroqué d'autres personnes pour obtenir quelque chose que je voulais." },
+        { "title": "Je dis ce que les gens veulent entendre, même si ce n'est pas vrai." },
+        { "title": "Je mérite un traitement spécial parce que je suis meilleur/e que la plupart des gens." },
+        { "title": "Je crois que je suis une personne extraordinaire et que les autres devraient le reconnaître." },
+        { "title": "Les gens n'apprécient pas à quel point je suis vraiment précieux/précieuse." },
+        { "title": "J'ai du mal à comprendre pourquoi les autres ne voient pas à quel point je suis spécial/e." },
+        { "title": "J'ai le sentiment d'être au-dessus des règles qui s'appliquent aux autres." },
+        { "title": "Je me compare aux autres et je me considère presque toujours supérieur/e." },
+        { "title": "J'ai besoin d'être le centre de l'attention dans les situations sociales." },
+        { "title": "Je fais des choses voyantes pour que les gens me remarquent." },
+        { "title": "Ça me dérange quand l'attention n'est pas portée sur moi." },
+        { "title": "Je cherche constamment l'approbation et l'admiration des autres." },
+        { "title": "Je fais beaucoup d'efforts pour impressionner les gens." },
+        { "title": "J'aime faire de grands gestes pour que les autres parlent de moi." },
+        { "title": "J'exagère mes émotions pour obtenir une réaction des autres." },
+        { "title": "Je me sens vide si je ne reçois pas d'attention de la part des autres." },
+        { "title": "Je ne me soucie pas de savoir si mes actions blessent d'autres personnes." },
+        { "title": "Les gens disent que je suis insensible à la souffrance des autres." },
+        { "title": "Je ne ressens pas de remords quand je fais quelque chose qui blesse quelqu'un." },
+        { "title": "Les larmes des autres ne me touchent pas." },
+        { "title": "J'ai du mal à comprendre pourquoi les gens se vexent si facilement." },
+        { "title": "Je ne me préoccupe pas des sentiments des autres s'ils ne m'affectent pas directement." },
+        { "title": "Je peux être cruel/le si la situation l'exige." },
+        { "title": "Je ne suis pas intéressé/e à réconforter quelqu'un qui souffre." },
+        { "title": "Je pense que les gens sont trop sensibles de nos jours." },
+        { "title": "Je ne perds pas le sommeil pour avoir mal traité quelqu'un." },
+        { "title": "On m'a dit que je suis une personne dure et impitoyable." },
+        { "title": "Je considère l'empathie comme une faiblesse." },
+        { "title": "Voir les autres subir les conséquences de leurs erreurs ne m'affecte pas." },
+        { "title": "Je fais toujours passer mes besoins en premier, peu importe l'impact sur les autres." },
+        { "title": "Je manque souvent à mes engagements et à mes obligations." },
+        { "title": "Je suis négligent/e avec mes responsabilités financières." },
+        { "title": "Les gens ne peuvent pas compter sur moi pour faire ce que je dis que je ferai." },
+        { "title": "Je laisse souvent des tâches importantes inachevées." },
+        { "title": "Je ne me soucie pas de respecter les délais." },
+        { "title": "J'ai tendance à laisser les autres s'occuper de mes responsabilités." },
+        { "title": "J'ai du mal à garder un emploi ou à suivre un plan à long terme." },
+        { "title": "J'agis sans penser aux conséquences." },
+        { "title": "Je fais des choses impulsivement que je regrette ensuite." },
+        { "title": "J'ai beaucoup de mal à résister à mes impulsions." },
+        { "title": "Je prends des décisions hâtives sans considérer toutes les options." },
+        { "title": "Je dis des choses sans réfléchir et je regrette ensuite de les avoir dites." },
+        { "title": "Je ne peux pas attendre ; j'ai besoin d'une gratification immédiate." },
+        { "title": "Je me laisse très facilement distraire." },
+        { "title": "J'ai du mal à me concentrer sur une tâche pendant plus de quelques minutes." },
+        { "title": "Je perds constamment le fil de mes pensées." },
+        { "title": "Je commence beaucoup de choses mais j'ai du mal à les terminer parce que je me laisse distraire." },
+        { "title": "Le moindre bruit ou stimulus externe détourne mon attention." },
+        { "title": "J'ai du mal à suivre une longue conversation sans perdre ma concentration." },
+        { "title": "Mon esprit vagabonde quand je devrais être concentré/e sur quelque chose." },
+        { "title": "J'oublie souvent ce que j'étais en train de faire." },
+        { "title": "J'ai besoin qu'on me répète les instructions car je n'arrive pas à les retenir." },
+        { "title": "J'aime faire des choses dangereuses." },
+        { "title": "Je recherche des sensations fortes même si elles comportent des risques." },
+        { "title": "Me mettre dans des situations risquées ne me dérange pas." },
+        { "title": "Je m'ennuie facilement s'il n'y a pas d'adrénaline." },
+        { "title": "J'ai fait des choses téméraires qui auraient pu me causer du tort." },
+        { "title": "Les activités dangereuses me semblent excitantes." },
+        { "title": "Je conduis plus vite que la limite autorisée parce que j'aime la vitesse." },
+        { "title": "J'ai consommé des substances sans me soucier des conséquences." },
+        { "title": "J'ignore les signaux d'avertissement et je continue ce que je fais." },
+        { "title": "J'accepte des défis que la plupart des gens considéreraient trop risqués." },
+        { "title": "J'ai besoin d'expériences intenses pour me sentir vivant/e." },
+        { "title": "La routine m'ennuie et je cherche à faire des choses nouvelles et imprévisibles." },
+        { "title": "Je ne considère pas les dangers avant d'agir." },
+        { "title": "L'idée de faire quelque chose d'interdit m'attire." },
+        { "title": "Tout doit être parfait sinon je ne suis pas satisfait/e." },
+        { "title": "Je trouve impossible d'accepter un travail qui n'est pas impeccable." },
+        { "title": "Je passe trop de temps sur des détails insignifiants pour m'assurer qu'ils sont corrects." },
+        { "title": "Mes standards sont si élevés que je n'arrive souvent pas à les atteindre." },
+        { "title": "J'insiste pour que les choses soient faites exactement comme je le veux." },
+        { "title": "J'ai du mal à déléguer des tâches car personne ne les fait aussi bien que moi." },
+        { "title": "Mon perfectionnisme nuit à ma capacité à finir les choses à temps." },
+        { "title": "Je me sens très mal quand je commets la moindre erreur." },
+        { "title": "J'ai des règles très strictes sur la façon dont les choses doivent être faites." },
+        { "title": "Je ne tolère pas la médiocrité, ni chez moi ni chez les autres." },
+        { "title": "Je crois avoir un sixième sens qui me permet de savoir des choses que les autres ignorent." },
+        { "title": "J'ai eu des expériences que je considère surnaturelles ou paranormales." },
+        { "title": "Je crois pouvoir influencer les événements rien qu'en y pensant." },
+        { "title": "J'ai le sentiment que des forces cachées contrôlent ce qui se passe dans le monde." },
+        { "title": "Je crois que les coïncidences sont des messages de l'univers qui me sont destinés." },
+        { "title": "J'ai eu le sentiment d'avoir des pouvoirs ou des capacités spéciales que les autres ne possèdent pas." },
+        { "title": "Je crois que mes pensées peuvent affecter directement la réalité." },
+        { "title": "Je ressens une connexion spéciale avec le surnaturel ou le mystique." },
+        { "title": "Les gens me considèrent comme une personne étrange ou excentrique." },
+        { "title": "Ma façon de penser est très différente de celle de la plupart des gens." },
+        { "title": "J'ai des idées que les autres considèrent comme étranges ou hors du commun." },
+        { "title": "Mon comportement met les gens mal à l'aise." },
+        { "title": "Je dis des choses que les autres trouvent bizarres ou insensées." },
+        { "title": "J'ai des intérêts ou des passe-temps que la plupart des gens trouvent très particuliers." },
+        { "title": "Je m'exprime d'une manière que les autres ne comprennent pas." },
+        { "title": "On m'a dit que ma façon de voir le monde est très inhabituelle." },
+        { "title": "Les gens me regardent bizarrement à cause de mon comportement." },
+        { "title": "Mes réactions aux situations sont différentes de celles des autres." },
+        { "title": "J'ai un style personnel que les autres considèrent comme très hors norme." },
+        { "title": "Je pense souvent à des choses que la plupart des gens n'imagineraient même pas." },
+        { "title": "Je me sens fondamentalement différent/e de toutes les autres personnes." },
+        { "title": "Parfois j'ai l'impression que les choses autour de moi ne sont pas réelles." },
+        { "title": "J'ai eu la sensation d'être en dehors de mon corps." },
+        { "title": "Parfois je vois des choses que les autres ne peuvent pas voir." },
+        { "title": "J'ai entendu des voix ou des sons que les autres n'entendaient pas." },
+        { "title": "Parfois j'ai l'impression que mon corps change de forme ou de taille." },
+        { "title": "J'ai eu des expériences où je me sentais séparé/e de moi-même." },
+        { "title": "Parfois mon environnement me semble déformé ou irréel." },
+        { "title": "J'ai eu l'impression que mes pensées ne m'appartenaient pas." },
+        { "title": "Parfois je perds la notion de là où je finis et où le monde extérieur commence." },
+        { "title": "J'ai eu des sensations étranges dans mon corps que je ne peux pas expliquer." },
+        { "title": "Parfois j'ai l'impression que la réalité se fragmente autour de moi." },
+        { "title": "J'ai vécu des moments où je ne reconnaissais pas mon propre reflet." }
+      ]
+    },
+    "ipip_mmpi": {
+      "name": "IPIP-Clinique",
+      "fullName": "Échelles cliniques IPIP (équivalentes aux échelles MMPI)",
+      "desc": "Évaluation clinique complète de la personnalité à l'aide d'items du domaine public. Mesure 10 échelles cliniques et 3 échelles de validité équivalentes à celles du MMPI.",
+      "instructions": "Répondez vrai ou faux à chaque affirmation selon qu'elle s'applique généralement à vous. Soyez honnête ; il n'y a pas de bonnes ou de mauvaises réponses.",
+      "sharedOptions": ["Faux","Vrai"],
+      "questions": [
+        { "title": "Je n'ai jamais dit de mensonge." },
+        { "title": "Je m'inquiète beaucoup pour ma santé." },
+        { "title": "Je me sens triste la plupart du temps." },
+        { "title": "Je crois que les gens parlent de moi dans mon dos." },
+        { "title": "J'ai plus d'énergie que la plupart des gens." },
+        { "title": "J'entends des voix que les autres ne peuvent pas entendre." },
+        { "title": "Je me considère comme une personne très équilibrée." },
+        { "title": "J'ai parfois des maux de tête sans cause apparente." },
+        { "title": "Les règles me semblent ennuyeuses et inutiles." },
+        { "title": "Je m'intéresse beaucoup aux activités artistiques et culturelles." },
+        { "title": "Je vérifie les choses plusieurs fois pour m'assurer qu'elles sont correctes." },
+        { "title": "J'ai parfois des pensées très étranges." },
+        { "title": "Je préfère être seul(e) plutôt qu'en compagnie d'autres personnes." },
+        { "title": "Je suis toujours aimable avec toutes les personnes que je rencontre." },
+        { "title": "Je sens que mon estomac me dérange fréquemment." },
+        { "title": "L'avenir me semble sombre et sans espoir." },
+        { "title": "J'ai l'impression d'être suivi(e) ou surveillé(e)." },
+        { "title": "J'ai tendance à ignorer mes problèmes jusqu'à ce qu'ils disparaissent." },
+        { "title": "Je me méfie des intentions de la plupart des gens." },
+        { "title": "Je commence beaucoup de projets en même temps sans les terminer." },
+        { "title": "Je suis satisfait(e) de ma vie telle qu'elle est." },
+        { "title": "J'ai eu des problèmes avec des personnes en position d'autorité." },
+        { "title": "Je me considère comme une personne très sensible émotionnellement." },
+        { "title": "J'ai beaucoup de mal à prendre des décisions importantes." },
+        { "title": "Je me sens parfois déconnecté(e) de la réalité." },
+        { "title": "J'ai du mal à engager la conversation avec des inconnus." },
+        { "title": "Je n'ai jamais été en colère contre qui que ce soit." },
+        { "title": "J'ai fréquemment des douleurs dans différentes parties de mon corps." },
+        { "title": "J'ai perdu l'intérêt pour des choses que j'appréciais auparavant." },
+        { "title": "Je crois que j'ai des pouvoirs spéciaux que les autres n'ont pas." },
+        { "title": "Mes relations familiales sont très bonnes." },
+        { "title": "J'ai parfois des fourmillements ou des engourdissements sans raison médicale." },
+        { "title": "J'ai l'impression que les personnes proches de moi conspirent contre moi." },
+        { "title": "Je me sens poussé(e) à être toujours en mouvement." },
+        { "title": "J'aime enfreindre les règles quand je le peux." },
+        { "title": "J'aime lire de la poésie et de la littérature." },
+        { "title": "Je m'inquiète excessivement pour des choses insignifiantes." },
+        { "title": "J'ai parfois l'impression que mon corps change de forme ou de taille." },
+        { "title": "Je me sens mal à l'aise lors de grandes réunions sociales." },
+        { "title": "Je n'ai jamais pris quelque chose qui ne m'appartenait pas." },
+        { "title": "Je m'inquiète d'avoir une maladie grave non diagnostiquée." },
+        { "title": "Je pleure plus facilement qu'avant." },
+        { "title": "J'ai parfois l'impression que quelqu'un contrôle mes pensées." },
+        { "title": "Je gère généralement bien les situations difficiles." },
+        { "title": "Quand j'ai un conflit, je préfère ne pas y penser." },
+        { "title": "J'ai l'impression que les gens m'observent avec de mauvaises intentions." },
+        { "title": "Mes idées changent très rapidement d'un sujet à l'autre." },
+        { "title": "J'agis souvent sans penser aux conséquences." },
+        { "title": "Je suis facilement ému(e) par les histoires tristes." },
+        { "title": "J'ai besoin que tout soit parfaitement organisé." },
+        { "title": "J'entends parfois mes propres pensées comme si elles étaient prononcées à voix haute." },
+        { "title": "J'évite les situations où je dois parler en public." },
+        { "title": "Je dis toujours la vérité, sans exception." },
+        { "title": "J'ai l'impression que mon cœur bat de façon irrégulière fréquemment." },
+        { "title": "Je me sens fatigué(e) et sans énergie la majeure partie de la journée." },
+        { "title": "J'ai eu des expériences surnaturelles que je ne peux pas expliquer." },
+        { "title": "Je me considère comme une personne assez compétente." },
+        { "title": "J'ai parfois des vertiges ou des faiblesses sans raison claire." },
+        { "title": "Je suis sûr(e) qu'il y a des personnes qui veulent me faire du mal." },
+        { "title": "J'ai du mal à rester immobile pendant longtemps." },
+        { "title": "Je ne me soucie pas beaucoup de suivre les normes sociales." },
+        { "title": "J'aime les fleurs et la nature plus que la plupart des gens." },
+        { "title": "J'ai des pensées répétitives que je ne peux pas arrêter." },
+        { "title": "J'ai parfois l'impression que les choses autour de moi ne sont pas réelles." },
+        { "title": "J'ai du mal à me faire de nouveaux amis." },
+        { "title": "Je n'ai jamais été en retard à un rendez-vous ou un engagement." },
+        { "title": "Je consulte le médecin plus fréquemment que la plupart des gens." },
+        { "title": "Je me sens inutile ou comme un fardeau pour les autres." },
+        { "title": "Je vois des choses que les autres ne peuvent pas voir." },
+        { "title": "Je sens que ma famille me soutient en tout." },
+        { "title": "Je perds parfois la sensibilité dans des parties de mon corps." },
+        { "title": "Je crois que quelqu'un essaie de m'empoisonner ou de me faire du mal." },
+        { "title": "Je dors beaucoup moins que les autres et je me sens bien." },
+        { "title": "J'ai eu des problèmes juridiques à cause de mon comportement." },
+        { "title": "Je m'intéresse à la mode et à la décoration d'intérieur." },
+        { "title": "Je ressens une anxiété constante que je ne peux pas expliquer." },
+        { "title": "J'ai parfois l'impression de ne pas être moi-même." },
+        { "title": "Je préfère les activités solitaires comme lire ou marcher seul(e)." },
+        { "title": "Je n'ai jamais éprouvé d'envie envers qui que ce soit." },
+        { "title": "Je ressens fréquemment des nausées ou un malaise gastrique." },
+        { "title": "Je pense parfois qu'il vaudrait mieux ne pas être en vie." },
+        { "title": "J'ai l'impression de pouvoir prédire l'avenir." },
+        { "title": "Je me considère comme une personne émotionnellement stable." },
+        { "title": "J'ai eu des évanouissements ou des épisodes de perte de connaissance." },
+        { "title": "Je crois que mes collègues de travail disent du mal de moi." },
+        { "title": "Je fais des choses risquées uniquement pour le frisson." },
+        { "title": "L'honnêteté n'est pas toujours la meilleure politique." },
+        { "title": "J'aime cuisiner et préparer des plats élaborés." },
+        { "title": "J'ai le sentiment que quelque chose de mauvais va arriver, mais je ne sais pas quoi." },
+        { "title": "Mes pensées se mélangent parfois de manière confuse." },
+        { "title": "Je deviens nerveux(se) quand je suis entouré(e) de beaucoup de monde." },
+        { "title": "Je n'ai jamais dit du mal d'une autre personne." },
+        { "title": "Je m'inquiète que mon corps ne fonctionne pas correctement." },
+        { "title": "J'ai du mal à me concentrer sur ce que je fais." },
+        { "title": "J'ai ressenti la présence d'êtres qui ne sont pas là." },
+        { "title": "Je n'ai aucun problème important dans ma vie." },
+        { "title": "J'ai parfois très mal au dos sans raison apparente." },
+        { "title": "Je crois qu'il y a des personnes qui m'espionnent." },
+        { "title": "J'ai des projets grandioses pour mon avenir que les autres ne comprennent pas." },
+        { "title": "Je m'ennuie facilement des routines et de la monotonie." },
+        { "title": "Je me considère comme une personne ayant une grande sensibilité artistique." },
+        { "title": "Je me lave les mains ou vérifie les serrures plus que nécessaire." },
+        { "title": "J'ai l'impression que mon esprit fonctionne différemment de celui des autres." },
+        { "title": "J'évite les fêtes et les événements sociaux quand je le peux." },
+        { "title": "Je tiens toujours absolument toutes mes promesses." },
+        { "title": "Je prête une grande attention à tout changement dans mon corps." },
+        { "title": "Je me sens coupable pour des choses que j'ai faites dans le passé." },
+        { "title": "J'ai l'impression de pouvoir communiquer avec les morts." },
+        { "title": "Je crois que la plupart des gens sont bons et dignes de confiance." },
+        { "title": "Quand je suis stressé(e), j'ai de forts maux de tête." },
+        { "title": "J'ai l'impression que les gens se moquent de moi en mon absence." },
+        { "title": "Je me sens capable de faire tout ce que je me propose." },
+        { "title": "J'ai souvent menti pour me sortir de problèmes." },
+        { "title": "J'aime regarder des émissions sur l'art, l'histoire ou la culture." },
+        { "title": "J'ai peur de perdre le contrôle de mes actions." },
+        { "title": "J'ai parfois l'impression que quelqu'un d'autre contrôle mes mouvements." },
+        { "title": "Je préfère travailler seul(e) plutôt qu'en équipe." },
+        { "title": "Je n'ai jamais ressenti le désir de casser quelque chose par frustration." },
+        { "title": "Je crois que je tombe malade plus souvent que la plupart des gens." },
+        { "title": "Je ne profite plus des repas comme avant." },
+        { "title": "J'ai eu des visions ou des expériences mystiques intenses." },
+        { "title": "Mes amis diraient que je suis une personne adaptable." },
+        { "title": "J'ai parfois une boule dans la gorge sans raison médicale." },
+        { "title": "Je crois que mes voisins me veulent du mal." },
+        { "title": "Je parle très vite et les gens ne me comprennent parfois pas." },
+        { "title": "J'ai du mal à garder un emploi pendant longtemps." },
+        { "title": "Je suis facilement ému(e) en écoutant de la musique." },
+        { "title": "J'ai besoin de vérifier plusieurs fois si j'ai bien fermé la porte à clé." },
+        { "title": "J'ai l'impression qu'il y a quelque chose de fondamentalement différent chez moi." },
+        { "title": "Je me sens plus à l'aise chez moi qu'en sortant." },
+        { "title": "Je n'ai jamais désobéi à une règle ou une norme." },
+        { "title": "J'ai des douleurs musculaires fréquentes sans cause connue." },
+        { "title": "Mon sommeil est irrégulier ; je dors trop ou trop peu." },
+        { "title": "J'ai parfois l'impression que mon âme quitte mon corps." },
+        { "title": "Je peux résoudre la plupart de mes problèmes sans aide." },
+        { "title": "J'ai des problèmes de vision que les médecins ne peuvent pas expliquer." },
+        { "title": "J'ai l'impression qu'il y a un complot organisé contre moi." },
+        { "title": "Je me sens plein(e) d'énergie et de vitalité." },
+        { "title": "Je ne me sens pas coupable quand je fais quelque chose de mal." },
+        { "title": "J'aime prendre soin des autres et répondre à leurs besoins." },
+        { "title": "Je ressens une peur intense sans savoir exactement de quoi." },
+        { "title": "Je ne reconnais parfois pas ma propre image dans le miroir." },
+        { "title": "Je trouve épuisant de socialiser pendant longtemps." },
+        { "title": "Je n'ai jamais eu de pensée inappropriée." },
+        { "title": "Je sens fréquemment que j'ai du mal à respirer." },
+        { "title": "J'ai du mal à trouver la motivation pour faire les choses." },
+        { "title": "J'ai eu l'impression d'être possédé(e) par une force extérieure." },
+        { "title": "Je me sens à l'aise avec moi-même la plupart du temps." },
+        { "title": "Quand je suis sous pression, j'ai des tremblements ou des tics." },
+        { "title": "Je crois que certaines personnes me suivent ou me traquent." },
+        { "title": "Je m'impatiente facilement quand les choses vont lentement." },
+        { "title": "J'ai détruit la propriété d'autrui quand j'étais en colère." },
+        { "title": "J'aime les conversations profondes sur les émotions et les sentiments." },
+        { "title": "J'ai du mal à me détendre ; je suis toujours tendu(e)." },
+        { "title": "J'ai du mal à distinguer les rêves de la réalité." },
+        { "title": "J'ai du mal à regarder les gens dans les yeux." },
+        { "title": "Je n'ai jamais ressenti de paresse ni évité une responsabilité." },
+        { "title": "J'ai l'impression que mes organes internes ne fonctionnent pas bien." },
+        { "title": "La vie n'a pas beaucoup de sens pour moi dernièrement." },
+        { "title": "J'ai reçu des messages spéciaux par la télévision ou la radio." },
+        { "title": "Je crois que j'ai un bon jugement pour prendre des décisions." },
+        { "title": "Je ne peux parfois pas bouger temporairement une partie de mon corps." },
+        { "title": "J'ai l'impression que mes ennemis veulent ruiner ma réputation." },
+        { "title": "Je dépense souvent de l'argent de manière impulsive." },
+        { "title": "Cela ne me dérange pas de blesser les sentiments des autres si c'est nécessaire." },
+        { "title": "J'aime explorer mes propres émotions et celles des autres." },
+        { "title": "J'ai des rituels ou des habitudes que je dois suivre à la lettre." },
+        { "title": "J'ai parfois l'impression de ne pas avoir d'identité propre." },
+        { "title": "Je préfère les activités calmes aux activités sociales." },
+        { "title": "Je n'ai jamais doublé dans une file ni pris un raccourci indu." },
+        { "title": "Je m'inquiète constamment de savoir si j'ai un problème de santé." },
+        { "title": "J'ai l'impression d'avoir déçu les personnes qui comptent pour moi." },
+        { "title": "J'ai eu l'impression que mon esprit est lu par d'autres personnes." },
+        { "title": "Je m'adapte bien aux changements dans ma vie." },
+        { "title": "J'ai parfois des épisodes de douleur intense sans diagnostic médical." },
+        { "title": "J'ai l'impression de ne pouvoir faire confiance à personne complètement." },
+        { "title": "J'ai besoin d'être constamment occupé(e) à faire des choses." },
+        { "title": "J'ai utilisé d'autres personnes pour obtenir ce que je voulais." },
+        { "title": "J'ai l'impression que mes doutes et mes peurs me paralysent parfois." },
+        { "title": "Je me sens parfois complètement isolé(e) du monde qui m'entoure." }
+      ]
     }
   }
 };
