@@ -1092,11 +1092,10 @@ function renderHome() {
         <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${catLabel}</h2>
       </div>
       ${tests.map(te => {
-        const name = te.name;
+        const name = tt(te.id, 'fullName') || te.name;
         const desc = tt(te.id, 'desc') || te.desc;
-        const fullName = tt(te.id, 'fullName') || te.fullName;
         return `
-        <div class="test-card" onclick="openTest('${te.id}')" onkeydown="event.key==='Enter'&&openTest('${te.id}')" tabindex="0" role="button" aria-label="${fullName}" style="--card-accent:${te.color}${te.id==='triage'?';grid-column:1/-1':''}">
+        <div class="test-card" onclick="openTest('${te.id}')" onkeydown="event.key==='Enter'&&openTest('${te.id}')" tabindex="0" role="button" aria-label="${name}" style="--card-accent:${te.color}${te.id==='triage'?';grid-column:1/-1':''}">
           <div class="card-accent" style="background:${te.color}"></div>
           <div class="test-card-icon" style="background:${te.color}18" aria-hidden="true">${te.icon}</div>
           <div class="card-abbr">${te.abbr}</div>
@@ -1179,15 +1178,16 @@ function checkResume() {
   if (!TESTS[data.testId] || data.answers.every(a => a === null)) {
     clearProgress(); return;
   }
-  const t = TESTS[data.testId];
+  const resumeTest_ = TESTS[data.testId];
   const grid = document.getElementById('test-grid');
   const banner = document.createElement('div');
   banner.className = 'resume-banner';
   banner.id = 'resume-banner';
+  const answered = data.answers.filter(a=>a!==null).length;
   banner.innerHTML = `
-    <p>Tienes un test de <strong>${t.abbr}</strong> en progreso (${data.answers.filter(a=>a!==null).length}/${t.questions.length} preguntas)</p>
-    <button class="btn btn-primary" onclick="resumeTest()">Continuar</button>
-    <button class="btn btn-ghost" onclick="dismissResume()">✕</button>
+    <p>${t('ui.resumeMessage').replace('{test}', resumeTest_.abbr).replace('{n}', answered).replace('{total}', resumeTest_.questions.length)}</p>
+    <button class="btn btn-primary" onclick="resumeTest()">${t('ui.continueTest')}</button>
+    <button class="btn btn-ghost" onclick="dismissResume()" aria-label="${t('ui.dismiss')}">✕</button>
   `;
   grid.parentNode.insertBefore(banner, grid);
 }
