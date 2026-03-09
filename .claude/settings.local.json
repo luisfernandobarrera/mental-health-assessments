@@ -2,5 +2,10 @@
   "disabledMcpjsonServers": [
     "pal",
     "playwright"
-  ]
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Cloudflare_Developer_Platform__accounts_list"
+    ]
+  }
 }

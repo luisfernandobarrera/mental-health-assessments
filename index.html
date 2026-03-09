@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mental health self-assessment platform with 22 validated screening tests in 12 languages">
+  <meta name="theme-color" content="#F7F4F0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
   <title>Salud Mental — Autoevaluación</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
+    /* ─── Design Tokens ─── */
     :root {
       --bg-primary: #F7F4F0;
       --bg-secondary: #FFFFFF;
       --bg-tertiary: #EDE8E1;
       --text-primary: #2D2A26;
-      --text-secondary: #5C5650;
-      --text-muted: #8A847C;
+      --text-secondary: #4A4540;
+      --text-muted: #706A62;
       --accent: #6B8F71;
       --accent-light: #8BAF91;
       --accent-dark: #4A6B50;
       --accent-glow: rgba(107, 143, 113, 0.15);
-      --border: rgba(45, 42, 38, 0.08);
+      --border: rgba(45, 42, 38, 0.1);
       --shadow-sm: 0 2px 8px rgba(45, 42, 38, 0.06);
       --shadow-md: 0 8px 24px rgba(45, 42, 38, 0.08);
       --shadow-lg: 0 16px 48px rgba(45, 42, 38, 0.12);
+      --disclaimer-bg: #FFF8F0;
+      --disclaimer-border: #C9A227;
+      --privacy-bg: #F0F8F0;
+      --privacy-border: #6B8F71;
+      --resources-bg: #F0F7F1;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --font-display: 'DM Serif Display', Georgia, serif;
@@ -30,7 +39,47 @@
       --radius: 16px;
       --radius-sm: 10px;
     }
+
+    /* ─── Dark Mode ─── */
+    html[data-theme="dark"] {
+      --bg-primary: #1A1A1E;
+      --bg-secondary: #26262A;
+      --bg-tertiary: #32323A;
+      --text-primary: #EDEDF0;
+      --text-secondary: #B0AEA8;
+      --text-muted: #8A8880;
+      --accent: #8BAF91;
+      --accent-light: #A5C9A9;
+      --accent-dark: #6B8F71;
+      --accent-glow: rgba(139, 175, 145, 0.12);
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+      --disclaimer-bg: #2A2520;
+      --disclaimer-border: #B1943A;
+      --privacy-bg: #202A22;
+      --privacy-border: #6B8F71;
+      --resources-bg: #202A22;
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme="light"]) {
+        --bg-primary: #1A1A1E; --bg-secondary: #26262A; --bg-tertiary: #32323A;
+        --text-primary: #EDEDF0; --text-secondary: #B0AEA8; --text-muted: #8A8880;
+        --accent: #8BAF91; --accent-light: #A5C9A9; --accent-dark: #6B8F71;
+        --accent-glow: rgba(139, 175, 145, 0.12);
+        --border: rgba(255, 255, 255, 0.1);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+        --disclaimer-bg: #2A2520; --disclaimer-border: #B1943A;
+        --privacy-bg: #202A22; --privacy-border: #6B8F71; --resources-bg: #202A22;
+      }
+    }
+
+    /* ─── Base ─── */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--font-body);
       font-size: 16px;
@@ -39,29 +88,88 @@
       background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    .container { max-width: 720px; margin: 0 auto; padding: 1rem 0.75rem 3rem; }
+
+    /* ─── Accessibility ─── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--accent); color: white;
+      padding: 0.5rem 1rem; border-radius: var(--radius-sm);
+      font-weight: 600; text-decoration: none; z-index: 10000;
+    }
+    .skip-link:focus { top: 1rem; }
+    *:focus-visible {
+      outline: 3px solid var(--accent-light);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .option input:focus-visible + label {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
 
     /* ─── Header ─── */
-    .app-header { text-align: center; margin-bottom: 1.5rem; }
+    .app-header { text-align: center; margin-bottom: 1.25rem; }
     .app-header h1 {
-      font-family: var(--font-display); font-size: 1.75rem;
+      font-family: var(--font-display); font-size: 1.5rem;
       color: var(--text-primary); letter-spacing: -0.02em; cursor: pointer;
     }
-    .app-header p { color: var(--text-muted); font-size: 0.85rem; }
+    .app-header p { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.15rem; }
+    .header-controls {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      align-items: center; gap: 0.5rem; margin-top: 0.5rem;
+    }
+
+    /* ─── Language Selector ─── */
+    .lang-selector {
+      display: flex; gap: 0.2rem; justify-content: center; flex-wrap: wrap;
+    }
+    .lang-btn {
+      min-width: 36px; min-height: 36px;
+      padding: 0.3rem 0.5rem; border: 1.5px solid var(--border);
+      border-radius: 8px; background: transparent; font-family: var(--font-body);
+      font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s var(--ease-out);
+      letter-spacing: 0.03em;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .lang-btn:hover { border-color: var(--text-muted); color: var(--text-primary); }
+    .lang-btn.active {
+      background: var(--accent); color: white;
+      border-color: var(--accent);
+    }
+
+    /* ─── Theme Toggle ─── */
+    .theme-toggle {
+      min-width: 36px; min-height: 36px;
+      padding: 0.3rem; border: 1.5px solid var(--border);
+      border-radius: 8px; background: transparent;
+      cursor: pointer; font-size: 1rem;
+      transition: all 0.2s var(--ease-out);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .theme-toggle:hover { border-color: var(--text-muted); }
 
     /* ─── Tabs ─── */
     .tabs {
       display: flex; gap: 0.25rem; background: var(--bg-tertiary);
-      padding: 4px; border-radius: var(--radius-sm); margin-bottom: 1.5rem;
+      padding: 4px; border-radius: var(--radius-sm); margin-bottom: 1.25rem;
     }
     .tab {
-      flex: 1; padding: 0.55rem 0.75rem; border: none; background: transparent;
-      font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+      flex: 1; min-height: 44px;
+      padding: 0.55rem 0.75rem; border: none; background: transparent;
+      font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
       color: var(--text-muted); cursor: pointer; border-radius: 8px;
       transition: all 0.25s var(--ease-out);
     }
-    .tab:hover { color: var(--text-primary); }
+    .tab:hover:not(.active) { color: var(--text-primary); }
     .tab.active {
       background: var(--bg-secondary); color: var(--text-primary);
       box-shadow: var(--shadow-sm);
@@ -75,19 +183,26 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── Test Grid ─── */
+    /* ─── Test Grid (Mobile-first) ─── */
     .test-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 0.75rem;
     }
-    @media (max-width: 480px) { .test-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 540px) {
+      .test-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+    @media (min-width: 900px) {
+      .container { max-width: 900px; }
+      .test-grid { grid-template-columns: repeat(3, 1fr); }
+    }
 
     .test-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: 1.5rem; box-shadow: var(--shadow-sm); cursor: pointer;
+      padding: 1.25rem; box-shadow: var(--shadow-sm); cursor: pointer;
       transition: all 0.3s var(--ease-out); border: 2px solid transparent;
       position: relative; overflow: hidden;
-      opacity: 0; transform: translateY(20px);
+      opacity: 0; transform: translateY(12px);
       animation: cardReveal 0.5s var(--ease-out) forwards;
     }
     .category-header {
@@ -103,9 +218,11 @@
       opacity: 0; transition: opacity 0.4s;
     }
     .test-card:hover::before { opacity: 0.08; }
-    .test-card:hover {
-      transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-md);
-      border-color: var(--card-accent, var(--accent));
+    @media (hover: hover) {
+      .test-card:hover {
+        transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-md);
+        border-color: var(--card-accent, var(--accent));
+      }
     }
     .test-card:active { transform: translateY(-1px) scale(0.99); }
     .test-card .card-accent {
@@ -114,66 +231,68 @@
     .test-card-icon {
       width: 40px; height: 40px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.75rem; font-size: 1.25rem;
+      margin-bottom: 0.65rem; font-size: 1.25rem;
     }
     .test-card h3 {
-      font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.15rem;
+      font-family: var(--font-display); font-size: 0.95rem; margin-bottom: 0.1rem;
     }
     .test-card .card-abbr {
-      font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;
+      font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem;
     }
     .test-card p {
       font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;
     }
     .test-card .card-meta {
-      font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;
+      font-size: 0.68rem; color: var(--text-muted); margin-top: 0.5rem;
       display: flex; gap: 0.75rem;
     }
 
     /* ─── Buttons ─── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      min-height: 44px;
       padding: 0.75rem 1.75rem; font-family: var(--font-body); font-size: 0.9rem;
       font-weight: 600; border: none; border-radius: var(--radius-sm); cursor: pointer;
       transition: all 0.25s var(--ease-out);
     }
     .btn-primary {
       background: var(--accent); color: white;
-      box-shadow: 0 4px 12px rgba(107, 143, 113, 0.3);
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
     .btn-primary:hover {
       background: var(--accent-dark); transform: translateY(-1px);
+      box-shadow: 0 6px 16px var(--accent-glow);
     }
-    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
     .btn-outline {
       background: transparent; color: var(--accent); border: 2px solid var(--accent);
     }
     .btn-outline:hover { background: var(--accent-glow); }
     .btn-ghost {
       background: transparent; color: var(--text-muted);
-      padding: 0.5rem 0.75rem; font-size: 0.8rem;
+      padding: 0.5rem 0.75rem; font-size: 0.82rem;
     }
     .btn-ghost:hover { color: var(--text-primary); }
 
     /* ─── Welcome Card ─── */
     .welcome-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: 2rem 1.75rem; box-shadow: var(--shadow-md); text-align: center;
+      padding: 1.75rem 1.25rem; box-shadow: var(--shadow-md); text-align: center;
     }
     .welcome-icon {
       width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 1.25rem; font-size: 1.5rem;
     }
-    .welcome-card h2 { font-family: var(--font-display); font-size: 1.35rem; margin-bottom: 0.75rem; }
+    .welcome-card h2 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.75rem; }
     .welcome-card p {
-      color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem; line-height: 1.7;
+      color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.7;
     }
     .disclaimer {
-      background: #FFF8F0; border-left: 3px solid #C9A227;
+      background: var(--disclaimer-bg); border-left: 3px solid var(--disclaimer-border);
       padding: 0.85rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 1.25rem 0; text-align: left; font-size: 0.78rem;
+      margin: 1rem 0; text-align: left; font-size: 0.78rem;
       color: var(--text-secondary); line-height: 1.6;
     }
 
@@ -204,23 +323,24 @@
     /* ─── Question Card ─── */
     .question-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: 1.75rem; box-shadow: var(--shadow-md);
-      min-height: 340px; display: flex; flex-direction: column;
+      padding: 1.25rem; box-shadow: var(--shadow-md);
+      min-height: 300px; display: flex; flex-direction: column;
     }
     .question-number {
       font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
       letter-spacing: 0.08em; margin-bottom: 0.6rem;
     }
     .question-title {
-      font-family: var(--font-display); font-size: 1.1rem;
+      font-family: var(--font-display); font-size: 1.05rem;
       margin-bottom: 1rem; color: var(--text-primary);
     }
-    .options { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+    .options { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
     .option { position: relative; }
     .option input { position: absolute; opacity: 0; pointer-events: none; }
     .option label {
       display: flex; align-items: flex-start; gap: 0.65rem;
-      padding: 0.75rem 0.85rem; border: 2px solid var(--border);
+      min-height: 44px;
+      padding: 0.7rem 0.85rem; border: 2px solid var(--border);
       border-radius: var(--radius-sm); cursor: pointer;
       transition: all 0.2s var(--ease-out); font-size: 0.85rem;
       line-height: 1.45; color: var(--text-secondary);
@@ -258,7 +378,7 @@
     /* ─── Results ─── */
     .results-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: 2rem 1.75rem; box-shadow: var(--shadow-md); text-align: center;
+      padding: 1.75rem 1.25rem; box-shadow: var(--shadow-md); text-align: center;
     }
     .score-circle {
       width: 110px; height: 110px; border-radius: 50%;
@@ -304,7 +424,7 @@
       margin-top: 1.5rem; flex-wrap: wrap;
     }
     .resources-box {
-      background: #F0F7F1; border-radius: var(--radius-sm);
+      background: var(--resources-bg); border-radius: var(--radius-sm);
       padding: 1rem; margin-top: 1.25rem; text-align: left;
     }
     .resources-box h4 {
@@ -318,9 +438,10 @@
       display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1rem;
     }
     .filter-btn {
-      padding: 0.35rem 0.75rem; border: 1.5px solid var(--border);
+      min-height: 36px;
+      padding: 0.4rem 0.8rem; border: 1.5px solid var(--border);
       border-radius: 100px; background: transparent; font-family: var(--font-body);
-      font-size: 0.7rem; font-weight: 500; color: var(--text-muted);
+      font-size: 0.72rem; font-weight: 500; color: var(--text-muted);
       cursor: pointer; transition: all 0.2s var(--ease-out);
     }
     .filter-btn:hover { border-color: var(--text-muted); }
@@ -353,25 +474,27 @@
     .history-trend { font-size: 1rem; min-width: 24px; text-align: center; }
     .clear-history { text-align: center; margin-top: 1.25rem; }
 
-    /* ─── Responsive ─── */
-    @media (max-width: 480px) {
-      .container { padding: 1rem 0.75rem 3rem; }
-      .app-header h1 { font-size: 1.4rem; }
-      .question-card { padding: 1.25rem; min-height: 300px; }
-      .welcome-card, .results-card { padding: 1.5rem 1rem; }
+    /* ─── Responsive (tablet+) ─── */
+    @media (min-width: 540px) {
+      .container { padding: 1.5rem 1.25rem 4rem; }
+      .app-header h1 { font-size: 1.75rem; }
+      .question-card { padding: 1.75rem; min-height: 340px; }
+      .welcome-card { padding: 2rem 1.75rem; }
+      .results-card { padding: 2rem 1.75rem; }
+      .welcome-card h2 { font-size: 1.35rem; }
+      .question-title { font-size: 1.1rem; }
+    }
+    @media (max-width: 539px) {
       .results-actions { flex-direction: column; }
       .results-actions .btn { width: 100%; }
+      .dichotomy-label, .dichotomy-label-right { width: 60px; font-size: 0.65rem; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.15s !important;
       }
-    }
-    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
 
     /* ─── Breadcrumb ─── */
@@ -440,36 +563,14 @@
     /* ─── Option active press ─── */
     .option label:active { transform: scale(0.98); }
 
-    /* ─── Smooth scroll ─── */
-    html { scroll-behavior: smooth; }
-
-    /* ─── Language Selector ─── */
-    .lang-selector { display: flex; gap: 0.25rem; justify-content: center; }
-    .lang-btn {
-      padding: 0.25rem 0.55rem; border: 1.5px solid var(--border);
-      border-radius: 6px; background: transparent; font-family: var(--font-body);
-      font-size: 0.65rem; font-weight: 600; color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s var(--ease-out);
-      letter-spacing: 0.03em;
-    }
-    .lang-btn:hover { border-color: var(--text-muted); }
-    .lang-btn.active {
-      background: var(--text-primary); color: var(--bg-primary);
-      border-color: var(--text-primary);
-    }
-
     /* ─── Dimension Results (Big5 / MBTI) ─── */
-    .dimension-result {
-      margin-bottom: 1rem; text-align: left;
-    }
+    .dimension-result { margin-bottom: 1rem; text-align: left; }
     .dimension-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 0.35rem;
     }
     .dimension-name { font-weight: 600; font-size: 0.85rem; }
-    .dimension-score {
-      font-family: var(--font-display); font-size: 1rem;
-    }
+    .dimension-score { font-family: var(--font-display); font-size: 1rem; }
     .dimension-bar {
       height: 8px; background: var(--bg-tertiary); border-radius: 100px;
       overflow: hidden; margin-bottom: 0.25rem;
@@ -507,66 +608,74 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <div class="container">
   <header class="app-header">
-    <h1 onclick="goHome()" id="app-title">Salud Mental</h1>
-    <p id="app-subtitle">Herramientas de autoevaluación clínica</p>
-    <div class="lang-selector" style="margin-top:0.5rem">
-      <button class="lang-btn active" onclick="setLang('es')" data-lang="es">ES</button>
-      <button class="lang-btn" onclick="setLang('en')" data-lang="en">EN</button>
-      <button class="lang-btn" onclick="setLang('pt')" data-lang="pt">PT</button>
-      <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">FR</button>
-      <button class="lang-btn" onclick="setLang('de')" data-lang="de">DE</button>
-      <button class="lang-btn" onclick="setLang('it')" data-lang="it">IT</button>
-      <button class="lang-btn" onclick="setLang('zh')" data-lang="zh">中</button>
-      <button class="lang-btn" onclick="setLang('ja')" data-lang="ja">日</button>
-      <button class="lang-btn" onclick="setLang('ar')" data-lang="ar">عر</button>
-      <button class="lang-btn" onclick="setLang('ru')" data-lang="ru">RU</button>
-      <button class="lang-btn" onclick="setLang('ko')" data-lang="ko">한</button>
-      <button class="lang-btn" onclick="setLang('hi')" data-lang="hi">हि</button>
+    <button onclick="goHome()" id="app-title" style="background:none;border:none;cursor:pointer;font-family:var(--font-display);font-size:1.5rem;color:var(--text-primary);letter-spacing:-0.02em" aria-label="Go to home screen">
+      <h1 style="font:inherit;color:inherit">Mental Health</h1>
+    </button>
+    <p id="app-subtitle">Clinical self-assessment tools</p>
+    <div class="header-controls">
+      <div class="lang-selector" role="group" aria-label="Language selection">
+        <button class="lang-btn active" onclick="setLang('es')" data-lang="es" aria-label="Español">ES</button>
+        <button class="lang-btn" onclick="setLang('en')" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" onclick="setLang('pt')" data-lang="pt" aria-label="Português">PT</button>
+        <button class="lang-btn" onclick="setLang('fr')" data-lang="fr" aria-label="Français">FR</button>
+        <button class="lang-btn" onclick="setLang('de')" data-lang="de" aria-label="Deutsch">DE</button>
+        <button class="lang-btn" onclick="setLang('it')" data-lang="it" aria-label="Italiano">IT</button>
+        <button class="lang-btn" onclick="setLang('zh')" data-lang="zh" aria-label="中文">中</button>
+        <button class="lang-btn" onclick="setLang('ja')" data-lang="ja" aria-label="日本語">日</button>
+        <button class="lang-btn" onclick="setLang('ar')" data-lang="ar" aria-label="العربية">عر</button>
+        <button class="lang-btn" onclick="setLang('ru')" data-lang="ru" aria-label="Русский">RU</button>
+        <button class="lang-btn" onclick="setLang('ko')" data-lang="ko" aria-label="한국어">한</button>
+        <button class="lang-btn" onclick="setLang('hi')" data-lang="hi" aria-label="हिन्दी">हि</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
     </div>
   </header>
 
+  <main id="main-content">
   <nav class="tabs" role="tablist">
-    <button class="tab active" role="tab" data-tab="tests" onclick="switchTab('tests')" id="tab-tests">Tests</button>
-    <button class="tab" role="tab" data-tab="history" onclick="switchTab('history')" id="tab-history">Historial</button>
+    <button class="tab active" role="tab" data-tab="tests" onclick="switchTab('tests')" id="tab-tests" aria-selected="true" aria-controls="screen-home">Tests</button>
+    <button class="tab" role="tab" data-tab="history" onclick="switchTab('history')" id="tab-history" aria-selected="false" aria-controls="screen-history">History</button>
   </nav>
 
-  <section id="screen-home" class="screen active">
+  <section id="screen-home" class="screen active" role="tabpanel" aria-labelledby="tab-tests">
     <div class="test-grid" id="test-grid"></div>
   </section>
 
-  <section id="screen-welcome" class="screen">
+  <section id="screen-welcome" class="screen" role="region" aria-label="Test information">
     <div class="welcome-card" id="welcome-content"></div>
   </section>
 
-  <section id="screen-test" class="screen">
-    <nav class="breadcrumb" id="test-breadcrumb"></nav>
-    <div class="progress-section">
+  <section id="screen-test" class="screen" role="region" aria-label="Test questions">
+    <nav class="breadcrumb" id="test-breadcrumb" aria-label="Breadcrumb"></nav>
+    <div class="progress-section" role="status" aria-live="polite">
       <div class="progress-info">
         <span id="progress-text"></span>
         <span id="progress-pct"></span>
       </div>
-      <div class="progress-bar">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-fill" id="progress-fill" style="width:0%"></div>
       </div>
     </div>
     <div class="question-card">
-      <div id="question-area" class="question-content"></div>
+      <div id="question-area" class="question-content" aria-live="polite"></div>
       <div class="question-nav">
-        <button class="btn btn-ghost" id="btn-prev" onclick="prevQuestion()">&larr; Anterior</button>
-        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Siguiente &rarr;</button>
+        <button class="btn btn-ghost" id="btn-prev" onclick="prevQuestion()" aria-label="Previous question">&larr;</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled aria-label="Next question">&rarr;</button>
       </div>
     </div>
   </section>
 
-  <section id="screen-results" class="screen">
+  <section id="screen-results" class="screen" role="region" aria-label="Results">
     <div class="results-card" id="results-content"></div>
   </section>
 
-  <section id="screen-history" class="screen">
+  <section id="screen-history" class="screen" role="tabpanel" aria-labelledby="tab-history">
     <div id="history-content"></div>
   </section>
+  </main>
 </div>
 
 <script src="i18n/es.js"></script>
@@ -618,7 +727,7 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
-  document.getElementById('app-title').textContent = t('ui.appTitle');
+  document.querySelector('#app-title h1').textContent = t('ui.appTitle');
   document.getElementById('app-subtitle').textContent = t('ui.appSubtitle');
   document.getElementById('tab-tests').textContent = t('ui.tabTests');
   document.getElementById('tab-history').textContent = t('ui.tabHistory');
@@ -627,6 +736,25 @@ function setLang(lang) {
     renderQuestion();
   }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════════════════════════════
+function getPreferredTheme() {
+  const saved = localStorage.getItem('mental_health_theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('theme-toggle').textContent = theme === 'dark' ? '🌙' : '☀️';
+}
+function toggleTheme() {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('mental_health_theme', next);
+  applyTheme(next);
+}
+applyTheme(getPreferredTheme());
 
 // ═══════════════════════════════════════════════════════════════
 // TEST REGISTRY
@@ -909,8 +1037,10 @@ function showScreen(id) {
 }
 
 function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  const active = document.querySelector(`[data-tab="${tab}"]`);
+  active.classList.add('active');
+  active.setAttribute('aria-selected','true');
   if (tab === 'tests') {
     goHome();
   } else {
@@ -945,28 +1075,39 @@ const TEST_CATEGORIES = [
   { key: 'advanced', label: 'Evaluación Avanzada', ids: ['pid5','ipip_mmpi'] },
 ];
 
+// Translate test metadata: prefer i18n, fallback to hardcoded
+function tt(testId, field) {
+  const val = t(`tests.${testId}.${field}`);
+  return val !== `tests.${testId}.${field}` ? val : TESTS[testId]?.[field] || '';
+}
+
 function renderHome() {
   const grid = document.getElementById('test-grid');
   grid.innerHTML = TEST_CATEGORIES.map(cat => {
     const tests = cat.ids.filter(id => TESTS[id]).map(id => TESTS[id]);
     if (!tests.length) return '';
+    const catLabel = t(`ui.cat_${cat.key}`) !== `ui.cat_${cat.key}` ? t(`ui.cat_${cat.key}`) : cat.label;
     return `
       <div class="category-header" style="grid-column:1/-1;margin-top:0.75rem">
-        <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${cat.label}</h2>
+        <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${catLabel}</h2>
       </div>
-      ${tests.map(t => `
-        <div class="test-card" onclick="openTest('${t.id}')" style="--card-accent:${t.color}${t.id==='triage'?';grid-column:1/-1':''}">
-          <div class="card-accent" style="background:${t.color}"></div>
-          <div class="test-card-icon" style="background:${t.color}18">${t.icon}</div>
-          <div class="card-abbr">${t.abbr}</div>
-          <h3>${t.name}</h3>
-          <p>${t.desc}</p>
+      ${tests.map(te => {
+        const name = te.name;
+        const desc = tt(te.id, 'desc') || te.desc;
+        const fullName = tt(te.id, 'fullName') || te.fullName;
+        return `
+        <div class="test-card" onclick="openTest('${te.id}')" onkeydown="event.key==='Enter'&&openTest('${te.id}')" tabindex="0" role="button" aria-label="${fullName}" style="--card-accent:${te.color}${te.id==='triage'?';grid-column:1/-1':''}">
+          <div class="card-accent" style="background:${te.color}"></div>
+          <div class="test-card-icon" style="background:${te.color}18" aria-hidden="true">${te.icon}</div>
+          <div class="card-abbr">${te.abbr}</div>
+          <h3>${name}</h3>
+          <p>${desc}</p>
           <div class="card-meta">
-            <span>${t.items} ítems</span>
-            <span>${t.time}</span>
+            <span>${te.items} ${t('ui.items')}</span>
+            <span>${te.time}</span>
           </div>
-        </div>
-      `).join('')}
+        </div>`;
+      }).join('')}
     `;
   }).join('');
   // Stagger animations
@@ -986,17 +1127,17 @@ function openTest(id) {
     <div class="welcome-icon" style="background:${activeTest.color}18">
       <span>${activeTest.icon}</span>
     </div>
-    <h2>${activeTest.fullName}</h2>
-    <p>${activeTest.instructions}</p>
+    <h2>${tt(activeTest.id, 'fullName') || activeTest.fullName}</h2>
+    <p>${tt(activeTest.id, 'instructions') || activeTest.instructions}</p>
     <div class="disclaimer">
       <strong>${t('ui.disclaimerTitle')}</strong> ${t('ui.disclaimerText')}
     </div>
-    <div class="disclaimer" style="border-left-color:#6B8F71;background:#F0F8F0">
-      🔒 <strong>${t('ui.privacyTitle')}</strong> ${t('ui.privacyText')}
+    <div class="disclaimer" style="border-left-color:var(--privacy-border);background:var(--privacy-bg)">
+      <span aria-hidden="true">🔒</span> <strong>${t('ui.privacyTitle')}</strong> ${t('ui.privacyText')}
     </div>
-    <button class="btn btn-primary" onclick="startTest()">Comenzar evaluación</button>
+    <button class="btn btn-primary" onclick="startTest()">${t('ui.startTest')}</button>
     <br><br>
-    <button class="btn btn-ghost" onclick="goHome()">← Volver a tests</button>
+    <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
   `;
   showScreen('screen-welcome');
 }
