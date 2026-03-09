@@ -1155,7 +1155,7 @@ function startTest() {
 
 function updateBreadcrumb() {
   document.getElementById('test-breadcrumb').innerHTML = `
-    <a onclick="goHome()">Tests</a>
+    <a onclick="goHome()">${t('ui.tabTests')}</a>
     <span class="bc-sep">›</span>
     <span class="bc-current">${activeTest.abbr}</span>
   `;
@@ -1214,22 +1214,39 @@ function dismissResume() {
   if (banner) banner.remove();
 }
 
+function getTranslatedQuestion(testId, idx) {
+  const tq = t(`tests.${testId}.questions`);
+  if (Array.isArray(tq) && tq[idx]) return tq[idx];
+  return null;
+}
+function getTranslatedOptions(testId, idx) {
+  const tq = getTranslatedQuestion(testId, idx);
+  if (tq && tq.options) return tq.options;
+  const so = t(`tests.${testId}.sharedOptions`);
+  if (Array.isArray(so)) return so;
+  return null;
+}
+
 function renderQuestion() {
   const test = activeTest;
   const q = test.questions[currentQ];
   const total = test.questions.length;
   const pct = Math.round((currentQ / total) * 100);
-  const opts = test.sharedOptions || q.options;
 
-  document.getElementById('progress-text').textContent = `Pregunta ${currentQ + 1} de ${total}`;
+  // Get translated content or fall back to hardcoded
+  const tq = getTranslatedQuestion(test.id, currentQ);
+  const title = tq?.title || q.title;
+  const opts = getTranslatedOptions(test.id, currentQ) || test.sharedOptions || q.options;
+
+  document.getElementById('progress-text').textContent = `${t('ui.question')} ${currentQ + 1} ${t('ui.of')} ${total}`;
   document.getElementById('progress-pct').textContent = `${pct}%`;
   document.getElementById('progress-fill').style.width = `${pct}%`;
 
   const area = document.getElementById('question-area');
   area.innerHTML = `
-    <div class="question-number" style="color:${test.color}">Pregunta ${currentQ + 1} · ${q.title || test.abbr}</div>
-    <div class="question-title">${q.title}</div>
-    <div class="options" role="radiogroup" aria-label="${q.title}">
+    <div class="question-number" style="color:${test.color}">${t('ui.question')} ${currentQ + 1} · ${title || test.abbr}</div>
+    <div class="question-title">${title}</div>
+    <div class="options" role="radiogroup" aria-label="${title}">
       ${opts.map((opt, i) => `
         <div class="option">
           <input type="radio" name="q${currentQ}" id="q${currentQ}_${i}" value="${i}"
@@ -1237,7 +1254,7 @@ function renderQuestion() {
             onchange="selectAnswer(${i})">
           <label for="q${currentQ}_${i}">
             <span class="option-radio"></span>
-            <span>${opt}</span>
+            <span>${typeof opt === 'string' ? opt : opt.text || opt}</span>
           </label>
         </div>
       `).join('')}
@@ -1248,7 +1265,7 @@ function renderQuestion() {
   document.getElementById('btn-prev').disabled = currentQ === 0;
   const btnNext = document.getElementById('btn-next');
   btnNext.disabled = answers[currentQ] === null;
-  btnNext.textContent = currentQ === total - 1 ? 'Ver resultados' : 'Siguiente →';
+  btnNext.textContent = currentQ === total - 1 ? t('ui.viewResults') : t('ui.nextQuestion') + ' →';
 }
 
 function selectAnswer(val) {
@@ -1296,6 +1313,15 @@ function showResults() {
   const score = calcScore();
   const needsAnswers = ['type','dimensions','domains','scales','triage'].includes(test.maxScore);
   const result = needsAnswers ? test.getResult(score, answers) : test.getResult(score);
+
+  // Overlay i18n translations on result
+  if (result.key) {
+    const tr = t(`tests.${test.id}.results.${result.key}`);
+    if (tr && typeof tr === 'object') {
+      if (tr.label) result.label = tr.label;
+      if (tr.desc) result.desc = tr.desc;
+    }
+  }
 
   // Save
   const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
@@ -1421,7 +1447,7 @@ function showResults() {
           </svg>
           <div class="score-ring-text">
             <span class="score-ring-number" style="font-size:1.5rem">${elevated}/5</span>
-            <span class="score-ring-label">elevados</span>
+            <span class="score-ring-label">${t('ui.elevated') || 'elevated'}</span>
           </div>
         </div>
         <div class="score-category" style="color:${result.color}">${result.label}</div>
@@ -1495,7 +1521,7 @@ function showResults() {
 
       ${result.validityScales ? `
       <div class="breakdown" style="margin-top:1rem">
-        <h3>Escalas de Validez</h3>
+        <h3>${t('ui.validityScales') || 'Validity Scales'}</h3>
         ${result.validityScales.map(s => {
           const pct = Math.min(100, Math.round(((s.tScore || 50) / 100) * 100));
           const c = (s.tScore||50) >= 65 ? '#A65D57' : '#6B8F71';
@@ -1510,7 +1536,7 @@ function showResults() {
       </div>` : ''}
 
       <div class="breakdown" style="margin-top:1rem">
-        <h3>Escalas Clínicas${elevatedCount>0?` (${elevatedCount} elevada${elevatedCount>1?'s':''})</h3>`:' </h3>'}
+        <h3>${t('ui.clinicalScales') || 'Clinical Scales'}${elevatedCount>0?` (${elevatedCount} ${t('ui.elevated') || 'elevated'})</h3>`:' </h3>'}
         ${result.clinicalScales.map(s => {
           const pct = Math.min(100, Math.round(((s.tScore || 50) / 100) * 100));
           const c = s.elevated ? '#A65D57' : (s.tScore||50) >= 55 ? '#C9A227' : '#6B8F71';
@@ -1546,7 +1572,7 @@ function showResults() {
 
   // ─── Triage result ───
   if (test.maxScore === 'triage' && result.recommendations) {
-    const priorityLabels = { high: '🔴 Alta prioridad', medium: '🟡 Recomendado', suggested: '🟢 Sugerido' };
+    const priorityLabels = { high: t('ui.highPriority') || '🔴 High priority', medium: t('ui.recommended') || '🟡 Recommended', suggested: t('ui.suggested') || '🟢 Suggested' };
     const priorityOrder = { high: 0, medium: 1, suggested: 2 };
     const sortedRecs = [...result.recommendations].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
@@ -1557,7 +1583,7 @@ function showResults() {
       <p class="score-description">${result.desc}</p>
 
       <div class="breakdown" style="margin-top:1rem">
-        <h3>Áreas evaluadas</h3>
+        <h3>${t('ui.areasEvaluated') || 'Areas evaluated'}</h3>
         ${result.domainScores.map(d => {
           const pct = Math.round((d.score / d.maxScore) * 100);
           const c = d.score >= 3 ? '#A65D57' : d.score >= 2 ? '#C9A227' : '#6B8F71';
@@ -1572,7 +1598,7 @@ function showResults() {
       </div>
 
       <div style="margin-top:1.5rem">
-        <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:0.75rem">Evaluaciones recomendadas (${sortedRecs.length})</h3>
+        <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:0.75rem">${t('ui.recommendedTests') || 'Recommended assessments'} (${sortedRecs.length})</h3>
         ${sortedRecs.map(rec => {
           const rt = TESTS[rec.testId];
           if (!rt) return '';
@@ -1590,7 +1616,7 @@ function showResults() {
       </div>
 
       <div class="results-actions">
-        <button class="btn btn-ghost" onclick="goHome()">← Ver todos los tests</button>
+        <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
       </div>
     `;
     showScreen('screen-results');
@@ -1680,9 +1706,9 @@ function renderHistory() {
     container.innerHTML = `
       <div class="history-empty">
         <div style="font-size:2rem;opacity:0.4;margin-bottom:0.75rem">📊</div>
-        <p>Aún no tienes registros.</p>
-        <p style="font-size:0.78rem;margin-top:0.25rem;color:var(--text-muted)">Completa tu primera evaluación para comenzar el seguimiento.</p>
-        <button class="btn btn-primary" style="margin-top:1rem" onclick="switchTab('tests')">Ir a tests</button>
+        <p>${t('ui.noRecords')}</p>
+        <p style="font-size:0.78rem;margin-top:0.25rem;color:var(--text-muted)">${t('ui.completeFirst')}</p>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="switchTab('tests')">${t('ui.goToTests')}</button>
       </div>
     `;
     return;
@@ -1700,7 +1726,7 @@ function renderHistory() {
   if (filtered.length >= 2) {
     chartHTML = `
       <div class="chart-container">
-        <h3>Tendencia</h3>
+        <h3>${t('ui.trend')}</h3>
         <div class="chart-wrapper"><canvas id="trend-chart"></canvas></div>
       </div>
     `;
@@ -1708,7 +1734,7 @@ function renderHistory() {
 
   container.innerHTML = `
     <div class="history-filter">
-      <button class="filter-btn ${historyFilter==='all'?'active':''}" onclick="setFilter('all')">Todos</button>
+      <button class="filter-btn ${historyFilter==='all'?'active':''}" onclick="setFilter('all')">${t('ui.all')}</button>
       ${testTypes.map(id => {
         const t = TESTS[id];
         return `<button class="filter-btn ${historyFilter===id?'active':''}" onclick="setFilter('${id}')">${t.abbr}</button>`;
@@ -1718,8 +1744,8 @@ function renderHistory() {
     <div class="history-list">
       ${sorted.map((entry, idx) => {
         const date = new Date(entry.date);
-        const dateStr = date.toLocaleDateString('es', { day:'numeric', month:'short', year:'numeric' });
-        const timeStr = date.toLocaleTimeString('es', { hour:'2-digit', minute:'2-digit' });
+        const dateStr = date.toLocaleDateString(currentLang, { day:'numeric', month:'short', year:'numeric' });
+        const timeStr = date.toLocaleTimeString(currentLang, { hour:'2-digit', minute:'2-digit' });
         const prev = sorted[idx + 1];
         let trend = '';
         if (prev && prev.testId === entry.testId) {
@@ -1732,7 +1758,7 @@ function renderHistory() {
             <div class="history-dot" style="background:${entry.resultColor}"></div>
             <div class="history-info">
               <div class="history-date">${dateStr} · ${timeStr}</div>
-              <div class="history-score-text">Puntuación: ${entry.score}/${entry.maxScore}</div>
+              <div class="history-score-text">${t('ui.score')}: ${entry.score}/${entry.maxScore}</div>
               <div class="history-test-name">${TESTS[entry.testId]?.name || entry.testName}</div>
             </div>
             <span class="history-badge" style="background:${entry.resultColor}">${entry.resultLabel}</span>
@@ -1742,7 +1768,7 @@ function renderHistory() {
       }).join('')}
     </div>
     <div class="clear-history">
-      <button class="btn btn-ghost" onclick="clearHistory()">Borrar historial</button>
+      <button class="btn btn-ghost" onclick="clearHistory()">${t('ui.clearHistory')}</button>
     </div>
   `;
 
@@ -1759,7 +1785,7 @@ function renderChart(data) {
   const ctx = canvas.getContext('2d');
   const labels = data.map(e => {
     const d = new Date(e.date);
-    return d.toLocaleDateString('es', { day:'numeric', month:'short' });
+    return d.toLocaleDateString(currentLang, { day:'numeric', month:'short' });
   });
 
   // Group by test type
@@ -1825,7 +1851,7 @@ function renderChart(data) {
 }
 
 function clearHistory() {
-  if (confirm('¿Estás seguro de que deseas borrar todo el historial?')) {
+  if (confirm(t('ui.clearConfirm'))) {
     localStorage.removeItem('mental_health_history');
     renderHistory();
   }
