@@ -45,7 +45,12 @@ const LANG_EN = {
     "dismiss": "Close",
     "questionsAnswered": "questions answered",
     "inProgress": "In progress",
-    "testBy": "Tests"
+    "testBy": "Tests",
+    "recommendedTests": "Recommended assessments",
+    "highPriority": "High priority",
+    "recommended": "Recommended",
+    "suggested": "Suggested",
+    "areasEvaluated": "Areas evaluated"
   },
   "scales": {
     "agreement5": ["Strongly disagree","Disagree","Neither agree nor disagree","Agree","Strongly agree"],
@@ -58,6 +63,7 @@ const LANG_EN = {
   "tests": {
     "bdi": {
       "name": "BDI-II",
+      "abbr": "BDI-II",
       "fullName": "Beck Depression Inventory-II",
       "desc": "Assesses the presence and severity of depressive symptoms over the past two weeks.",
       "instructions": "Read each group of statements carefully and select the one that best describes how you have been feeling during the past two weeks, including today.",
@@ -261,6 +267,7 @@ const LANG_EN = {
     },
     "bai": {
       "name": "BAI",
+      "abbr": "BAI",
       "fullName": "Beck Anxiety Inventory",
       "desc": "Assesses the severity of anxiety symptoms over the past week.",
       "instructions": "Indicate how much each symptom has bothered you during the past week, including today.",
@@ -296,6 +303,7 @@ const LANG_EN = {
     },
     "gad7": {
       "name": "GAD-7",
+      "abbr": "GAD-7",
       "fullName": "Generalized Anxiety Disorder-7",
       "desc": "Assesses the severity of generalized anxiety over the past two weeks.",
       "instructions": "Over the last 2 weeks, how often have you been bothered by the following problems?",
@@ -317,6 +325,7 @@ const LANG_EN = {
     },
     "msibpd": {
       "name": "MSI-BPD",
+      "abbr": "MSI-BPD",
       "fullName": "McLean Screening Instrument for Borderline Personality Disorder",
       "desc": "Screening tool for traits associated with borderline personality disorder.",
       "instructions": "Answer yes or no to each of the following questions.",
@@ -346,6 +355,7 @@ const LANG_EN = {
     },
     "pss": {
       "name": "PSS-10",
+      "abbr": "PSS-10",
       "fullName": "Perceived Stress Scale-10",
       "desc": "Measures the degree to which life situations are perceived as stressful over the past month.",
       "instructions": "The following questions ask about your feelings and thoughts during the last month. Indicate how often you felt or thought a certain way.",
@@ -369,6 +379,7 @@ const LANG_EN = {
     },
     "asrs": {
       "name": "ASRS v1.1",
+      "abbr": "ASRS-v1.1",
       "fullName": "Adult ADHD Self-Report Scale v1.1",
       "desc": "Screening tool for attention deficit hyperactivity disorder symptoms in adults.",
       "instructions": "Answer the following questions thinking about how you have felt and behaved over the past 6 months.",
@@ -388,6 +399,7 @@ const LANG_EN = {
     },
     "ocir": {
       "name": "OCI-R",
+      "abbr": "OCI-R",
       "fullName": "Obsessive-Compulsive Inventory-Revised",
       "desc": "Assesses symptoms of obsessive-compulsive disorder.",
       "instructions": "The following statements refer to experiences that many people have in their everyday lives. Indicate to what degree they have bothered you during the past month.",
@@ -419,6 +431,7 @@ const LANG_EN = {
     },
     "pcl5": {
       "name": "PCL-5",
+      "abbr": "PCL-5",
       "fullName": "PTSD Checklist for DSM-5",
       "desc": "Assesses post-traumatic stress disorder symptoms over the past month.",
       "instructions": "Below is a list of problems that people sometimes have in response to a very stressful experience. Indicate how much you have been bothered by that problem in the past month.",
@@ -452,6 +465,7 @@ const LANG_EN = {
     },
     "bfi44": {
       "name": "BFI-44",
+      "abbr": "BFI-44",
       "fullName": "Big Five Inventory-44",
       "desc": "Assesses five major personality dimensions: Extraversion, Agreeableness, Conscientiousness, Neuroticism, and Openness to Experience.",
       "instructions": "I see myself as someone who... Indicate how much you agree or disagree with each statement.",
@@ -538,6 +552,7 @@ const LANG_EN = {
     },
     "mbti": {
       "name": "MBTI",
+      "abbr": "16P",
       "fullName": "Myers-Briggs Type Indicator",
       "desc": "Identifies personality preferences across four dimensions: Energy, Perception, Decision-making, and Lifestyle.",
       "instructions": "Select the option that best describes you in most situations. There are no right or wrong answers.",
@@ -604,6 +619,7 @@ const LANG_EN = {
     },
     "phq9": {
       "name": "PHQ-9",
+      "abbr": "PHQ-9",
       "fullName": "Patient Health Questionnaire-9",
       "desc": "Rapid depression screening widely used in primary care. 9 questions.",
       "instructions": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
@@ -632,6 +648,7 @@ const LANG_EN = {
     },
     "audit": {
       "name": "AUDIT",
+      "abbr": "AUDIT",
       "fullName": "Alcohol Use Disorders Identification Test",
       "desc": "Developed by the WHO to detect problematic alcohol consumption.",
       "instructions": "Answer the following questions about your alcohol consumption. Be as honest as possible.",
@@ -689,6 +706,7 @@ const LANG_EN = {
     },
     "isi": {
       "name": "ISI",
+      "abbr": "ISI",
       "fullName": "Insomnia Severity Index",
       "desc": "Evaluates the nature, severity, and impact of insomnia over the last two weeks.",
       "instructions": "Assess the severity of your sleep problems over the last 2 weeks.",
@@ -737,6 +755,7 @@ const LANG_EN = {
     },
     "eat26": {
       "name": "EAT-26",
+      "abbr": "EAT-26",
       "fullName": "Eating Attitudes Test-26",
       "desc": "Detects attitudes and behaviors characteristic of eating disorders.",
       "instructions": "Indicate how often you exhibit each of the following attitudes or behaviors. Answer honestly.",
@@ -779,6 +798,7 @@ const LANG_EN = {
     },
     "mdq": {
       "name": "MDQ",
+      "abbr": "MDQ",
       "fullName": "Mood Disorder Questionnaire",
       "desc": "Rapid screening tool for bipolar disorder and bipolar spectrum.",
       "instructions": "Answer the following questions about experiences you may have had at some point in your life.",
@@ -857,6 +877,7 @@ const LANG_EN = {
     },
     "spin": {
       "name": "SPIN",
+      "abbr": "SPIN",
       "fullName": "Social Phobia Inventory",
       "desc": "Evaluates the presence and severity of social anxiety symptoms.",
       "instructions": "Indicate how much the following problems have bothered you during the last week.",
@@ -896,6 +917,7 @@ const LANG_EN = {
     },
     "rosenberg": {
       "name": "RSE",
+      "abbr": "RSE",
       "fullName": "Rosenberg Self-Esteem Scale",
       "desc": "The most widely used measure of global self-esteem. It assesses feelings of self-worth.",
       "instructions": "Indicate your degree of agreement with each of the following statements.",
@@ -920,6 +942,7 @@ const LANG_EN = {
     },
     "who5": {
       "name": "WHO-5",
+      "abbr": "WHO-5",
       "fullName": "WHO-5 Well-Being Index",
       "desc": "A brief measure of emotional well-being developed by the WHO. Only 5 questions.",
       "instructions": "Indicate how you have felt over the last two weeks.",
@@ -947,6 +970,7 @@ const LANG_EN = {
     },
     "triage": {
       "name": "Guide",
+      "abbr": "Guide",
       "fullName": "Initial Orientation Questionnaire",
       "desc": "Don't know where to start? This brief questionnaire recommends which assessments are most relevant for you.",
       "instructions": "Answer the following questions honestly about how you have been feeling lately. At the end, you will receive personalized recommendations on which assessments to take.",
@@ -1005,10 +1029,17 @@ const LANG_EN = {
         "Obsesiones y compulsiones": "High score on obsessive-compulsive indicators",
         "Cambios de ánimo": "High score on mood change indicators",
         "Regulación emocional": "High score on emotional and interpersonal instability indicators"
+      },
+      "results": {
+        "triage_label": "Your recommended assessments",
+        "triage_desc": "Based on your responses, we recommend the following assessments:",
+        "suggested_wellbeing": "General wellbeing assessment recommended for everyone",
+        "suggested_personality": "Personality assessment recommended as complement"
       }
     },
     "ipip300": {
       "name": "IPIP-300",
+      "abbr": "IPIP-300",
       "fullName": "IPIP-NEO-300 — 300-Item Personality Inventory",
       "desc": "The most comprehensive personality assessment available. Measures 30 facets grouped into the Big Five traits with high precision.",
       "instructions": "Indicate how accurately each statement describes you in general. There are no right or wrong answers. Please respond honestly.",
@@ -1318,6 +1349,7 @@ const LANG_EN = {
     },
     "pid5": {
       "name": "PID-5",
+      "abbr": "PID-5",
       "fullName": "Personality Inventory for DSM-5",
       "desc": "Comprehensive assessment of pathological personality traits according to the DSM-5 dimensional model. Measures 25 facets across 5 domains.",
       "instructions": "Read each statement and select how well it describes you in general, not just how you feel right now.",
@@ -1547,6 +1579,7 @@ const LANG_EN = {
     },
     "ipip_mmpi": {
       "name": "IPIP-Clinical",
+      "abbr": "IPIP-Clinical",
       "fullName": "IPIP Clinical Scales (equivalent to MMPI scales)",
       "desc": "Comprehensive clinical personality assessment using public domain items. Measures 10 clinical scales and 3 validity scales equivalent to those of the MMPI.",
       "instructions": "Respond true or false to each statement as it generally applies to you. Be honest; there are no right or wrong answers.",

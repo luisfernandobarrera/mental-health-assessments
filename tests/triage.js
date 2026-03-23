@@ -129,6 +129,7 @@ const TEST_TRIAGE = {
               testId: testId,
               priority: priority,
               reason: domainReasons[name],
+              domainKey: name,
               _avg: avg
             });
           }
@@ -149,7 +150,8 @@ const TEST_TRIAGE = {
       recommendations.push({
         testId: 'who5',
         priority: 'suggested',
-        reason: 'Evaluación general de bienestar recomendada para todos'
+        reason: 'Evaluación general de bienestar recomendada para todos',
+        reasonKey: 'suggested_wellbeing'
       });
     }
 
@@ -160,7 +162,8 @@ const TEST_TRIAGE = {
       recommendations.push({
         testId: 'bfi44',
         priority: 'suggested',
-        reason: 'Evaluación de personalidad recomendada como complemento'
+        reason: 'Evaluación de personalidad recomendada como complemento',
+        reasonKey: 'suggested_personality'
       });
     }
 

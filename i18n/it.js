@@ -45,7 +45,12 @@ const LANG_IT = {
     "dismiss": "Chiudi",
     "questionsAnswered": "domande risposte",
     "inProgress": "In corso",
-    "testBy": "Test"
+    "testBy": "Test",
+    "recommendedTests": "Valutazioni raccomandate",
+    "highPriority": "Alta priorità",
+    "recommended": "Raccomandato",
+    "suggested": "Suggerito",
+    "areasEvaluated": "Aree valutate"
   },
   "scales": {
     "agreement5": ["Molto in disaccordo","In disaccordo","Né d'accordo né in disaccordo","D'accordo","Molto d'accordo"],
@@ -58,6 +63,7 @@ const LANG_IT = {
   "tests": {
     "bdi": {
       "name": "BDI-II",
+      "abbr": "BDI-II",
       "fullName": "Inventario della Depressione di Beck-II",
       "desc": "Valuta la presenza e la gravità dei sintomi depressivi nelle ultime due settimane.",
       "instructions": "Leggi ogni gruppo di affermazioni attentamente e seleziona quella che meglio descrive come ti sei sentito/a nelle ultime due settimane, incluso oggi.",
@@ -264,6 +270,7 @@ const LANG_IT = {
     },
     "bai": {
       "name": "BAI",
+      "abbr": "BAI",
       "fullName": "Inventario d'Ansia di Beck",
       "desc": "Valuta la gravità dei sintomi d'ansia durante l'ultima settimana.",
       "instructions": "Indica quanto ti ha disturbato ciascun sintomo durante l'ultima settimana, incluso oggi.",
@@ -299,6 +306,7 @@ const LANG_IT = {
     },
     "gad7": {
       "name": "GAD-7",
+      "abbr": "GAD-7",
       "fullName": "Scala del Disturbo d'Ansia Generalizzata-7",
       "desc": "Valuta la gravità dell'ansia generalizzata nelle ultime due settimane.",
       "instructions": "Nelle ultime 2 settimane, con quale frequenza sei stato/a disturbato/a dai seguenti problemi?",
@@ -320,6 +328,7 @@ const LANG_IT = {
     },
     "msibpd": {
       "name": "MSI-BPD",
+      "abbr": "MSI-BPD",
       "fullName": "Inventario di Screening McLean per il Disturbo Borderline di Personalità",
       "desc": "Strumento di screening dei tratti associati al disturbo borderline di personalità.",
       "instructions": "Rispondi sì o no a ciascuna delle seguenti domande.",
@@ -346,6 +355,7 @@ const LANG_IT = {
     },
     "pss": {
       "name": "PSS-10",
+      "abbr": "PSS-10",
       "fullName": "Scala dello Stress Percepito-10",
       "desc": "Valuta il grado in cui le situazioni della vita sono percepite come stressanti nell'ultimo mese.",
       "instructions": "Le seguenti domande si riferiscono ai tuoi sentimenti e pensieri nell'ultimo mese. Indica con quale frequenza ti sei sentito/a o hai pensato in un certo modo.",
@@ -372,6 +382,7 @@ const LANG_IT = {
     },
     "asrs": {
       "name": "ASRS v1.1",
+      "abbr": "ASRS-v1.1",
       "fullName": "Scala di Autovalutazione dell'ADHD nell'Adulto v1.1",
       "desc": "Strumento di screening dei sintomi del disturbo da deficit di attenzione e iperattività negli adulti.",
       "instructions": "Rispondi alle seguenti domande pensando a come ti sei sentito/a e comportato/a negli ultimi 6 mesi.",
@@ -394,6 +405,7 @@ const LANG_IT = {
     },
     "ocir": {
       "name": "OCI-R",
+      "abbr": "OCI-R",
       "fullName": "Inventario Ossessivo-Compulsivo Rivisto",
       "desc": "Valuta i sintomi del disturbo ossessivo-compulsivo.",
       "instructions": "Le seguenti affermazioni si riferiscono a esperienze che molte persone hanno nella vita quotidiana. Indica in che misura ti hanno disturbato nell'ultimo mese.",
@@ -428,6 +440,7 @@ const LANG_IT = {
     },
     "pcl5": {
       "name": "PCL-5",
+      "abbr": "PCL-5",
       "fullName": "Checklist del Disturbo da Stress Post-Traumatico per il DSM-5",
       "desc": "Valuta i sintomi dello stress post-traumatico nell'ultimo mese.",
       "instructions": "Di seguito c'è una lista di problemi che le persone a volte hanno in risposta a un'esperienza molto stressante. Indica in che misura questo problema ti ha disturbato nell'ultimo mese.",
@@ -464,6 +477,7 @@ const LANG_IT = {
     },
     "bfi44": {
       "name": "BFI-44",
+      "abbr": "BFI-44",
       "fullName": "Inventario dei Cinque Grandi Fattori di Personalità",
       "desc": "Valuta cinque dimensioni principali della personalità: Estroversione, Amabilità, Coscienziosità, Nevroticismo e Apertura all'esperienza.",
       "instructions": "Mi vedo come una persona che... Indica in che misura sei d'accordo o in disaccordo con ciascuna affermazione.",
@@ -550,6 +564,7 @@ const LANG_IT = {
     },
     "mbti": {
       "name": "MBTI",
+      "abbr": "16P",
       "fullName": "Indicatore di Tipo di Personalità Myers-Briggs",
       "desc": "Identifica le preferenze di personalità in quattro dimensioni: Energia, Percezione, Processo decisionale e Stile di vita.",
       "instructions": "Seleziona l'opzione che meglio ti descrive nella maggior parte delle situazioni. Non ci sono risposte giuste o sbagliate.",
@@ -616,6 +631,7 @@ const LANG_IT = {
     },
     "phq9": {
       "name": "PHQ-9",
+      "abbr": "PHQ-9",
       "fullName": "Questionario sulla Salute del Paziente-9",
       "desc": "Screening rapido della depressione ampiamente utilizzato nelle cure primarie. 9 domande.",
       "instructions": "Nelle ultime 2 settimane, con quale frequenza ti hanno disturbato i seguenti problemi?",
@@ -644,6 +660,7 @@ const LANG_IT = {
     },
     "audit": {
       "name": "AUDIT",
+      "abbr": "AUDIT",
       "fullName": "Test di Identificazione dei Disturbi da Uso di Alcol",
       "desc": "Sviluppato dall'OMS per rilevare un consumo problematico di alcol.",
       "instructions": "Rispondi alle seguenti domande sul tuo consumo di alcol. Sii il più onesto/a possibile.",
@@ -707,6 +724,7 @@ const LANG_IT = {
     },
     "isi": {
       "name": "ISI",
+      "abbr": "ISI",
       "fullName": "Indice di Gravità dell'Insonnia",
       "desc": "Valuta la natura, la gravità e l'impatto dell'insonnia nelle ultime due settimane.",
       "instructions": "Valuta la gravità dei tuoi problemi di sonno nelle ultime 2 settimane.",
@@ -758,6 +776,7 @@ const LANG_IT = {
     },
     "eat26": {
       "name": "EAT-26",
+      "abbr": "EAT-26",
       "fullName": "Test degli Atteggiamenti Alimentari-26",
       "desc": "Rileva atteggiamenti e comportamenti caratteristici dei disturbi alimentari.",
       "instructions": "Indica con quale frequenza presenti ciascuno dei seguenti atteggiamenti o comportamenti. Rispondi con sincerità.",
@@ -800,6 +819,7 @@ const LANG_IT = {
     },
     "mdq": {
       "name": "MDQ",
+      "abbr": "MDQ",
       "fullName": "Questionario sui Disturbi dell'Umore",
       "desc": "Strumento di screening rapido per il disturbo bipolare e lo spettro bipolare.",
       "instructions": "Rispondi alle seguenti domande su esperienze che hai avuto in qualche momento della tua vita.",
@@ -878,6 +898,7 @@ const LANG_IT = {
     },
     "spin": {
       "name": "SPIN",
+      "abbr": "SPIN",
       "fullName": "Inventario della Fobia Sociale",
       "desc": "Valuta la presenza e la gravità dei sintomi di ansia sociale.",
       "instructions": "Indica quanto ti hanno disturbato i seguenti problemi durante l'ultima settimana.",
@@ -917,6 +938,7 @@ const LANG_IT = {
     },
     "rosenberg": {
       "name": "RSE",
+      "abbr": "RSE",
       "fullName": "Scala di Autostima di Rosenberg",
       "desc": "La misura più utilizzata dell'autostima globale. Valuta i sentimenti di valore personale.",
       "instructions": "Indica il tuo grado di accordo con ciascuna delle seguenti affermazioni.",
@@ -941,6 +963,7 @@ const LANG_IT = {
     },
     "who5": {
       "name": "WHO-5",
+      "abbr": "WHO-5",
       "fullName": "Indice di Benessere WHO-5",
       "desc": "Misura breve del benessere emotivo sviluppata dall'OMS. Solo 5 domande.",
       "instructions": "Indica come ti sei sentito/a nelle ultime due settimane.",
@@ -968,6 +991,7 @@ const LANG_IT = {
     },
     "triage": {
       "name": "Guida",
+      "abbr": "Guida",
       "fullName": "Questionario di Orientamento Iniziale",
       "desc": "Non sai da dove iniziare? Questo breve questionario ti consiglia quali valutazioni sono più rilevanti per te.",
       "instructions": "Rispondi con sincerità alle seguenti domande su come ti sei sentito/a ultimamente. Alla fine riceverai raccomandazioni personalizzate su quali valutazioni effettuare.",
@@ -1026,10 +1050,17 @@ const LANG_IT = {
         "Obsesiones y compulsiones": "Punteggio elevato negli indicatori ossessivo-compulsivi",
         "Cambios de ánimo": "Punteggio elevato negli indicatori di cambiamenti dell'umore",
         "Regulación emocional": "Punteggio elevato negli indicatori di instabilità emotiva e interpersonale"
+      },
+      "results": {
+        "triage_label": "Le tue valutazioni raccomandate",
+        "triage_desc": "In base alle tue risposte, ti raccomandiamo le seguenti valutazioni:",
+        "suggested_wellbeing": "Valutazione generale del benessere raccomandata per tutti",
+        "suggested_personality": "Valutazione della personalità raccomandata come complemento"
       }
     },
     "ipip300": {
       "name": "IPIP-300",
+      "abbr": "IPIP-300",
       "fullName": "IPIP-NEO-300 — Inventario di personalità a 300 item",
       "desc": "La valutazione della personalità più completa disponibile. Misura 30 sfaccettature raggruppate nei 5 grandi tratti con alta precisione.",
       "instructions": "Indica quanto accuratamente ogni affermazione ti descrive in generale. Non ci sono risposte giuste o sbagliate. Rispondi con onestà.",
@@ -1339,6 +1370,7 @@ const LANG_IT = {
     },
     "pid5": {
       "name": "PID-5",
+      "abbr": "PID-5",
       "fullName": "Inventario della Personalità del DSM-5",
       "desc": "Valutazione completa dei tratti patologici della personalità secondo il modello dimensionale del DSM-5. Misura 25 sfaccettature in 5 domini.",
       "instructions": "Leggi ogni affermazione e seleziona quanto ti descrive in generale, non solo come ti senti adesso.",
@@ -1568,6 +1600,7 @@ const LANG_IT = {
     },
     "ipip_mmpi": {
       "name": "IPIP-Clinico",
+      "abbr": "IPIP-Clinico",
       "fullName": "Scale Cliniche IPIP (equivalenti alle scale MMPI)",
       "desc": "Valutazione clinica completa della personalità utilizzando item di dominio pubblico. Misura 10 scale cliniche e 3 scale di validità equivalenti a quelle del MMPI.",
       "instructions": "Rispondi vero o falso a ciascuna affermazione in base a come si applica generalmente a te. Sii onesto/a; non ci sono risposte giuste o sbagliate.",

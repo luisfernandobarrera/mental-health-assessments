@@ -45,7 +45,12 @@ const LANG_DE = {
     "dismiss": "Schließen",
     "questionsAnswered": "Fragen beantwortet",
     "inProgress": "In Bearbeitung",
-    "testBy": "Tests"
+    "testBy": "Tests",
+    "recommendedTests": "Empfohlene Bewertungen",
+    "highPriority": "Hohe Priorität",
+    "recommended": "Empfohlen",
+    "suggested": "Vorgeschlagen",
+    "areasEvaluated": "Bewertete Bereiche"
   },
   "scales": {
     "agreement5": ["Stimme überhaupt nicht zu","Stimme nicht zu","Weder Zustimmung noch Ablehnung","Stimme zu","Stimme voll und ganz zu"],
@@ -58,6 +63,7 @@ const LANG_DE = {
   "tests": {
     "bdi": {
       "name": "BDI-II",
+      "abbr": "BDI-II",
       "fullName": "Beck-Depressions-Inventar II",
       "desc": "Bewertet das Vorhandensein und den Schweregrad depressiver Symptome in den letzten zwei Wochen.",
       "instructions": "Lesen Sie jede Gruppe von Aussagen sorgfältig durch und wählen Sie diejenige aus, die am besten beschreibt, wie Sie sich in den letzten zwei Wochen, einschließlich heute, gefühlt haben.",
@@ -270,6 +276,7 @@ const LANG_DE = {
     },
     "bai": {
       "name": "BAI",
+      "abbr": "BAI",
       "fullName": "Beck-Angst-Inventar",
       "desc": "Bewertet den Schweregrad der Angstsymptome während der letzten Woche.",
       "instructions": "Geben Sie an, wie sehr Sie jedes Symptom in der letzten Woche, einschließlich heute, belastet hat.",
@@ -305,6 +312,7 @@ const LANG_DE = {
     },
     "gad7": {
       "name": "GAD-7",
+      "abbr": "GAD-7",
       "fullName": "Skala zur Generalisierten Angststörung-7",
       "desc": "Bewertet den Schweregrad der generalisierten Angst in den letzten zwei Wochen.",
       "instructions": "Wie oft haben Sie in den letzten 2 Wochen die folgenden Probleme gehabt?",
@@ -326,6 +334,7 @@ const LANG_DE = {
     },
     "msibpd": {
       "name": "MSI-BPD",
+      "abbr": "MSI-BPD",
       "fullName": "McLean-Screening-Inventar für Borderline-Persönlichkeitsstörung",
       "desc": "Screening-Instrument zur Erkennung von Merkmalen der Borderline-Persönlichkeitsstörung.",
       "instructions": "Beantworten Sie jede der folgenden Fragen mit Ja oder Nein.",
@@ -352,6 +361,7 @@ const LANG_DE = {
     },
     "pss": {
       "name": "PSS-10",
+      "abbr": "PSS-10",
       "fullName": "Skala zum Wahrgenommenen Stress-10",
       "desc": "Bewertet das Ausmaß, in dem Lebenssituationen im letzten Monat als stressig wahrgenommen werden.",
       "instructions": "Die folgenden Fragen beziehen sich auf Ihre Gefühle und Gedanken im letzten Monat. Geben Sie an, wie häufig Sie sich so gefühlt oder gedacht haben.",
@@ -378,6 +388,7 @@ const LANG_DE = {
     },
     "asrs": {
       "name": "ASRS v1.1",
+      "abbr": "ASRS-v1.1",
       "fullName": "ADHS-Selbstbeurteilungsskala für Erwachsene v1.1",
       "desc": "Screening-Instrument für Symptome der Aufmerksamkeitsdefizit-Hyperaktivitätsstörung bei Erwachsenen.",
       "instructions": "Beantworten Sie die folgenden Fragen, indem Sie darüber nachdenken, wie Sie sich in den letzten 6 Monaten gefühlt und verhalten haben.",
@@ -400,6 +411,7 @@ const LANG_DE = {
     },
     "ocir": {
       "name": "OCI-R",
+      "abbr": "OCI-R",
       "fullName": "Obsessiv-Kompulsives Inventar – Revidiert",
       "desc": "Bewertet Symptome der Zwangsstörung.",
       "instructions": "Die folgenden Aussagen beziehen sich auf Erfahrungen, die viele Menschen im Alltag machen. Geben Sie an, wie sehr sie Sie im letzten Monat belastet haben.",
@@ -431,6 +443,7 @@ const LANG_DE = {
     },
     "pcl5": {
       "name": "PCL-5",
+      "abbr": "PCL-5",
       "fullName": "Checkliste für Posttraumatische Belastungsstörung nach DSM-5",
       "desc": "Bewertet die Symptome einer posttraumatischen Belastungsstörung im letzten Monat.",
       "instructions": "Im Folgenden finden Sie eine Liste von Problemen, die Menschen manchmal als Reaktion auf eine sehr belastende Erfahrung haben. Geben Sie an, wie sehr dieses Problem Sie im letzten Monat belastet hat.",
@@ -467,6 +480,7 @@ const LANG_DE = {
     },
     "bfi44": {
       "name": "BFI-44",
+      "abbr": "BFI-44",
       "fullName": "Big-Five-Persönlichkeitsinventar",
       "desc": "Bewertet fünf Hauptdimensionen der Persönlichkeit: Extraversion, Verträglichkeit, Gewissenhaftigkeit, Neurotizismus und Offenheit für Erfahrungen.",
       "instructions": "Ich sehe mich selbst als jemand, der... Geben Sie an, inwieweit Sie jeder Aussage zustimmen oder nicht zustimmen.",
@@ -553,6 +567,7 @@ const LANG_DE = {
     },
     "mbti": {
       "name": "MBTI",
+      "abbr": "16P",
       "fullName": "Myers-Briggs-Typenindikator",
       "desc": "Identifiziert Persönlichkeitspräferenzen in vier Dimensionen: Energie, Wahrnehmung, Entscheidungsfindung und Lebensstil.",
       "instructions": "Wählen Sie die Option, die Sie in den meisten Situationen am besten beschreibt. Es gibt keine richtigen oder falschen Antworten.",
@@ -619,6 +634,7 @@ const LANG_DE = {
     },
     "phq9": {
       "name": "PHQ-9",
+      "abbr": "PHQ-9",
       "fullName": "Patient Health Questionnaire-9",
       "desc": "Schnelles Screening auf Depressionen, weit verbreitet in der Primärversorgung. 9 Fragen.",
       "instructions": "Wie oft sind Ihnen in den letzten 2 Wochen folgende Probleme aufgefallen?",
@@ -650,6 +666,7 @@ const LANG_DE = {
     },
     "audit": {
       "name": "AUDIT",
+      "abbr": "AUDIT",
       "fullName": "Screening-Test zur Identifizierung von Alkoholabhängigkeit",
       "desc": "Entwickelt von der WHO zur Erkennung von problematischem Alkoholkonsum.",
       "instructions": "Beantworten Sie die folgenden Fragen zu Ihrem Alkoholkonsum. Seien Sie so ehrlich wie möglich.",
@@ -713,6 +730,7 @@ const LANG_DE = {
     },
     "isi": {
       "name": "ISI",
+      "abbr": "ISI",
       "fullName": "Insomnie-Schweregrad-Index",
       "desc": "Bewertet die Art, Schwere und Auswirkungen von Schlafstörungen in den letzten zwei Wochen.",
       "instructions": "Bewerten Sie den Schweregrad Ihrer Schlafprobleme in den letzten 2 Wochen.",
@@ -767,6 +785,7 @@ const LANG_DE = {
     },
     "eat26": {
       "name": "EAT-26",
+      "abbr": "EAT-26",
       "fullName": "Essverhaltenstest-26",
       "desc": "Erkennt Haltungen und Verhaltensweisen, die für Essstörungen charakteristisch sind.",
       "instructions": "Geben Sie an, wie oft Sie jede der folgenden Haltungen oder Verhaltensweisen zeigen. Antworten Sie ehrlich.",
@@ -812,6 +831,7 @@ const LANG_DE = {
     },
     "mdq": {
       "name": "MDQ",
+      "abbr": "MDQ",
       "fullName": "Stimmungsstörungs-Fragebogen",
       "desc": "Schnelles Screening-Instrument für bipolare Störung und das bipolare Spektrum.",
       "instructions": "Beantworten Sie die folgenden Fragen zu Erfahrungen, die Sie zu irgendeinem Zeitpunkt in Ihrem Leben gemacht haben.",
@@ -890,6 +910,7 @@ const LANG_DE = {
     },
     "spin": {
       "name": "SPIN",
+      "abbr": "SPIN",
       "fullName": "Soziale Phobie Inventar",
       "desc": "Bewertet das Vorhandensein und den Schweregrad von Symptomen sozialer Angst.",
       "instructions": "Geben Sie an, wie sehr Sie die folgenden Probleme in der letzten Woche beunruhigt haben.",
@@ -932,6 +953,7 @@ const LANG_DE = {
     },
     "rosenberg": {
       "name": "RSE",
+      "abbr": "RSE",
       "fullName": "Rosenberg-Selbstwertgefühlsskala",
       "desc": "Das am häufigsten verwendete Maß für das globale Selbstwertgefühl. Bewertet Gefühle des persönlichen Wertes.",
       "instructions": "Geben Sie an, inwieweit Sie jeder der folgenden Aussagen zustimmen.",
@@ -956,6 +978,7 @@ const LANG_DE = {
     },
     "who5": {
       "name": "WHO-5",
+      "abbr": "WHO-5",
       "fullName": "WHO-5 Wohlbefinden-Index",
       "desc": "Kurzes Maß für das emotionale Wohlbefinden, entwickelt von der WHO. Nur 5 Fragen.",
       "instructions": "Geben Sie an, wie Sie sich in den letzten zwei Wochen gefühlt haben.",
@@ -982,6 +1005,7 @@ const LANG_DE = {
     },
     "triage": {
       "name": "Leitfaden",
+      "abbr": "Leitfaden",
       "fullName": "Erster Orientierungsfragebogen",
       "desc": "Wissen Sie nicht, wo Sie anfangen sollen? Dieser kurze Fragebogen empfiehlt Ihnen, welche Bewertungen für Sie am relevantesten sind.",
       "instructions": "Beantworten Sie ehrlich die folgenden Fragen, wie Sie sich in letzter Zeit gefühlt haben. Am Ende erhalten Sie personalisierte Empfehlungen, welche Bewertungen Sie durchführen sollten.",
@@ -1040,10 +1064,17 @@ const LANG_DE = {
         "Obsesiones y compulsiones": "Hohe Punktzahl bei Indikatoren von Zwangsverhalten",
         "Cambios de ánimo": "Hohe Punktzahl bei Indikatoren von Stimmungsschwankungen",
         "Regulación emocional": "Hohe Punktzahl bei Indikatoren von emotionaler und zwischenmenschlicher Instabilität"
+      },
+      "results": {
+        "triage_label": "Ihre empfohlenen Bewertungen",
+        "triage_desc": "Basierend auf Ihren Antworten empfehlen wir die folgenden Bewertungen:",
+        "suggested_wellbeing": "Allgemeine Wohlbefindensbewertung für alle empfohlen",
+        "suggested_personality": "Persönlichkeitsbewertung als Ergänzung empfohlen"
       }
     },
     "ipip300": {
       "name": "IPIP-300",
+      "abbr": "IPIP-300",
       "fullName": "IPIP-NEO-300 — Persönlichkeitsinventar mit 300 Items",
       "desc": "Die umfassendste verfügbare Persönlichkeitsbewertung. Misst 30 Facetten, die in den Big Five Persönlichkeitsmerkmalen gruppiert sind, mit hoher Präzision.",
       "instructions": "Geben Sie an, wie genau jede Aussage Sie im Allgemeinen beschreibt. Es gibt keine richtigen oder falschen Antworten. Bitte antworten Sie ehrlich.",
@@ -1353,6 +1384,7 @@ const LANG_DE = {
     },
     "pid5": {
       "name": "PID-5",
+      "abbr": "PID-5",
       "fullName": "Persönlichkeitsinventar für DSM-5",
       "desc": "Umfassende Bewertung pathologischer Persönlichkeitsmerkmale gemäß dem dimensionalen Modell des DSM-5. Misst 25 Facetten in 5 Domänen.",
       "instructions": "Lesen Sie jede Aussage und wählen Sie aus, wie gut sie Sie im Allgemeinen beschreibt, nicht nur wie Sie sich gerade fühlen.",
@@ -1582,6 +1614,7 @@ const LANG_DE = {
     },
     "ipip_mmpi": {
       "name": "IPIP-Klinisch",
+      "abbr": "IPIP-Klinisch",
       "fullName": "IPIP Klinische Skalen (äquivalent zu MMPI-Skalen)",
       "desc": "Umfassende klinische Persönlichkeitsbewertung mit gemeinfreien Items. Misst 10 klinische Skalen und 3 Validitätsskalen, die den MMPI-Skalen entsprechen.",
       "instructions": "Antworten Sie auf jede Aussage mit wahr oder falsch, je nachdem, ob sie im Allgemeinen auf Sie zutrifft. Seien Sie ehrlich; es gibt keine richtigen oder falschen Antworten.",

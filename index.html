@@ -6,76 +6,88 @@
   <meta name="description" content="Mental health self-assessment platform with 22 validated screening tests in 12 languages">
   <meta name="theme-color" content="#F7F4F0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
-  <title>Salud Mental — Autoevaluación</title>
+  <title>Mental Health — Self-Assessment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
+    /* ══════════════════════════════════════════════════════════════
+       HEALING GARDEN — Premium Mental Wellness UI
+       Typography: Fraunces (Display) & Plus Jakarta Sans (Body)
+       ══════════════════════════════════════════════════════════════ */
+
     /* ─── Design Tokens ─── */
     :root {
-      --bg-primary: #F8F6F3;
+      --bg-primary: #FDFCFA;
       --bg-secondary: #FFFFFF;
-      --bg-tertiary: #F0EDE9;
-      --text-primary: #1F1D1A;
-      --text-secondary: #524F4A;
-      --text-muted: #827E78;
-      --accent: #5B8266;
+      --bg-tertiary: #F5F1EC;
+      --text-primary: #2D2A26;
+      --text-secondary: #5D5852;
+      --text-muted: #8E8881;
+      --accent: #4A6741;
       --accent-light: #8BAF91;
-      --accent-dark: #3E5C46;
-      --accent-glow: rgba(91, 130, 102, 0.12);
-      --border: rgba(31, 29, 26, 0.1);
-      --shadow-sm: 0 2px 4px rgba(31, 29, 26, 0.04);
-      --shadow-md: 0 12px 32px -8px rgba(31, 29, 26, 0.08);
-      --shadow-lg: 0 24px 64px -12px rgba(31, 29, 26, 0.14);
-      --disclaimer-bg: #FFF8F0;
-      --disclaimer-border: #C9A227;
-      --privacy-bg: #F0F8F0;
+      --accent-dark: #3A5234;
+      --accent-warm: #BC846C;
+      --accent-glow: rgba(74, 103, 65, 0.10);
+      --border: rgba(45, 42, 38, 0.08);
+      --shadow-sm: 0 1px 3px rgba(45, 42, 38, 0.04), 0 1px 2px rgba(45, 42, 38, 0.02);
+      --shadow-md: 0 8px 24px -4px rgba(45, 42, 38, 0.08), 0 2px 8px -2px rgba(45, 42, 38, 0.04);
+      --shadow-lg: 0 20px 48px -8px rgba(74, 103, 65, 0.12), 0 8px 16px -4px rgba(45, 42, 38, 0.06);
+      --disclaimer-bg: #FDF8F0;
+      --disclaimer-border: #C9A040;
+      --privacy-bg: #F0F5EE;
       --privacy-border: #6B8F71;
-      --resources-bg: #F0F7F1;
+      --resources-bg: #F2F7F0;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --font-display: 'DM Serif Display', Georgia, serif;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-      --radius: 20px;
-      --radius-sm: 12px;
-      --fs-h1: clamp(1.5rem, 4vw, 2.25rem);
-      --fs-h2: clamp(1.15rem, 3vw, 1.5rem);
+      --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
+      --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --radius: 24px;
+      --radius-sm: 14px;
+      --radius-xs: 8px;
+      --fs-h1: clamp(1.75rem, 4.5vw, 2.5rem);
+      --fs-h2: clamp(1.2rem, 3vw, 1.6rem);
+      --fs-body: clamp(0.9rem, 2vw, 1rem);
     }
 
-    /* ─── Dark Mode ─── */
+    /* ─── Dark Mode — Warm Evening ─── */
     html[data-theme="dark"] {
-      --bg-primary: #121214;
-      --bg-secondary: #1C1C1E;
-      --bg-tertiary: #2C2C2E;
-      --text-primary: #F2F2F7;
-      --text-secondary: #AEA9A2;
-      --text-muted: #726E68;
+      --bg-primary: #1A1C19;
+      --bg-secondary: #232621;
+      --bg-tertiary: #2C302A;
+      --text-primary: #E8E4DE;
+      --text-secondary: #B5B0A8;
+      --text-muted: #7D7972;
       --accent: #8BAF91;
       --accent-light: #A5C9A9;
       --accent-dark: #6B8F71;
+      --accent-warm: #D4A38F;
       --accent-glow: rgba(139, 175, 145, 0.12);
-      --border: rgba(255, 255, 255, 0.08);
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.5);
+      --border: rgba(232, 228, 222, 0.08);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 48px -8px rgba(0, 0, 0, 0.4);
       --disclaimer-bg: #2A2520;
       --disclaimer-border: #B1943A;
-      --privacy-bg: #202A22;
+      --privacy-bg: #212A22;
       --privacy-border: #6B8F71;
-      --resources-bg: #202A22;
+      --resources-bg: #212A22;
     }
     @media (prefers-color-scheme: dark) {
       html:not([data-theme="light"]) {
-        --bg-primary: #121214; --bg-secondary: #1C1C1E; --bg-tertiary: #2C2C2E;
-        --text-primary: #F2F2F7; --text-secondary: #AEA9A2; --text-muted: #726E68;
+        --bg-primary: #1A1C19; --bg-secondary: #232621; --bg-tertiary: #2C302A;
+        --text-primary: #E8E4DE; --text-secondary: #B5B0A8; --text-muted: #7D7972;
         --accent: #8BAF91; --accent-light: #A5C9A9; --accent-dark: #6B8F71;
+        --accent-warm: #D4A38F;
         --accent-glow: rgba(139, 175, 145, 0.12);
-        --border: rgba(255, 255, 255, 0.08);
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.5);
+        --border: rgba(232, 228, 222, 0.08);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 20px 48px -8px rgba(0, 0, 0, 0.4);
         --disclaimer-bg: #2A2520; --disclaimer-border: #B1943A;
-        --privacy-bg: #202A22; --privacy-border: #6B8F71; --resources-bg: #202A22;
+        --privacy-bg: #212A22; --privacy-border: #6B8F71; --resources-bg: #212A22;
       }
     }
 
@@ -85,14 +97,19 @@
     body {
       font-family: var(--font-body);
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--text-primary);
       background: var(--bg-primary);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.4s var(--ease-premium), color 0.3s ease;
+      background-image:
+        radial-gradient(ellipse at 0% 0%, var(--accent-glow) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(188, 132, 108, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: clamp(1rem, 4vw, 2rem) clamp(0.85rem, 3vw, 1.5rem) 3rem; }
+    .container { max-width: 920px; margin: 0 auto; padding: clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem) 3rem; }
 
     /* ─── Accessibility ─── */
     .skip-link {
@@ -118,197 +135,236 @@
     }
 
     /* ─── Header ─── */
-    .app-header { text-align: center; margin-bottom: 1.25rem; }
+    .app-header { text-align: center; margin-bottom: 1.5rem; }
     .app-header h1 {
       font-family: var(--font-display); font-size: var(--fs-h1);
-      color: var(--text-primary); letter-spacing: -0.02em; cursor: pointer;
+      font-weight: 400; font-optical-sizing: auto;
+      color: var(--text-primary); letter-spacing: -0.03em; cursor: pointer;
+      line-height: 1.2;
     }
-    .app-header p { color: var(--text-muted); font-size: clamp(0.78rem, 2vw, 0.88rem); margin-top: 0.15rem; }
+    .app-header p {
+      color: var(--text-muted); font-size: clamp(0.82rem, 2vw, 0.92rem);
+      margin-top: 0.35rem; font-weight: 300; font-style: italic;
+    }
     .header-controls {
       display: flex; flex-wrap: wrap; justify-content: center;
-      align-items: center; gap: 0.5rem; margin-top: 0.5rem;
+      align-items: center; gap: 0.5rem; margin-top: 0.75rem;
     }
 
     /* ─── Language Selector ─── */
     .lang-selector {
-      display: flex; gap: 0.2rem; justify-content: center; flex-wrap: wrap;
+      display: flex; gap: 0.25rem; justify-content: center; flex-wrap: wrap;
     }
     .lang-btn {
-      min-width: 36px; min-height: 36px;
-      padding: 0.3rem 0.5rem; border: 1.5px solid var(--border);
-      border-radius: 8px; background: transparent; font-family: var(--font-body);
-      font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s var(--ease-out);
-      letter-spacing: 0.03em;
+      min-width: 38px; min-height: 38px;
+      padding: 0.35rem 0.55rem; border: 1.5px solid var(--border);
+      border-radius: 10px; background: transparent; font-family: var(--font-body);
+      font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
+      cursor: pointer; transition: all 0.3s var(--ease-premium);
+      letter-spacing: 0.04em;
       display: inline-flex; align-items: center; justify-content: center;
     }
-    .lang-btn:hover { border-color: var(--text-muted); color: var(--text-primary); }
+    .lang-btn:hover {
+      border-color: var(--accent-light); color: var(--text-primary);
+      background: var(--accent-glow);
+    }
     .lang-btn.active {
       background: var(--accent); color: white;
       border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.2);
     }
 
     /* ─── Theme Toggle ─── */
     .theme-toggle {
-      min-width: 36px; min-height: 36px;
-      padding: 0.3rem; border: 1.5px solid var(--border);
-      border-radius: 8px; background: transparent;
-      cursor: pointer; font-size: 1rem;
-      transition: all 0.2s var(--ease-out);
+      min-width: 38px; min-height: 38px;
+      padding: 0.35rem; border: 1.5px solid var(--border);
+      border-radius: 10px; background: transparent;
+      cursor: pointer; font-size: 1.05rem;
+      transition: all 0.3s var(--ease-premium);
       display: inline-flex; align-items: center; justify-content: center;
     }
-    .theme-toggle:hover { border-color: var(--text-muted); }
+    .theme-toggle:hover { border-color: var(--accent-light); background: var(--accent-glow); }
 
     /* ─── Tabs ─── */
     .tabs {
-      display: flex; gap: 0.25rem; background: var(--bg-tertiary);
-      padding: 4px; border-radius: var(--radius-sm); margin-bottom: 1.25rem;
+      display: flex; gap: 0.3rem; background: var(--bg-tertiary);
+      padding: 5px; border-radius: var(--radius-sm); margin-bottom: 1.5rem;
     }
     .tab {
       flex: 1; min-height: 44px;
-      padding: 0.55rem 0.75rem; border: none; background: transparent;
-      font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
-      color: var(--text-muted); cursor: pointer; border-radius: 8px;
-      transition: all 0.25s var(--ease-out);
+      padding: 0.6rem 0.85rem; border: none; background: transparent;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      color: var(--text-muted); cursor: pointer; border-radius: 10px;
+      transition: all 0.3s var(--ease-premium);
     }
     .tab:hover:not(.active) { color: var(--text-primary); }
     .tab.active {
       background: var(--bg-secondary); color: var(--text-primary);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-sm); font-weight: 600;
     }
 
     /* ─── Screens ─── */
     .screen { display: none; }
-    .screen.active { display: block; animation: fadeUp 0.35s var(--ease-out); }
+    .screen.active { display: block; animation: fadeUp 0.5s var(--ease-premium); }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── Test Grid (Auto-responsive) ─── */
+    /* ─── Test Grid ─── */
     .test-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-      gap: clamp(0.75rem, 2vw, 1.25rem);
+      gap: clamp(0.85rem, 2.5vw, 1.35rem);
+    }
+
+    .category-header {
+      opacity: 0; animation: cardReveal 0.4s var(--ease-premium) forwards;
+    }
+    .category-header:first-child { margin-top: 0 !important; }
+    .category-header h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--accent);
+      border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;
+      letter-spacing: -0.01em;
     }
 
     .test-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: clamp(1.15rem, 3vw, 1.75rem); box-shadow: var(--shadow-sm); cursor: pointer;
-      transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s ease;
+      padding: clamp(1.35rem, 3.5vw, 2rem); box-shadow: var(--shadow-sm); cursor: pointer;
+      transition: all 0.5s var(--ease-premium);
       border: 1px solid var(--border);
       position: relative; overflow: hidden;
-      opacity: 0; transform: translateY(12px);
-      animation: cardReveal 0.5s var(--ease-out) forwards;
+      opacity: 0; transform: translateY(14px);
+      animation: cardReveal 0.5s var(--ease-premium) forwards;
     }
-    .category-header {
-      opacity: 0; animation: cardReveal 0.4s var(--ease-out) forwards;
-    }
-    .category-header:first-child { margin-top: 0 !important; }
     @keyframes cardReveal {
       to { opacity: 1; transform: translateY(0); }
     }
     .test-card::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(120% 120% at 0% 0%, var(--card-accent, var(--accent)) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.4s;
+      background: radial-gradient(ellipse 150% 150% at 0% 0%, var(--card-accent, var(--accent)) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.5s var(--ease-premium);
     }
-    .test-card:hover::before { opacity: 0.08; }
+    .test-card::after {
+      content: ''; position: absolute; bottom: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: var(--card-accent, var(--accent));
+      opacity: 0; border-radius: 50%;
+      transition: all 0.6s var(--ease-premium);
+    }
+    .test-card:hover::before { opacity: 0.06; }
+    .test-card:hover::after { opacity: 0.04; transform: scale(1.5); }
     @media (hover: hover) {
       .test-card:hover {
-        transform: translateY(-6px); box-shadow: var(--shadow-lg);
+        transform: translateY(-8px); box-shadow: var(--shadow-lg);
         border-color: var(--card-accent, var(--accent));
       }
     }
-    .test-card:active { transform: translateY(-1px) scale(0.99); }
+    .test-card:active { transform: translateY(-2px) scale(0.99); }
     .test-card .card-accent {
       position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
     }
     .test-card-icon {
-      width: 40px; height: 40px; border-radius: 10px;
+      width: 48px; height: 48px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.65rem; font-size: 1.25rem;
+      margin-bottom: 0.85rem; font-size: 1.4rem;
+      transition: all 0.4s var(--ease-premium);
+    }
+    .test-card:hover .test-card-icon {
+      transform: rotate(-5deg) scale(1.05);
     }
     .test-card h3 {
-      font-family: var(--font-display); font-size: 0.95rem; margin-bottom: 0.1rem;
+      font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-weight: 400; margin-bottom: 0.15rem;
+      line-height: 1.3; letter-spacing: -0.01em;
     }
     .test-card .card-abbr {
-      font-size: 0.68rem; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem;
+      font-size: 0.68rem; font-weight: 700; color: var(--accent-warm);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.45rem;
     }
     .test-card p {
-      font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
     }
     .test-card .card-meta {
-      font-size: 0.68rem; color: var(--text-muted); margin-top: 0.5rem;
-      display: flex; gap: 0.75rem;
+      font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem;
+      display: flex; gap: 0.85rem; font-weight: 500;
+      padding-top: 0.65rem; border-top: 1px solid var(--border);
     }
 
     /* ─── Buttons ─── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
       min-height: 48px;
-      padding: 0.85rem 1.75rem; font-family: var(--font-body); font-size: 0.95rem;
-      font-weight: 600; border: none; border-radius: var(--radius-sm); cursor: pointer;
-      transition: all 0.25s var(--ease-out);
+      padding: 0.85rem 2rem; font-family: var(--font-body); font-size: 0.95rem;
+      font-weight: 600; border: none; border-radius: 100px; cursor: pointer;
+      transition: all 0.35s var(--ease-premium);
+      letter-spacing: 0.01em;
     }
     .btn-primary {
       background: var(--accent); color: white;
-      box-shadow: 0 4px 12px var(--accent-glow);
+      box-shadow: 0 6px 20px -4px rgba(74, 103, 65, 0.3);
     }
     .btn-primary:hover {
-      background: var(--accent-dark); transform: translateY(-1px);
-      box-shadow: 0 6px 16px var(--accent-glow);
+      background: var(--accent-dark); transform: translateY(-2px);
+      box-shadow: 0 10px 28px -4px rgba(74, 103, 65, 0.35);
     }
     .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
     .btn-outline {
       background: transparent; color: var(--accent); border: 2px solid var(--accent);
     }
-    .btn-outline:hover { background: var(--accent-glow); }
+    .btn-outline:hover { background: var(--accent-glow); transform: translateY(-1px); }
     .btn-ghost {
       background: transparent; color: var(--text-muted);
-      padding: 0.5rem 0.75rem; font-size: 0.82rem;
+      padding: 0.5rem 0.85rem; font-size: 0.85rem;
     }
-    .btn-ghost:hover { color: var(--text-primary); }
+    .btn-ghost:hover { color: var(--accent); }
 
     /* ─── Welcome Card ─── */
     .welcome-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1.15rem, 4vw, 2rem); box-shadow: var(--shadow-md); text-align: center;
+      padding: clamp(1.75rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow-md); text-align: center;
+      border: 1px solid var(--border);
     }
     .welcome-icon {
-      width: 56px; height: 56px; border-radius: 50%;
+      width: 64px; height: 64px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem; font-size: 1.5rem;
+      margin: 0 auto 1.5rem; font-size: 1.75rem;
     }
-    .welcome-card h2 { font-family: var(--font-display); font-size: var(--fs-h2); margin-bottom: 0.75rem; }
+    .welcome-card h2 {
+      font-family: var(--font-display); font-size: var(--fs-h2);
+      font-weight: 400; margin-bottom: 0.85rem; letter-spacing: -0.02em;
+    }
     .welcome-card p {
-      color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.7;
+      color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem; line-height: 1.7;
     }
     .disclaimer {
       background: var(--disclaimer-bg); border-left: 3px solid var(--disclaimer-border);
-      padding: 0.85rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 1rem 0; text-align: left; font-size: 0.78rem;
-      color: var(--text-secondary); line-height: 1.6;
+      padding: 1rem 1.15rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0; text-align: left; font-size: 0.8rem;
+      color: var(--text-secondary); line-height: 1.65;
     }
 
     /* ─── Progress ─── */
-    .progress-section { margin-bottom: 1.25rem; }
+    .progress-section { margin-bottom: 1.35rem; }
     .progress-info {
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.4rem; font-size: 0.75rem; color: var(--text-muted); font-weight: 500;
+      margin-bottom: 0.5rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
     }
     .progress-bar {
-      width: 100%; height: 5px; background: var(--bg-tertiary);
+      width: 100%; height: 6px; background: var(--bg-tertiary);
       border-radius: 100px; overflow: hidden;
     }
     .progress-fill {
       height: 100%; border-radius: 100px;
-      transition: width 0.5s var(--ease-out); position: relative;
+      background: linear-gradient(90deg, var(--accent-light), var(--accent));
+      transition: width 0.6s var(--ease-premium); position: relative;
     }
     .progress-fill::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
       animation: shimmer 2.5s infinite;
     }
     @keyframes shimmer {
@@ -316,40 +372,49 @@
       100% { transform: translateX(100%); }
     }
 
-    /* ─── Question Card ─── */
+    /* ─── Question Card (Zen Mode) ─── */
     .question-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: clamp(1.25rem, 4vw, 2rem); box-shadow: var(--shadow-md);
-      min-height: 300px; display: flex; flex-direction: column;
+      padding: clamp(1.5rem, 5vw, 2.5rem); box-shadow: var(--shadow-md);
+      min-height: 320px; display: flex; flex-direction: column;
+      border: 1px solid var(--border);
     }
     .question-number {
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.08em; margin-bottom: 0.6rem;
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 0.75rem;
+      color: var(--accent-warm);
     }
     .question-title {
-      font-family: var(--font-display); font-size: clamp(1.05rem, 3vw, 1.25rem);
-      margin-bottom: 1.25rem; color: var(--text-primary); line-height: 1.45;
+      font-family: var(--font-display); font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem; color: var(--text-primary); line-height: 1.4;
+      letter-spacing: -0.01em;
     }
-    .options { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .options { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
     .option { position: relative; }
     .option input { position: absolute; opacity: 0; pointer-events: none; }
     .option label {
-      display: flex; align-items: center; gap: 0.75rem;
-      min-height: 52px;
-      padding: 0.85rem 1rem; border: 2px solid var(--border);
+      display: flex; align-items: center; gap: 0.85rem;
+      min-height: 54px;
+      padding: 0.95rem 1.15rem; border: 2px solid var(--border);
       border-radius: var(--radius-sm); cursor: pointer;
-      transition: all 0.2s var(--ease-out); font-size: 0.9rem;
-      line-height: 1.45; color: var(--text-secondary);
+      transition: all 0.25s var(--ease-premium); font-size: 0.92rem;
+      line-height: 1.5; color: var(--text-secondary);
+      background: var(--bg-primary);
     }
-    .option label:hover { border-color: var(--accent-light); background: var(--accent-glow); }
+    .option label:hover {
+      border-color: var(--accent-light); background: var(--accent-glow);
+      transform: translateX(6px);
+    }
     .option input:checked + label {
       border-color: var(--accent); background: var(--accent-glow);
       color: var(--text-primary); font-weight: 500;
+      box-shadow: 0 2px 8px var(--accent-glow);
     }
     .option-radio {
       width: 22px; height: 22px; min-width: 22px;
       border: 2px solid var(--border); border-radius: 50%;
-      transition: all 0.2s var(--ease-out);
+      transition: all 0.25s var(--ease-premium);
       display: flex; align-items: center; justify-content: center;
     }
     .option input:checked + label .option-radio {
@@ -357,135 +422,147 @@
     }
     .option input:checked + label .option-radio::after {
       content: ''; width: 7px; height: 7px; background: white;
-      border-radius: 50%; animation: popIn 0.25s var(--ease-spring);
+      border-radius: 50%; animation: popIn 0.3s var(--ease-spring);
     }
     @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
 
     .question-nav {
       display: flex; justify-content: space-between; align-items: center;
-      margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px solid var(--border);
+      margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);
     }
-    .question-content { animation: slideIn 0.3s var(--ease-out); }
+    .question-content { animation: slideIn 0.35s var(--ease-premium); }
     @keyframes slideIn {
       from { opacity: 0; transform: translateX(20px); }
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* ─── Results ─── */
+    /* ─── Results (Empathetic) ─── */
     .results-card {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1.15rem, 4vw, 2rem); box-shadow: var(--shadow-md); text-align: center;
+      padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow-md); text-align: center;
+      border: 1px solid var(--border);
     }
     .score-circle {
-      width: 110px; height: 110px; border-radius: 50%;
+      width: 120px; height: 120px; border-radius: 50%;
       display: flex; flex-direction: column; align-items: center;
-      justify-content: center; margin: 0 auto 1rem;
-      animation: scaleIn 0.5s var(--ease-spring);
+      justify-content: center; margin: 0 auto 1.25rem;
+      animation: scaleIn 0.6s var(--ease-spring);
     }
     @keyframes scaleIn {
       from { transform: scale(0.5); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
     .score-number {
-      font-family: var(--font-display); font-size: 2.25rem; color: white; line-height: 1;
+      font-family: var(--font-display); font-size: 2.5rem; color: white;
+      line-height: 1; font-weight: 400;
     }
     .score-label {
-      font-size: 0.65rem; color: rgba(255,255,255,0.85);
-      font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+      font-size: 0.68rem; color: rgba(255,255,255,0.85);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
     }
     .score-category {
-      font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.4rem;
+      font-family: var(--font-display); font-size: 1.35rem;
+      font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em;
     }
     .score-description {
-      color: var(--text-secondary); font-size: 0.85rem;
-      max-width: 440px; margin: 0 auto 1.5rem; line-height: 1.7;
+      color: var(--text-secondary); font-size: 0.9rem;
+      max-width: 480px; margin: 0 auto 1.75rem; line-height: 1.7;
     }
     .breakdown {
       text-align: left; border-top: 1px solid var(--border);
-      padding-top: 1.25rem; margin-top: 0.75rem;
+      padding-top: 1.5rem; margin-top: 1rem;
     }
-    .breakdown h3 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.75rem; }
+    .breakdown h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 400; margin-bottom: 0.85rem;
+    }
     .breakdown-item {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0.5rem 0; font-size: 0.8rem; border-bottom: 1px solid var(--border);
+      padding: 0.6rem 0; font-size: 0.82rem; border-bottom: 1px solid var(--border);
     }
     .breakdown-item:last-child { border-bottom: none; }
     .breakdown-name { color: var(--text-secondary); flex: 1; }
     .breakdown-value {
-      font-weight: 600; padding: 0.15rem 0.55rem;
+      font-weight: 600; padding: 0.2rem 0.6rem;
       border-radius: 100px; font-size: 0.75rem;
     }
     .results-actions {
-      display: flex; gap: 0.75rem; justify-content: center;
-      margin-top: 1.5rem; flex-wrap: wrap;
+      display: flex; gap: 0.85rem; justify-content: center;
+      margin-top: 1.75rem; flex-wrap: wrap;
     }
     .resources-box {
       background: var(--resources-bg); border-radius: var(--radius-sm);
-      padding: 1rem; margin-top: 1.25rem; text-align: left;
+      padding: 1.15rem 1.25rem; margin-top: 1.5rem; text-align: left;
     }
     .resources-box h4 {
-      font-size: 0.8rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.35rem;
+      font-size: 0.82rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.4rem;
     }
-    .resources-box p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
+    .resources-box p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.65; }
 
     /* ─── History ─── */
-    .history-empty { text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); }
+    .history-empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
     .history-filter {
-      display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1rem;
+      display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.15rem;
     }
     .filter-btn {
-      min-height: 36px;
-      padding: 0.4rem 0.8rem; border: 1.5px solid var(--border);
+      min-height: 38px;
+      padding: 0.45rem 0.9rem; border: 1.5px solid var(--border);
       border-radius: 100px; background: transparent; font-family: var(--font-body);
-      font-size: 0.72rem; font-weight: 500; color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s var(--ease-out);
+      font-size: 0.75rem; font-weight: 500; color: var(--text-muted);
+      cursor: pointer; transition: all 0.3s var(--ease-premium);
     }
-    .filter-btn:hover { border-color: var(--text-muted); }
+    .filter-btn:hover { border-color: var(--accent-light); color: var(--accent); }
     .filter-btn.active {
-      background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary);
+      background: var(--accent); color: white; border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.15);
     }
     .chart-container {
       background: var(--bg-secondary); border-radius: var(--radius);
-      padding: 1.25rem; box-shadow: var(--shadow-sm); margin-bottom: 1.25rem;
+      padding: 1.5rem; box-shadow: var(--shadow-sm); margin-bottom: 1.35rem;
+      border: 1px solid var(--border);
     }
-    .chart-container h3 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.75rem; }
+    .chart-container h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 400; margin-bottom: 0.85rem;
+    }
     .chart-wrapper { position: relative; height: 200px; }
-    .history-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .history-list { display: flex; flex-direction: column; gap: 0.65rem; }
     .history-entry {
       background: var(--bg-secondary); border-radius: var(--radius-sm);
-      padding: 0.85rem 1rem; box-shadow: var(--shadow-sm);
-      display: flex; align-items: center; gap: 0.75rem;
-      transition: all 0.2s var(--ease-out);
+      padding: 1rem 1.15rem; box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 0.85rem;
+      transition: all 0.3s var(--ease-premium);
+      border: 1px solid var(--border);
     }
-    .history-entry:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
-    .history-dot { width: 8px; height: 8px; border-radius: 50%; min-width: 8px; }
+    .history-entry:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .history-dot { width: 10px; height: 10px; border-radius: 50%; min-width: 10px; }
     .history-info { flex: 1; }
-    .history-date { font-size: 0.72rem; color: var(--text-muted); }
-    .history-score-text { font-weight: 600; font-size: 0.82rem; }
-    .history-test-name { font-size: 0.68rem; color: var(--text-muted); }
+    .history-date { font-size: 0.75rem; color: var(--text-muted); }
+    .history-score-text { font-weight: 600; font-size: 0.85rem; }
+    .history-test-name { font-size: 0.72rem; color: var(--text-muted); }
     .history-badge {
-      font-size: 0.65rem; font-weight: 600; padding: 0.15rem 0.5rem;
+      font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem;
       border-radius: 100px; color: white; white-space: nowrap;
     }
     .history-trend { font-size: 1rem; min-width: 24px; text-align: center; }
-    .clear-history { text-align: center; margin-top: 1.25rem; }
+    .clear-history { text-align: center; margin-top: 1.5rem; }
 
-    /* ─── Mobile (max 480px) ─── */
+    /* ─── Responsive ─── */
     @media (max-width: 480px) {
-      .test-card h3 { font-size: 1rem; line-height: 1.3; }
+      .test-card h3 { font-size: 1.05rem; line-height: 1.3; }
       .test-card p { font-size: 0.82rem; }
-      .test-card .card-meta { font-size: 0.7rem; }
+      .test-card .card-meta { font-size: 0.72rem; }
       .results-actions { flex-direction: column; }
       .results-actions .btn { width: 100%; }
       .dichotomy-label, .dichotomy-label-right { width: 50px; font-size: 0.62rem; }
-      .breakdown-name { font-size: 0.8rem; line-height: 1.4; }
-      .history-entry { padding: 0.85rem; gap: 0.6rem; }
+      .breakdown-name { font-size: 0.82rem; line-height: 1.4; }
+      .history-entry { padding: 0.9rem; gap: 0.65rem; }
+      .option label { min-height: 52px; }
     }
-
-    /* ─── Ultra-narrow (320px) ─── */
     @media (max-width: 340px) {
       .lang-btn { min-width: 34px; min-height: 34px; font-size: 0.62rem; }
-      .test-card-icon { width: 34px; height: 34px; font-size: 1rem; }
+      .test-card-icon { width: 38px; height: 38px; font-size: 1.1rem; }
     }
 
     /* ─── Touch feedback ─── */
@@ -495,7 +572,6 @@
         transition: transform 0.1s;
       }
     }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -505,22 +581,22 @@
 
     /* ─── Breadcrumb ─── */
     .breadcrumb {
-      display: flex; align-items: center; gap: 0.4rem;
-      font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.45rem;
+      font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.15rem;
     }
     .breadcrumb a {
       color: var(--text-muted); text-decoration: none; cursor: pointer;
-      transition: color 0.2s;
+      transition: color 0.25s;
     }
-    .breadcrumb a:hover { color: var(--text-primary); }
+    .breadcrumb a:hover { color: var(--accent); }
     .breadcrumb .bc-sep { opacity: 0.4; }
-    .breadcrumb .bc-current { color: var(--accent); font-weight: 500; }
+    .breadcrumb .bc-current { color: var(--accent); font-weight: 600; }
 
     /* ─── SVG Score Ring ─── */
     .score-ring-container {
-      position: relative; width: 130px; height: 130px;
-      margin: 0 auto 1.25rem;
-      animation: scaleIn 0.5s var(--ease-spring);
+      position: relative; width: 140px; height: 140px;
+      margin: 0 auto 1.5rem;
+      animation: scaleIn 0.6s var(--ease-spring);
     }
     .score-ring-bg {
       fill: none; stroke: var(--bg-tertiary); stroke-width: 8;
@@ -530,87 +606,89 @@
       transform: rotate(-90deg); transform-origin: center;
       stroke-dasharray: 339.292;
       stroke-dashoffset: 339.292;
-      transition: stroke-dashoffset 1.2s var(--ease-out);
+      transition: stroke-dashoffset 1.4s var(--ease-premium);
     }
     .score-ring-text {
       position: absolute; inset: 0; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
     }
     .score-ring-number {
-      font-family: var(--font-display); font-size: 2.25rem;
-      color: var(--text-primary); line-height: 1;
+      font-family: var(--font-display); font-size: 2.5rem;
+      font-weight: 400; color: var(--text-primary); line-height: 1;
     }
     .score-ring-label {
-      font-size: 0.65rem; color: var(--text-muted);
-      font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+      font-size: 0.68rem; color: var(--text-muted);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
     }
 
     /* ─── Resume Banner ─── */
     .resume-banner {
       background: var(--bg-secondary); border-radius: var(--radius-sm);
-      padding: 0.85rem 1rem; box-shadow: var(--shadow-sm);
-      display: flex; align-items: center; gap: 0.75rem;
-      margin-bottom: 1rem; border-left: 3px solid var(--accent);
-      animation: fadeUp 0.35s var(--ease-out);
+      padding: 1rem 1.15rem; box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 0.85rem;
+      margin-bottom: 1.15rem; border-left: 3px solid var(--accent);
+      animation: fadeUp 0.4s var(--ease-premium);
+      border: 1px solid var(--border); border-left: 3px solid var(--accent);
     }
-    .resume-banner p { flex: 1; font-size: 0.8rem; color: var(--text-secondary); }
-    .resume-banner .btn { padding: 0.4rem 0.85rem; font-size: 0.75rem; }
+    .resume-banner p { flex: 1; font-size: 0.82rem; color: var(--text-secondary); }
+    .resume-banner .btn { padding: 0.45rem 0.95rem; font-size: 0.78rem; min-height: 36px; }
 
     /* ─── Breakdown bars ─── */
     .breakdown-bar-bg {
-      flex: 0 0 60px; height: 6px; background: var(--bg-tertiary);
-      border-radius: 100px; overflow: hidden; margin-left: 0.5rem;
+      flex: 0 0 70px; height: 6px; background: var(--bg-tertiary);
+      border-radius: 100px; overflow: hidden; margin-left: 0.6rem;
     }
     .breakdown-bar-fill {
       height: 100%; border-radius: 100px;
-      transition: width 0.6s var(--ease-out);
+      transition: width 0.7s var(--ease-premium);
     }
 
     /* ─── Option active press ─── */
     .option label:active { transform: scale(0.98); }
 
     /* ─── Dimension Results (Big5 / MBTI) ─── */
-    .dimension-result { margin-bottom: 1rem; text-align: left; }
+    .dimension-result { margin-bottom: 1.15rem; text-align: left; }
     .dimension-header {
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
-    .dimension-name { font-weight: 600; font-size: 0.85rem; }
-    .dimension-score { font-family: var(--font-display); font-size: 1rem; }
+    .dimension-name { font-weight: 600; font-size: 0.88rem; }
+    .dimension-score { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; }
     .dimension-bar {
       height: 8px; background: var(--bg-tertiary); border-radius: 100px;
-      overflow: hidden; margin-bottom: 0.25rem;
+      overflow: hidden; margin-bottom: 0.3rem;
     }
     .dimension-bar-fill {
       height: 100%; border-radius: 100px;
-      transition: width 0.8s var(--ease-out);
+      transition: width 0.8s var(--ease-premium);
     }
     .dimension-desc {
-      font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.55;
     }
 
     /* ─── MBTI Type Display ─── */
     .type-display {
-      font-family: var(--font-display); font-size: 3rem;
-      letter-spacing: 0.1em; margin-bottom: 0.25rem;
+      font-family: var(--font-display); font-size: 3.2rem;
+      font-weight: 400; letter-spacing: 0.1em; margin-bottom: 0.3rem;
     }
     .type-name {
-      font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.5rem;
+      font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 0.6rem;
+      font-style: italic;
     }
     .dichotomy-row {
-      display: flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 0.75rem; font-size: 0.8rem;
+      display: flex; align-items: center; gap: 0.55rem;
+      margin-bottom: 0.85rem; font-size: 0.82rem;
     }
-    .dichotomy-label { width: 80px; text-align: right; font-size: 0.72rem; color: var(--text-muted); }
+    .dichotomy-label { width: 85px; text-align: right; font-size: 0.75rem; color: var(--text-muted); }
     .dichotomy-bar {
       flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 100px;
       position: relative; overflow: hidden;
     }
     .dichotomy-bar-fill {
       position: absolute; top: 0; height: 100%; border-radius: 100px;
-      transition: width 0.8s var(--ease-out);
+      transition: width 0.8s var(--ease-premium);
     }
-    .dichotomy-label-right { width: 80px; font-size: 0.72rem; color: var(--text-muted); }
+    .dichotomy-label-right { width: 85px; font-size: 0.75rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -733,6 +811,7 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
+  document.title = t('ui.appTitle') + ' — ' + t('ui.appSubtitle');
   document.querySelector('#app-title h1').textContent = t('ui.appTitle');
   document.getElementById('app-subtitle').textContent = t('ui.appSubtitle');
   document.getElementById('tab-tests').textContent = t('ui.tabTests');
@@ -740,6 +819,9 @@ function setLang(lang) {
   renderHome();
   if (activeTest && document.getElementById('screen-test').classList.contains('active')) {
     renderQuestion();
+  }
+  if (document.getElementById('screen-history').classList.contains('active')) {
+    renderHistory();
   }
 }
 
@@ -1104,7 +1186,7 @@ function renderHome() {
         <div class="test-card" onclick="openTest('${te.id}')" onkeydown="event.key==='Enter'&&openTest('${te.id}')" tabindex="0" role="button" aria-label="${name}" style="--card-accent:${te.color}${te.id==='triage'?';grid-column:1/-1':''}">
           <div class="card-accent" style="background:${te.color}"></div>
           <div class="test-card-icon" style="background:${te.color}18" aria-hidden="true">${te.icon}</div>
-          <div class="card-abbr">${te.abbr}</div>
+          <div class="card-abbr">${tt(te.id, 'abbr') || te.abbr}</div>
           <h3>${name}</h3>
           <p>${desc}</p>
           <div class="card-meta">
@@ -1162,7 +1244,7 @@ function updateBreadcrumb() {
   document.getElementById('test-breadcrumb').innerHTML = `
     <a onclick="goHome()">${t('ui.tabTests')}</a>
     <span class="bc-sep">›</span>
-    <span class="bc-current">${activeTest.abbr}</span>
+    <span class="bc-current">${tt(activeTest.id, 'abbr') || activeTest.abbr}</span>
   `;
 }
 
@@ -1191,7 +1273,7 @@ function checkResume() {
   banner.id = 'resume-banner';
   const answered = data.answers.filter(a=>a!==null).length;
   banner.innerHTML = `
-    <p>${t('ui.resumeMessage').replace('{test}', resumeTest_.abbr).replace('{n}', answered).replace('{total}', resumeTest_.questions.length)}</p>
+    <p>${t('ui.resumeMessage').replace('{test}', tt(resumeTest_.id, 'abbr') || resumeTest_.abbr).replace('{n}', answered).replace('{total}', resumeTest_.questions.length)}</p>
     <button class="btn btn-primary" onclick="resumeTest()">${t('ui.continueTest')}</button>
     <button class="btn btn-ghost" onclick="dismissResume()" aria-label="${t('ui.dismiss')}">✕</button>
   `;
@@ -1250,7 +1332,7 @@ function renderQuestion() {
 
   const area = document.getElementById('question-area');
   area.innerHTML = `
-    <div class="question-number" style="color:${test.color}">${t('ui.question')} ${currentQ + 1} · ${title || test.abbr}</div>
+    <div class="question-number" style="color:${test.color}">${t('ui.question')} ${currentQ + 1} · ${title || tt(test.id, 'abbr') || test.abbr}</div>
     <div class="question-title">${title}</div>
     <div class="options" role="radiogroup" aria-label="${title}">
       ${opts.map((opt, i) => `
@@ -1329,16 +1411,18 @@ function showResults() {
     }
   }
 
-  // Save
-  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
-  const histEntry = {
-    testId: test.id, testName: test.abbr, date: new Date().toISOString(),
-    score, maxScore: test.maxScore, resultKey: result.key,
-    resultLabel: result.label, resultColor: result.color, answers: [...answers]
-  };
-  if (result.typeDetails) histEntry.typeCode = result.typeDetails.type;
-  history.push(histEntry);
-  localStorage.setItem('mental_health_history', JSON.stringify(history));
+  // Save to localStorage — wrapped in try/catch to ensure it always attempts
+  try {
+    const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+    const histEntry = {
+      testId: test.id, testName: tt(test.id, 'abbr') || test.abbr, date: new Date().toISOString(),
+      score, maxScore: test.maxScore, resultKey: result.key,
+      resultLabel: result.label, resultColor: result.color, answers: [...answers]
+    };
+    if (result.typeDetails) histEntry.typeCode = result.typeDetails.type;
+    history.push(histEntry);
+    localStorage.setItem('mental_health_history', JSON.stringify(history));
+  } catch (e) { console.error('Failed to save history:', e); }
   clearProgress();
 
   const rc = document.getElementById('results-content');
@@ -1578,15 +1662,17 @@ function showResults() {
 
   // ─── Triage result ───
   if (test.maxScore === 'triage' && result.recommendations) {
-    const priorityLabels = { high: t('ui.highPriority') || '🔴 High priority', medium: t('ui.recommended') || '🟡 Recommended', suggested: t('ui.suggested') || '🟢 Suggested' };
+    const priorityLabels = { high: t('ui.highPriority') || '🔴 Alta prioridad', medium: t('ui.recommended') || '🟡 Recomendado', suggested: t('ui.suggested') || '🟢 Sugerido' };
     const priorityOrder = { high: 0, medium: 1, suggested: 2 };
     const sortedRecs = [...result.recommendations].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    const triageLabel = t('tests.triage.results.triage_label') !== 'tests.triage.results.triage_label' ? t('tests.triage.results.triage_label') : result.label;
+    const triageDesc = t('tests.triage.results.triage_desc') !== 'tests.triage.results.triage_desc' ? t('tests.triage.results.triage_desc') : result.desc;
 
     rc.innerHTML = `
       <div>
-        <div class="score-category" style="color:${result.color};font-size:1.3rem">${result.label}</div>
+        <div class="score-category" style="color:${result.color};font-size:1.3rem">${triageLabel}</div>
       </div>
-      <p class="score-description">${result.desc}</p>
+      <p class="score-description">${triageDesc}</p>
 
       <div class="breakdown" style="margin-top:1rem">
         <h3>${t('ui.areasEvaluated') || 'Areas evaluated'}</h3>
@@ -1594,7 +1680,7 @@ function showResults() {
           const pct = Math.round((d.score / d.maxScore) * 100);
           const c = d.score >= 3 ? '#A65D57' : d.score >= 2 ? '#C9A227' : '#6B8F71';
           return `<div class="breakdown-item">
-            <span class="breakdown-name">${d.name}</span>
+            <span class="breakdown-name">${t(`tests.triage.domainNames.${d.name}`) !== `tests.triage.domainNames.${d.name}` ? t(`tests.triage.domainNames.${d.name}`) : d.name}</span>
             <div class="breakdown-bar-bg">
               <div class="breakdown-bar-fill" style="width:0%;background:${c}" data-width="${pct}"></div>
             </div>
@@ -1612,11 +1698,11 @@ function showResults() {
             <div class="card-accent" style="background:${rt.color}"></div>
             <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
               <span style="font-size:1.2rem">${rt.icon}</span>
-              <strong>${rt.abbr}</strong>
+              <strong>${tt(rt.id, 'abbr') || rt.abbr}</strong>
               <span style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:${rec.priority==='high'?'#A65D5720':rec.priority==='medium'?'#C9A22720':'#6B8F7120'};color:${rec.priority==='high'?'#A65D57':rec.priority==='medium'?'#C9A227':'#6B8F71'}">${priorityLabels[rec.priority]}</span>
             </div>
-            <div style="font-size:0.8rem;color:var(--text-secondary)">${rt.name}</div>
-            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem">${rec.reason}</div>
+            <div style="font-size:0.8rem;color:var(--text-secondary)">${tt(rt.id, 'name') || rt.name}</div>
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem">${(() => { const dk = rec.domainKey, rk = rec.reasonKey; if (dk) { const v = t(`tests.triage.domainReasons.${dk}`); if (v !== `tests.triage.domainReasons.${dk}`) return v; } if (rk) { const v = t(`tests.triage.results.${rk}`); if (v !== `tests.triage.results.${rk}`) return v; } return rec.reason; })()}</div>
           </div>`;
         }).join('')}
       </div>
@@ -1742,8 +1828,9 @@ function renderHistory() {
     <div class="history-filter">
       <button class="filter-btn ${historyFilter==='all'?'active':''}" onclick="setFilter('all')">${t('ui.all')}</button>
       ${testTypes.map(id => {
-        const t = TESTS[id];
-        return `<button class="filter-btn ${historyFilter===id?'active':''}" onclick="setFilter('${id}')">${t.abbr}</button>`;
+        const te = TESTS[id];
+        if (!te) return '';
+        return `<button class="filter-btn ${historyFilter===id?'active':''}" onclick="setFilter('${id}')">${tt(id, 'abbr') || te.abbr}</button>`;
       }).join('')}
     </div>
     ${chartHTML}
@@ -1764,10 +1851,10 @@ function renderHistory() {
             <div class="history-dot" style="background:${entry.resultColor}"></div>
             <div class="history-info">
               <div class="history-date">${dateStr} · ${timeStr}</div>
-              <div class="history-score-text">${t('ui.score')}: ${entry.score}/${entry.maxScore}</div>
-              <div class="history-test-name">${TESTS[entry.testId]?.name || entry.testName}</div>
+              <div class="history-score-text">${typeof entry.maxScore === 'number' ? t('ui.score') + ': ' + entry.score + '/' + entry.maxScore : ''}</div>
+              <div class="history-test-name">${tt(entry.testId, 'name') || TESTS[entry.testId]?.name || entry.testName}</div>
             </div>
-            <span class="history-badge" style="background:${entry.resultColor}">${entry.resultLabel}</span>
+            <span class="history-badge" style="background:${entry.resultColor}">${(() => { if (entry.resultKey) { const tr = t('tests.' + entry.testId + '.results.' + entry.resultKey); if (tr && typeof tr === 'object' && tr.label) return tr.label; } return entry.resultLabel; })()}</span>
             ${trend}
           </div>
         `;
@@ -1802,20 +1889,21 @@ function renderChart(data) {
   });
 
   const datasets = Object.entries(byTest).map(([id, entries]) => {
-    const t = TESTS[id];
+    const te = TESTS[id];
+    if (!te) return null;
     const d = new Array(data.length).fill(null);
     entries.forEach(e => {
       const idx = data.indexOf(e);
-      d[idx] = Math.round((e.score / e.maxScore) * 100);
+      d[idx] = typeof e.maxScore === 'number' ? Math.round((e.score / e.maxScore) * 100) : null;
     });
     return {
-      label: t.abbr,
+      label: tt(id, 'abbr') || te.abbr,
       data: d,
-      borderColor: t.color,
-      backgroundColor: t.color + '18',
+      borderColor: te.color,
+      backgroundColor: te.color + '18',
       fill: false,
       tension: 0.35,
-      pointBackgroundColor: t.color,
+      pointBackgroundColor: te.color,
       pointRadius: 4,
       pointHoverRadius: 6,
       borderWidth: 2,
@@ -1825,7 +1913,7 @@ function renderChart(data) {
 
   chartInstance = new Chart(ctx, {
     type: 'line',
-    data: { labels, datasets },
+    data: { labels, datasets: datasets.filter(Boolean) },
     options: {
       responsive: true, maintainAspectRatio: false,
       scales: {

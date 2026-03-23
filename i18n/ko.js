@@ -45,7 +45,12 @@ const LANG_KO = {
     "dismiss": "닫기",
     "questionsAnswered": "문항 응답 완료",
     "inProgress": "진행 중",
-    "testBy": "검사"
+    "testBy": "검사",
+    "recommendedTests": "권장 평가",
+    "highPriority": "높은 우선순위",
+    "recommended": "권장",
+    "suggested": "제안",
+    "areasEvaluated": "평가 영역"
   },
   "scales": {
     "agreement5": ["매우 동의하지 않음","동의하지 않음","보통","동의함","매우 동의함"],
@@ -58,6 +63,7 @@ const LANG_KO = {
   "tests": {
     "bdi": {
       "name": "BDI-II",
+      "abbr": "BDI-II",
       "fullName": "벡 우울 척도-II",
       "desc": "지난 2주간 우울 증상의 유무와 심각도를 평가합니다.",
       "instructions": "각 문항을 주의 깊게 읽고, 오늘을 포함하여 지난 2주 동안 자신의 상태를 가장 잘 설명하는 것을 선택하세요.",
@@ -176,6 +182,7 @@ const LANG_KO = {
     },
     "bai": {
       "name": "BAI",
+      "abbr": "BAI",
       "fullName": "벡 불안 척도",
       "desc": "지난 한 주간 불안 증상의 심각도를 평가합니다.",
       "instructions": "지난 한 주 동안 오늘을 포함하여 각 증상이 얼마나 괴로웠는지 표시하세요.",
@@ -211,6 +218,7 @@ const LANG_KO = {
     },
     "gad7": {
       "name": "GAD-7",
+      "abbr": "GAD-7",
       "fullName": "범불안장애 척도-7",
       "desc": "지난 2주간 범불안의 심각도를 평가합니다.",
       "instructions": "지난 2주 동안 다음 문제들이 얼마나 자주 괴롭혔습니까?",
@@ -232,6 +240,7 @@ const LANG_KO = {
     },
     "msibpd": {
       "name": "MSI-BPD",
+      "abbr": "MSI-BPD",
       "fullName": "맥린 경계성 인격장애 선별 도구",
       "desc": "경계성 인격장애와 관련된 특성을 선별하는 도구입니다.",
       "instructions": "다음 각 질문에 예 또는 아니오로 답하세요.",
@@ -255,6 +264,7 @@ const LANG_KO = {
     },
     "pss": {
       "name": "PSS-10",
+      "abbr": "PSS-10",
       "fullName": "지각된 스트레스 척도-10",
       "desc": "지난 한 달간 생활 상황이 스트레스로 인식되는 정도를 평가합니다.",
       "instructions": "다음 질문들은 지난 한 달 동안의 감정과 생각에 관한 것입니다. 얼마나 자주 그렇게 느끼거나 생각했는지 표시하세요.",
@@ -278,6 +288,7 @@ const LANG_KO = {
     },
     "asrs": {
       "name": "ASRS v1.1",
+      "abbr": "ASRS-v1.1",
       "fullName": "성인 ADHD 자가보고 척도 v1.1",
       "desc": "성인의 주의력결핍 과잉행동장애 증상을 선별하는 도구입니다.",
       "instructions": "지난 6개월 동안 어떻게 느끼고 행동했는지 생각하며 다음 질문에 답하세요.",
@@ -297,6 +308,7 @@ const LANG_KO = {
     },
     "ocir": {
       "name": "OCI-R",
+      "abbr": "OCI-R",
       "fullName": "강박장애 척도 (개정판)",
       "desc": "강박장애의 증상을 평가합니다.",
       "instructions": "다음 문항들은 많은 사람들이 일상에서 경험하는 것들입니다. 지난 한 달 동안 얼마나 괴로웠는지 표시하세요.",
@@ -328,6 +340,7 @@ const LANG_KO = {
     },
     "pcl5": {
       "name": "PCL-5",
+      "abbr": "PCL-5",
       "fullName": "DSM-5 외상후 스트레스장애 체크리스트",
       "desc": "지난 한 달간 외상후 스트레스 증상을 평가합니다.",
       "instructions": "다음은 매우 스트레스를 주는 경험에 대한 반응으로 사람들이 때때로 겪는 문제들의 목록입니다. 지난 한 달 동안 해당 문제가 얼마나 괴로웠는지 표시하세요.",
@@ -361,6 +374,7 @@ const LANG_KO = {
     },
     "bfi44": {
       "name": "BFI-44",
+      "abbr": "BFI-44",
       "fullName": "성격 5요인 검사",
       "desc": "성격의 5가지 주요 차원을 평가합니다: 외향성, 우호성, 성실성, 신경증, 개방성.",
       "instructions": "나는 스스로를 다음과 같은 사람이라고 생각한다... 각 문항에 얼마나 동의하거나 동의하지 않는지 표시하세요.",
@@ -447,6 +461,7 @@ const LANG_KO = {
     },
     "mbti": {
       "name": "MBTI",
+      "abbr": "16P",
       "fullName": "마이어스-브릭스 유형 지표",
       "desc": "에너지, 인식, 판단, 생활양식의 네 가지 차원에서 성격 선호를 파악합니다.",
       "instructions": "대부분의 상황에서 자신을 가장 잘 설명하는 선택지를 고르세요. 맞거나 틀린 답은 없습니다.",
@@ -513,6 +528,7 @@ const LANG_KO = {
     },
     "phq9": {
       "name": "PHQ-9",
+      "abbr": "PHQ-9",
       "fullName": "환자 건강 설문지-9",
       "desc": "일차 진료에서 널리 사용되는 우울증 선별 검사. 9개 문항.",
       "instructions": "지난 2주 동안 다음과 같은 문제로 얼마나 자주 불편을 겪으셨습니까?",
@@ -538,6 +554,7 @@ const LANG_KO = {
     },
     "audit": {
       "name": "AUDIT",
+      "abbr": "AUDIT",
       "fullName": "알코올 사용 장애 선별 검사",
       "desc": "문제적 음주를 감지하기 위해 세계보건기구(WHO)에서 개발한 검사입니다.",
       "instructions": "음주에 관한 다음 질문에 답해 주십시오. 가능한 한 솔직하게 응답해 주세요.",
@@ -592,6 +609,7 @@ const LANG_KO = {
     },
     "isi": {
       "name": "ISI",
+      "abbr": "ISI",
       "fullName": "불면증 심각도 지수",
       "desc": "지난 2주간 불면증의 특성, 심각도 및 영향을 평가합니다.",
       "instructions": "지난 2주 동안의 수면 문제의 심각도를 평가해 주십시오.",
@@ -634,6 +652,7 @@ const LANG_KO = {
     },
     "eat26": {
       "name": "EAT-26",
+      "abbr": "EAT-26",
       "fullName": "식사 태도 검사-26",
       "desc": "섭식 장애의 특징적인 태도와 행동을 감지합니다.",
       "instructions": "다음 각 태도나 행동을 얼마나 자주 경험하는지 표시해 주십시오. 솔직하게 응답해 주세요.",
@@ -673,6 +692,7 @@ const LANG_KO = {
     },
     "mdq": {
       "name": "MDQ",
+      "abbr": "MDQ",
       "fullName": "기분 장애 설문지",
       "desc": "양극성 장애 및 양극성 스펙트럼 장애를 위한 빠른 선별 도구입니다.",
       "instructions": "인생에서 한 번이라도 경험한 적이 있는지 다음 질문에 답해 주십시오.",
@@ -745,6 +765,7 @@ const LANG_KO = {
     },
     "spin": {
       "name": "SPIN",
+      "abbr": "SPIN",
       "fullName": "사회 공포증 척도",
       "desc": "사회불안 증상의 유무와 심각도를 평가합니다.",
       "instructions": "지난 한 주 동안 다음 문제들로 얼마나 불편하셨는지 표시해 주십시오.",
@@ -778,6 +799,7 @@ const LANG_KO = {
     },
     "rosenberg": {
       "name": "RSE",
+      "abbr": "RSE",
       "fullName": "로젠버그 자존감 척도",
       "desc": "전반적 자존감을 측정하는 가장 널리 사용되는 도구입니다. 자기 가치감을 평가합니다.",
       "instructions": "다음 각 문항에 대해 동의하는 정도를 표시해 주십시오.",
@@ -802,6 +824,7 @@ const LANG_KO = {
     },
     "who5": {
       "name": "WHO-5",
+      "abbr": "WHO-5",
       "fullName": "WHO-5 웰빙 지수",
       "desc": "세계보건기구(WHO)에서 개발한 간단한 정서적 웰빙 측정 도구입니다. 5개 문항.",
       "instructions": "지난 2주 동안 어떻게 느꼈는지 표시해 주십시오.",
@@ -822,6 +845,7 @@ const LANG_KO = {
     },
     "triage": {
       "name": "가이드",
+      "abbr": "가이드",
       "fullName": "초기 방향 설정 설문지",
       "desc": "어디서 시작해야 할지 모르시나요? 이 간단한 설문지가 귀하에게 가장 적합한 평가를 추천해 드립니다.",
       "instructions": "최근 어떻게 느끼고 있는지 다음 질문에 솔직하게 답해 주십시오. 끝에 어떤 평가를 받으면 좋을지 맞춤형 추천을 받으실 수 있습니다.",
@@ -880,10 +904,17 @@ const LANG_KO = {
         "Obsesiones y compulsiones": "강박 관련 지표 점수 상승",
         "Cambios de ánimo": "기분 변동 관련 지표 점수 상승",
         "Regulación emocional": "정서 불안정 및 대인관계 불안정 관련 지표 점수 상승"
+      },
+      "results": {
+        "triage_label": "권장 평가 결과",
+        "triage_desc": "응답을 바탕으로 다음 평가를 권장합니다:",
+        "suggested_wellbeing": "모든 사람에게 권장되는 일반 웰빙 평가",
+        "suggested_personality": "보완으로 권장되는 성격 평가"
       }
     },
     "ipip300": {
       "name": "IPIP-300",
+      "abbr": "IPIP-300",
       "fullName": "IPIP-NEO-300 — 300문항 성격 검사",
       "desc": "가장 포괄적인 성격 평가 도구입니다. 빅파이브 성격 특성에 포함된 30개 하위 요인을 높은 정밀도로 측정합니다.",
       "instructions": "각 문장이 평소 자신의 모습을 얼마나 정확하게 설명하는지 표시하세요. 정답이나 오답은 없습니다. 솔직하게 응답해 주세요.",
@@ -1193,6 +1224,7 @@ const LANG_KO = {
     },
     "pid5": {
       "name": "PID-5",
+      "abbr": "PID-5",
       "fullName": "DSM-5 성격 검사",
       "desc": "DSM-5 차원 모델에 따른 병리적 성격 특성의 포괄적 평가. 5개 영역에 걸쳐 25개 측면을 측정합니다.",
       "instructions": "각 문항을 읽고, 지금 느끼는 것만이 아니라 평소 자신을 얼마나 잘 설명하는지 선택하세요.",
@@ -1422,6 +1454,7 @@ const LANG_KO = {
     },
     "ipip_mmpi": {
       "name": "IPIP-임상",
+      "abbr": "IPIP-임상",
       "fullName": "IPIP 임상 척도 (MMPI 척도에 상응)",
       "desc": "공개 도메인 문항을 사용한 포괄적인 임상 성격 평가. MMPI에 상응하는 10개의 임상 척도와 3개의 타당도 척도를 측정합니다.",
       "instructions": "각 문장이 일반적으로 자신에게 해당되는지에 따라 '예' 또는 '아니오'로 응답하세요. 솔직하게 답해 주세요. 정답이나 오답은 없습니다.",

@@ -45,7 +45,12 @@ const LANG_ZH = {
     "dismiss": "关闭",
     "questionsAnswered": "题已回答",
     "inProgress": "进行中",
-    "testBy": "测试"
+    "testBy": "测试",
+    "recommendedTests": "推荐评估",
+    "highPriority": "高优先级",
+    "recommended": "推荐",
+    "suggested": "建议",
+    "areasEvaluated": "评估领域"
   },
   "scales": {
     "agreement5": ["非常不同意","不同意","既不同意也不反对","同意","非常同意"],
@@ -58,6 +63,7 @@ const LANG_ZH = {
   "tests": {
     "bdi": {
       "name": "BDI-II",
+      "abbr": "BDI-II",
       "fullName": "贝克抑郁量表第二版",
       "desc": "评估过去两周内抑郁症状的存在及严重程度。",
       "instructions": "请仔细阅读每组陈述，选择最能描述您过去两周（包括今天）感受的那一项。",
@@ -156,6 +162,7 @@ const LANG_ZH = {
     },
     "bai": {
       "name": "BAI",
+      "abbr": "BAI",
       "fullName": "贝克焦虑量表",
       "desc": "评估过去一周焦虑症状的严重程度。",
       "instructions": "请指出过去一周（包括今天）每种症状困扰您的程度。",
@@ -191,6 +198,7 @@ const LANG_ZH = {
     },
     "gad7": {
       "name": "GAD-7",
+      "abbr": "GAD-7",
       "fullName": "广泛性焦虑障碍量表-7",
       "desc": "评估过去两周广泛性焦虑的严重程度。",
       "instructions": "在过去两周内，以下问题困扰您的频率有多高？",
@@ -212,6 +220,7 @@ const LANG_ZH = {
     },
     "msibpd": {
       "name": "MSI-BPD",
+      "abbr": "MSI-BPD",
       "fullName": "麦克莱恩边缘型人格障碍筛查量表",
       "desc": "用于筛查与边缘型人格障碍相关特征的工具。",
       "instructions": "请对以下每个问题回答是或否。",
@@ -235,6 +244,7 @@ const LANG_ZH = {
     },
     "pss": {
       "name": "PSS-10",
+      "abbr": "PSS-10",
       "fullName": "知觉压力量表-10",
       "desc": "评估过去一个月中生活情境被感知为有压力的程度。",
       "instructions": "以下问题涉及您在过去一个月中的感受和想法。请指出您有这种感受或想法的频率。",
@@ -258,6 +268,7 @@ const LANG_ZH = {
     },
     "asrs": {
       "name": "ASRS v1.1",
+      "abbr": "ASRS-v1.1",
       "fullName": "成人注意缺陷多动障碍自评量表 v1.1",
       "desc": "用于筛查成人注意缺陷多动障碍（ADHD）症状的工具。",
       "instructions": "请根据过去六个月中您的感受和行为来回答以下问题。",
@@ -277,6 +288,7 @@ const LANG_ZH = {
     },
     "ocir": {
       "name": "OCI-R",
+      "abbr": "OCI-R",
       "fullName": "强迫症量表修订版",
       "desc": "评估强迫症症状。",
       "instructions": "以下陈述涉及许多人日常生活中的经历。请指出过去一个月中这些经历困扰您的程度。",
@@ -308,6 +320,7 @@ const LANG_ZH = {
     },
     "pcl5": {
       "name": "PCL-5",
+      "abbr": "PCL-5",
       "fullName": "DSM-5创伤后应激障碍检查表",
       "desc": "评估过去一个月的创伤后应激症状。",
       "instructions": "以下是人们在经历非常有压力的体验后有时会出现的问题。请指出过去一个月中该问题困扰您的程度。",
@@ -341,6 +354,7 @@ const LANG_ZH = {
     },
     "bfi44": {
       "name": "BFI-44",
+      "abbr": "BFI-44",
       "fullName": "大五人格量表",
       "desc": "评估人格的五个主要维度：外向性、宜人性、尽责性、神经质和开放性。",
       "instructions": "我认为自己是一个……请指出您对每项陈述的同意或不同意程度。",
@@ -427,6 +441,7 @@ const LANG_ZH = {
     },
     "mbti": {
       "name": "MBTI",
+      "abbr": "16P",
       "fullName": "迈尔斯-布里格斯性格类型指标",
       "desc": "识别四个维度的性格偏好：精力来源、信息获取、决策方式和生活风格。",
       "instructions": "选择在大多数情况下最能描述您的选项。没有对错之分。",
@@ -493,6 +508,7 @@ const LANG_ZH = {
     },
     "phq9": {
       "name": "PHQ-9",
+      "abbr": "PHQ-9",
       "fullName": "患者健康问卷-9",
       "desc": "广泛应用于初级保健的抑郁症快速筛查工具。共9个问题。",
       "instructions": "在过去两周内，以下问题困扰您的频率是多少？",
@@ -518,6 +534,7 @@ const LANG_ZH = {
     },
     "audit": {
       "name": "AUDIT",
+      "abbr": "AUDIT",
       "fullName": "酒精使用障碍筛查量表",
       "desc": "由世界卫生组织开发，用于筛查问题性饮酒行为。",
       "instructions": "请回答以下关于您饮酒情况的问题。请尽量如实作答。",
@@ -572,6 +589,7 @@ const LANG_ZH = {
     },
     "isi": {
       "name": "ISI",
+      "abbr": "ISI",
       "fullName": "失眠严重程度指数",
       "desc": "评估过去两周内失眠的性质、严重程度及其影响。",
       "instructions": "请评估您在过去两周内的睡眠问题严重程度。",
@@ -614,6 +632,7 @@ const LANG_ZH = {
     },
     "eat26": {
       "name": "EAT-26",
+      "abbr": "EAT-26",
       "fullName": "进食态度量表-26",
       "desc": "用于检测饮食障碍的特征性态度和行为。",
       "instructions": "请指出您出现以下每种态度或行为的频率。请如实作答。",
@@ -653,6 +672,7 @@ const LANG_ZH = {
     },
     "mdq": {
       "name": "MDQ",
+      "abbr": "MDQ",
       "fullName": "情绪障碍筛查表",
       "desc": "用于双相情感障碍及其谱系的快速筛查工具。",
       "instructions": "请回答以下关于您一生中经历过的事情的问题。",
@@ -725,6 +745,7 @@ const LANG_ZH = {
     },
     "spin": {
       "name": "SPIN",
+      "abbr": "SPIN",
       "fullName": "社交恐惧症量表",
       "desc": "评估社交焦虑症状的存在及严重程度。",
       "instructions": "请指出在过去一周内，以下问题对您的困扰程度。",
@@ -758,6 +779,7 @@ const LANG_ZH = {
     },
     "rosenberg": {
       "name": "RSE",
+      "abbr": "RSE",
       "fullName": "罗森伯格自尊量表",
       "desc": "最常用的整体自尊测量。评估个人价值感。",
       "instructions": "请说明你对以下每一项陈述的同意程度。",
@@ -782,6 +804,7 @@ const LANG_ZH = {
     },
     "who5": {
       "name": "WHO-5",
+      "abbr": "WHO-5",
       "fullName": "WHO-5幸福感量表",
       "desc": "世界卫生组织开发的简短情绪健康测量工具。仅5个问题。",
       "instructions": "请选择您在过去两周内的感受。",
@@ -802,6 +825,7 @@ const LANG_ZH = {
     },
     "triage": {
       "name": "导引",
+      "abbr": "导引",
       "fullName": "初始导向问卷",
       "desc": "不知道从哪里开始？这份简短的问卷会为您推荐最相关的评估工具。",
       "instructions": "请如实回答以下关于您近期感受的问题。完成后您将收到个性化的评估建议。",
@@ -860,10 +884,17 @@ const LANG_ZH = {
         "Obsesiones y compulsiones": "强迫症状指标得分偏高",
         "Cambios de ánimo": "情绪波动指标得分偏高",
         "Regulación emocional": "情绪与人际不稳定指标得分偏高"
+      },
+      "results": {
+        "triage_label": "您的推荐评估",
+        "triage_desc": "根据您的回答，我们推荐以下评估：",
+        "suggested_wellbeing": "建议所有人进行的一般幸福感评估",
+        "suggested_personality": "推荐作为补充的人格评估"
       }
     },
     "ipip300": {
       "name": "IPIP-300",
+      "abbr": "IPIP-300",
       "fullName": "IPIP-NEO-300 — 300项人格量表",
       "desc": "最全面的人格评估工具。以高精度测量归属于五大人格特质的30个维度。",
       "instructions": "请指出每个陈述在多大程度上准确地描述了你通常的样子。没有对错之分，请如实作答。",
@@ -1173,6 +1204,7 @@ const LANG_ZH = {
     },
     "pid5": {
       "name": "PID-5",
+      "abbr": "PID-5",
       "fullName": "DSM-5人格量表",
       "desc": "根据DSM-5维度模型对病理性人格特质进行全面评估。测量5个领域中的25个方面。",
       "instructions": "阅读每个陈述，选择它在总体上描述您的程度，而非仅反映您当前的感受。",
@@ -1402,6 +1434,7 @@ const LANG_ZH = {
     },
     "ipip_mmpi": {
       "name": "IPIP-临床",
+      "abbr": "IPIP-临床",
       "fullName": "IPIP临床量表（等同于MMPI量表）",
       "desc": "使用公共领域项目进行全面的临床人格评估。测量10个临床量表和3个效度量表，等同于MMPI量表。",
       "instructions": "根据每项陈述是否通常适用于您，回答「是」或「否」。请如实回答，没有对错之分。",
