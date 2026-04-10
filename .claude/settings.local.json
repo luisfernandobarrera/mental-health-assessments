@@ -2,7 +2,19 @@
   "permissions": {
     "allow": [
       "mcp__claude_ai_Cloudflare_Developer_Platform__accounts_list",
-      "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation"
+      "mcp__claude_ai_Cloudflare_Developer_Platform__search_cloudflare_documentation",
+      "WebFetch(domain:mental-health-ev1.pages.dev)",
+      "WebFetch(domain:www.clinical-partners.co.uk)",
+      "WebFetch(domain:ebchelp.blueprint.ai)",
+      "WebFetch(domain:scales.arabpsychology.com)",
+      "WebFetch(domain:creyos.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.scribd.com)",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:psychiatry-uk.com)",
+      "WebFetch(domain:www.advancedassessments.co.uk)",
+      "WebSearch",
+      "WebFetch(domain:docs.autismresearchcentre.com)"
     ]
   },
   "disabledMcpjsonServers": [

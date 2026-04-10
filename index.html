@@ -62,10 +62,6 @@
   <link rel="alternate" hreflang="hu" href="https://mentalhealth.powali.com/?lang=hu">
   <link rel="alternate" hreflang="el" href="https://mentalhealth.powali.com/?lang=el">
   <link rel="alternate" hreflang="pa" href="https://mentalhealth.powali.com/?lang=pa">
-  <link rel="alternate" hreflang="ro" href="https://mentalhealth.powali.com/?lang=ro">
-  <link rel="alternate" hreflang="fi" href="https://mentalhealth.powali.com/?lang=fi">
-  <link rel="alternate" hreflang="id" href="https://mentalhealth.powali.com/?lang=id">
-  <link rel="alternate" hreflang="sw" href="https://mentalhealth.powali.com/?lang=sw">
   <link rel="alternate" hreflang="pa" href="https://mentalhealth.powali.com/?lang=pa">
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -903,10 +899,6 @@
         <option value="hu">🇭🇺 Magyar</option>
         <option value="el">🇬🇷 Ελληνικά</option>
         <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
-        <option value="ro">🇷🇴 Română</option>
-        <option value="fi">🇫🇮 Suomi</option>
-        <option value="id">🇮🇩 Bahasa Indonesia</option>
-        <option value="sw">🇹🇿 Kiswahili</option>
         <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
       </select>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
@@ -999,10 +991,6 @@
 <script src="i18n/hu.js"></script>
 <script src="i18n/el.js"></script>
 <script src="i18n/pa.js"></script>
-<script src="i18n/ro.js"></script>
-<script src="i18n/fi.js"></script>
-<script src="i18n/id.js"></script>
-<script src="i18n/sw.js"></script>
 <script src="i18n/pa.js"></script>
 <script src="tests/bfi44.js"></script>
 <script src="tests/mbti.js"></script>
@@ -1049,10 +1037,6 @@ if (typeof LANG_GL !== 'undefined') LANGS['gl'] = LANG_GL;
 if (typeof LANG_HU !== 'undefined') LANGS['hu'] = LANG_HU;
 if (typeof LANG_EL !== 'undefined') LANGS['el'] = LANG_EL;
 if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
-if (typeof LANG_RO !== 'undefined') LANGS['ro'] = LANG_RO;
-if (typeof LANG_FI !== 'undefined') LANGS['fi'] = LANG_FI;
-if (typeof LANG_ID !== 'undefined') LANGS['id'] = LANG_ID;
-if (typeof LANG_SW !== 'undefined') LANGS['sw'] = LANG_SW;
 if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
