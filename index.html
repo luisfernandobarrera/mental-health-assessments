@@ -198,27 +198,19 @@
     }
 
     /* ─── Language Selector ─── */
-    .lang-selector {
-      display: flex; gap: 0.25rem; justify-content: center; flex-wrap: wrap;
-    }
-    .lang-btn {
-      min-width: 42px; min-height: 42px; /* Mejorado WCAG */
-      padding: 0.35rem 0.55rem; border: 1.5px solid var(--border);
-      border-radius: 10px; background: transparent; font-family: var(--font-body);
-      font-size: 0.875rem; font-weight: 600; color: var(--text-muted); /* Mejorado WCAG */
+    .lang-select {
+      min-height: 42px; padding: 0.4rem 2rem 0.4rem 0.75rem;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      background: var(--bg-secondary); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 500;
       cursor: pointer; transition: all 0.3s var(--ease-premium);
-      letter-spacing: 0.04em;
-      display: inline-flex; align-items: center; justify-content: center;
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23524E48' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.75rem center;
     }
-    .lang-btn:hover {
-      border-color: var(--accent-light); color: var(--text-primary);
-      background: var(--accent-glow);
-    }
-    .lang-btn.active {
-      background: var(--accent); color: white;
-      border-color: var(--accent);
-      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.2);
-    }
+    [dir="rtl"] .lang-select { padding: 0.4rem 0.75rem 0.4rem 2rem; background-position: left 0.75rem center; }
+    .lang-select:hover { border-color: var(--accent-light); background-color: var(--accent-glow); }
+    .lang-select:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
 
     /* ─── Theme Toggle ─── */
     .theme-toggle {
@@ -786,7 +778,6 @@
     /* ─── Header responsive < 420px ─── */
     @media (max-width: 420px) {
       .header-controls { flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
-      .lang-selector { justify-content: center; }
     }
   </style>
 </head>
@@ -799,20 +790,20 @@
     </button>
     <p id="app-subtitle">Clinical self-assessment tools</p>
     <div class="header-controls">
-      <div class="lang-selector" role="group" aria-label="Language selection">
-        <button class="lang-btn active" onclick="setLang('es')" data-lang="es" aria-label="Español">ES</button>
-        <button class="lang-btn" onclick="setLang('en')" data-lang="en" aria-label="English">EN</button>
-        <button class="lang-btn" onclick="setLang('pt')" data-lang="pt" aria-label="Português">PT</button>
-        <button class="lang-btn" onclick="setLang('fr')" data-lang="fr" aria-label="Français">FR</button>
-        <button class="lang-btn" onclick="setLang('de')" data-lang="de" aria-label="Deutsch">DE</button>
-        <button class="lang-btn" onclick="setLang('it')" data-lang="it" aria-label="Italiano">IT</button>
-        <button class="lang-btn" onclick="setLang('zh')" data-lang="zh" aria-label="中文">中</button>
-        <button class="lang-btn" onclick="setLang('ja')" data-lang="ja" aria-label="日本語">日</button>
-        <button class="lang-btn" onclick="setLang('ko')" data-lang="ko" aria-label="한국어">한</button>
-        <button class="lang-btn" onclick="setLang('ar')" data-lang="ar" aria-label="العربية">ع</button>
-        <button class="lang-btn" onclick="setLang('ru')" data-lang="ru" aria-label="Русский">RU</button>
-        <button class="lang-btn" onclick="setLang('hi')" data-lang="hi" aria-label="हिन्दी">हि</button>
-      </div>
+      <select class="lang-select" id="lang-select" onchange="setLang(this.value)" aria-label="Language selection">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="pt">🇧🇷 Português</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="it">🇮🇹 Italiano</option>
+        <option value="zh">🇨🇳 中文</option>
+        <option value="ja">🇯🇵 日本語</option>
+        <option value="ko">🇰🇷 한국어</option>
+        <option value="ar">🇸🇦 العربية</option>
+        <option value="ru">🇷🇺 Русский</option>
+        <option value="hi">🇮🇳 हिन्दी</option>
+      </select>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
   </header>
@@ -922,9 +913,8 @@ function setLang(lang) {
   localStorage.setItem('mental_health_lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
+  const langSelect = document.getElementById('lang-select');
+  if (langSelect) langSelect.value = lang;
   document.title = t('ui.appTitle') + ' — ' + t('ui.appSubtitle');
   document.querySelector('#app-title h1').textContent = t('ui.appTitle');
   document.getElementById('app-subtitle').textContent = t('ui.appSubtitle');
