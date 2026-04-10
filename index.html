@@ -491,7 +491,15 @@
         background: var(--bg-tertiary); transition: all 0.2s;
       }
       .option label:hover .key-badge { background: var(--bg-primary); border-color: var(--accent-light); }
-      .option input:checked + label .key-badge { display: none; }
+      .option input:checked + label .key-badge { opacity: 0.4; }
+      .option.kb-focused label {
+        border-color: var(--accent-light);
+        background: var(--accent-glow);
+        box-shadow: 0 0 0 2px var(--accent-glow);
+      }
+      .option.kb-focused .key-badge {
+        background: var(--accent); color: white; border-color: var(--accent);
+      }
       
       .keyboard-hint {
         display: block; text-align: center; font-size: 0.9rem; 
@@ -1404,6 +1412,7 @@ function getTranslatedOptions(testId, idx) {
 }
 
 function renderQuestion() {
+  _kbFocusedOption = null;
   const test = activeTest;
   const q = test.questions[currentQ];
   const total = test.questions.length;
@@ -1439,7 +1448,7 @@ function renderQuestion() {
       ${optionsHtml}
     </div>
     <div class="keyboard-hint" aria-hidden="true">
-      <kbd>1</kbd>-<kbd>${opts.length}</kbd> ${t('ui.kbAnswer') !== 'ui.kbAnswer' ? t('ui.kbAnswer') : 'para responder'} · <kbd>←</kbd><kbd>→</kbd> ${t('ui.kbNavigate') !== 'ui.kbNavigate' ? t('ui.kbNavigate') : 'para navegar'}${currentQ === total - 1 ? ' · <kbd>Enter</kbd> ver resultados' : ''}
+      <kbd>1</kbd>-<kbd>${opts.length}</kbd> seleccionar · <kbd>↑</kbd><kbd>↓</kbd> navegar · <kbd>Enter</kbd> confirmar · <kbd>←</kbd><kbd>→</kbd> prev/next${currentQ === total - 1 ? ' · <kbd>Enter</kbd> ver resultados' : ''}
     </div>
   `;
   area.style.animation = 'none'; area.offsetHeight; area.style.animation = '';
@@ -2089,17 +2098,28 @@ document.addEventListener('keydown', e => {
     return;
   }
 
-  // Arrow up/down to navigate options
+  // Arrow up/down to browse options (highlight only, no confirm)
   if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
     e.preventDefault();
-    let sel = answers[currentQ] !== null ? answers[currentQ] : -1;
+    let sel = _kbFocusedOption !== null ? _kbFocusedOption : (answers[currentQ] !== null ? answers[currentQ] : -1);
     sel = e.key === 'ArrowUp' ? (sel <= 0 ? optsLength - 1 : sel - 1) : (sel >= optsLength - 1 ? 0 : sel + 1);
-    triggerOptionSelect(sel);
+    highlightOption(sel);
     return;
   }
 
-  // Enter or ArrowRight to advance
-  if (e.key === 'Enter' || e.key === 'ArrowRight') {
+  // Enter confirms highlighted option OR advances to next question
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (_kbFocusedOption !== null && answers[currentQ] !== _kbFocusedOption) {
+      triggerOptionSelect(_kbFocusedOption);
+    } else if (answers[currentQ] !== null) {
+      nextQuestion();
+    }
+    return;
+  }
+
+  // ArrowRight to advance
+  if (e.key === 'ArrowRight') {
     if (answers[currentQ] !== null) {
       e.preventDefault();
       nextQuestion();
@@ -2114,7 +2134,22 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { exitTest(); }
 });
 
+let _kbFocusedOption = null;
+
+function highlightOption(idx) {
+  _kbFocusedOption = idx;
+  // Remove previous highlights
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('kb-focused'));
+  const container = document.getElementById(`opt-container-${idx}`);
+  if (container) {
+    container.classList.add('kb-focused');
+    container.scrollIntoView({ block: 'nearest' });
+  }
+}
+
 function triggerOptionSelect(idx) {
+  _kbFocusedOption = null;
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('kb-focused'));
   const r = document.getElementById(`q${currentQ}_${idx}`);
   if (r) {
     r.checked = true;
