@@ -767,6 +767,27 @@
         transition-duration: 0.15s !important;
       }
     }
+
+    /* ─── RTL Support ─── */
+    [dir="rtl"] .option label:hover { transform: translateX(-4px); }
+    [dir="rtl"] .option input:checked + label { transform: translateX(-6px); }
+    [dir="rtl"] .question-content { animation: slideInRtl 0.4s var(--ease-out); }
+    @keyframes slideInRtl {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    [dir="rtl"] .question-nav { flex-direction: row-reverse; }
+    [dir="rtl"] .option .key-badge { right: auto; left: 0.75rem; }
+    [dir="rtl"] @keyframes optionFadeIn {
+      from { opacity: 0; transform: translateX(10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ─── Header responsive < 420px ─── */
+    @media (max-width: 420px) {
+      .header-controls { flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+      .lang-selector { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -787,6 +808,10 @@
         <button class="lang-btn" onclick="setLang('it')" data-lang="it" aria-label="Italiano">IT</button>
         <button class="lang-btn" onclick="setLang('zh')" data-lang="zh" aria-label="中文">中</button>
         <button class="lang-btn" onclick="setLang('ja')" data-lang="ja" aria-label="日本語">日</button>
+        <button class="lang-btn" onclick="setLang('ko')" data-lang="ko" aria-label="한국어">한</button>
+        <button class="lang-btn" onclick="setLang('ar')" data-lang="ar" aria-label="العربية">ع</button>
+        <button class="lang-btn" onclick="setLang('ru')" data-lang="ru" aria-label="Русский">RU</button>
+        <button class="lang-btn" onclick="setLang('hi')" data-lang="hi" aria-label="हिन्दी">हि</button>
       </div>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
@@ -1580,12 +1605,14 @@ function renderQuestion() {
       ${optionsHtml}
     </div>
     <div class="keyboard-hint" aria-hidden="true">
-      <kbd>1</kbd>-<kbd>${opts.length}</kbd> seleccionar · <kbd>↑</kbd><kbd>↓</kbd> navegar · <kbd>Enter</kbd> confirmar · <kbd>←</kbd><kbd>→</kbd> prev/next${currentQ === total - 1 ? ' · <kbd>Enter</kbd> ver resultados' : ''}
+      <kbd>1</kbd>-<kbd>${opts.length}</kbd> ${t('ui.kbSelect') !== 'ui.kbSelect' ? t('ui.kbSelect') : 'select'} · <kbd>↑</kbd><kbd>↓</kbd> ${t('ui.kbBrowse') !== 'ui.kbBrowse' ? t('ui.kbBrowse') : 'browse'} · <kbd>Enter</kbd> ${t('ui.kbConfirm') !== 'ui.kbConfirm' ? t('ui.kbConfirm') : 'confirm'} · <kbd>←</kbd><kbd>→</kbd> ${t('ui.kbPrevNext') !== 'ui.kbPrevNext' ? t('ui.kbPrevNext') : 'prev/next'}${currentQ === total - 1 ? ` · <kbd>Enter</kbd> ${t('ui.viewResults')}` : ''}
     </div>
   `;
   area.style.animation = 'none'; area.offsetHeight; area.style.animation = '';
 
-  document.getElementById('btn-prev').disabled = currentQ === 0;
+  const btnPrev = document.getElementById('btn-prev');
+  btnPrev.disabled = currentQ === 0;
+  btnPrev.innerHTML = '&larr; ' + (t('ui.prevQuestion') !== 'ui.prevQuestion' ? t('ui.prevQuestion') : 'Anterior');
   const btnNext = document.getElementById('btn-next');
   btnNext.disabled = answers[currentQ] === null;
   btnNext.textContent = currentQ === total - 1 ? t('ui.viewResults') : t('ui.nextQuestion') + ' →';

@@ -50,7 +50,15 @@ const LANG_ES = {
     "highPriority": "Alta prioridad",
     "recommended": "Recomendado",
     "suggested": "Sugerido",
-    "areasEvaluated": "Áreas evaluadas"
+    "areasEvaluated": "Áreas evaluadas",
+    "kbSelect": "seleccionar",
+    "kbBrowse": "navegar",
+    "kbConfirm": "confirmar",
+    "kbPrevNext": "anterior/siguiente",
+    "prevQuestion": "Anterior",
+    "suggestedRetake": "Sugerido retomar",
+    "triageRecommended": "Recomendado por tu evaluación inicial",
+    "retakeReason": "Última vez hace"
   },
   "scales": {
     "agreement5": ["Muy en desacuerdo","En desacuerdo","Ni de acuerdo ni en desacuerdo","De acuerdo","Muy de acuerdo"],

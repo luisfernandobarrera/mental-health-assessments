@@ -50,7 +50,15 @@ const LANG_EN = {
     "highPriority": "High priority",
     "recommended": "Recommended",
     "suggested": "Suggested",
-    "areasEvaluated": "Areas evaluated"
+    "areasEvaluated": "Areas evaluated",
+    "kbSelect": "select",
+    "kbBrowse": "browse",
+    "kbConfirm": "confirm",
+    "kbPrevNext": "prev/next",
+    "prevQuestion": "Previous",
+    "suggestedRetake": "Suggested to retake",
+    "triageRecommended": "Recommended by your initial assessment",
+    "retakeReason": "Last taken"
   },
   "scales": {
     "agreement5": ["Strongly disagree","Disagree","Neither agree nor disagree","Agree","Strongly agree"],
