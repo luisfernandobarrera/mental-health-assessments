@@ -47,6 +47,13 @@
   <link rel="alternate" hreflang="hi" href="https://mentalhealth.powali.com/?lang=hi">
   <link rel="alternate" hreflang="bn" href="https://mentalhealth.powali.com/?lang=bn">
   <link rel="alternate" hreflang="tr" href="https://mentalhealth.powali.com/?lang=tr">
+  <link rel="alternate" hreflang="nl" href="https://mentalhealth.powali.com/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://mentalhealth.powali.com/?lang=sv">
+  <link rel="alternate" hreflang="cs" href="https://mentalhealth.powali.com/?lang=cs">
+  <link rel="alternate" hreflang="ca" href="https://mentalhealth.powali.com/?lang=ca">
+  <link rel="alternate" hreflang="gl" href="https://mentalhealth.powali.com/?lang=gl">
+  <link rel="alternate" hreflang="hu" href="https://mentalhealth.powali.com/?lang=hu">
+  <link rel="alternate" hreflang="el" href="https://mentalhealth.powali.com/?lang=el">
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -868,6 +875,13 @@
         <option value="hi">🇮🇳 हिन्दी</option>
         <option value="bn">🇧🇩 বাংলা</option>
         <option value="tr">🇹🇷 Türkçe</option>
+        <option value="nl">🇳🇱 Nederlands</option>
+        <option value="sv">🇸🇪 Svenska</option>
+        <option value="cs">🇨🇿 Čeština</option>
+        <option value="ca">🇪🇸 Català</option>
+        <option value="gl">🇪🇸 Galego</option>
+        <option value="hu">🇭🇺 Magyar</option>
+        <option value="el">🇬🇷 Ελληνικά</option>
       </select>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
@@ -944,6 +958,13 @@
 <script src="i18n/hi.js"></script>
 <script src="i18n/bn.js"></script>
 <script src="i18n/tr.js"></script>
+<script src="i18n/nl.js"></script>
+<script src="i18n/sv.js"></script>
+<script src="i18n/cs.js"></script>
+<script src="i18n/ca.js"></script>
+<script src="i18n/gl.js"></script>
+<script src="i18n/hu.js"></script>
+<script src="i18n/el.js"></script>
 <script src="tests/bfi44.js"></script>
 <script src="tests/mbti.js"></script>
 <script src="tests/ipip300.js"></script>
@@ -974,6 +995,13 @@ function detectLang() {
 }
 if (typeof LANG_BN !== 'undefined') LANGS['bn'] = LANG_BN;
 if (typeof LANG_TR !== 'undefined') LANGS['tr'] = LANG_TR;
+if (typeof LANG_NL !== 'undefined') LANGS['nl'] = LANG_NL;
+if (typeof LANG_SV !== 'undefined') LANGS['sv'] = LANG_SV;
+if (typeof LANG_CS !== 'undefined') LANGS['cs'] = LANG_CS;
+if (typeof LANG_CA !== 'undefined') LANGS['ca'] = LANG_CA;
+if (typeof LANG_GL !== 'undefined') LANGS['gl'] = LANG_GL;
+if (typeof LANG_HU !== 'undefined') LANGS['hu'] = LANG_HU;
+if (typeof LANG_EL !== 'undefined') LANGS['el'] = LANG_EL;
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
   const keys = key.split('.');
