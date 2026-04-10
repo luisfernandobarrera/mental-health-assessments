@@ -1003,6 +1003,250 @@ const LANG_DE = {
         "high": { "label": "Hohes Wohlbefinden", "desc": "Zeigt ein hohes Niveau des emotionalen Wohlbefindens an." }
       }
     },
+    "aq10": {
+      "name": "AQ-10",
+      "abbr": "AQ-10",
+      "fullName": "Autismus-Spektrum-Quotient — 10 Items",
+      "desc": "Kurzes Screening für Merkmale, die mit dem Autismus-Spektrum in Verbindung stehen. Entwickelt von Baron-Cohen et al.",
+      "instructions": "Lesen Sie jede Aussage sorgfältig und geben Sie Ihr Maß an Zustimmung oder Ablehnung an.",
+      "sharedOptions": [
+            "Stimme voll zu",
+            "Stimme eher zu",
+            "Stimme eher nicht zu",
+            "Stimme gar nicht zu"
+      ],
+      "questions": [
+            {
+                  "title": "Ich bemerke häufig kleine Geräusche, die anderen entgehen"
+            },
+            {
+                  "title": "Beim Lesen einer Geschichte fällt es mir schwer, die Absichten der Charaktere zu verstehen"
+            },
+            {
+                  "title": "Es fällt mir leicht, zwischen den Zeilen zu lesen, wenn jemand mit mir spricht"
+            },
+            {
+                  "title": "Ich konzentriere mich meist eher auf das Gesamtbild als auf kleine Details"
+            },
+            {
+                  "title": "Ich weiß, wie ich erkennen kann, ob jemand, der mir zuhört, gelangweilt ist"
+            },
+            {
+                  "title": "Es fällt mir leicht, mehrere Dinge gleichzeitig zu tun"
+            },
+            {
+                  "title": "Es fällt mir leicht, herauszufinden, was jemand denkt oder fühlt, indem ich sein Gesicht betrachte"
+            },
+            {
+                  "title": "Bei einer Unterbrechung kann ich schnell zu dem zurückkehren, was ich gerade tat"
+            },
+            {
+                  "title": "Ich sammle gerne Informationen über Kategorien von Dingen"
+            },
+            {
+                  "title": "Es fällt mir schwer, die Absichten von Menschen zu verstehen"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Geringe autistische Merkmale",
+                  "desc": "Ihr Ergebnis deutet nicht auf signifikante Merkmale des Autismus-Spektrums hin. Falls Sie Bedenken haben, konsultieren Sie einen Fachmann."
+            },
+            "moderado": {
+                  "label": "Einige autistische Merkmale",
+                  "desc": "Ihr Ergebnis zeigt einige Merkmale des Autismus-Spektrums, liegt aber unter dem klinischen Überweisungsschwellenwert (≥6)."
+            },
+            "alto": {
+                  "label": "Signifikante autistische Merkmale",
+                  "desc": "Ihr Ergebnis überschreitet den Überweisungsschwellenwert (≥6). Eine umfassende diagnostische Untersuchung durch einen spezialisierten Fachmann wird empfohlen."
+            },
+            "muy_alto": {
+                  "label": "Sehr signifikante autistische Merkmale",
+                  "desc": "Ihr Ergebnis ist hoch. Es wird dringend empfohlen, eine umfassende diagnostische Untersuchung bei einem Spezialisten für Autismus-Spektrum-Störungen durchführen zu lassen."
+            }
+      }
+},
+    "aq50": {
+      "name": "AQ-50",
+      "abbr": "AQ-50",
+      "fullName": "Autismus-Spektrum-Quotient — 50 Items",
+      "desc": "Umfassende Bewertung von Merkmalen des Autismus-Spektrums in fünf Bereichen: soziale Fähigkeiten, Aufmerksamkeitswechsel, Detailgenauigkeit, Kommunikation und Fantasie.",
+      "instructions": "Lesen Sie jede Aussage sorgfältig und geben Sie Ihr Maß an Zustimmung oder Ablehnung an. Es gibt keine richtigen oder falschen Antworten.",
+      "questions": [
+            {
+                  "title": "Ich bevorzuge es, Dinge mit anderen zu tun, anstatt allein"
+            },
+            {
+                  "title": "Ich bevorzuge es, Dinge immer auf die gleiche Weise zu tun"
+            },
+            {
+                  "title": "Wenn ich versuche, mir etwas vorzustellen, fällt es mir sehr leicht, ein Bild im Kopf zu erschaffen"
+            },
+            {
+                  "title": "Ich verliere mich oft so sehr in einer Sache, dass ich andere Dinge aus den Augen verliere"
+            },
+            {
+                  "title": "Ich bemerke häufig kleine Geräusche, die anderen entgehen"
+            },
+            {
+                  "title": "Ich achte normalerweise auf Nummernschilder oder ähnliche Informationen"
+            },
+            {
+                  "title": "Andere sagen mir oft, dass das, was ich sage, unhöflich ist, obwohl ich denke, dass es höflich ist"
+            },
+            {
+                  "title": "Beim Lesen einer Geschichte kann ich mir leicht vorstellen, wie die Charaktere aussehen könnten"
+            },
+            {
+                  "title": "Ich bin fasziniert von Daten"
+            },
+            {
+                  "title": "In einer sozialen Gruppe kann ich leicht mehreren Gesprächen gleichzeitig folgen"
+            },
+            {
+                  "title": "Ich finde soziale Situationen leicht"
+            },
+            {
+                  "title": "Ich neige dazu, Details zu bemerken, die anderen entgehen"
+            },
+            {
+                  "title": "Ich gehe lieber in eine Bibliothek als auf eine Party"
+            },
+            {
+                  "title": "Es fällt mir leicht, Geschichten zu erfinden"
+            },
+            {
+                  "title": "Ich fühle mich stärker zu Menschen hingezogen als zu Dingen"
+            },
+            {
+                  "title": "Ich neige dazu, sehr intensive Interessen zu haben, über die ich mich ärgere, wenn ich sie nicht verfolgen kann"
+            },
+            {
+                  "title": "Ich genieße Smalltalk"
+            },
+            {
+                  "title": "Wenn ich rede, fällt es anderen nicht immer leicht, ein Wort dazwischenzusagen"
+            },
+            {
+                  "title": "Ich bin fasziniert von Zahlen"
+            },
+            {
+                  "title": "Beim Lesen einer Geschichte fällt es mir schwer, die Absichten der Charaktere zu verstehen"
+            },
+            {
+                  "title": "Ich lese nicht besonders gerne Romane"
+            },
+            {
+                  "title": "Es fällt mir schwer, neue Freunde zu finden"
+            },
+            {
+                  "title": "Ich bemerke ständig Muster in Dingen"
+            },
+            {
+                  "title": "Ich gehe lieber ins Theater als in ein Museum"
+            },
+            {
+                  "title": "Es stört mich nicht, wenn mein Tagesablauf gestört wird"
+            },
+            {
+                  "title": "Ich weiß oft nicht, wie ich ein Gespräch am Laufen halten soll"
+            },
+            {
+                  "title": "Es fällt mir leicht, zwischen den Zeilen zu lesen, wenn jemand mit mir spricht"
+            },
+            {
+                  "title": "Ich konzentriere mich meist eher auf das Gesamtbild als auf kleine Details"
+            },
+            {
+                  "title": "Ich bin nicht sehr gut darin, Telefonnummern zu behalten"
+            },
+            {
+                  "title": "Ich bemerke normalerweise keine kleinen Veränderungen in einer Situation oder im Aussehen einer Person"
+            },
+            {
+                  "title": "Ich weiß, wie ich erkennen kann, ob jemand, der mir zuhört, gelangweilt ist"
+            },
+            {
+                  "title": "Es fällt mir leicht, mehrere Dinge gleichzeitig zu tun"
+            },
+            {
+                  "title": "Beim Telefonieren bin ich unsicher, wann ich an der Reihe bin zu sprechen"
+            },
+            {
+                  "title": "Ich genieße es, Dinge spontan zu tun"
+            },
+            {
+                  "title": "Ich verstehe den Punkt eines Witzes oft als Letzter"
+            },
+            {
+                  "title": "Es fällt mir leicht, herauszufinden, was jemand denkt oder fühlt, indem ich sein Gesicht betrachte"
+            },
+            {
+                  "title": "Bei einer Unterbrechung kann ich schnell zu dem zurückkehren, was ich gerade tat"
+            },
+            {
+                  "title": "Ich bin gut im Smalltalk"
+            },
+            {
+                  "title": "Man sagt mir oft, dass ich immer wieder über dasselbe Thema rede"
+            },
+            {
+                  "title": "Als Kind habe ich gerne Rollenspiele mit anderen Kindern gespielt"
+            },
+            {
+                  "title": "Ich sammle gerne Informationen über Kategorien von Dingen"
+            },
+            {
+                  "title": "Es fällt mir schwer, mir vorzustellen, wie es wäre, jemand anderes zu sein"
+            },
+            {
+                  "title": "Ich plane Aktivitäten, an denen ich teilnehme, sorgfältig"
+            },
+            {
+                  "title": "Ich genieße soziale Anlässe"
+            },
+            {
+                  "title": "Es fällt mir schwer, die Absichten von Menschen zu verstehen"
+            },
+            {
+                  "title": "Neue Situationen machen mich ängstlich"
+            },
+            {
+                  "title": "Ich genieße es, neue Leute kennenzulernen"
+            },
+            {
+                  "title": "Ich bin ein guter Diplomat"
+            },
+            {
+                  "title": "Ich bin nicht sehr gut darin, Geburtsdaten von Menschen zu behalten"
+            },
+            {
+                  "title": "Es fällt mir sehr leicht, mit Kindern Rollenspiele zu spielen"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Geringe autistische Merkmale",
+                  "desc": "Ihr Ergebnis liegt im typischen Bereich der Allgemeinbevölkerung. Es werden keine signifikanten Merkmale des Autismus-Spektrums angezeigt."
+            },
+            "leve": {
+                  "label": "Leichte autistische Merkmale",
+                  "desc": "Ihr Ergebnis zeigt einige Merkmale des Autismus-Spektrums im Durchschnittsbereich. Viele Menschen ohne Diagnose liegen in diesem Bereich."
+            },
+            "moderado": {
+                  "label": "Mäßige autistische Merkmale",
+                  "desc": "Ihr Ergebnis überschreitet den Schwellenwert von 26 und deutet auf überdurchschnittliche autistische Merkmale hin. Bei Schwierigkeiten sollten Sie einen Fachmann konsultieren."
+            },
+            "alto": {
+                  "label": "Signifikante autistische Merkmale",
+                  "desc": "Ihr Ergebnis überschreitet den klinischen Schwellenwert von 32. 80% der Menschen mit Autismus-Diagnose liegen in diesem Bereich. Eine diagnostische Untersuchung wird empfohlen."
+            },
+            "muy_alto": {
+                  "label": "Sehr signifikante autistische Merkmale",
+                  "desc": "Ihr Ergebnis ist sehr hoch und deutet stark auf das Vorliegen von Merkmalen des Autismus-Spektrums hin. Eine umfassende diagnostische Untersuchung wird dringend empfohlen."
+            }
+      }
+},
     "triage": {
       "name": "Leitfaden",
       "abbr": "Leitfaden",
@@ -1036,6 +1280,9 @@ const LANG_DE = {
         { "title": "Ich hatte Episoden, in denen ich mich ungewöhnlich hyperaktiv oder impulsiv fühlte" },
         { "title": "Meine zwischenmenschlichen Beziehungen sind intensiv und instabil" },
         { "title": "Meine Emotionen ändern sich schnell und es fällt mir schwer, sie zu regulieren" }
+      ,
+        { "title": "Es fällt mir schwer, die Absichten oder Gefühle anderer zu verstehen" },
+        { "title": "Ich bevorzuge Routinen und fühle mich unwohl, wenn sie gestört werden" }
       ],
       "domainNames": {
         "Estado de ánimo": "Stimmung",
@@ -1050,6 +1297,8 @@ const LANG_DE = {
         "Obsesiones y compulsiones": "Zwangsstörungen",
         "Cambios de ánimo": "Stimmungsschwankungen",
         "Regulación emocional": "Emotionsregulation"
+      ,
+        "Rasgos del espectro autista": "Autismus-Spektrum-Merkmale"
       },
       "domainReasons": {
         "Estado de ánimo": "Hohe Punktzahl bei Indikatoren der Stimmung",
@@ -1064,6 +1313,8 @@ const LANG_DE = {
         "Obsesiones y compulsiones": "Hohe Punktzahl bei Indikatoren von Zwangsverhalten",
         "Cambios de ánimo": "Hohe Punktzahl bei Indikatoren von Stimmungsschwankungen",
         "Regulación emocional": "Hohe Punktzahl bei Indikatoren von emotionaler und zwischenmenschlicher Instabilität"
+      ,
+        "Rasgos del espectro autista": "Hohe Punktzahl bei Indikatoren für Autismus-Spektrum-Merkmale"
       },
       "results": {
         "triage_label": "Ihre empfohlenen Bewertungen",

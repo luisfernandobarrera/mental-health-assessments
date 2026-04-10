@@ -968,6 +968,250 @@ const LANG_EN = {
         "high": { "label": "High well-being", "desc": "Indicates a high level of emotional well-being." }
       }
     },
+    "aq10": {
+      "name": "AQ-10",
+      "abbr": "AQ-10",
+      "fullName": "Autism Spectrum Quotient — 10 items",
+      "desc": "Brief screening for traits associated with the autism spectrum. Developed by Baron-Cohen et al.",
+      "instructions": "Read each statement carefully and indicate your degree of agreement or disagreement.",
+      "sharedOptions": [
+            "Definitely agree",
+            "Slightly agree",
+            "Slightly disagree",
+            "Definitely disagree"
+      ],
+      "questions": [
+            {
+                  "title": "I often notice small sounds when others do not"
+            },
+            {
+                  "title": "When I'm reading a story, I find it difficult to work out the characters' intentions"
+            },
+            {
+                  "title": "I find it easy to 'read between the lines' when someone is talking to me"
+            },
+            {
+                  "title": "I usually concentrate more on the whole picture, rather than the small details"
+            },
+            {
+                  "title": "I know how to tell if someone listening to me is getting bored"
+            },
+            {
+                  "title": "I find it easy to do more than one thing at once"
+            },
+            {
+                  "title": "I find it easy to work out what someone is thinking or feeling just by looking at their face"
+            },
+            {
+                  "title": "If there is an interruption, I can switch back to what I was doing very quickly"
+            },
+            {
+                  "title": "I like to collect information about categories of things"
+            },
+            {
+                  "title": "I find it difficult to work out people's intentions"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Few autistic traits",
+                  "desc": "Your score does not suggest significant autism spectrum traits. However, if you have concerns, consult a professional."
+            },
+            "moderado": {
+                  "label": "Some autistic traits",
+                  "desc": "Your score indicates some traits associated with the autism spectrum, though below the clinical referral threshold (≥6)."
+            },
+            "alto": {
+                  "label": "Significant autistic traits",
+                  "desc": "Your score exceeds the referral threshold (≥6). A comprehensive diagnostic evaluation with a specialized professional is recommended."
+            },
+            "muy_alto": {
+                  "label": "Very significant autistic traits",
+                  "desc": "Your score is high. It is strongly recommended to seek a comprehensive diagnostic evaluation with a specialist in autism spectrum disorders."
+            }
+      }
+},
+    "aq50": {
+      "name": "AQ-50",
+      "abbr": "AQ-50",
+      "fullName": "Autism Spectrum Quotient — 50 items",
+      "desc": "Comprehensive assessment of autism spectrum traits across five domains: social skills, attention switching, attention to detail, communication, and imagination.",
+      "instructions": "Read each statement carefully and indicate your degree of agreement or disagreement. There are no right or wrong answers.",
+      "questions": [
+            {
+                  "title": "I prefer to do things with others rather than on my own"
+            },
+            {
+                  "title": "I prefer to do things the same way over and over again"
+            },
+            {
+                  "title": "If I try to imagine something, I find it very easy to create a picture in my mind"
+            },
+            {
+                  "title": "I frequently get so strongly absorbed in one thing that I lose sight of other things"
+            },
+            {
+                  "title": "I often notice small sounds when others do not"
+            },
+            {
+                  "title": "I usually notice car number plates or similar strings of information"
+            },
+            {
+                  "title": "Other people frequently tell me that what I've said is impolite, even though I think it is polite"
+            },
+            {
+                  "title": "When I'm reading a story, I can easily imagine what the characters might look like"
+            },
+            {
+                  "title": "I am fascinated by dates"
+            },
+            {
+                  "title": "In a social group, I can easily keep track of several different people's conversations"
+            },
+            {
+                  "title": "I find social situations easy"
+            },
+            {
+                  "title": "I tend to notice details that others do not"
+            },
+            {
+                  "title": "I would rather go to a library than a party"
+            },
+            {
+                  "title": "I find making up stories easy"
+            },
+            {
+                  "title": "I find myself drawn more strongly to people than to things"
+            },
+            {
+                  "title": "I tend to have very strong interests which I get upset about if I can't pursue"
+            },
+            {
+                  "title": "I enjoy social chit-chat"
+            },
+            {
+                  "title": "When I talk, it isn't always easy for others to get a word in edgeways"
+            },
+            {
+                  "title": "I am fascinated by numbers"
+            },
+            {
+                  "title": "When I'm reading a story, I find it difficult to work out the characters' intentions"
+            },
+            {
+                  "title": "I don't particularly enjoy reading fiction"
+            },
+            {
+                  "title": "I find it hard to make new friends"
+            },
+            {
+                  "title": "I notice patterns in things all the time"
+            },
+            {
+                  "title": "I would rather go to the theatre than a museum"
+            },
+            {
+                  "title": "It does not upset me if my daily routine is disturbed"
+            },
+            {
+                  "title": "I frequently find that I don't know how to keep a conversation going"
+            },
+            {
+                  "title": "I find it easy to 'read between the lines' when someone is talking to me"
+            },
+            {
+                  "title": "I usually concentrate more on the whole picture, rather than the small details"
+            },
+            {
+                  "title": "I am not very good at remembering phone numbers"
+            },
+            {
+                  "title": "I don't usually notice small changes in a situation, or a person's appearance"
+            },
+            {
+                  "title": "I know how to tell if someone listening to me is getting bored"
+            },
+            {
+                  "title": "I find it easy to do more than one thing at once"
+            },
+            {
+                  "title": "When I talk on the phone, I'm not sure when it's my turn to speak"
+            },
+            {
+                  "title": "I enjoy doing things spontaneously"
+            },
+            {
+                  "title": "I am often the last to understand the point of a joke"
+            },
+            {
+                  "title": "I find it easy to work out what someone is thinking or feeling just by looking at their face"
+            },
+            {
+                  "title": "If there is an interruption, I can switch back to what I was doing very quickly"
+            },
+            {
+                  "title": "I am good at social chit-chat"
+            },
+            {
+                  "title": "People often tell me that I keep going on and on about the same thing"
+            },
+            {
+                  "title": "When I was young, I used to enjoy playing games involving pretending with other children"
+            },
+            {
+                  "title": "I like to collect information about categories of things"
+            },
+            {
+                  "title": "I find it difficult to imagine what it would be like to be someone else"
+            },
+            {
+                  "title": "I like to plan any activities I participate in carefully"
+            },
+            {
+                  "title": "I enjoy social occasions"
+            },
+            {
+                  "title": "I find it difficult to work out people's intentions"
+            },
+            {
+                  "title": "New situations make me anxious"
+            },
+            {
+                  "title": "I enjoy meeting new people"
+            },
+            {
+                  "title": "I am a good diplomat"
+            },
+            {
+                  "title": "I am not very good at remembering people's date of birth"
+            },
+            {
+                  "title": "I find it very easy to play games with children that involve pretending"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Few autistic traits",
+                  "desc": "Your score falls within the typical range of the general population. No significant autism spectrum traits are suggested."
+            },
+            "leve": {
+                  "label": "Mild autistic traits",
+                  "desc": "Your score indicates some autism spectrum traits, within the average range. Many people without a diagnosis score in this range."
+            },
+            "moderado": {
+                  "label": "Moderate autistic traits",
+                  "desc": "Your score exceeds the threshold of 26 and suggests above-average autistic traits. Consider consulting a professional if you experience difficulties."
+            },
+            "alto": {
+                  "label": "Significant autistic traits",
+                  "desc": "Your score exceeds the clinical threshold of 32. 80% of people diagnosed with autism score in this range. A diagnostic evaluation is recommended."
+            },
+            "muy_alto": {
+                  "label": "Very significant autistic traits",
+                  "desc": "Your score is very high and strongly suggests the presence of autism spectrum traits. A comprehensive diagnostic evaluation is strongly recommended."
+            }
+      }
+},
     "triage": {
       "name": "Guide",
       "abbr": "Guide",
@@ -1001,6 +1245,9 @@ const LANG_EN = {
         { "title": "I have had episodes where I felt unusually hyperactive or impulsive" },
         { "title": "My interpersonal relationships are intense and unstable" },
         { "title": "My emotions change rapidly and I find it difficult to regulate them" }
+      ,
+        { "title": "I find it difficult to understand other people's intentions or emotions" },
+        { "title": "I prefer routines and feel uncomfortable when they are disrupted" }
       ],
       "domainNames": {
         "Estado de ánimo": "Mood",
@@ -1015,6 +1262,8 @@ const LANG_EN = {
         "Obsesiones y compulsiones": "Obsessions and Compulsions",
         "Cambios de ánimo": "Mood Swings",
         "Regulación emocional": "Emotional Regulation"
+      ,
+        "Rasgos del espectro autista": "Autism Spectrum Traits"
       },
       "domainReasons": {
         "Estado de ánimo": "High score on mood indicators",
@@ -1029,6 +1278,8 @@ const LANG_EN = {
         "Obsesiones y compulsiones": "High score on obsessive-compulsive indicators",
         "Cambios de ánimo": "High score on mood change indicators",
         "Regulación emocional": "High score on emotional and interpersonal instability indicators"
+      ,
+        "Rasgos del espectro autista": "High score on autism spectrum trait indicators"
       },
       "results": {
         "triage_label": "Your recommended assessments",

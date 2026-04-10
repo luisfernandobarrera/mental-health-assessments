@@ -6,7 +6,7 @@ const TEST_TRIAGE = {
   desc: '¿No sabes por dónde empezar? Este cuestionario breve te recomienda qué evaluaciones son más relevantes para ti.',
   color: '#5B7B9B',
   icon: '🧭',
-  items: 25,
+  items: 27,
   time: '3-5 min',
   instructions: 'Responde con honestidad a las siguientes preguntas sobre cómo te has sentido últimamente. Al final recibirás recomendaciones personalizadas sobre qué evaluaciones realizar.',
   sharedOptions: ["Nada", "Un poco", "Moderadamente", "Bastante", "Mucho"],
@@ -24,7 +24,8 @@ const TEST_TRIAGE = {
     'Atención y concentración': { items: [17, 18], tests: ['asrs'] },
     'Obsesiones y compulsiones': { items: [19, 20], tests: ['ocir'] },
     'Cambios de ánimo': { items: [21, 22], tests: ['mdq'] },
-    'Regulación emocional': { items: [23, 24], tests: ['msibpd'] }
+    'Regulación emocional': { items: [23, 24], tests: ['msibpd'] },
+    'Rasgos del espectro autista': { items: [25, 26], tests: ['aq10', 'aq50'] }
   },
 
   questions: [
@@ -75,7 +76,11 @@ const TEST_TRIAGE = {
 
     // 24-25: Regulación emocional / Personalidad → MSI-BPD
     { title: "Mis relaciones interpersonales son intensas e inestables" },
-    { title: "Mis emociones cambian rápidamente y me cuesta regularlas" }
+    { title: "Mis emociones cambian rápidamente y me cuesta regularlas" },
+
+    // 26-27: Rasgos del espectro autista → AQ-10, AQ-50
+    { title: "Me cuesta entender las intenciones o emociones de los demás" },
+    { title: "Prefiero las rutinas y me incomoda cuando se alteran" }
   ],
 
   getResult(score, answersArr) {

@@ -1001,6 +1001,250 @@ const LANG_FR = {
         "high": { "label": "Haute estime de soi", "desc": "Votre score indique un niveau élevé d'estime de soi." }
       }
     },
+    "aq10": {
+      "name": "AQ-10",
+      "abbr": "AQ-10",
+      "fullName": "Quotient du Spectre Autistique — 10 items",
+      "desc": "Dépistage rapide des traits associés au spectre autistique. Développé par Baron-Cohen et al.",
+      "instructions": "Lisez attentivement chaque affirmation et indiquez votre degré d'accord ou de désaccord.",
+      "sharedOptions": [
+            "Tout à fait d'accord",
+            "Plutôt d'accord",
+            "Plutôt en désaccord",
+            "Tout à fait en désaccord"
+      ],
+      "questions": [
+            {
+                  "title": "Je remarque souvent des petits sons que les autres ne perçoivent pas"
+            },
+            {
+                  "title": "Quand je lis une histoire, j'ai du mal à comprendre les intentions des personnages"
+            },
+            {
+                  "title": "Je trouve facile de 'lire entre les lignes' quand quelqu'un me parle"
+            },
+            {
+                  "title": "Je me concentre généralement plus sur l'ensemble plutôt que sur les détails"
+            },
+            {
+                  "title": "Je sais dire si quelqu'un qui m'écoute s'ennuie"
+            },
+            {
+                  "title": "Je trouve facile de faire plusieurs choses à la fois"
+            },
+            {
+                  "title": "Je trouve facile de deviner ce que quelqu'un pense ou ressent juste en regardant son visage"
+            },
+            {
+                  "title": "S'il y a une interruption, je peux revenir rapidement à ce que je faisais"
+            },
+            {
+                  "title": "J'aime collecter des informations sur des catégories de choses"
+            },
+            {
+                  "title": "J'ai du mal à comprendre les intentions des gens"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Peu de traits autistiques",
+                  "desc": "Votre score ne suggère pas de traits significatifs du spectre autistique. Cependant, si vous avez des inquiétudes, consultez un professionnel."
+            },
+            "moderado": {
+                  "label": "Quelques traits autistiques",
+                  "desc": "Votre score indique certains traits associés au spectre autistique, bien qu'en dessous du seuil de référence clinique (≥6)."
+            },
+            "alto": {
+                  "label": "Traits autistiques significatifs",
+                  "desc": "Votre score dépasse le seuil de référence (≥6). Une évaluation diagnostique complète avec un professionnel spécialisé est recommandée."
+            },
+            "muy_alto": {
+                  "label": "Traits autistiques très significatifs",
+                  "desc": "Votre score est élevé. Il est fortement recommandé de demander une évaluation diagnostique complète avec un spécialiste des troubles du spectre autistique."
+            }
+      }
+},
+    "aq50": {
+      "name": "AQ-50",
+      "abbr": "AQ-50",
+      "fullName": "Quotient du Spectre Autistique — 50 items",
+      "desc": "Évaluation complète des traits du spectre autistique à travers cinq domaines : compétences sociales, changement d'attention, attention aux détails, communication et imagination.",
+      "instructions": "Lisez attentivement chaque affirmation et indiquez votre degré d'accord ou de désaccord. Il n'y a pas de bonnes ou de mauvaises réponses.",
+      "questions": [
+            {
+                  "title": "Je préfère faire des choses avec d'autres plutôt que seul"
+            },
+            {
+                  "title": "Je préfère faire les choses de la même manière encore et encore"
+            },
+            {
+                  "title": "Si j'essaie d'imaginer quelque chose, je trouve très facile de créer une image dans mon esprit"
+            },
+            {
+                  "title": "Je suis souvent tellement absorbé par une chose que j'en oublie les autres"
+            },
+            {
+                  "title": "Je remarque souvent des petits sons que les autres ne perçoivent pas"
+            },
+            {
+                  "title": "Je remarque généralement les plaques d'immatriculation ou des séries similaires d'informations"
+            },
+            {
+                  "title": "Les autres me disent souvent que ce que j'ai dit est impoli, même si je pense que c'est poli"
+            },
+            {
+                  "title": "Quand je lis une histoire, je peux facilement imaginer à quoi ressemblent les personnages"
+            },
+            {
+                  "title": "Je suis fasciné par les dates"
+            },
+            {
+                  "title": "Dans un groupe social, je peux facilement suivre plusieurs conversations différentes"
+            },
+            {
+                  "title": "Je trouve les situations sociales faciles"
+            },
+            {
+                  "title": "J'ai tendance à remarquer des détails que les autres ne voient pas"
+            },
+            {
+                  "title": "Je préférerais aller à la bibliothèque plutôt qu'à une fête"
+            },
+            {
+                  "title": "Je trouve facile d'inventer des histoires"
+            },
+            {
+                  "title": "Je suis plus attiré par les gens que par les choses"
+            },
+            {
+                  "title": "J'ai tendance à avoir des intérêts très forts qui me perturbent si je ne peux pas les poursuivre"
+            },
+            {
+                  "title": "J'aime les conversations sociales légères"
+            },
+            {
+                  "title": "Quand je parle, ce n'est pas toujours facile pour les autres de placer un mot"
+            },
+            {
+                  "title": "Je suis fasciné par les chiffres"
+            },
+            {
+                  "title": "Quand je lis une histoire, j'ai du mal à comprendre les intentions des personnages"
+            },
+            {
+                  "title": "Je n'aime pas particulièrement lire de la fiction"
+            },
+            {
+                  "title": "J'ai du mal à me faire de nouveaux amis"
+            },
+            {
+                  "title": "Je remarque des motifs dans les choses tout le temps"
+            },
+            {
+                  "title": "Je préférerais aller au théâtre qu'au musée"
+            },
+            {
+                  "title": "Cela ne me dérange pas si ma routine quotidienne est perturbée"
+            },
+            {
+                  "title": "Je trouve souvent que je ne sais pas comment maintenir une conversation"
+            },
+            {
+                  "title": "Je trouve facile de 'lire entre les lignes' quand quelqu'un me parle"
+            },
+            {
+                  "title": "Je me concentre généralement plus sur l'ensemble plutôt que sur les détails"
+            },
+            {
+                  "title": "Je ne suis pas très bon pour me souvenir des numéros de téléphone"
+            },
+            {
+                  "title": "Je ne remarque généralement pas les petits changements dans une situation ou l'apparence d'une personne"
+            },
+            {
+                  "title": "Je sais dire si quelqu'un qui m'écoute s'ennuie"
+            },
+            {
+                  "title": "Je trouve facile de faire plusieurs choses à la fois"
+            },
+            {
+                  "title": "Quand je parle au téléphone, je ne suis pas sûr quand c'est mon tour de parler"
+            },
+            {
+                  "title": "J'aime faire des choses spontanément"
+            },
+            {
+                  "title": "Je suis souvent le dernier à comprendre le sens d'une blague"
+            },
+            {
+                  "title": "Je trouve facile de deviner ce que quelqu'un pense ou ressent juste en regardant son visage"
+            },
+            {
+                  "title": "S'il y a une interruption, je peux revenir rapidement à ce que je faisais"
+            },
+            {
+                  "title": "Je suis bon dans les conversations sociales légères"
+            },
+            {
+                  "title": "Les gens me disent souvent que je répète sans cesse la même chose"
+            },
+            {
+                  "title": "Quand j'étais jeune, j'aimais jouer à des jeux de rôle avec d'autres enfants"
+            },
+            {
+                  "title": "J'aime collecter des informations sur des catégories de choses"
+            },
+            {
+                  "title": "J'ai du mal à imaginer ce que ce serait d'être quelqu'un d'autre"
+            },
+            {
+                  "title": "J'aime planifier soigneusement les activités auxquelles je participe"
+            },
+            {
+                  "title": "J'aime les occasions sociales"
+            },
+            {
+                  "title": "J'ai du mal à comprendre les intentions des gens"
+            },
+            {
+                  "title": "Les nouvelles situations me rendent anxieux"
+            },
+            {
+                  "title": "J'aime rencontrer de nouvelles personnes"
+            },
+            {
+                  "title": "Je suis un bon diplomate"
+            },
+            {
+                  "title": "Je ne suis pas très bon pour me souvenir des dates de naissance des gens"
+            },
+            {
+                  "title": "Je trouve très facile de jouer à des jeux de rôle avec des enfants"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Peu de traits autistiques",
+                  "desc": "Votre score se situe dans la fourchette typique de la population générale. Aucun trait significatif du spectre autistique n'est suggéré."
+            },
+            "leve": {
+                  "label": "Traits autistiques légers",
+                  "desc": "Votre score indique quelques traits du spectre autistique, dans la moyenne. Beaucoup de personnes sans diagnostic se situent dans cette fourchette."
+            },
+            "moderado": {
+                  "label": "Traits autistiques modérés",
+                  "desc": "Votre score dépasse le seuil de 26 et suggère des traits autistiques supérieurs à la moyenne. Considérez consulter un professionnel si vous rencontrez des difficultés."
+            },
+            "alto": {
+                  "label": "Traits autistiques significatifs",
+                  "desc": "Votre score dépasse le seuil clinique de 32. 80% des personnes diagnostiquées autistes se situent dans cette fourchette. Une évaluation diagnostique est recommandée."
+            },
+            "muy_alto": {
+                  "label": "Traits autistiques très significatifs",
+                  "desc": "Votre score est très élevé et suggère fortement la présence de traits du spectre autistique. Une évaluation diagnostique complète est fortement recommandée."
+            }
+      }
+},
     "triage": {
       "name": "Guide",
       "abbr": "Guide",
@@ -1034,6 +1278,9 @@ const LANG_FR = {
         { "title": "J'ai eu des épisodes où je me sentais inhabituellement hyperactif(ve) ou impulsif(ve)" },
         { "title": "Mes relations interpersonnelles sont intenses et instables" },
         { "title": "Mes émotions changent rapidement et j'ai du mal à les réguler" }
+      ,
+        { "title": "J'ai du mal à comprendre les intentions ou les émotions des autres" },
+        { "title": "Je préfère les routines et je suis mal à l'aise quand elles sont perturbées" }
       ],
       "domainNames": {
         "Estado de ánimo": "Humeur",
@@ -1048,6 +1295,8 @@ const LANG_FR = {
         "Obsesiones y compulsiones": "Obsessions et compulsions",
         "Cambios de ánimo": "Changements d'humeur",
         "Regulación emocional": "Régulation émotionnelle"
+      ,
+        "Rasgos del espectro autista": "Traits du spectre autistique"
       },
       "domainReasons": {
         "Estado de ánimo": "Score élevé aux indicateurs d'humeur",
@@ -1062,6 +1311,8 @@ const LANG_FR = {
         "Obsesiones y compulsiones": "Score élevé aux indicateurs obsessionnels-compulsifs",
         "Cambios de ánimo": "Score élevé aux indicateurs de changements de l'humeur",
         "Regulación emocional": "Score élevé aux indicateurs d'instabilité émotionnelle et interpersonnelle"
+      ,
+        "Rasgos del espectro autista": "Score élevé aux indicateurs de traits du spectre autistique"
       },
       "results": {
         "triage_label": "Vos évaluations recommandées",

@@ -965,6 +965,250 @@ const LANG_PT = {
         "high": { "label": "Alta autoestima", "desc": "Sua pontuação indica um alto nível de autoestima." }
       }
     },
+    "aq10": {
+      "name": "AQ-10",
+      "abbr": "AQ-10",
+      "fullName": "Quociente do Espectro Autista — 10 itens",
+      "desc": "Breve triagem de traços associados ao espectro autista. Desenvolvido por Baron-Cohen et al.",
+      "instructions": "Leia cada afirmação com atenção e indique seu grau de concordância ou discordância.",
+      "sharedOptions": [
+            "Concordo totalmente",
+            "Concordo levemente",
+            "Discordo levemente",
+            "Discordo totalmente"
+      ],
+      "questions": [
+            {
+                  "title": "Frequentemente percebo sons pequenos que outros não notam"
+            },
+            {
+                  "title": "Quando estou lendo uma história, tenho dificuldade em entender as intenções dos personagens"
+            },
+            {
+                  "title": "Acho fácil 'ler nas entrelinhas' quando alguém está falando comigo"
+            },
+            {
+                  "title": "Geralmente me concentro mais no cenário geral, em vez de nos pequenos detalhes"
+            },
+            {
+                  "title": "Sei dizer quando alguém que está me ouvindo está ficando entediado"
+            },
+            {
+                  "title": "Acho fácil fazer mais de uma coisa ao mesmo tempo"
+            },
+            {
+                  "title": "Acho fácil entender o que alguém está pensando ou sentindo apenas olhando para o rosto dessa pessoa"
+            },
+            {
+                  "title": "Se houver uma interrupção, consigo voltar rapidamente ao que estava fazendo"
+            },
+            {
+                  "title": "Gosto de coletar informações sobre categorias de coisas"
+            },
+            {
+                  "title": "Acho difícil entender as intenções das pessoas"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Poucos traços autistas",
+                  "desc": "Sua pontuação não sugere traços significativos do espectro autista. No entanto, se tiver preocupações, consulte um profissional."
+            },
+            "moderado": {
+                  "label": "Alguns traços autistas",
+                  "desc": "Sua pontuação indica alguns traços associados ao espectro autista, embora abaixo do limiar de encaminhamento clínico (≥6)."
+            },
+            "alto": {
+                  "label": "Traços autistas significativos",
+                  "desc": "Sua pontuação excede o limiar de encaminhamento (≥6). Recomenda-se uma avaliação diagnóstica abrangente com um profissional especializado."
+            },
+            "muy_alto": {
+                  "label": "Traços autistas muito significativos",
+                  "desc": "Sua pontuação é alta. É fortemente recomendado buscar uma avaliação diagnóstica abrangente com um especialista em transtornos do espectro autista."
+            }
+      }
+},
+    "aq50": {
+      "name": "AQ-50",
+      "abbr": "AQ-50",
+      "fullName": "Quociente do Espectro Autista — 50 itens",
+      "desc": "Avaliação abrangente de traços do espectro autista em cinco domínios: habilidades sociais, mudança de atenção, atenção a detalhes, comunicação e imaginação.",
+      "instructions": "Leia cada afirmação com atenção e indique seu grau de concordância ou discordância. Não há respostas certas ou erradas.",
+      "questions": [
+            {
+                  "title": "Prefiro fazer coisas com outras pessoas em vez de sozinho"
+            },
+            {
+                  "title": "Prefiro fazer as coisas sempre da mesma maneira"
+            },
+            {
+                  "title": "Se tento imaginar algo, acho muito fácil criar uma imagem na minha mente"
+            },
+            {
+                  "title": "Frequentemente fico tão absorvido em uma coisa que perco de vista outras coisas"
+            },
+            {
+                  "title": "Frequentemente percebo sons pequenos que outros não notam"
+            },
+            {
+                  "title": "Geralmente noto placas de carro ou sequências semelhantes de informações"
+            },
+            {
+                  "title": "Outras pessoas frequentemente me dizem que o que falei foi indelicado, mesmo que eu ache que foi educado"
+            },
+            {
+                  "title": "Quando estou lendo uma história, consigo imaginar facilmente como os personagens se parecem"
+            },
+            {
+                  "title": "Sou fascinado por datas"
+            },
+            {
+                  "title": "Em um grupo social, consigo acompanhar facilmente várias conversas diferentes"
+            },
+            {
+                  "title": "Acho situações sociais fáceis"
+            },
+            {
+                  "title": "Tendo a notar detalhes que outros não percebem"
+            },
+            {
+                  "title": "Prefiro ir a uma biblioteca do que a uma festa"
+            },
+            {
+                  "title": "Acho fácil inventar histórias"
+            },
+            {
+                  "title": "Sinto-me mais atraído por pessoas do que por coisas"
+            },
+            {
+                  "title": "Tendo a ter interesses muito fortes que me deixam chateado se não puder perseguir"
+            },
+            {
+                  "title": "Gosto de bate-papo social"
+            },
+            {
+                  "title": "Quando falo, nem sempre é fácil para os outros intervirem"
+            },
+            {
+                  "title": "Sou fascinado por números"
+            },
+            {
+                  "title": "Quando estou lendo uma história, tenho dificuldade em entender as intenções dos personagens"
+            },
+            {
+                  "title": "Não gosto particularmente de ler ficção"
+            },
+            {
+                  "title": "Acho difícil fazer novos amigos"
+            },
+            {
+                  "title": "Noto padrões em coisas o tempo todo"
+            },
+            {
+                  "title": "Prefiro ir ao teatro do que a um museu"
+            },
+            {
+                  "title": "Não me incomoda se minha rotina diária for perturbada"
+            },
+            {
+                  "title": "Frequentemente não sei como manter uma conversa"
+            },
+            {
+                  "title": "Acho fácil 'ler nas entrelinhas' quando alguém está falando comigo"
+            },
+            {
+                  "title": "Geralmente me concentro mais no cenário geral, em vez de nos pequenos detalhes"
+            },
+            {
+                  "title": "Não sou muito bom em lembrar números de telefone"
+            },
+            {
+                  "title": "Geralmente não noto pequenas mudanças em uma situação ou na aparência de uma pessoa"
+            },
+            {
+                  "title": "Sei dizer quando alguém que está me ouvindo está ficando entediado"
+            },
+            {
+                  "title": "Acho fácil fazer mais de uma coisa ao mesmo tempo"
+            },
+            {
+                  "title": "Quando falo ao telefone, não tenho certeza quando é minha vez de falar"
+            },
+            {
+                  "title": "Gosto de fazer coisas espontaneamente"
+            },
+            {
+                  "title": "Frequentemente sou o último a entender a piada"
+            },
+            {
+                  "title": "Acho fácil entender o que alguém está pensando ou sentindo apenas olhando para o rosto dessa pessoa"
+            },
+            {
+                  "title": "Se houver uma interrupção, consigo voltar rapidamente ao que estava fazendo"
+            },
+            {
+                  "title": "Sou bom em bate-papo social"
+            },
+            {
+                  "title": "As pessoas frequentemente me dizem que fico repetindo a mesma coisa"
+            },
+            {
+                  "title": "Quando era jovem, gostava de brincar de faz de conta com outras crianças"
+            },
+            {
+                  "title": "Gosto de coletar informações sobre categorias de coisas"
+            },
+            {
+                  "title": "Acho difícil imaginar como seria ser outra pessoa"
+            },
+            {
+                  "title": "Gosto de planejar cuidadosamente qualquer atividade em que participo"
+            },
+            {
+                  "title": "Gosto de ocasiões sociais"
+            },
+            {
+                  "title": "Acho difícil entender as intenções das pessoas"
+            },
+            {
+                  "title": "Novas situações me deixam ansioso"
+            },
+            {
+                  "title": "Gosto de conhecer novas pessoas"
+            },
+            {
+                  "title": "Sou um bom diplomata"
+            },
+            {
+                  "title": "Não sou muito bom em lembrar datas de aniversário das pessoas"
+            },
+            {
+                  "title": "Acho muito fácil brincar com crianças em jogos que envolvem faz de conta"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Poucos traços autistas",
+                  "desc": "Sua pontuação está dentro da faixa típica da população em geral. Não são sugeridos traços significativos do espectro autista."
+            },
+            "leve": {
+                  "label": "Traços autistas leves",
+                  "desc": "Sua pontuação indica alguns traços do espectro autista, dentro da média. Muitas pessoas sem diagnóstico pontuam nessa faixa."
+            },
+            "moderado": {
+                  "label": "Traços autistas moderados",
+                  "desc": "Sua pontuação excede o limiar de 26 e sugere traços autistas acima da média. Considere consultar um profissional se enfrentar dificuldades."
+            },
+            "alto": {
+                  "label": "Traços autistas significativos",
+                  "desc": "Sua pontuação excede o limiar clínico de 32. 80% das pessoas diagnosticadas com autismo pontuam nessa faixa. Recomenda-se uma avaliação diagnóstica."
+            },
+            "muy_alto": {
+                  "label": "Traços autistas muito significativos",
+                  "desc": "Sua pontuação é muito alta e sugere fortemente a presença de traços do espectro autista. Uma avaliação diagnóstica abrangente é fortemente recomendada."
+            }
+      }
+},
     "triage": {
       "name": "Guia",
       "abbr": "Guia",
@@ -998,6 +1242,9 @@ const LANG_PT = {
         { "title": "Tive episódios em que me senti inusitadamente hiperativo(a) ou impulsivo(a)" },
         { "title": "Meus relacionamentos interpessoais são intensos e instáveis" },
         { "title": "Minhas emoções mudam rapidamente e tenho dificuldade em regulá-las" }
+      ,
+        { "title": "Tenho dificuldade em entender as intenções ou emoções dos outros" },
+        { "title": "Prefiro rotinas e me sinto desconfortável quando elas são alteradas" }
       ],
       "domainNames": {
         "Estado de ánimo": "Humor",
@@ -1012,6 +1259,8 @@ const LANG_PT = {
         "Obsesiones y compulsiones": "Obsessões e compulsões",
         "Cambios de ánimo": "Mudanças de humor",
         "Regulación emocional": "Regulação emocional"
+      ,
+        "Rasgos del espectro autista": "Traços do espectro autista"
       },
       "domainReasons": {
         "Estado de ánimo": "Pontuação elevada em indicadores de humor",
@@ -1026,6 +1275,8 @@ const LANG_PT = {
         "Obsesiones y compulsiones": "Pontuação elevada em indicadores obsessivo-compulsivos",
         "Cambios de ánimo": "Pontuação elevada em indicadores de mudanças de humor",
         "Regulación emocional": "Pontuação elevada em indicadores de instabilidade emocional e interpessoal"
+      ,
+        "Rasgos del espectro autista": "Pontuação alta em indicadores de traços do espectro autista"
       },
       "results": {
         "triage_label": "Suas avaliações recomendadas",

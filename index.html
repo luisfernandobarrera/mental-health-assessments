@@ -781,6 +781,7 @@
 <script src="tests/ipip_mmpi.js"></script>
 <script src="tests/clinical1.js"></script>
 <script src="tests/clinical2.js"></script>
+<script src="tests/autism.js"></script>
 <script src="tests/triage.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
@@ -1104,6 +1105,8 @@ const TESTS = {
   spin: TEST_SPIN,
   rosenberg: TEST_ROSENBERG,
   who5: TEST_WHO5,
+  aq10: TEST_AQ10,
+  aq50: TEST_AQ50,
   triage: TEST_TRIAGE
 };
 
@@ -1157,7 +1160,7 @@ function setAccentColor(color) {
 const TEST_CATEGORIES = [
   { key: 'triage', label: '¿Por dónde empezar?', ids: ['triage'] },
   { key: 'clinical', label: 'Evaluaciones Clínicas', ids: ['bdi','phq9','bai','gad7','pss','pcl5','isi','spin'] },
-  { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','audit','eat26','ocir'] },
+  { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','aq10','aq50','audit','eat26','ocir'] },
   { key: 'wellbeing', label: 'Bienestar y Autoestima', ids: ['who5','rosenberg'] },
   { key: 'personality', label: 'Personalidad', ids: ['bfi44','mbti','ipip300'] },
   { key: 'advanced', label: 'Evaluación Avanzada', ids: ['pid5','ipip_mmpi'] },

@@ -989,6 +989,250 @@ const LANG_IT = {
         "high": { "label": "Benessere alto", "desc": "Indica un alto livello di benessere emotivo." }
       }
     },
+    "aq10": {
+      "name": "AQ-10",
+      "abbr": "AQ-10",
+      "fullName": "Quoziente dello Spettro Autistico — 10 elementi",
+      "desc": "Screening breve per tratti associati allo spettro autistico. Sviluppato da Baron-Cohen et al.",
+      "instructions": "Leggi attentamente ogni affermazione e indica il tuo grado di accordo o disaccordo.",
+      "sharedOptions": [
+            "Assolutamente d'accordo",
+            "Leggermente d'accordo",
+            "Leggermente in disaccordo",
+            "Assolutamente in disaccordo"
+      ],
+      "questions": [
+            {
+                  "title": "Spesso noto suoni che altri non sentono"
+            },
+            {
+                  "title": "Quando leggo una storia, trovo difficile capire le intenzioni dei personaggi"
+            },
+            {
+                  "title": "Trovo facile 'leggere tra le righe' quando qualcuno mi parla"
+            },
+            {
+                  "title": "Di solito mi concentro più sull'immagine complessiva piuttosto che sui dettagli"
+            },
+            {
+                  "title": "So come capire se qualcuno che mi ascolta si sta annoiando"
+            },
+            {
+                  "title": "Trovo facile fare più di una cosa alla volta"
+            },
+            {
+                  "title": "Trovo facile capire cosa sta pensando o provando qualcuno semplicemente guardandogli il viso"
+            },
+            {
+                  "title": "Se c'è un'interruzione, posso tornare rapidamente a quello che stavo facendo"
+            },
+            {
+                  "title": "Mi piace raccogliere informazioni su categorie di cose"
+            },
+            {
+                  "title": "Trovo difficile capire le intenzioni delle persone"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Pochi tratti autistici",
+                  "desc": "Il tuo punteggio non suggerisce tratti significativi dello spettro autistico. Tuttavia, se hai preoccupazioni, consulta un professionista."
+            },
+            "moderado": {
+                  "label": "Alcuni tratti autistici",
+                  "desc": "Il tuo punteggio indica alcuni tratti associati allo spettro autistico, sebbene al di sotto della soglia di riferimento clinico (≥6)."
+            },
+            "alto": {
+                  "label": "Tratti autistici significativi",
+                  "desc": "Il tuo punteggio supera la soglia di riferimento (≥6). Si raccomanda una valutazione diagnostica completa con un professionista specializzato."
+            },
+            "muy_alto": {
+                  "label": "Tratti autistici molto significativi",
+                  "desc": "Il tuo punteggio è alto. Si consiglia vivamente di richiedere una valutazione diagnostica completa con uno specialista in disturbi dello spettro autistico."
+            }
+      }
+},
+    "aq50": {
+      "name": "AQ-50",
+      "abbr": "AQ-50",
+      "fullName": "Quoziente dello Spettro Autistico — 50 elementi",
+      "desc": "Valutazione completa dei tratti dello spettro autistico in cinque domini: abilità sociali, cambiamento di attenzione, attenzione ai dettagli, comunicazione e immaginazione.",
+      "instructions": "Leggi attentamente ogni affermazione e indica il tuo grado di accordo o disaccordo. Non ci sono risposte giuste o sbagliate.",
+      "questions": [
+            {
+                  "title": "Preferisco fare le cose con gli altri piuttosto che da solo"
+            },
+            {
+                  "title": "Preferisco fare le cose sempre nello stesso modo"
+            },
+            {
+                  "title": "Se provo a immaginare qualcosa, trovo molto facile creare un'immagine nella mia mente"
+            },
+            {
+                  "title": "Mi assorbo spesso così tanto in una cosa che perdo di vista altre cose"
+            },
+            {
+                  "title": "Spesso noto suoni che altri non sentono"
+            },
+            {
+                  "title": "Di solito noto le targhe delle auto o sequenze simili di informazioni"
+            },
+            {
+                  "title": "Altre persone spesso mi dicono che quello che ho detto è scortese, anche se credo sia educato"
+            },
+            {
+                  "title": "Quando leggo una storia, posso facilmente immaginare come potrebbero essere i personaggi"
+            },
+            {
+                  "title": "Sono affascinato dalle date"
+            },
+            {
+                  "title": "In un gruppo sociale, posso facilmente seguire diverse conversazioni di persone diverse"
+            },
+            {
+                  "title": "Trovo facili le situazioni sociali"
+            },
+            {
+                  "title": "Tendo a notare dettagli che altri non notano"
+            },
+            {
+                  "title": "Preferirei andare in biblioteca piuttosto che a una festa"
+            },
+            {
+                  "title": "Trovo facile inventare storie"
+            },
+            {
+                  "title": "Sono più attratto dalle persone che dalle cose"
+            },
+            {
+                  "title": "Tendo ad avere interessi molto forti che mi turbano se non posso perseguire"
+            },
+            {
+                  "title": "Mi piace chiacchierare socialmente"
+            },
+            {
+                  "title": "Quando parlo, non è sempre facile per gli altri intervenire"
+            },
+            {
+                  "title": "Sono affascinato dai numeri"
+            },
+            {
+                  "title": "Quando leggo una storia, trovo difficile capire le intenzioni dei personaggi"
+            },
+            {
+                  "title": "Non mi piace particolarmente leggere narrativa"
+            },
+            {
+                  "title": "Trovo difficile fare nuove amicizie"
+            },
+            {
+                  "title": "Noto sempre schemi nelle cose"
+            },
+            {
+                  "title": "Preferirei andare a teatro piuttosto che in un museo"
+            },
+            {
+                  "title": "Non mi turba se la mia routine quotidiana viene disturbata"
+            },
+            {
+                  "title": "Spesso non so come continuare una conversazione"
+            },
+            {
+                  "title": "Trovo facile 'leggere tra le righe' quando qualcuno mi parla"
+            },
+            {
+                  "title": "Di solito mi concentro più sull'immagine complessiva piuttosto che sui dettagli"
+            },
+            {
+                  "title": "Non sono molto bravo a ricordare i numeri di telefono"
+            },
+            {
+                  "title": "Di solito non noto piccoli cambiamenti in una situazione o nell'aspetto di una persona"
+            },
+            {
+                  "title": "So come capire se qualcuno che mi ascolta si sta annoiando"
+            },
+            {
+                  "title": "Trovo facile fare più di una cosa alla volta"
+            },
+            {
+                  "title": "Quando parlo al telefono, non sono sicuro quando è il mio turno di parlare"
+            },
+            {
+                  "title": "Mi piace fare le cose spontaneamente"
+            },
+            {
+                  "title": "Sono spesso l'ultimo a capire il punto di una battuta"
+            },
+            {
+                  "title": "Trovo facile capire cosa sta pensando o provando qualcuno semplicemente guardandogli il viso"
+            },
+            {
+                  "title": "Se c'è un'interruzione, posso tornare rapidamente a quello che stavo facendo"
+            },
+            {
+                  "title": "Sono bravo a chiacchierare socialmente"
+            },
+            {
+                  "title": "Le persone spesso mi dicono che continuo a insistere sulla stessa cosa"
+            },
+            {
+                  "title": "Da giovane, mi piaceva giocare a giochi di finzione con altri bambini"
+            },
+            {
+                  "title": "Mi piace raccogliere informazioni su categorie di cose"
+            },
+            {
+                  "title": "Trovo difficile immaginare come sarebbe essere qualcun altro"
+            },
+            {
+                  "title": "Mi piace pianificare attentamente qualsiasi attività a cui partecipo"
+            },
+            {
+                  "title": "Mi piacciono le occasioni sociali"
+            },
+            {
+                  "title": "Trovo difficile capire le intenzioni delle persone"
+            },
+            {
+                  "title": "Le situazioni nuove mi rendono ansioso"
+            },
+            {
+                  "title": "Mi piace incontrare nuove persone"
+            },
+            {
+                  "title": "Sono un buon diplomatico"
+            },
+            {
+                  "title": "Non sono molto bravo a ricordare le date di nascita delle persone"
+            },
+            {
+                  "title": "Trovo molto facile giocare con i bambini a giochi di finzione"
+            }
+      ],
+      "results": {
+            "bajo": {
+                  "label": "Pochi tratti autistici",
+                  "desc": "Il tuo punteggio rientra nella media della popolazione generale. Non sono suggeriti tratti significativi dello spettro autistico."
+            },
+            "leve": {
+                  "label": "Tratti autistici lievi",
+                  "desc": "Il tuo punteggio indica alcuni tratti dello spettro autistico, nella media. Molte persone senza diagnosi rientrano in questo range."
+            },
+            "moderado": {
+                  "label": "Tratti autistici moderati",
+                  "desc": "Il tuo punteggio supera la soglia di 26 e suggerisce tratti autistici sopra la media. Considera di consultare un professionista se hai difficoltà."
+            },
+            "alto": {
+                  "label": "Tratti autistici significativi",
+                  "desc": "Il tuo punteggio supera la soglia clinica di 32. L'80% delle persone con diagnosi di autismo rientra in questo range. Si raccomanda una valutazione diagnostica."
+            },
+            "muy_alto": {
+                  "label": "Tratti autistici molto significativi",
+                  "desc": "Il tuo punteggio è molto alto e suggerisce fortemente la presenza di tratti dello spettro autistico. Si consiglia vivamente una valutazione diagnostica completa."
+            }
+      }
+},
     "triage": {
       "name": "Guida",
       "abbr": "Guida",
@@ -1022,6 +1266,9 @@ const LANG_IT = {
         { "title": "Ho avuto episodi in cui mi sentivo insolitamente iperattivo/a o impulsivo/a" },
         { "title": "Le mie relazioni interpersonali sono intense e instabili" },
         { "title": "Le mie emozioni cambiano rapidamente e faccio fatica a regolarle" }
+      ,
+        { "title": "Trovo difficile capire le intenzioni o le emozioni degli altri" },
+        { "title": "Preferisco le routine e mi sento a disagio quando vengono alterate" }
       ],
       "domainNames": {
         "Estado de ánimo": "Umore",
@@ -1036,6 +1283,8 @@ const LANG_IT = {
         "Obsesiones y compulsiones": "Ossessioni e compulsioni",
         "Cambios de ánimo": "Cambiamenti d'umore",
         "Regulación emocional": "Regolazione emotiva"
+      ,
+        "Rasgos del espectro autista": "Tratti dello spettro autistico"
       },
       "domainReasons": {
         "Estado de ánimo": "Punteggio elevato negli indicatori dell'umore",
@@ -1050,6 +1299,8 @@ const LANG_IT = {
         "Obsesiones y compulsiones": "Punteggio elevato negli indicatori ossessivo-compulsivi",
         "Cambios de ánimo": "Punteggio elevato negli indicatori di cambiamenti dell'umore",
         "Regulación emocional": "Punteggio elevato negli indicatori di instabilità emotiva e interpersonale"
+      ,
+        "Rasgos del espectro autista": "Punteggio alto negli indicatori dei tratti dello spettro autistico"
       },
       "results": {
         "triage_label": "Le tue valutazioni raccomandate",
