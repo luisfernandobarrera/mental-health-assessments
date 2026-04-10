@@ -670,7 +670,51 @@
       font-size: 0.875rem; font-weight: 700; padding: 0.35rem 0.7rem;
       border-radius: 100px; color: white; white-space: nowrap; box-shadow: var(--shadow-sm);
     }
+    .history-actions { display: flex; gap: 0.35rem; margin-left: 0.5rem; }
+    .btn-icon {
+      background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 10px;
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1rem; transition: all 0.2s var(--ease-premium);
+    }
+    .btn-icon:hover { background: var(--accent-glow); border-color: var(--accent-light); transform: scale(1.08); }
     .clear-history { text-align: center; margin-top: 2rem; }
+
+    /* ─── Answer Detail Modal ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; animation: fadeUp 0.3s var(--ease-premium);
+    }
+    .modal-content {
+      background: var(--bg-secondary); border-radius: var(--radius);
+      max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto;
+      padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem; background: var(--bg-tertiary);
+      border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+      font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); transition: all 0.2s;
+    }
+    .modal-close:hover { background: #A65D5720; color: #A65D57; }
+    .answer-item {
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-q { font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; font-size: 0.95rem; }
+    .answer-a { color: var(--accent-dark); font-weight: 500; font-size: 0.95rem; }
+    .answer-a.highlighted { background: var(--accent-glow); padding: 0.25rem 0.5rem; border-radius: 6px; }
+    .share-box {
+      background: var(--bg-tertiary); border-radius: var(--radius-sm);
+      padding: 1rem; margin-top: 1rem; font-family: monospace; font-size: 0.85rem;
+      white-space: pre-wrap; word-break: break-word; max-height: 50vh; overflow-y: auto;
+      color: var(--text-primary); line-height: 1.5; border: 1px solid var(--border);
+    }
+    @media (max-width: 500px) {
+      .history-entry { flex-wrap: wrap; }
+      .history-actions { width: 100%; justify-content: flex-end; margin-top: 0.5rem; margin-left: 0; }
+    }
 
     /* ─── Breakdown & Diagnostics Utilities ─── */
     .breakdown-bar-bg {
@@ -1973,6 +2017,10 @@ function renderHistory() {
             </div>
             <span class="history-badge" style="background:${entry.resultColor}">${(() => { if (entry.resultKey) { const tr = t('tests.' + entry.testId + '.results.' + entry.resultKey); if (tr && typeof tr === 'object' && tr.label) return tr.label; } return entry.resultLabel; })()}</span>
             ${trend}
+            <div class="history-actions">
+              ${entry.answers ? `<button class="btn-icon" onclick="showAnswerDetail(${history.indexOf(entry)})" title="Ver respuestas">📋</button>` : ''}
+              ${entry.answers ? `<button class="btn-icon" onclick="shareWithProfessional(${history.indexOf(entry)})" title="Compartir con profesional">📤</button>` : ''}
+            </div>
           </div>
         `;
       }).join('')}
@@ -2082,6 +2130,121 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') prevQuestion();
   if (e.key === 'Escape') goHome();
 });
+
+// ═══════════════════════════════════════════════════════════════
+// ANSWER DETAIL & SHARE
+// ═══════════════════════════════════════════════════════════════
+function getEntryQuestions(entry) {
+  const test = TESTS[entry.testId];
+  if (!test || !entry.answers) return [];
+  return entry.answers.map((ansIdx, qIdx) => {
+    const q = test.questions[qIdx];
+    if (!q || ansIdx === null) return null;
+    const tq = getTranslatedQuestion(entry.testId, qIdx);
+    const title = tq?.title || q.title;
+    const opts = getTranslatedOptions(entry.testId, qIdx) || test.sharedOptions || q.options;
+    const answer = opts ? (typeof opts[ansIdx] === 'string' ? opts[ansIdx] : opts[ansIdx]?.text || `Opción ${ansIdx + 1}`) : `Opción ${ansIdx + 1}`;
+    return { num: qIdx + 1, question: title, answer };
+  }).filter(Boolean);
+}
+
+function showAnswerDetail(histIdx) {
+  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+  const entry = history[histIdx];
+  if (!entry) return;
+  const items = getEntryQuestions(entry);
+  const date = new Date(entry.date);
+  const dateStr = date.toLocaleDateString(currentLang, { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  const testName = tt(entry.testId, 'fullName') || TESTS[entry.testId]?.fullName || entry.testName;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="modal-content">
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">✕</button>
+      <h2 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:0.25rem">${testName}</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem">${dateStr} · ${typeof entry.maxScore === 'number' ? entry.score + '/' + entry.maxScore : ''} · <span style="color:${entry.resultColor};font-weight:600">${entry.resultLabel}</span></p>
+      <div class="answer-list">
+        ${items.map(item => `
+          <div class="answer-item">
+            <div class="answer-q">${item.num}. ${item.question}</div>
+            <div class="answer-a highlighted">→ ${item.answer}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="shareWithProfessional(${histIdx})">📤 Compartir con profesional</button>
+        <button class="btn btn-ghost" onclick="this.closest('.modal-overlay').remove()">Cerrar</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function shareWithProfessional(histIdx) {
+  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+  const entry = history[histIdx];
+  if (!entry) return;
+  const items = getEntryQuestions(entry);
+  const date = new Date(entry.date);
+  const dateStr = date.toLocaleDateString(currentLang, { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  const testName = tt(entry.testId, 'fullName') || TESTS[entry.testId]?.fullName || entry.testName;
+
+  let text = `══════════════════════════════════\n`;
+  text += `${testName}\n`;
+  text += `Fecha: ${dateStr}\n`;
+  if (typeof entry.maxScore === 'number') text += `Puntuación: ${entry.score}/${entry.maxScore}\n`;
+  text += `Resultado: ${entry.resultLabel}\n`;
+  text += `══════════════════════════════════\n\n`;
+  items.forEach(item => {
+    text += `${item.num}. ${item.question}\n   → ${item.answer}\n\n`;
+  });
+  text += `──────────────────────────────────\n`;
+  text += `Generado por: Mental Health Self-Assessment\n`;
+  text += `Este reporte es orientativo y no sustituye una evaluación profesional.\n`;
+
+  // Remove existing modal if any
+  document.querySelector('.modal-overlay')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="modal-content">
+      <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">✕</button>
+      <h2 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:0.75rem">📤 Compartir con profesional</h2>
+      <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:1rem">Copia este texto y envíalo a tu psicólogo/a o profesional de salud mental.</p>
+      <div class="share-box" id="share-text">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+      <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="copyShareText()">📋 Copiar al portapapeles</button>
+        ${navigator.share ? `<button class="btn btn-ghost" onclick="nativeShare()" >📱 Compartir</button>` : ''}
+        <button class="btn btn-ghost" onclick="this.closest('.modal-overlay').remove()">Cerrar</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function copyShareText() {
+  const text = document.getElementById('share-text')?.innerText;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.style.background = 'var(--accent)';
+    btn.style.color = 'white';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 2000);
+  });
+}
+
+function nativeShare() {
+  const text = document.getElementById('share-text')?.innerText;
+  if (text && navigator.share) {
+    navigator.share({ title: 'Resultados de evaluación', text }).catch(() => {});
+  }
+}
 
 // ═══════════════════════════════════════════════════════════════
 // KEYBOARD NAVIGATION
