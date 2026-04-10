@@ -1245,6 +1245,186 @@ const LANG_FR = {
             }
       }
 },
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Échelle Columbia d'évaluation de la sévérité du suicide — Dépistage",
+      "desc": "Outil mondial de dépistage du risque de suicide utilisé dans les services d'urgence, les soins primaires et l'éducation. Si vous êtes en crise, appelez le 988 (États-Unis) ou le 116 123 (Royaume-Uni).",
+      "instructions": "Répondez honnêtement aux questions suivantes sur les pensées ou comportements que vous avez pu avoir. Vos réponses sont confidentielles et stockées uniquement sur votre appareil.",
+      "questions": [
+            {
+                  "title": "Avez-vous souhaité être mort ou souhaité pouvoir vous endormir et ne pas vous réveiller ?",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            },
+            {
+                  "title": "Avez-vous réellement eu des pensées de vous suicider ?",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            },
+            {
+                  "title": "Avez-vous réfléchi à la manière dont vous pourriez le faire ? (par exemple, pensé à une méthode comme des pilules, une arme à feu ou une autre manière)",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            },
+            {
+                  "title": "Avez-vous eu ces pensées et eu l'intention de les mettre en pratique ?",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            },
+            {
+                  "title": "Avez-vous commencé à élaborer ou élaboré les détails de la manière de vous suicider ? Avez-vous l'intention de réaliser ce plan ?",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            },
+            {
+                  "title": "Avez-vous déjà fait quoi que ce soit, commencé à faire quoi que ce soit ou préparé quoi que ce soit pour mettre fin à votre vie ? (par exemple, collecté des pilules, obtenu une arme à feu, donné des objets de valeur, écrit une lettre de suicide, pris des pilules, vous êtes coupé, essayé de vous pendre, etc.)",
+                  "options": [
+                        "Non",
+                        "Oui"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Aucun risque identifié",
+                  "desc": "Aucun indicateur de risque de suicide n'a été identifié à ce moment. Si vous avez ces pensées, n'hésitez pas à demander de l'aide professionnelle."
+            },
+            "low": {
+                  "label": "Risque faible",
+                  "desc": "Vous avez exprimé des souhaits de mort passifs. Bien que vous n'indiquiez pas de plans actifs, il est recommandé de parler à un professionnel.\n\n🆘 LIGNES DE CRISE :\n• États-Unis : 988\n• Royaume-Uni : 116 123\n• International : befrienders.org"
+            },
+            "moderate": {
+                  "label": "Risque modéré",
+                  "desc": "Vos réponses indiquent des pensées suicidaires. Il est très important de parler à un professionnel de la santé mentale. Un plan de sécurité peut aider.\n\n🆘 LIGNES DE CRISE :\n• États-Unis : 988\n• Royaume-Uni : 116 123\n• International : befrienders.org"
+            },
+            "high": {
+                  "label": "Risque élevé",
+                  "desc": "Vos réponses indiquent un risque élevé de comportement suicidaire. Vous avez besoin d'une évaluation professionnelle urgente. Veuillez contacter un professionnel de la santé mentale ou appeler une ligne de crise maintenant.\n\n🆘 LIGNES DE CRISE :\n• États-Unis : 988\n• Royaume-Uni : 116 123\n• International : befrienders.org"
+            },
+            "imminent": {
+                  "label": "Risque imminent",
+                  "desc": "Vos réponses indiquent un risque très élevé. Il est essentiel que vous cherchiez de l'aide professionnelle MAINTENANT. Allez aux urgences ou appelez une ligne de crise immédiatement. Vous n'êtes pas seul.\n\n🆘 LIGNES DE CRISE :\n• États-Unis : 988\n• Royaume-Uni : 116 123\n• International : befrienders.org"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "Questionnaire CAGE de dépistage de l'alcoolisme",
+      "desc": "Dépistage ultra-rapide en 4 questions pour détecter les problèmes d'alcool. Complète l'AUDIT.",
+      "instructions": "Répondez honnêtement aux questions suivantes sur votre relation avec l'alcool.",
+      "sharedOptions": [
+            "Non",
+            "Oui"
+      ],
+      "questions": [
+            {
+                  "title": "Avez-vous déjà pensé que vous devriez réduire votre consommation d'alcool ?"
+            },
+            {
+                  "title": "Des gens vous ont-ils ennuyé en critiquant votre consommation d'alcool ?"
+            },
+            {
+                  "title": "Avez-vous déjà eu mauvaise conscience ou vous êtes-vous senti coupable à cause de votre consommation d'alcool ?"
+            },
+            {
+                  "title": "Avez-vous déjà pris un verre dès le matin pour vous calmer les nerfs ou pour vous débarrasser d'une gueule de bois (apéritif du matin) ?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Aucun indicateur",
+                  "desc": "Aucun indicateur de problème d'alcool détecté."
+            },
+            "low": {
+                  "label": "Risque possible",
+                  "desc": "Une réponse positive mérite une exploration plus approfondie. Pensez à passer le test AUDIT pour une évaluation plus complète."
+            },
+            "moderate": {
+                  "label": "Problème probable",
+                  "desc": "Votre score suggère une forte probabilité d'un trouble lié à la consommation d'alcool. Il est recommandé de consulter un professionnel de la santé."
+            },
+            "high": {
+                  "label": "Probabilité élevée",
+                  "desc": "Votre score est pratiquement diagnostique d'une dépendance à l'alcool. Il est très important de chercher une aide professionnelle spécialisée."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Questionnaire sur la santé du patient — Adolescents",
+      "desc": "Version PHQ-9 validée pour les adolescents (11-17 ans). Évalue la dépression au cours des deux dernières semaines.",
+      "instructions": "Au cours des 2 dernières semaines, à quelle fréquence avez-vous été dérangé par les problèmes suivants ? Pensez à comment vous vous êtes senti à l'école, avec des amis et à la maison.",
+      "sharedOptions": [
+            "Pas du tout",
+            "Plusieurs jours",
+            "Plus de la moitié des jours",
+            "Presque tous les jours"
+      ],
+      "questions": [
+            {
+                  "title": "Peu d'intérêt ou de plaisir à faire des choses"
+            },
+            {
+                  "title": "Se sentir triste, déprimé ou désespéré"
+            },
+            {
+                  "title": "Difficulté à s'endormir ou à rester endormi, ou trop dormir"
+            },
+            {
+                  "title": "Se sentir fatigué ou avoir peu d'énergie"
+            },
+            {
+                  "title": "Manque d'appétit ou manger trop"
+            },
+            {
+                  "title": "Se sentir mal dans sa peau — ou que vous êtes un échec ou que vous avez déçu votre famille ou vous-même"
+            },
+            {
+                  "title": "Difficulté à se concentrer sur des choses, comme les devoirs, la lecture ou regarder la télévision"
+            },
+            {
+                  "title": "Bouger ou parler si lentement que d'autres personnes ont pu le remarquer ? Ou le contraire — être si agité ou nerveux que vous avez bougé beaucoup plus que d'habitude"
+            },
+            {
+                  "title": "Pensées que vous seriez mieux mort ou de vous faire du mal d'une manière ou d'une autre"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Minimal",
+                  "desc": "Aucun symptôme significatif de dépression détecté. Continuez à prendre soin de votre bien-être émotionnel."
+            },
+            "leve": {
+                  "label": "Léger",
+                  "desc": "Symptômes légers détectés. Parlez à un adulte de confiance si quelque chose vous inquiète."
+            },
+            "moderada": {
+                  "label": "Modéré",
+                  "desc": "Symptômes de dépression modérés détectés. Il est recommandé de parler à un professionnel de la santé mentale."
+            },
+            "moderadamente_grave": {
+                  "label": "Modérément sévère",
+                  "desc": "Symptômes de dépression significatifs détectés. Il est important de chercher une aide professionnelle rapidement."
+            },
+            "grave": {
+                  "label": "Sévère",
+                  "desc": "Symptômes de dépression sévères détectés. Cherchez une aide professionnelle de toute urgence. Parlez à un adulte de confiance maintenant."
+            }
+      }
+},
     "triage": {
       "name": "Guide",
       "abbr": "Guide",

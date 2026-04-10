@@ -1209,6 +1209,186 @@ const LANG_PT = {
             }
       }
 },
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Escala Columbia para Avaliação de Risco de Suicídio — Rastreio",
+      "desc": "Ferramenta mundial de rastreio de risco de suicídio usada em departamentos de emergência, atenção primária e educação. Se você está em crise, ligue para 188 (CVV Brasil) ou 116 123 (Reino Unido).",
+      "instructions": "Responda honestamente às seguintes perguntas sobre pensamentos ou comportamentos que você possa ter tido. Suas respostas são confidenciais e armazenadas apenas no seu dispositivo.",
+      "questions": [
+            {
+                  "title": "Você já desejou estar morto(a) ou desejava poder dormir e não acordar?",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            },
+            {
+                  "title": "Você realmente já teve pensamentos de se matar?",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            },
+            {
+                  "title": "Você já pensou em como poderia fazer isso? (ex.: pensou em um método como comprimidos, uma arma ou outra forma)",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            },
+            {
+                  "title": "Você já teve esses pensamentos e alguma intenção de agir sobre eles?",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            },
+            {
+                  "title": "Você já começou a planejar ou planejou os detalhes de como se matar? Você tem intenção de executar esse plano?",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            },
+            {
+                  "title": "Você já fez algo, começou a fazer algo ou se preparou para fazer algo para acabar com sua vida? (ex.: juntou comprimidos, obteve uma arma, deu pertences de valor, escreveu uma carta de suicídio, tomou comprimidos, se cortou, tentou se enforcar, etc.)",
+                  "options": [
+                        "Não",
+                        "Sim"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Nenhum risco identificado",
+                  "desc": "Nenhum indicador de risco de suicídio foi identificado neste momento. Se você tiver esses pensamentos, não hesite em buscar ajuda profissional."
+            },
+            "low": {
+                  "label": "Risco baixo",
+                  "desc": "Você expressou desejos de morte passivos. Embora não indique planos ativos, é recomendável conversar com um profissional.\n\n🆘 LINHAS DE CRISE:\n• Brasil: 188 (CVV)\n• Reino Unido: 116 123\n• Internacional: befrienders.org"
+            },
+            "moderate": {
+                  "label": "Risco moderado",
+                  "desc": "Suas respostas indicam pensamentos suicidas. É muito importante conversar com um profissional de saúde mental. Um plano de segurança pode ajudar.\n\n🆘 LINHAS DE CRISE:\n• Brasil: 188 (CVV)\n• Reino Unido: 116 123\n• Internacional: befrienders.org"
+            },
+            "high": {
+                  "label": "Alto risco",
+                  "desc": "Suas respostas indicam alto risco de comportamento suicida. Você precisa de uma avaliação profissional urgente. Entre em contato com um profissional de saúde mental ou ligue para uma linha de crise agora.\n\n🆘 LINHAS DE CRISE:\n• Brasil: 188 (CVV)\n• Reino Unido: 116 123\n• Internacional: befrienders.org"
+            },
+            "imminent": {
+                  "label": "Risco iminente",
+                  "desc": "Suas respostas indicam risco muito alto. É essencial que você busque ajuda profissional AGORA. Vá a uma emergência ou ligue para uma linha de crise imediatamente. Você não está sozinho(a).\n\n🆘 LINHAS DE CRISE:\n• Brasil: 188 (CVV)\n• Reino Unido: 116 123\n• Internacional: befrienders.org"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "Questionário de Rastreio de Álcool CAGE",
+      "desc": "Rastreio ultrarrápido de 4 perguntas para detectar problemas com álcool. Complementa o AUDIT.",
+      "instructions": "Responda honestamente às seguintes perguntas sobre sua relação com o álcool.",
+      "sharedOptions": [
+            "Não",
+            "Sim"
+      ],
+      "questions": [
+            {
+                  "title": "Alguma vez você sentiu que deveria Cortar (Cut down) o seu consumo de bebida?"
+            },
+            {
+                  "title": "As pessoas ficaram Irritadas (Annoyed) com você por criticarem sua bebida?"
+            },
+            {
+                  "title": "Alguma vez você se sentiu mal ou Culpado (Guilty) por beber?"
+            },
+            {
+                  "title": "Alguma vez você tomou uma bebida assim que acordou para acalmar os nervos ou se livrar de uma ressaca (Eye-opener)?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Nenhum indicador",
+                  "desc": "Nenhum indicador de problemas com álcool detectado."
+            },
+            "low": {
+                  "label": "Risco possível",
+                  "desc": "Uma resposta positiva merece maior investigação. Considere fazer o teste AUDIT para uma avaliação mais completa."
+            },
+            "moderate": {
+                  "label": "Problema provável",
+                  "desc": "Sua pontuação sugere alta probabilidade de um transtorno por uso de álcool. Consultar um profissional de saúde é recomendado."
+            },
+            "high": {
+                  "label": "Alta probabilidade",
+                  "desc": "Sua pontuação é praticamente diagnóstica de dependência de álcool. É muito importante buscar ajuda profissional especializada."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Questionário de Saúde do Paciente — Adolescentes",
+      "desc": "Versão do PHQ-9 validada para adolescentes (11-17 anos). Avalia depressão nas últimas duas semanas.",
+      "instructions": "Nas últimas 2 semanas, com que frequência você tem sido incomodado(a) pelos seguintes problemas? Pense em como você se sentiu na escola, com amigos e em casa.",
+      "sharedOptions": [
+            "Nenhum dia",
+            "Vários dias",
+            "Mais da metade dos dias",
+            "Quase todos os dias"
+      ],
+      "questions": [
+            {
+                  "title": "Pouco interesse ou prazer em fazer as coisas"
+            },
+            {
+                  "title": "Sentir-se para baixo, deprimido(a) ou sem esperança"
+            },
+            {
+                  "title": "Dificuldade para pegar no sono ou permanecer dormindo, ou dormir demais"
+            },
+            {
+                  "title": "Sentir-se cansado(a) ou com pouca energia"
+            },
+            {
+                  "title": "Falta de apetite ou comer demais"
+            },
+            {
+                  "title": "Sentir-se mal consigo mesmo(a) — ou que é um(a) fracassado(a) ou que decepcionou a si mesmo(a) ou sua família"
+            },
+            {
+                  "title": "Dificuldade de concentração nas coisas, como tarefas escolares, leitura ou assistir TV"
+            },
+            {
+                  "title": "Movimentar-se ou falar tão devagar que outras pessoas poderiam ter notado? Ou o oposto — ficar tão agitado(a) ou inquieto(a) que você tem se movimentado muito mais que o normal"
+            },
+            {
+                  "title": "Pensamentos de que estaria melhor morto(a) ou de se machucar de alguma forma"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Mínima",
+                  "desc": "Nenhum sintoma significativo de depressão detectado. Continue cuidando do seu bem-estar emocional."
+            },
+            "leve": {
+                  "label": "Leve",
+                  "desc": "Sintomas leves detectados. Converse com um adulto de confiança se algo o(a) preocupa."
+            },
+            "moderada": {
+                  "label": "Moderada",
+                  "desc": "Sintomas moderados de depressão detectados. É recomendável conversar com um profissional de saúde mental."
+            },
+            "moderadamente_grave": {
+                  "label": "Moderadamente grave",
+                  "desc": "Sintomas significativos de depressão detectados. É importante buscar ajuda profissional em breve."
+            },
+            "grave": {
+                  "label": "Grave",
+                  "desc": "Sintomas graves de depressão detectados. Busque ajuda profissional com urgência. Converse com um adulto de confiança agora."
+            }
+      }
+},
     "triage": {
       "name": "Guia",
       "abbr": "Guia",

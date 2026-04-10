@@ -1247,6 +1247,186 @@ const LANG_DE = {
             }
       }
 },
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Columbia Suicide Severity Rating Scale – Screening",
+      "desc": "Weltweit eingesetztes Screening-Tool für Suizidrisiko, verwendet in Notaufnahmen, der Primärversorgung und Bildung. Wenn Sie eine Krise erleben, rufen Sie 112 oder die Telefonseelsorge unter 0800 111 0 111 oder 0800 111 0 222 an.",
+      "instructions": "Beantworten Sie die folgenden Fragen zu Gedanken oder Verhaltensweisen, die Sie möglicherweise hatten, ehrlich. Ihre Antworten sind vertraulich und werden nur auf Ihrem Gerät gespeichert.",
+      "questions": [
+            {
+                  "title": "Haben Sie sich gewünscht, tot zu sein, oder gewünscht, einschlafen und nicht mehr aufwachen zu können?",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            },
+            {
+                  "title": "Hatten Sie tatsächlich Gedanken daran, sich das Leben zu nehmen?",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            },
+            {
+                  "title": "Haben Sie darüber nachgedacht, wie Sie dies tun könnten? (z.B. über eine Methode wie Tabletten, eine Waffe oder einen anderen Weg nachgedacht)",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            },
+            {
+                  "title": "Hatten Sie diese Gedanken und eine gewisse Absicht, danach zu handeln?",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            },
+            {
+                  "title": "Haben Sie begonnen, die Details auszuarbeiten oder ausgearbeitet, wie Sie sich das Leben nehmen würden? Beabsichtigen Sie, diesen Plan auszuführen?",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            },
+            {
+                  "title": "Haben Sie jemals etwas getan, begonnen etwas zu tun oder Vorbereitungen getroffen, um Ihr Leben zu beenden? (z.B. Tabletten gesammelt, eine Waffe besorgt, Wertgegenstände verschenkt, einen Abschiedsbrief geschrieben, Tabletten eingenommen, sich geschnitten, versucht, sich aufzuhängen, usw.)",
+                  "options": [
+                        "Nein",
+                        "Ja"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Kein Risiko identifiziert",
+                  "desc": "Es wurden derzeit keine Anzeichen für ein Suizidrisiko identifiziert. Wenn Sie solche Gedanken jemals haben, zögern Sie nicht, professionelle Hilfe in Anspruch zu nehmen."
+            },
+            "low": {
+                  "label": "Geringes Risiko",
+                  "desc": "Sie haben passive Todeswünsche geäußert. Obwohl Sie keine aktiven Pläne angeben, wird empfohlen, mit einem Fachmann zu sprechen.\n\n🆘 KRISENHOTLINES:\n• Deutschland: 0800 111 0 111 oder 0800 111 0 222\n• Österreich: 142\n• Schweiz: 143\n• International: befrienders.org"
+            },
+            "moderate": {
+                  "label": "Mittleres Risiko",
+                  "desc": "Ihre Antworten deuten auf Suizidgedanken hin. Es ist sehr wichtig, mit einem psychosozialen Fachpersonal zu sprechen. Ein Sicherheitsplan kann helfen.\n\n🆘 KRISENHOTLINES:\n• Deutschland: 0800 111 0 111 oder 0800 111 0 222\n• Österreich: 142\n• Schweiz: 143\n• International: befrienders.org"
+            },
+            "high": {
+                  "label": "Hohes Risiko",
+                  "desc": "Ihre Antworten deuten auf ein hohes Risiko für suizidales Verhalten hin. Sie benötigen dringend eine fachärztliche Einschätzung. Bitte wenden Sie sich sofort an einen psychosozialen Dienst oder rufen Sie eine Krisenhotline an.\n\n🆘 KRISENHOTLINES:\n• Deutschland: 0800 111 0 111 oder 0800 111 0 222\n• Österreich: 142\n• Schweiz: 143\n• International: befrienders.org"
+            },
+            "imminent": {
+                  "label": "Akute Gefahr",
+                  "desc": "Ihre Antworten deuten auf ein sehr hohes Risiko hin. Es ist wesentlich, dass Sie JETZT professionelle Hilfe suchen. Gehen Sie in die Notaufnahme oder rufen Sie sofort eine Krisenhotline an. Sie sind nicht allein.\n\n🆘 KRISENHOTLINES:\n• Deutschland: 0800 111 0 111 oder 0800 111 0 222\n• Österreich: 142\n• Schweiz: 143\n• International: befrienders.org"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "CAGE-Fragebogen zur Alkoholerkennung",
+      "desc": "Ultrakurzes 4-Fragen-Screening zur Erkennung von Alkoholproblemen. Ergänzt den AUDIT.",
+      "instructions": "Beantworten Sie die folgenden Fragen zu Ihrem Verhältnis zu Alkohol ehrlich.",
+      "sharedOptions": [
+            "Nein",
+            "Ja"
+      ],
+      "questions": [
+            {
+                  "title": "Hatten Sie schon einmal das Gefühl, Sie sollten Ihren Alkoholkonsum reduzieren (Cut down)?"
+            },
+            {
+                  "title": "Haben sich Leute schon einmal darüber geärgert (Annoyed) und Sie für Ihr Trinken kritisiert?"
+            },
+            {
+                  "title": "Haben Sie sich schon einmal schlecht oder schuldig (Guilty) wegen Ihres Trinkens gefühlt?"
+            },
+            {
+                  "title": "Haben Sie schon einmal morgens als Erstes einen Drink gebraucht, um die Nerven zu beruhigen oder einen Kater loszuwerden (Eye-opener)?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Keine Hinweise",
+                  "desc": "Es wurden keine Hinweise auf Alkoholprobleme festgestellt."
+            },
+            "low": {
+                  "label": "Mögliches Risiko",
+                  "desc": "Eine positive Antwort rechtfertigt eine weitere Abklärung. Erwägen Sie, den AUDIT-Test für eine umfassendere Einschätzung durchzuführen."
+            },
+            "moderate": {
+                  "label": "Wahrscheinliches Problem",
+                  "desc": "Ihr Ergebnis legt eine hohe Wahrscheinlichkeit für eine Alkoholgebrauchsstörung nahe. Die Konsultation eines Arztes oder einer Ärztin wird empfohlen."
+            },
+            "high": {
+                  "label": "Hohe Wahrscheinlichkeit",
+                  "desc": "Ihr Ergebnis ist praktisch diagnostisch für eine Alkoholabhängigkeit. Es ist sehr wichtig, spezialisierte professionelle Hilfe aufzusuchen."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Patientengesundheitsfragebogen – für Jugendliche",
+      "desc": "PHQ-9-Version, die für Jugendliche (11-17 Jahre) validiert ist. Erfasst Depressionen in den letzten zwei Wochen.",
+      "instructions": "Wie oft haben Sie sich in den letzten 2 Wochen durch die folgenden Probleme belastet gefühlt? Denken Sie daran, wie Sie sich in der Schule, mit Freunden und zu Hause gefühlt haben.",
+      "sharedOptions": [
+            "Überhaupt nicht",
+            "An einzelnen Tagen",
+            "An mehr als der Hälfte der Tage",
+            "Beinahe jeden Tag"
+      ],
+      "questions": [
+            {
+                  "title": "Wenig Interesse oder Freude an Ihren Tätigkeiten"
+            },
+            {
+                  "title": "Niedergeschlagenheit, Schwermut oder Hoffnungslosigkeit"
+            },
+            {
+                  "title": "Schwierigkeiten ein- oder durchzuschlafen oder übermäßig viel Schlaf"
+            },
+            {
+                  "title": "Müdigkeit oder Energiemangel"
+            },
+            {
+                  "title": "Appetitverlust oder übermäßiges Essen"
+            },
+            {
+                  "title": "Schlechtes Selbstwertgefühl – oder das Gefühl, versagt zu haben oder sich oder Ihre Familie enttäuscht zu haben"
+            },
+            {
+                  "title": "Konzentrationsschwierigkeiten, z.B. bei den Hausaufgaben, beim Lesen oder Fernsehen"
+            },
+            {
+                  "title": "Sich so langsam bewegen oder sprechen, dass es anderen aufgefallen sein könnte? Oder das Gegenteil – so unruhig oder ruhelos sein, dass Sie viel mehr herumgelaufen sind als üblich"
+            },
+            {
+                  "title": "Gedanken, dass Sie besser tot wären oder sich auf irgendeine Weise weh tun sollten"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Minimal",
+                  "desc": "Keine wesentlichen Depressionssymptome festgestellt. Kümmern Sie sich weiterhin um Ihr emotionales Wohlbefinden."
+            },
+            "leve": {
+                  "label": "Leicht",
+                  "desc": "Leichte Symptome festgestellt. Sprechen Sie mit einer vertrauten erwachsenen Person, falls Sie sich Sorgen machen."
+            },
+            "moderada": {
+                  "label": "Mittel",
+                  "desc": "Mittelschwere Depressionssymptome festgestellt. Es wird empfohlen, mit einem psychosozialen Fachpersonal zu sprechen."
+            },
+            "moderadamente_grave": {
+                  "label": "Mittel bis schwer",
+                  "desc": "Deutliche Depressionssymptome festgestellt. Es ist wichtig, bald professionelle Hilfe zu suchen."
+            },
+            "grave": {
+                  "label": "Schwer",
+                  "desc": "Schwere Depressionssymptome festgestellt. Suchen Sie dringend professionelle Hilfe auf. Sprechen Sie jetzt mit einer vertrauten erwachsenen Person."
+            }
+      }
+},
     "triage": {
       "name": "Leitfaden",
       "abbr": "Leitfaden",

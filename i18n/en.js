@@ -28,6 +28,7 @@ const LANG_EN = {
     "cat_screening": "Screening & Detection",
     "cat_wellbeing": "Wellbeing & Self-Esteem",
     "cat_personality": "Personality",
+    "cat_crisis": "Crisis & Risk",
     "cat_advanced": "Advanced Assessment",
     "noRecords": "No saved records.",
     "completeFirst": "Complete at least one test to see the history.",
@@ -1217,6 +1218,186 @@ const LANG_EN = {
             "muy_alto": {
                   "label": "Very significant autistic traits",
                   "desc": "Your score is very high and strongly suggests the presence of autism spectrum traits. A comprehensive diagnostic evaluation is strongly recommended."
+            }
+      }
+},
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Columbia Suicide Severity Rating Scale — Screener",
+      "desc": "Worldwide suicide risk screening tool used in emergency departments, primary care, and education. If you are in crisis, call 988 (USA) or 116 123 (UK).",
+      "instructions": "Answer honestly the following questions about thoughts or behaviors you may have had. Your answers are confidential and stored only on your device.",
+      "questions": [
+            {
+                  "title": "Have you wished you were dead or wished you could go to sleep and not wake up?",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            },
+            {
+                  "title": "Have you actually had any thoughts of killing yourself?",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            },
+            {
+                  "title": "Have you been thinking about how you might do this? (e.g., thought about a method such as pills, a gun, or another way)",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            },
+            {
+                  "title": "Have you had these thoughts and had some intention of acting on them?",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            },
+            {
+                  "title": "Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan?",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            },
+            {
+                  "title": "Have you ever done anything, started to do anything, or prepared to do anything to end your life? (e.g., collected pills, obtained a gun, gave away valuables, wrote a suicide note, took pills, cut yourself, tried to hang yourself, etc.)",
+                  "options": [
+                        "No",
+                        "Yes"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "No risk identified",
+                  "desc": "No suicide risk indicators were identified at this time. If you ever have these thoughts, do not hesitate to seek professional help."
+            },
+            "low": {
+                  "label": "Low risk",
+                  "desc": "You have expressed passive death wishes. While you do not indicate active plans, it is recommended to speak with a professional.\n\n🆘 CRISIS LINES:\n• USA: 988\n• UK: 116 123\n• International: befrienders.org"
+            },
+            "moderate": {
+                  "label": "Moderate risk",
+                  "desc": "Your responses indicate suicidal thoughts. It is very important to talk to a mental health professional. A safety plan can help.\n\n🆘 CRISIS LINES:\n• USA: 988\n• UK: 116 123\n• International: befrienders.org"
+            },
+            "high": {
+                  "label": "High risk",
+                  "desc": "Your responses indicate high risk of suicidal behavior. You need an urgent professional evaluation. Please contact a mental health professional or call a crisis line now.\n\n🆘 CRISIS LINES:\n• USA: 988\n• UK: 116 123\n• International: befrienders.org"
+            },
+            "imminent": {
+                  "label": "Imminent risk",
+                  "desc": "Your responses indicate very high risk. It is essential that you seek professional help NOW. Go to the emergency room or call a crisis line immediately. You are not alone.\n\n🆘 CRISIS LINES:\n• USA: 988\n• UK: 116 123\n• International: befrienders.org"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "CAGE Alcohol Screening Questionnaire",
+      "desc": "Ultra-brief 4-question screening to detect alcohol problems. Complements the AUDIT.",
+      "instructions": "Answer honestly the following questions about your relationship with alcohol.",
+      "sharedOptions": [
+            "No",
+            "Yes"
+      ],
+      "questions": [
+            {
+                  "title": "Have you ever felt you should Cut down on your drinking?"
+            },
+            {
+                  "title": "Have people Annoyed you by criticizing your drinking?"
+            },
+            {
+                  "title": "Have you ever felt bad or Guilty about your drinking?"
+            },
+            {
+                  "title": "Have you ever had a drink first thing in the morning to steady your nerves or to get rid of a hangover (Eye-opener)?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "No indicators",
+                  "desc": "No indicators of alcohol problems detected."
+            },
+            "low": {
+                  "label": "Possible risk",
+                  "desc": "One positive answer warrants further exploration. Consider taking the AUDIT test for a more complete assessment."
+            },
+            "moderate": {
+                  "label": "Probable problem",
+                  "desc": "Your score suggests a high probability of an alcohol use disorder. Consulting a health professional is recommended."
+            },
+            "high": {
+                  "label": "High probability",
+                  "desc": "Your score is virtually diagnostic of alcohol dependence. It is very important to seek specialized professional help."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Patient Health Questionnaire — Adolescents",
+      "desc": "PHQ-9 version validated for adolescents (ages 11-17). Assesses depression over the past two weeks.",
+      "instructions": "Over the last 2 weeks, how often have you been bothered by the following problems? Think about how you have felt at school, with friends, and at home.",
+      "sharedOptions": [
+            "Not at all",
+            "Several days",
+            "More than half the days",
+            "Nearly every day"
+      ],
+      "questions": [
+            {
+                  "title": "Little interest or pleasure in doing things"
+            },
+            {
+                  "title": "Feeling down, depressed, or hopeless"
+            },
+            {
+                  "title": "Trouble falling or staying asleep, or sleeping too much"
+            },
+            {
+                  "title": "Feeling tired or having little energy"
+            },
+            {
+                  "title": "Poor appetite or overeating"
+            },
+            {
+                  "title": "Feeling bad about yourself — or that you are a failure or have let yourself or your family down"
+            },
+            {
+                  "title": "Trouble concentrating on things, such as schoolwork, reading, or watching TV"
+            },
+            {
+                  "title": "Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual"
+            },
+            {
+                  "title": "Thoughts that you would be better off dead or of hurting yourself in some way"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Minimal",
+                  "desc": "No significant symptoms of depression detected. Keep taking care of your emotional well-being."
+            },
+            "leve": {
+                  "label": "Mild",
+                  "desc": "Mild symptoms detected. Talk to a trusted adult if something worries you."
+            },
+            "moderada": {
+                  "label": "Moderate",
+                  "desc": "Moderate depression symptoms detected. It is recommended to talk to a mental health professional."
+            },
+            "moderadamente_grave": {
+                  "label": "Moderately severe",
+                  "desc": "Significant depression symptoms detected. It is important to seek professional help soon."
+            },
+            "grave": {
+                  "label": "Severe",
+                  "desc": "Severe depression symptoms detected. Seek professional help urgently. Talk to a trusted adult now."
             }
       }
 },

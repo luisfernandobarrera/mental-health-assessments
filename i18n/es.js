@@ -28,6 +28,7 @@ const LANG_ES = {
     "cat_screening": "Screening y Detección",
     "cat_wellbeing": "Bienestar y Autoestima",
     "cat_personality": "Personalidad",
+    "cat_crisis": "Crisis y Riesgo",
     "cat_advanced": "Evaluación Avanzada",
     "noRecords": "No hay registros guardados.",
     "completeFirst": "Completa al menos un test para ver el historial.",
@@ -1217,6 +1218,186 @@ const LANG_ES = {
             "muy_alto": {
                   "label": "Rasgos autistas muy significativos",
                   "desc": "Tu puntuación es muy alta y sugiere fuertemente la presencia de rasgos del espectro autista. Es muy recomendable solicitar una evaluación diagnóstica completa."
+            }
+      }
+},
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Escala de Gravedad Suicida de Columbia — Screener",
+      "desc": "Herramienta de detección de riesgo suicida usada mundialmente. Si estás en crisis, llama al 024 (España) o 988 (EE.UU.).",
+      "instructions": "Responde con honestidad a las siguientes preguntas sobre pensamientos o comportamientos que hayas tenido.",
+      "questions": [
+            {
+                  "title": "¿Has deseado estar muerto/a o poder dormirte y no despertar?",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            },
+            {
+                  "title": "¿Has tenido realmente pensamientos de suicidarte?",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            },
+            {
+                  "title": "¿Has pensado en cómo lo harías? (por ejemplo, pensaste en un método como pastillas, arma u otra forma)",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            },
+            {
+                  "title": "¿Has tenido estos pensamientos con alguna intención de actuar en consecuencia?",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            },
+            {
+                  "title": "¿Has comenzado a elaborar o has elaborado los detalles de cómo suicidarte? ¿Tienes intención de llevar a cabo ese plan?",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            },
+            {
+                  "title": "¿Alguna vez has hecho algo, comenzado a hacer algo o te has preparado para hacer algo para terminar con tu vida?",
+                  "options": [
+                        "No",
+                        "Sí"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Sin riesgo identificado",
+                  "desc": "No se identificaron indicadores de riesgo suicida en este momento."
+            },
+            "low": {
+                  "label": "Riesgo bajo",
+                  "desc": "Has expresado deseos pasivos de muerte. Es recomendable hablar con un profesional.\n\n🆘 LÍNEAS DE CRISIS:\n• España: 024\n• EE.UU.: 988\n• México: 800-290-0024\n• Argentina: 135"
+            },
+            "moderate": {
+                  "label": "Riesgo moderado",
+                  "desc": "Tus respuestas indican pensamientos suicidas. Es muy importante hablar con un profesional.\n\n🆘 LÍNEAS DE CRISIS:\n• España: 024\n• EE.UU.: 988\n• México: 800-290-0024\n• Argentina: 135"
+            },
+            "high": {
+                  "label": "Riesgo alto",
+                  "desc": "Tus respuestas indican riesgo alto. Necesitas una evaluación profesional urgente.\n\n🆘 LÍNEAS DE CRISIS:\n• España: 024\n• EE.UU.: 988\n• México: 800-290-0024\n• Argentina: 135"
+            },
+            "imminent": {
+                  "label": "Riesgo inminente",
+                  "desc": "Tus respuestas indican riesgo muy alto. Busca ayuda profesional AHORA.\n\n🆘 LÍNEAS DE CRISIS:\n• España: 024\n• EE.UU.: 988\n• México: 800-290-0024\n• Argentina: 135"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "Cuestionario CAGE de Consumo de Alcohol",
+      "desc": "Screening ultrabreve de 4 preguntas para detectar problemas con el alcohol.",
+      "instructions": "Responde con honestidad a las siguientes preguntas sobre tu relación con el alcohol.",
+      "sharedOptions": [
+            "No",
+            "Sí"
+      ],
+      "questions": [
+            {
+                  "title": "¿Alguna vez has sentido que deberías reducir tu consumo de alcohol?"
+            },
+            {
+                  "title": "¿Te ha molestado que la gente te critique por tu forma de beber?"
+            },
+            {
+                  "title": "¿Alguna vez te has sentido mal o culpable por tu consumo de alcohol?"
+            },
+            {
+                  "title": "¿Alguna vez has tomado una copa a primera hora de la mañana para calmar los nervios o quitarte la resaca?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Sin indicadores",
+                  "desc": "No se detectan indicadores de problemas con el alcohol."
+            },
+            "low": {
+                  "label": "Posible riesgo",
+                  "desc": "Una respuesta positiva justifica exploración más detallada."
+            },
+            "moderate": {
+                  "label": "Probable problema",
+                  "desc": "Alta probabilidad de trastorno por consumo de alcohol. Consulta con un profesional."
+            },
+            "high": {
+                  "label": "Alta probabilidad",
+                  "desc": "Puntuación prácticamente diagnóstica de dependencia al alcohol."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Cuestionario de Salud del Paciente — Adolescentes",
+      "desc": "Versión del PHQ-9 validada para adolescentes (11-17 años).",
+      "instructions": "Durante las últimas 2 semanas, ¿con qué frecuencia te han molestado estos problemas?",
+      "sharedOptions": [
+            "Nunca",
+            "Varios días",
+            "Más de la mitad de los días",
+            "Casi todos los días"
+      ],
+      "questions": [
+            {
+                  "title": "Poco interés o placer en hacer cosas"
+            },
+            {
+                  "title": "Sentirte desanimado/a, deprimido/a o sin esperanza"
+            },
+            {
+                  "title": "Problemas para dormir o dormir demasiado"
+            },
+            {
+                  "title": "Sentirte cansado/a o con poca energía"
+            },
+            {
+                  "title": "Poco apetito o comer en exceso"
+            },
+            {
+                  "title": "Sentirte mal contigo mismo/a"
+            },
+            {
+                  "title": "Dificultad para concentrarte en las tareas del colegio, leer o ver la televisión"
+            },
+            {
+                  "title": "Moverte o hablar despacio, o estar muy inquieto/a"
+            },
+            {
+                  "title": "Pensamientos de que estarías mejor muerto/a o de hacerte daño"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Mínima",
+                  "desc": "No se detectan síntomas significativos de depresión."
+            },
+            "leve": {
+                  "label": "Leve",
+                  "desc": "Síntomas leves. Habla con un adulto de confianza."
+            },
+            "moderada": {
+                  "label": "Moderada",
+                  "desc": "Síntomas moderados. Consulta con un profesional."
+            },
+            "moderadamente_grave": {
+                  "label": "Moderadamente grave",
+                  "desc": "Síntomas importantes. Busca ayuda profesional pronto."
+            },
+            "grave": {
+                  "label": "Grave",
+                  "desc": "Síntomas graves. Busca ayuda urgente."
             }
       }
 },

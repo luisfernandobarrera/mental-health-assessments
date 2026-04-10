@@ -3,9 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mental health self-assessment platform with 22 validated screening tests in 12 languages">
+  <meta name="description" content="Free, private mental health self-assessment tools. 27 validated screening tests for depression, anxiety, ADHD, autism, suicide risk, and more. Available in 12+ languages. No data leaves your device.">
+  <meta name="keywords" content="mental health test, depression screening, PHQ-9, GAD-7, anxiety test, ADHD test, autism spectrum quotient, suicide risk assessment, C-SSRS, free mental health tools, psychological assessment">
   <meta name="theme-color" content="#F0E9DF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mentalhealth.powali.com/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mental Health Self-Assessment Tools">
+  <meta property="og:description" content="27 free, validated mental health screening tests. Depression, anxiety, ADHD, autism, suicide risk & more. 100% private — no data leaves your device.">
+  <meta property="og:url" content="https://mentalhealth.powali.com/">
+  <meta property="og:site_name" content="Mental Health Assessments">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:locale:alternate" content="ko_KR">
+  <meta property="og:locale:alternate" content="ar_SA">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="hi_IN">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mental Health Self-Assessment Tools">
+  <meta name="twitter:description" content="27 free, validated screening tests. 100% private.">
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="x-default" href="https://mentalhealth.powali.com/">
+  <link rel="alternate" hreflang="es" href="https://mentalhealth.powali.com/?lang=es">
+  <link rel="alternate" hreflang="en" href="https://mentalhealth.powali.com/?lang=en">
+  <link rel="alternate" hreflang="pt" href="https://mentalhealth.powali.com/?lang=pt">
+  <link rel="alternate" hreflang="fr" href="https://mentalhealth.powali.com/?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://mentalhealth.powali.com/?lang=de">
+  <link rel="alternate" hreflang="it" href="https://mentalhealth.powali.com/?lang=it">
+  <link rel="alternate" hreflang="zh" href="https://mentalhealth.powali.com/?lang=zh">
+  <link rel="alternate" hreflang="ja" href="https://mentalhealth.powali.com/?lang=ja">
+  <link rel="alternate" hreflang="ko" href="https://mentalhealth.powali.com/?lang=ko">
+  <link rel="alternate" hreflang="ar" href="https://mentalhealth.powali.com/?lang=ar">
+  <link rel="alternate" hreflang="ru" href="https://mentalhealth.powali.com/?lang=ru">
+  <link rel="alternate" hreflang="hi" href="https://mentalhealth.powali.com/?lang=hi">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Mental Health Self-Assessment Tools",
+    "description": "Free, private mental health screening platform with 27 validated clinical instruments",
+    "url": "https://mentalhealth.powali.com/",
+    "inLanguage": ["es","en","pt","fr","de","it","zh","ja","ko","ar","ru","hi"],
+    "isAccessibleForFree": true,
+    "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+    "about": [
+      { "@type": "MedicalCondition", "name": "Depression" },
+      { "@type": "MedicalCondition", "name": "Anxiety" },
+      { "@type": "MedicalCondition", "name": "ADHD" },
+      { "@type": "MedicalCondition", "name": "Autism Spectrum Disorder" },
+      { "@type": "MedicalCondition", "name": "PTSD" },
+      { "@type": "MedicalCondition", "name": "Suicide Risk" }
+    ],
+    "disclaimer": "This tool is for informational and screening purposes only. It does not constitute a medical diagnosis. Always consult a qualified mental health professional."
+  }
+  </script>
   <title>Mental Health — Self-Assessment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -884,6 +945,7 @@
 <script src="tests/ipip_mmpi.js"></script>
 <script src="tests/clinical1.js"></script>
 <script src="tests/clinical2.js"></script>
+<script src="tests/crisis.js"></script>
 <script src="tests/autism.js"></script>
 <script src="tests/triage.js"></script>
 
@@ -893,7 +955,11 @@
 // ═══════════════════════════════════════════════════════════════
 const LANGS = { es: LANG_ES, en: LANG_EN, pt: LANG_PT, fr: LANG_FR, de: LANG_DE, it: LANG_IT, zh: LANG_ZH, ja: LANG_JA, ar: LANG_AR, ru: LANG_RU, ko: LANG_KO, hi: LANG_HI };
 function detectLang() {
+  // 1. Check URL parameter ?lang=xx
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
   const supported = Object.keys(LANGS);
+  if (urlLang && supported.includes(urlLang.toLowerCase())) return urlLang.toLowerCase();
+  // 2. Check browser languages
   for (const l of navigator.languages || [navigator.language]) {
     const code = l.split('-')[0].toLowerCase();
     if (supported.includes(code)) return code;
@@ -1233,6 +1299,9 @@ const TESTS = {
   who5: TEST_WHO5,
   aq10: TEST_AQ10,
   aq50: TEST_AQ50,
+  cssrs: TEST_CSSRS,
+  cage: TEST_CAGE,
+  phqa: TEST_PHQA,
   triage: TEST_TRIAGE
 };
 
@@ -1291,8 +1360,9 @@ function setAccentColor(color) {
 // ═══════════════════════════════════════════════════════════════
 const TEST_CATEGORIES = [
   { key: 'triage', label: '¿Por dónde empezar?', ids: ['triage'] },
-  { key: 'clinical', label: 'Evaluaciones Clínicas', ids: ['bdi','phq9','bai','gad7','pss','pcl5','isi','spin'] },
-  { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','aq10','aq50','audit','eat26','ocir'] },
+  { key: 'crisis', label: 'Crisis y Riesgo', ids: ['cssrs'] },
+  { key: 'clinical', label: 'Evaluaciones Clínicas', ids: ['bdi','phq9','phqa','bai','gad7','pss','pcl5','isi','spin'] },
+  { key: 'screening', label: 'Screening y Detección', ids: ['msibpd','mdq','asrs','aq10','aq50','audit','cage','eat26','ocir'] },
   { key: 'wellbeing', label: 'Bienestar y Autoestima', ids: ['who5','rosenberg'] },
   { key: 'personality', label: 'Personalidad', ids: ['bfi44','mbti','ipip300'] },
   { key: 'advanced', label: 'Evaluación Avanzada', ids: ['pid5','ipip_mmpi'] },

@@ -1233,6 +1233,186 @@ const LANG_IT = {
             }
       }
 },
+    "cssrs": {
+      "name": "C-SSRS",
+      "abbr": "C-SSRS",
+      "fullName": "Scala di Valutazione del Rischio Suicidario Columbia — Screener",
+      "desc": "Strumento di screening del rischio di suicidio utilizzato in tutto il mondo nei pronto soccorso, nell'assistenza primaria e nell'istruzione. Se sei in crisi, chiama il 112 (Italia), il 988 (USA) o il 116 123 (UK).",
+      "instructions": "Rispondi onestamente alle seguenti domande su pensieri o comportamenti che potresti aver avuto. Le tue risposte sono riservate e memorizzate solo sul tuo dispositivo.",
+      "questions": [
+            {
+                  "title": "Hai desiderato di essere morto o hai desiderato di poterti addormentare e non svegliarti più?",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            },
+            {
+                  "title": "Hai effettivamente avuto dei pensieri riguardo all'ucciderti?",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            },
+            {
+                  "title": "Hai pensato a come potresti farlo? (ad esempio, hai pensato a un metodo come pillole, una pistola o un altro modo)",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            },
+            {
+                  "title": "Hai avuto questi pensieri e hai avuto l'intenzione di agire di conseguenza?",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            },
+            {
+                  "title": "Hai iniziato a elaborare o hai elaborato i dettagli su come ucciderti? Hai intenzione di attuare questo piano?",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            },
+            {
+                  "title": "Hai mai fatto qualcosa, iniziato a fare qualcosa o ti sei preparato a fare qualcosa per porre fine alla tua vita? (ad esempio, raccogliere pillole, procurarti una pistola, regalare oggetti di valore, scrivere un biglietto d'addio, assumere pillole, tagliarti, cercare di impiccarti, ecc.)",
+                  "options": [
+                        "No",
+                        "Sì"
+                  ]
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Nessun rischio identificato",
+                  "desc": "Non sono stati identificati indicatori di rischio di suicidio in questo momento. Se dovessi mai avere questi pensieri, non esitare a cercare aiuto professionale."
+            },
+            "low": {
+                  "label": "Rischio basso",
+                  "desc": "Hai espresso desideri passivi di morte. Anche se non indichi piani attivi, si raccomanda di parlare con un professionista.\n\n🆘 LINEE DI ASSISTENZA:\n• Italia: 112 / Telefono Amico 02 2327 2327\n• USA: 988\n• UK: 116 123\n• Internazionale: befrienders.org"
+            },
+            "moderate": {
+                  "label": "Rischio moderato",
+                  "desc": "Le tue risposte indicano pensieri suicidi. È molto importante parlare con un professionista della salute mentale. Un piano di sicurezza può essere d'aiuto.\n\n🆘 LINEE DI ASSISTENZA:\n• Italia: 112 / Telefono Amico 02 2327 2327\n• USA: 988\n• UK: 116 123\n• Internazionale: befrienders.org"
+            },
+            "high": {
+                  "label": "Rischio alto",
+                  "desc": "Le tue risposte indicano un alto rischio di comportamento suicidario. Hai bisogno di una valutazione professionale urgente. Contatta un professionista della salute mentale o chiama subito una linea di assistenza.\n\n🆘 LINEE DI ASSISTENZA:\n• Italia: 112 / Telefono Amico 02 2327 2327\n• USA: 988\n• UK: 116 123\n• Internazionale: befrienders.org"
+            },
+            "imminent": {
+                  "label": "Rischio imminente",
+                  "desc": "Le tue risposte indicano un rischio molto elevato. È essenziale che tu cerchi aiuto professionale ORA. Recati al pronto soccorso o chiama immediatamente una linea di emergenza. Non sei solo.\n\n🆘 LINEE DI ASSISTENZA:\n• Italia: 112 / Telefono Amico 02 2327 2327\n• USA: 988\n• UK: 116 123\n• Internazionale: befrienders.org"
+            }
+      }
+},
+    "cage": {
+      "name": "CAGE",
+      "abbr": "CAGE",
+      "fullName": "Questionario di screening CAGE sull'alcol",
+      "desc": "Screening ultra-breve di 4 domande per rilevare problemi legati all'alcol. Integra il test AUDIT.",
+      "instructions": "Rispondi onestamente alle seguenti domande sul tuo rapporto con l'alcol.",
+      "sharedOptions": [
+            "No",
+            "Sì"
+      ],
+      "questions": [
+            {
+                  "title": "Hai mai sentito il bisogno di ridurre il tuo consumo di alcol (Cut down)?"
+            },
+            {
+                  "title": "Le persone ti hanno mai infastidito criticando il tuo modo di bere (Annoyed)?"
+            },
+            {
+                  "title": "Ti sei mai sentito in colpa per il tuo modo di bere (Guilty)?"
+            },
+            {
+                  "title": "Hai mai bevuto al mattino appena sveglio per calmare i nervi o per eliminare i postumi di una sbornia (Eye-opener)?"
+            }
+      ],
+      "results": {
+            "none": {
+                  "label": "Nessun indicatore",
+                  "desc": "Non sono stati rilevati indicatori di problemi legati all'alcol."
+            },
+            "low": {
+                  "label": "Possibile rischio",
+                  "desc": "Una risposta positiva merita un ulteriore approfondimento. Considera di fare il test AUDIT per una valutazione più completa."
+            },
+            "moderate": {
+                  "label": "Probabile problema",
+                  "desc": "Il tuo punteggio suggerisce un'alta probabilità di un disturbo da uso di alcol. Si raccomanda di consultare un professionista della salute."
+            },
+            "high": {
+                  "label": "Alta probabilità",
+                  "desc": "Il tuo punteggio è quasi diagnostico per la dipendenza da alcol. È molto importante cercare un aiuto professionale specializzato."
+            }
+      }
+},
+    "phqa": {
+      "name": "PHQ-A",
+      "abbr": "PHQ-A",
+      "fullName": "Questionario sulla salute del paziente — Adolescenti",
+      "desc": "Versione del PHQ-9 validata per adolescenti (11-17 anni). Valuta la depressione nelle ultime due settimane.",
+      "instructions": "Nelle ultime 2 settimane, quanto spesso sei stato/a disturbato/a dai seguenti problemi? Pensa a come ti sei sentito/a a scuola, con gli amici e a casa.",
+      "sharedOptions": [
+            "Mai",
+            "Diversi giorni",
+            "Più della metà dei giorni",
+            "Quasi ogni giorno"
+      ],
+      "questions": [
+            {
+                  "title": "Poco interesse o piacere nel fare le cose"
+            },
+            {
+                  "title": "Sentirsi giù, depresso o senza speranza"
+            },
+            {
+                  "title": "Problemi ad addormentarsi o a mantenere il sonno, o dormire troppo"
+            },
+            {
+                  "title": "Sentirsi stanchi o avere poca energia"
+            },
+            {
+                  "title": "Scarso appetito o mangiare troppo"
+            },
+            {
+                  "title": "Sentirsi male con se stessi — o di essere un fallimento o di aver deluso se stessi o la propria famiglia"
+            },
+            {
+                  "title": "Difficoltà a concentrarsi sulle cose, come i compiti scolastici, la lettura o guardare la TV"
+            },
+            {
+                  "title": "Muoversi o parlare così lentamente che le altre persone potrebbero averlo notato? O l'opposto — essere così irrequieti da muoversi molto più del solito"
+            },
+            {
+                  "title": "Pensieri che sarebbe meglio morire o di farsi del male in qualche modo"
+            }
+      ],
+      "results": {
+            "minima": {
+                  "label": "Minimo",
+                  "desc": "Nessun sintomo significativo di depressione rilevato. Continua a prenderti cura del tuo benessere emotivo."
+            },
+            "leve": {
+                  "label": "Lieve",
+                  "desc": "Rilevati sintomi lievi. Parlane con un adulto di fiducia se qualcosa ti preoccupa."
+            },
+            "moderada": {
+                  "label": "Moderato",
+                  "desc": "Rilevati sintomi di depressione moderata. Si raccomanda di parlare con un professionista della salute mentale."
+            },
+            "moderadamente_grave": {
+                  "label": "Moderatamente grave",
+                  "desc": "Rilevati sintomi depressivi significativi. È importante cercare presto un aiuto professionale."
+            },
+            "grave": {
+                  "label": "Grave",
+                  "desc": "Rilevati gravi sintomi di depressione. Cerca aiuto professionale con urgenza. Parlane subito con un adulto di fiducia."
+            }
+      }
+},
     "triage": {
       "name": "Guida",
       "abbr": "Guida",
