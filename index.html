@@ -61,6 +61,7 @@
   <link rel="alternate" hreflang="gl" href="https://mentalhealth.powali.com/?lang=gl">
   <link rel="alternate" hreflang="hu" href="https://mentalhealth.powali.com/?lang=hu">
   <link rel="alternate" hreflang="el" href="https://mentalhealth.powali.com/?lang=el">
+  <link rel="alternate" hreflang="pa" href="https://mentalhealth.powali.com/?lang=pa">
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -896,6 +897,7 @@
         <option value="gl">🇪🇸 Galego</option>
         <option value="hu">🇭🇺 Magyar</option>
         <option value="el">🇬🇷 Ελληνικά</option>
+        <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
       </select>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
@@ -986,6 +988,7 @@
 <script src="i18n/gl.js"></script>
 <script src="i18n/hu.js"></script>
 <script src="i18n/el.js"></script>
+<script src="i18n/pa.js"></script>
 <script src="tests/bfi44.js"></script>
 <script src="tests/mbti.js"></script>
 <script src="tests/ipip300.js"></script>
@@ -1030,6 +1033,7 @@ if (typeof LANG_CA !== 'undefined') LANGS['ca'] = LANG_CA;
 if (typeof LANG_GL !== 'undefined') LANGS['gl'] = LANG_GL;
 if (typeof LANG_HU !== 'undefined') LANGS['hu'] = LANG_HU;
 if (typeof LANG_EL !== 'undefined') LANGS['el'] = LANG_EL;
+if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
   const keys = key.split('.');
