@@ -24,7 +24,7 @@
       --bg-tertiary: #F5F1EC;
       --text-primary: #2D2A26;
       --text-secondary: #5D5852;
-      --text-muted: #8E8881;
+      --text-muted: #7A746D; /* Mejorado para contraste WCAG AA */
       --accent: #4A6741;
       --accent-light: #8BAF91;
       --accent-dark: #3A5234;
@@ -49,7 +49,7 @@
       --radius-xs: 8px;
       --fs-h1: clamp(1.75rem, 4.5vw, 2.5rem);
       --fs-h2: clamp(1.2rem, 3vw, 1.6rem);
-      --fs-body: clamp(0.9rem, 2vw, 1rem);
+      --fs-body: clamp(1rem, 2vw, 1.125rem); /* WCAG 16px min for body text */
     }
 
     /* ─── Dark Mode — Warm Evening ─── */
@@ -59,7 +59,7 @@
       --bg-tertiary: #2C302A;
       --text-primary: #E8E4DE;
       --text-secondary: #B5B0A8;
-      --text-muted: #7D7972;
+      --text-muted: #8E8A82; /* Mejorado para contraste WCAG AA */
       --accent: #8BAF91;
       --accent-light: #A5C9A9;
       --accent-dark: #6B8F71;
@@ -78,7 +78,7 @@
     @media (prefers-color-scheme: dark) {
       html:not([data-theme="light"]) {
         --bg-primary: #1A1C19; --bg-secondary: #232621; --bg-tertiary: #2C302A;
-        --text-primary: #E8E4DE; --text-secondary: #B5B0A8; --text-muted: #7D7972;
+        --text-primary: #E8E4DE; --text-secondary: #B5B0A8; --text-muted: #8E8A82; /* Mejorado WCAG AA */
         --accent: #8BAF91; --accent-light: #A5C9A9; --accent-dark: #6B8F71;
         --accent-warm: #D4A38F;
         --accent-glow: rgba(139, 175, 145, 0.12);
@@ -110,6 +110,21 @@
       background-attachment: fixed;
     }
     .container { max-width: 920px; margin: 0 auto; padding: clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem) 3rem; }
+
+    /* ─── Skeleton Loading Animations ─── */
+    @keyframes shine {
+      to { background-position-x: -200%; }
+    }
+    .skeleton {
+      background: var(--bg-tertiary);
+      background: linear-gradient(110deg, var(--bg-tertiary) 8%, var(--bg-secondary) 18%, var(--bg-tertiary) 33%);
+      background-size: 200% 100%;
+      animation: 1.5s shine linear infinite;
+      border-radius: var(--radius-xs);
+    }
+    .skeleton-line-lg { height: 28px; width: 80%; margin-bottom: 24px; }
+    .skeleton-line-sm { height: 16px; width: 40%; margin-bottom: 24px; }
+    .skeleton-option { height: 56px; width: 100%; margin-bottom: 12px; border-radius: var(--radius-sm); }
 
     /* ─── Accessibility ─── */
     .skip-link {
@@ -143,7 +158,7 @@
       line-height: 1.2;
     }
     .app-header p {
-      color: var(--text-muted); font-size: clamp(0.82rem, 2vw, 0.92rem);
+      color: var(--text-muted); font-size: 1rem; /* Modificado WCAG */
       margin-top: 0.35rem; font-weight: 300; font-style: italic;
     }
     .header-controls {
@@ -156,10 +171,10 @@
       display: flex; gap: 0.25rem; justify-content: center; flex-wrap: wrap;
     }
     .lang-btn {
-      min-width: 38px; min-height: 38px;
+      min-width: 42px; min-height: 42px; /* Mejorado WCAG */
       padding: 0.35rem 0.55rem; border: 1.5px solid var(--border);
       border-radius: 10px; background: transparent; font-family: var(--font-body);
-      font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
+      font-size: 0.875rem; font-weight: 600; color: var(--text-muted); /* Mejorado WCAG */
       cursor: pointer; transition: all 0.3s var(--ease-premium);
       letter-spacing: 0.04em;
       display: inline-flex; align-items: center; justify-content: center;
@@ -176,10 +191,10 @@
 
     /* ─── Theme Toggle ─── */
     .theme-toggle {
-      min-width: 38px; min-height: 38px;
+      min-width: 42px; min-height: 42px;
       padding: 0.35rem; border: 1.5px solid var(--border);
       border-radius: 10px; background: transparent;
-      cursor: pointer; font-size: 1.05rem;
+      cursor: pointer; font-size: 1.125rem;
       transition: all 0.3s var(--ease-premium);
       display: inline-flex; align-items: center; justify-content: center;
     }
@@ -191,9 +206,9 @@
       padding: 5px; border-radius: var(--radius-sm); margin-bottom: 1.5rem;
     }
     .tab {
-      flex: 1; min-height: 44px;
+      flex: 1; min-height: 48px; /* Touch target */
       padding: 0.6rem 0.85rem; border: none; background: transparent;
-      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 500; /* WCAG Size */
       color: var(--text-muted); cursor: pointer; border-radius: 10px;
       transition: all 0.3s var(--ease-premium);
     }
@@ -224,7 +239,7 @@
     .category-header:first-child { margin-top: 0 !important; }
     .category-header h2 {
       font-family: var(--font-display); font-weight: 400;
-      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--accent);
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem); color: var(--accent); /* WCAG Size */
       border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;
       letter-spacing: -0.01em;
     }
@@ -269,26 +284,26 @@
     .test-card-icon {
       width: 48px; height: 48px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.85rem; font-size: 1.4rem;
+      margin-bottom: 0.85rem; font-size: 1.5rem; /* Upgraded size */
       transition: all 0.4s var(--ease-premium);
     }
     .test-card:hover .test-card-icon {
       transform: rotate(-5deg) scale(1.05);
     }
     .test-card h3 {
-      font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-family: var(--font-display); font-size: clamp(1.125rem, 2.5vw, 1.25rem); /* WCAG size */
       font-weight: 400; margin-bottom: 0.15rem;
       line-height: 1.3; letter-spacing: -0.01em;
     }
     .test-card .card-abbr {
-      font-size: 0.68rem; font-weight: 700; color: var(--accent-warm);
+      font-size: 0.875rem; font-weight: 700; color: var(--accent-warm); /* WCAG size */
       text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.45rem;
     }
     .test-card p {
-      font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
+      font-size: 1rem; color: var(--text-muted); line-height: 1.55; /* WCAG size */
     }
     .test-card .card-meta {
-      font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem;
+      font-size: 0.875rem; color: var(--text-muted); margin-top: 0.75rem; /* WCAG size */
       display: flex; gap: 0.85rem; font-weight: 500;
       padding-top: 0.65rem; border-top: 1px solid var(--border);
     }
@@ -297,7 +312,7 @@
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
       min-height: 48px;
-      padding: 0.85rem 2rem; font-family: var(--font-body); font-size: 0.95rem;
+      padding: 0.875rem 2rem; font-family: var(--font-body); font-size: 1rem; /* WCAG size */
       font-weight: 600; border: none; border-radius: 100px; cursor: pointer;
       transition: all 0.35s var(--ease-premium);
       letter-spacing: 0.01em;
@@ -317,7 +332,7 @@
     .btn-outline:hover { background: var(--accent-glow); transform: translateY(-1px); }
     .btn-ghost {
       background: transparent; color: var(--text-muted);
-      padding: 0.5rem 0.85rem; font-size: 0.85rem;
+      padding: 0.5rem 0.85rem; font-size: 1rem; /* WCAG size */
     }
     .btn-ghost:hover { color: var(--accent); }
 
@@ -338,12 +353,12 @@
       font-weight: 400; margin-bottom: 0.85rem; letter-spacing: -0.02em;
     }
     .welcome-card p {
-      color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem; line-height: 1.7;
+      color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.7; /* WCAG size */
     }
     .disclaimer {
       background: var(--disclaimer-bg); border-left: 3px solid var(--disclaimer-border);
       padding: 1rem 1.15rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 1.25rem 0; text-align: left; font-size: 0.8rem;
+      margin: 1.25rem 0; text-align: left; font-size: 1rem; /* WCAG size */
       color: var(--text-secondary); line-height: 1.65;
     }
 
@@ -351,7 +366,7 @@
     .progress-section { margin-bottom: 1.35rem; }
     .progress-info {
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.5rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
+      margin-bottom: 0.5rem; font-size: 1rem; color: var(--text-muted); font-weight: 500; /* WCAG size */
     }
     .progress-bar {
       width: 100%; height: 6px; background: var(--bg-tertiary);
@@ -380,16 +395,23 @@
       border: 1px solid var(--border);
     }
     .question-number {
-      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      font-size: 1rem; font-weight: 600; text-transform: uppercase; /* WCAG size */
       letter-spacing: 0.12em; margin-bottom: 0.75rem;
       color: var(--accent-warm);
     }
     .question-title {
-      font-family: var(--font-display); font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      font-family: var(--font-display); font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       font-weight: 400;
       margin-bottom: 1.5rem; color: var(--text-primary); line-height: 1.4;
       letter-spacing: -0.01em;
     }
+
+    /* ─── Options Animation ─── */
+    @keyframes optionFadeIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
     .options { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
     .option { position: relative; }
     .option input { position: absolute; opacity: 0; pointer-events: none; }
@@ -398,7 +420,7 @@
       min-height: 54px;
       padding: 0.95rem 1.15rem; border: 2px solid var(--border);
       border-radius: var(--radius-sm); cursor: pointer;
-      transition: all 0.25s var(--ease-premium); font-size: 0.92rem;
+      transition: all 0.25s var(--ease-premium); font-size: 1rem; /* WCAG size */
       line-height: 1.5; color: var(--text-secondary);
       background: var(--bg-primary);
     }
@@ -458,7 +480,7 @@
       line-height: 1; font-weight: 400;
     }
     .score-label {
-      font-size: 0.68rem; color: rgba(255,255,255,0.85);
+      font-size: 0.875rem; color: rgba(255,255,255,0.85); /* WCAG size */
       font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
     }
     .score-category {
@@ -466,7 +488,7 @@
       font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em;
     }
     .score-description {
-      color: var(--text-secondary); font-size: 0.9rem;
+      color: var(--text-secondary); font-size: 1rem; /* WCAG size */
       max-width: 480px; margin: 0 auto 1.75rem; line-height: 1.7;
     }
     .breakdown {
@@ -474,18 +496,18 @@
       padding-top: 1.5rem; margin-top: 1rem;
     }
     .breakdown h3 {
-      font-family: var(--font-display); font-size: 1.05rem;
+      font-family: var(--font-display); font-size: 1.125rem; /* WCAG size */
       font-weight: 400; margin-bottom: 0.85rem;
     }
     .breakdown-item {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0.6rem 0; font-size: 0.82rem; border-bottom: 1px solid var(--border);
+      padding: 0.6rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); /* WCAG size */
     }
     .breakdown-item:last-child { border-bottom: none; }
-    .breakdown-name { color: var(--text-secondary); flex: 1; }
+    .breakdown-name { color: var(--text-secondary); flex: 1; font-size: 1rem; }
     .breakdown-value {
       font-weight: 600; padding: 0.2rem 0.6rem;
-      border-radius: 100px; font-size: 0.75rem;
+      border-radius: 100px; font-size: 0.875rem; /* WCAG size */
     }
     .results-actions {
       display: flex; gap: 0.85rem; justify-content: center;
@@ -496,9 +518,9 @@
       padding: 1.15rem 1.25rem; margin-top: 1.5rem; text-align: left;
     }
     .resources-box h4 {
-      font-size: 0.82rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.4rem;
+      font-size: 1.125rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.4rem; /* WCAG size */
     }
-    .resources-box p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.65; }
+    .resources-box p { font-size: 1rem; color: var(--text-secondary); line-height: 1.65; } /* WCAG size */
 
     /* ─── History ─── */
     .history-empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
@@ -506,10 +528,10 @@
       display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.15rem;
     }
     .filter-btn {
-      min-height: 38px;
-      padding: 0.45rem 0.9rem; border: 1.5px solid var(--border);
+      min-height: 48px;
+      padding: 0.45rem 1.1rem; border: 1.5px solid var(--border);
       border-radius: 100px; background: transparent; font-family: var(--font-body);
-      font-size: 0.75rem; font-weight: 500; color: var(--text-muted);
+      font-size: 0.875rem; font-weight: 500; color: var(--text-muted); /* WCAG size */
       cursor: pointer; transition: all 0.3s var(--ease-premium);
     }
     .filter-btn:hover { border-color: var(--accent-light); color: var(--accent); }
@@ -523,7 +545,7 @@
       border: 1px solid var(--border);
     }
     .chart-container h3 {
-      font-family: var(--font-display); font-size: 1.05rem;
+      font-family: var(--font-display); font-size: 1.125rem; /* WCAG size */
       font-weight: 400; margin-bottom: 0.85rem;
     }
     .chart-wrapper { position: relative; height: 200px; }
@@ -538,51 +560,20 @@
     .history-entry:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .history-dot { width: 10px; height: 10px; border-radius: 50%; min-width: 10px; }
     .history-info { flex: 1; }
-    .history-date { font-size: 0.75rem; color: var(--text-muted); }
-    .history-score-text { font-weight: 600; font-size: 0.85rem; }
-    .history-test-name { font-size: 0.72rem; color: var(--text-muted); }
+    .history-date { font-size: 0.875rem; color: var(--text-muted); } /* WCAG size */
+    .history-score-text { font-weight: 600; font-size: 1rem; } /* WCAG size */
+    .history-test-name { font-size: 0.875rem; color: var(--text-muted); } /* WCAG size */
     .history-badge {
-      font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem;
-      border-radius: 100px; color: white; white-space: nowrap;
+      font-size: 0.875rem; font-weight: 600; padding: 0.2rem 0.55rem;
+      border-radius: 100px; color: white; white-space: nowrap; /* WCAG size */
     }
     .history-trend { font-size: 1rem; min-width: 24px; text-align: center; }
     .clear-history { text-align: center; margin-top: 1.5rem; }
 
-    /* ─── Responsive ─── */
-    @media (max-width: 480px) {
-      .test-card h3 { font-size: 1.05rem; line-height: 1.3; }
-      .test-card p { font-size: 0.82rem; }
-      .test-card .card-meta { font-size: 0.72rem; }
-      .results-actions { flex-direction: column; }
-      .results-actions .btn { width: 100%; }
-      .dichotomy-label, .dichotomy-label-right { width: 50px; font-size: 0.62rem; }
-      .breakdown-name { font-size: 0.82rem; line-height: 1.4; }
-      .history-entry { padding: 0.9rem; gap: 0.65rem; }
-      .option label { min-height: 52px; }
-    }
-    @media (max-width: 340px) {
-      .lang-btn { min-width: 34px; min-height: 34px; font-size: 0.62rem; }
-      .test-card-icon { width: 38px; height: 38px; font-size: 1.1rem; }
-    }
-
-    /* ─── Touch feedback ─── */
-    @media (hover: none) {
-      .btn:active, .tab:active, .lang-btn:active, .option label:active {
-        transform: scale(0.97);
-        transition: transform 0.1s;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.15s !important;
-      }
-    }
-
     /* ─── Breadcrumb ─── */
     .breadcrumb {
       display: flex; align-items: center; gap: 0.45rem;
-      font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.15rem;
+      font-size: 1rem; color: var(--text-muted); margin-bottom: 1.15rem; /* WCAG size */
     }
     .breadcrumb a {
       color: var(--text-muted); text-decoration: none; cursor: pointer;
@@ -617,7 +608,7 @@
       font-weight: 400; color: var(--text-primary); line-height: 1;
     }
     .score-ring-label {
-      font-size: 0.68rem; color: var(--text-muted);
+      font-size: 0.875rem; color: var(--text-muted); /* WCAG size */
       font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
     }
 
@@ -630,8 +621,8 @@
       animation: fadeUp 0.4s var(--ease-premium);
       border: 1px solid var(--border); border-left: 3px solid var(--accent);
     }
-    .resume-banner p { flex: 1; font-size: 0.82rem; color: var(--text-secondary); }
-    .resume-banner .btn { padding: 0.45rem 0.95rem; font-size: 0.78rem; min-height: 36px; }
+    .resume-banner p { flex: 1; font-size: 1rem; color: var(--text-secondary); } /* WCAG size */
+    .resume-banner .btn { padding: 0.45rem 0.95rem; font-size: 1rem; min-height: 48px; }
 
     /* ─── Breakdown bars ─── */
     .breakdown-bar-bg {
@@ -652,8 +643,8 @@
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 0.4rem;
     }
-    .dimension-name { font-weight: 600; font-size: 0.88rem; }
-    .dimension-score { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; }
+    .dimension-name { font-weight: 600; font-size: 1rem; } /* WCAG size */
+    .dimension-score { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; }
     .dimension-bar {
       height: 8px; background: var(--bg-tertiary); border-radius: 100px;
       overflow: hidden; margin-bottom: 0.3rem;
@@ -663,7 +654,7 @@
       transition: width 0.8s var(--ease-premium);
     }
     .dimension-desc {
-      font-size: 0.78rem; color: var(--text-muted); line-height: 1.55;
+      font-size: 1rem; color: var(--text-muted); line-height: 1.55; /* WCAG size */
     }
 
     /* ─── MBTI Type Display ─── */
@@ -677,9 +668,16 @@
     }
     .dichotomy-row {
       display: flex; align-items: center; gap: 0.55rem;
-      margin-bottom: 0.85rem; font-size: 0.82rem;
+      margin-bottom: 0.85rem; font-size: 1rem; /* WCAG size */
     }
-    .dichotomy-label { width: 85px; text-align: right; font-size: 0.75rem; color: var(--text-muted); }
+    /* MBTI Labels unification */
+    .dichotomy-label, .dichotomy-label-right {
+        flex: 0 0 70px;
+        font-size: 0.875rem; /* WCAG size */
+        color: var(--text-muted);
+    }
+    .dichotomy-label { text-align: right; }
+    .dichotomy-label-right { text-align: left; }
     .dichotomy-bar {
       flex: 1; height: 8px; background: var(--bg-tertiary); border-radius: 100px;
       position: relative; overflow: hidden;
@@ -688,7 +686,43 @@
       position: absolute; top: 0; height: 100%; border-radius: 100px;
       transition: width 0.8s var(--ease-premium);
     }
-    .dichotomy-label-right { width: 85px; font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 480px) {
+      .test-card h3 { font-size: 1.125rem; line-height: 1.3; }
+      .test-card p { font-size: 1rem; }
+      .test-card .card-meta { font-size: 0.875rem; }
+      .results-actions { flex-direction: column; }
+      .results-actions .btn { width: 100%; }
+      .dichotomy-label, .dichotomy-label-right { flex: 0 0 50px; font-size: 0.75rem; } /* Layout critical adjust */
+      .breakdown-name { font-size: 1rem; line-height: 1.4; }
+      .history-entry { padding: 0.9rem; gap: 0.65rem; }
+      .option label { min-height: 52px; }
+    }
+    @media (max-width: 420px) {
+      .header-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+    @media (max-width: 340px) {
+      .lang-btn { min-width: 38px; min-height: 38px; font-size: 0.75rem; }
+      .test-card-icon { width: 42px; height: 42px; font-size: 1.2rem; }
+    }
+
+    /* ─── Touch feedback ─── */
+    @media (hover: none) {
+      .btn:active, .tab:active, .lang-btn:active, .option label:active {
+        transform: scale(0.97);
+        transition: transform 0.1s;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.15s !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -714,7 +748,7 @@
         <button class="lang-btn" onclick="setLang('ko')" data-lang="ko" aria-label="한국어">한</button>
         <button class="lang-btn" onclick="setLang('hi')" data-lang="hi" aria-label="हिन्दी">हि</button>
       </div>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
   </header>
 
@@ -836,7 +870,11 @@ function getPreferredTheme() {
 }
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('theme-toggle').textContent = theme === 'dark' ? '🌙' : '☀️';
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+  }
 }
 function toggleTheme() {
   const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -844,6 +882,25 @@ function toggleTheme() {
   applyTheme(next);
 }
 applyTheme(getPreferredTheme());
+
+// ═══════════════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════════════
+function animateCounter(el, target, duration) {
+  if (!el) return;
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    el.innerText = Math.floor(progress * target);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.innerText = target;
+    }
+  };
+  window.requestAnimationFrame(step);
+}
 
 // ═══════════════════════════════════════════════════════════════
 // TEST REGISTRY
@@ -1166,7 +1223,6 @@ const TEST_CATEGORIES = [
   { key: 'advanced', label: 'Evaluación Avanzada', ids: ['pid5','ipip_mmpi'] },
 ];
 
-// Translate test metadata: prefer i18n, fallback to hardcoded
 function tt(testId, field) {
   const val = t(`tests.${testId}.${field}`);
   return val !== `tests.${testId}.${field}` ? val : TESTS[testId]?.[field] || '';
@@ -1180,7 +1236,7 @@ function renderHome() {
     const catLabel = t(`ui.cat_${cat.key}`) !== `ui.cat_${cat.key}` ? t(`ui.cat_${cat.key}`) : cat.label;
     return `
       <div class="category-header" style="grid-column:1/-1;margin-top:0.75rem">
-        <h2 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary);margin-bottom:0.25rem">${catLabel}</h2>
+        <h2 style="font-family:var(--font-display);font-size:clamp(1.125rem, 2.5vw, 1.25rem);color:var(--text-secondary);margin-bottom:0.25rem">${catLabel}</h2>
       </div>
       ${tests.map(te => {
         const name = tt(te.id, 'fullName') || te.name;
@@ -1200,7 +1256,6 @@ function renderHome() {
       }).join('')}
     `;
   }).join('');
-  // Stagger animations
   grid.querySelectorAll('.test-card, .category-header').forEach((el, i) => {
     el.style.animationDelay = `${i * 0.04}s`;
   });
@@ -1239,8 +1294,24 @@ function startTest() {
   document.getElementById('progress-fill').style.background =
     `linear-gradient(90deg, ${activeTest.color}BB, ${activeTest.color})`;
   updateBreadcrumb();
-  renderQuestion();
-  saveProgress();
+  
+  const area = document.getElementById('question-area');
+  // Mostrar Skeleton Loading brevemente
+  area.innerHTML = `
+    <div class="skeleton skeleton-line-sm"></div>
+    <div class="skeleton skeleton-line-lg"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+  `;
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('btn-prev').disabled = true;
+
+  setTimeout(() => {
+    renderQuestion();
+    saveProgress();
+  }, 300);
 }
 
 function updateBreadcrumb() {
@@ -1294,7 +1365,23 @@ function resumeTest() {
   document.getElementById('progress-fill').style.background =
     `linear-gradient(90deg, ${activeTest.color}BB, ${activeTest.color})`;
   updateBreadcrumb();
-  renderQuestion();
+  
+  const area = document.getElementById('question-area');
+  area.innerHTML = `
+    <div class="skeleton skeleton-line-sm"></div>
+    <div class="skeleton skeleton-line-lg"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+    <div class="skeleton skeleton-option"></div>
+  `;
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('btn-prev').disabled = true;
+
+  setTimeout(() => {
+    renderQuestion();
+  }, 300);
+
   const banner = document.getElementById('resume-banner');
   if (banner) banner.remove();
 }
@@ -1324,7 +1411,6 @@ function renderQuestion() {
   const total = test.questions.length;
   const pct = Math.round((currentQ / total) * 100);
 
-  // Get translated content or fall back to hardcoded
   const tq = getTranslatedQuestion(test.id, currentQ);
   const title = tq?.title || q.title;
   const opts = getTranslatedOptions(test.id, currentQ) || test.sharedOptions || q.options;
@@ -1334,21 +1420,24 @@ function renderQuestion() {
   document.getElementById('progress-fill').style.width = `${pct}%`;
 
   const area = document.getElementById('question-area');
+  
+  const optionsHtml = opts.map((opt, i) => `
+    <div class="option" style="animation: optionFadeIn 0.3s ease forwards; animation-delay: ${50 + i * 50}ms; opacity: 0;">
+      <input type="radio" name="q${currentQ}" id="q${currentQ}_${i}" value="${i}"
+        ${answers[currentQ] === i ? 'checked' : ''}
+        onchange="selectAnswer(${i})">
+      <label for="q${currentQ}_${i}">
+        <span class="option-radio"></span>
+        <span>${typeof opt === 'string' ? opt : opt.text || opt}</span>
+      </label>
+    </div>
+  `).join('');
+
   area.innerHTML = `
     <div class="question-number" style="color:${test.color}">${t('ui.question')} ${currentQ + 1} · ${title || tt(test.id, 'abbr') || test.abbr}</div>
     <div class="question-title">${title}</div>
     <div class="options" role="radiogroup" aria-label="${title}">
-      ${opts.map((opt, i) => `
-        <div class="option">
-          <input type="radio" name="q${currentQ}" id="q${currentQ}_${i}" value="${i}"
-            ${answers[currentQ] === i ? 'checked' : ''}
-            onchange="selectAnswer(${i})">
-          <label for="q${currentQ}_${i}">
-            <span class="option-radio"></span>
-            <span>${typeof opt === 'string' ? opt : opt.text || opt}</span>
-          </label>
-        </div>
-      `).join('')}
+      ${optionsHtml}
     </div>
   `;
   area.style.animation = 'none'; area.offsetHeight; area.style.animation = '';
@@ -1363,6 +1452,14 @@ function selectAnswer(val) {
   answers[currentQ] = val;
   document.getElementById('btn-next').disabled = false;
   saveProgress();
+  
+  if (currentQ < activeTest.questions.length - 1) {
+    setTimeout(() => {
+      if (answers[currentQ] !== null && activeTest && document.getElementById('screen-test').classList.contains('active')) {
+        nextQuestion();
+      }
+    }, 250);
+  }
 }
 
 function nextQuestion() {
@@ -1405,7 +1502,6 @@ function showResults() {
   const needsAnswers = ['type','dimensions','domains','scales','triage'].includes(test.maxScore);
   const result = needsAnswers ? test.getResult(score, answers) : test.getResult(score);
 
-  // Overlay i18n translations on result
   if (result.key) {
     const tr = t(`tests.${test.id}.results.${result.key}`);
     if (tr && typeof tr === 'object') {
@@ -1414,7 +1510,6 @@ function showResults() {
     }
   }
 
-  // Save to localStorage — wrapped in try/catch to ensure it always attempts
   try {
     const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
     const histEntry = {
@@ -1489,7 +1584,7 @@ function showResults() {
             facetsHTML = '<div style="margin:0.5rem 0 0.75rem 0.5rem">' + d.facets.map(f => {
               const fp = Math.round((f.score / 5) * 100);
               return `<div style="margin-bottom:0.4rem">
-                <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-bottom:0.15rem">
+                <div style="display:flex;justify-content:space-between;font-size:0.875rem;color:var(--text-muted);margin-bottom:0.15rem">
                   <span>${f.name}</span><span>${f.score.toFixed(1)}</span>
                 </div>
                 <div class="dimension-bar" style="height:5px">
@@ -1539,7 +1634,7 @@ function showResults() {
               stroke="${result.color}" id="score-ring-anim"/>
           </svg>
           <div class="score-ring-text">
-            <span class="score-ring-number" style="font-size:1.5rem">${elevated}/5</span>
+            <span class="score-ring-number" style="font-size:1.5rem"><span id="anim-score-pid5">0</span>/5</span>
             <span class="score-ring-label">${t('ui.elevated') || 'elevated'}</span>
           </div>
         </div>
@@ -1555,7 +1650,7 @@ function showResults() {
             const fp = Math.round((f.score / 3) * 100);
             const fc = f.elevated ? '#A65D57' : 'var(--text-muted)';
             return `<div style="margin-bottom:0.35rem">
-              <div style="display:flex;justify-content:space-between;font-size:0.68rem;margin-bottom:0.1rem">
+              <div style="display:flex;justify-content:space-between;font-size:0.875rem;margin-bottom:0.1rem">
                 <span style="color:${fc};${f.elevated?'font-weight:600':''}">${f.name}${f.elevated?' ⚠':''}️</span>
                 <span style="color:${fc}">${f.score.toFixed(1)}/3</span>
               </div>
@@ -1595,6 +1690,7 @@ function showResults() {
       const ring = document.getElementById('score-ring-anim');
       if (ring) ring.style.strokeDashoffset = off;
     });
+    animateCounter(document.getElementById('anim-score-pid5'), elevated, 1200);
     setTimeout(() => {
       document.querySelectorAll('.dimension-bar-fill').forEach((bar, i) => {
         setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 30 + i * 40);
@@ -1702,10 +1798,10 @@ function showResults() {
             <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
               <span style="font-size:1.2rem">${rt.icon}</span>
               <strong>${tt(rt.id, 'abbr') || rt.abbr}</strong>
-              <span style="font-size:0.7rem;padding:2px 6px;border-radius:4px;background:${rec.priority==='high'?'#A65D5720':rec.priority==='medium'?'#C9A22720':'#6B8F7120'};color:${rec.priority==='high'?'#A65D57':rec.priority==='medium'?'#C9A227':'#6B8F71'}">${priorityLabels[rec.priority]}</span>
+              <span style="font-size:0.875rem;padding:2px 6px;border-radius:4px;background:${rec.priority==='high'?'#A65D5720':rec.priority==='medium'?'#C9A22720':'#6B8F7120'};color:${rec.priority==='high'?'#A65D57':rec.priority==='medium'?'#C9A227':'#6B8F71'}">${priorityLabels[rec.priority]}</span>
             </div>
-            <div style="font-size:0.8rem;color:var(--text-secondary)">${tt(rt.id, 'name') || rt.name}</div>
-            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem">${(() => { const dk = rec.domainKey, rk = rec.reasonKey; if (dk) { const v = t(`tests.triage.domainReasons.${dk}`); if (v !== `tests.triage.domainReasons.${dk}`) return v; } if (rk) { const v = t(`tests.triage.results.${rk}`); if (v !== `tests.triage.results.${rk}`) return v; } return rec.reason; })()}</div>
+            <div style="font-size:1rem;color:var(--text-secondary)">${tt(rt.id, 'name') || rt.name}</div>
+            <div style="font-size:0.875rem;color:var(--text-muted);margin-top:0.15rem">${(() => { const dk = rec.domainKey, rk = rec.reasonKey; if (dk) { const v = t(`tests.triage.domainReasons.${dk}`); if (v !== `tests.triage.domainReasons.${dk}`) return v; } if (rk) { const v = t(`tests.triage.results.${rk}`); if (v !== `tests.triage.results.${rk}`) return v; } return rec.reason; })()}</div>
           </div>`;
         }).join('')}
       </div>
@@ -1737,7 +1833,7 @@ function showResults() {
             stroke="${result.color}" id="score-ring-anim"/>
         </svg>
         <div class="score-ring-text">
-          <span class="score-ring-number">${score}</span>
+          <span class="score-ring-number" id="anim-score-main">0</span>
           <span class="score-ring-label">${t('ui.outOf')} ${test.maxScore}</span>
         </div>
       </div>
@@ -1777,13 +1873,14 @@ function showResults() {
   `;
   showScreen('screen-results');
 
-  // Animate SVG ring
+  // Animated Components
+  animateCounter(document.getElementById('anim-score-main'), score, 1200);
+
   requestAnimationFrame(() => {
     const ring = document.getElementById('score-ring-anim');
     if (ring) ring.style.strokeDashoffset = offset;
   });
 
-  // Animate breakdown bars (stagger)
   document.querySelectorAll('.breakdown-bar-fill').forEach((bar, i) => {
     bar.style.width = '0%';
     setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 100 + i * 40);
@@ -1801,22 +1898,18 @@ function renderHistory() {
     container.innerHTML = `
       <div class="history-empty">
         <div style="font-size:2rem;opacity:0.4;margin-bottom:0.75rem">📊</div>
-        <p>${t('ui.noRecords')}</p>
-        <p style="font-size:0.78rem;margin-top:0.25rem;color:var(--text-muted)">${t('ui.completeFirst')}</p>
+        <p style="font-size:1rem">${t('ui.noRecords')}</p>
+        <p style="font-size:1rem;margin-top:0.25rem;color:var(--text-muted)">${t('ui.completeFirst')}</p>
         <button class="btn btn-primary" style="margin-top:1rem" onclick="switchTab('tests')">${t('ui.goToTests')}</button>
       </div>
     `;
     return;
   }
 
-  // Get unique test types in history
   const testTypes = [...new Set(history.map(h => h.testId))];
-
-  // Filter
   const filtered = historyFilter === 'all' ? history : history.filter(h => h.testId === historyFilter);
   const sorted = [...filtered].reverse();
 
-  // Chart
   let chartHTML = '';
   if (filtered.length >= 2) {
     chartHTML = `
@@ -1884,7 +1977,6 @@ function renderChart(data) {
     return d.toLocaleDateString(currentLang, { day:'numeric', month:'short' });
   });
 
-  // Group by test type
   const byTest = {};
   data.forEach(e => {
     if (!byTest[e.testId]) byTest[e.testId] = [];
@@ -1933,7 +2025,7 @@ function renderChart(data) {
       plugins: {
         legend: {
           display: datasets.length > 1,
-          labels: { font: { family:"'DM Sans',sans-serif", size:11 }, usePointStyle: true, pointStyle:'circle' }
+          labels: { font: { family:"'DM Sans',sans-serif", size:12 }, usePointStyle: true, pointStyle:'circle' }
         },
         tooltip: {
           backgroundColor: '#2D2A26',
