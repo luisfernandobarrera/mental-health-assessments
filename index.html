@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mental health self-assessment platform with 22 validated screening tests in 12 languages">
-  <meta name="theme-color" content="#F7F4F0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#F0E9DF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
   <title>Mental Health — Self-Assessment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,26 +19,26 @@
 
     /* ─── Design Tokens ─── */
     :root {
-      --bg-primary: #FDFCFA;
-      --bg-secondary: #FFFFFF;
-      --bg-tertiary: #F5F1EC;
-      --text-primary: #2D2A26;
-      --text-secondary: #5D5852;
-      --text-muted: #7A746D; /* Mejorado para contraste WCAG AA */
-      --accent: #4A6741;
-      --accent-light: #8BAF91;
-      --accent-dark: #3A5234;
-      --accent-warm: #BC846C;
+      --bg-primary: #F0E9DF;
+      --bg-secondary: #F8F4EC;
+      --bg-tertiary: #E5DCCF;
+      --text-primary: #2B2825;
+      --text-secondary: #524E48;
+      --text-muted: #68635C; /* WCAG AA 4.9:1 */
+      --accent: #45613D;
+      --accent-light: #85A88B;
+      --accent-dark: #364C30;
+      --accent-warm: #A87058;
       --accent-glow: rgba(74, 103, 65, 0.10);
       --border: rgba(45, 42, 38, 0.08);
       --shadow-sm: 0 1px 3px rgba(45, 42, 38, 0.04), 0 1px 2px rgba(45, 42, 38, 0.02);
       --shadow-md: 0 8px 24px -4px rgba(45, 42, 38, 0.08), 0 2px 8px -2px rgba(45, 42, 38, 0.04);
       --shadow-lg: 0 20px 48px -8px rgba(74, 103, 65, 0.12), 0 8px 16px -4px rgba(45, 42, 38, 0.06);
-      --disclaimer-bg: #FDF8F0;
+      --disclaimer-bg: #EAE0CE;
       --disclaimer-border: #C9A040;
-      --privacy-bg: #F0F5EE;
+      --privacy-bg: #E2ECDE;
       --privacy-border: #6B8F71;
-      --resources-bg: #F2F7F0;
+      --resources-bg: #E6E9E1;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
@@ -1305,6 +1305,7 @@ function openTest(id) {
 
 function startTest() {
   currentQ = 0;
+  _resultsShown = false;
   answers = new Array(activeTest.questions.length).fill(null);
   enterTestMode();
 }
@@ -1512,7 +1513,10 @@ function calcScore() {
   return score;
 }
 
+let _resultsShown = false;
 function showResults() {
+  if (_resultsShown) return; // Prevent double-fire from keyboard + button
+  _resultsShown = true;
   document.body.classList.remove('immersive-mode');
   const test = activeTest;
   const score = calcScore();
@@ -2110,6 +2114,9 @@ document.addEventListener('keydown', e => {
   // Enter confirms highlighted option OR advances to next question
   if (e.key === 'Enter') {
     e.preventDefault();
+    e.stopImmediatePropagation();
+    // Blur any focused button to prevent double-fire
+    if (document.activeElement?.tagName === 'BUTTON') document.activeElement.blur();
     if (_kbFocusedOption !== null && answers[currentQ] !== _kbFocusedOption) {
       triggerOptionSelect(_kbFocusedOption);
     } else if (answers[currentQ] !== null) {
