@@ -1288,9 +1288,94 @@ function tt(testId, field) {
   return val !== `tests.${testId}.${field}` ? val : TESTS[testId]?.[field] || '';
 }
 
+function getSmartSuggestions() {
+  const history = JSON.parse(localStorage.getItem('mental_health_history') || '[]');
+  if (history.length === 0) return '';
+
+  const suggestions = [];
+  const now = Date.now();
+  const TWO_WEEKS = 14 * 24 * 60 * 60 * 1000;
+
+  // Group by test, get latest result
+  const latestByTest = {};
+  history.forEach(h => {
+    if (!latestByTest[h.testId] || new Date(h.date) > new Date(latestByTest[h.testId].date)) {
+      latestByTest[h.testId] = h;
+    }
+  });
+
+  // Tests with concerning scores that should be retaken
+  const thresholds = {
+    phq9: { max: 27, warnPct: 37 }, bdi: { max: 63, warnPct: 30 },
+    bai: { max: 63, warnPct: 25 }, gad7: { max: 21, warnPct: 33 },
+    pss: { max: 40, warnPct: 37 }, pcl5: { max: 80, warnPct: 41 },
+    isi: { max: 28, warnPct: 50 }, eat26: { max: 78, warnPct: 26 },
+    audit: { max: 40, warnPct: 20 }, ocir: { max: 72, warnPct: 29 },
+    spin: { max: 68, warnPct: 29 }, asrs: { max: 24, warnPct: 58 },
+  };
+
+  for (const [testId, entry] of Object.entries(latestByTest)) {
+    if (typeof entry.maxScore !== 'number') continue;
+    const th = thresholds[testId];
+    if (!th) continue;
+    const pct = (entry.score / entry.maxScore) * 100;
+    const age = now - new Date(entry.date).getTime();
+    const te = TESTS[testId];
+    if (!te) continue;
+
+    if (pct >= th.warnPct && age > TWO_WEEKS) {
+      suggestions.push({
+        testId, test: te, score: entry.score, maxScore: entry.maxScore,
+        resultLabel: entry.resultLabel, resultColor: entry.resultColor,
+        daysAgo: Math.round(age / (24*60*60*1000)), pct
+      });
+    }
+  }
+
+  // Also check if triage was done but recommended tests weren't taken
+  const triageEntry = latestByTest['triage'];
+  if (triageEntry && triageEntry.answers) {
+    const triageTest = TESTS['triage'];
+    if (triageTest) {
+      const triageResult = triageTest.getResult(0, triageEntry.answers);
+      if (triageResult.recommendations) {
+        triageResult.recommendations.forEach(rec => {
+          if (rec.priority === 'high' && !latestByTest[rec.testId]) {
+            const te = TESTS[rec.testId];
+            if (te) suggestions.push({ testId: rec.testId, test: te, fromTriage: true, priority: rec.priority });
+          }
+        });
+      }
+    }
+  }
+
+  if (suggestions.length === 0) return '';
+
+  return `
+    <div class="category-header" style="grid-column:1/-1;margin-top:0.75rem">
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.125rem, 2.5vw, 1.25rem);color:var(--accent-warm);margin-bottom:0.25rem">📌 ${t('ui.suggestedRetake') !== 'ui.suggestedRetake' ? t('ui.suggestedRetake') : 'Sugerido retomar'}</h2>
+    </div>
+    ${suggestions.slice(0, 4).map(s => {
+      const name = tt(s.testId, 'fullName') || s.test.name;
+      const reason = s.fromTriage
+        ? (t('ui.triageRecommended') !== 'ui.triageRecommended' ? t('ui.triageRecommended') : 'Recomendado por tu evaluación inicial')
+        : (t('ui.retakeReason') !== 'ui.retakeReason' ? t('ui.retakeReason') : 'Última vez hace') + ` ${s.daysAgo}d · ${s.resultLabel}`;
+      return `
+        <div class="test-card" onclick="openTest('${s.testId}')" onkeydown="event.key==='Enter'&&openTest('${s.testId}')" tabindex="0" role="button" aria-label="${name}" style="--card-accent:${s.test.color};border-left:3px solid ${s.resultColor || s.test.color}">
+          <div class="card-accent" style="background:${s.test.color}"></div>
+          <div class="test-card-icon" style="background:${s.test.color}18" aria-hidden="true">${s.test.icon}</div>
+          <div class="card-abbr">${tt(s.testId, 'abbr') || s.test.abbr}</div>
+          <h3>${name}</h3>
+          <p style="color:var(--accent-warm);font-size:0.9rem">${reason}</p>
+        </div>`;
+    }).join('')}
+  `;
+}
+
 function renderHome() {
   const grid = document.getElementById('test-grid');
-  grid.innerHTML = TEST_CATEGORIES.map(cat => {
+  const smartSuggestions = getSmartSuggestions();
+  grid.innerHTML = smartSuggestions + TEST_CATEGORIES.map(cat => {
     const tests = cat.ids.filter(id => TESTS[id]).map(id => TESTS[id]);
     if (!tests.length) return '';
     const catLabel = t(`ui.cat_${cat.key}`) !== `ui.cat_${cat.key}` ? t(`ui.cat_${cat.key}`) : cat.label;
@@ -1340,11 +1425,13 @@ function openTest(id) {
     <div class="disclaimer" style="border-left-color:var(--privacy-border);background:var(--privacy-bg)">
       <span aria-hidden="true">🔒</span> <strong>${t('ui.privacyTitle')}</strong> ${t('ui.privacyText')}
     </div>
-    <button class="btn btn-primary" onclick="startTest()">${t('ui.startTest')}</button>
+    <button class="btn btn-primary" id="btn-start-test" onclick="startTest()">${t('ui.startTest')}</button>
     <br><br>
     <button class="btn btn-ghost" onclick="goHome()">← ${t('ui.otherTests')}</button>
   `;
   showScreen('screen-welcome');
+  // Auto-focus the start button so Enter works immediately
+  setTimeout(() => document.getElementById('btn-start-test')?.focus(), 100);
 }
 
 function startTest() {
@@ -1858,7 +1945,7 @@ function showResults() {
         ${sortedRecs.map(rec => {
           const rt = TESTS[rec.testId];
           if (!rt) return '';
-          return `<div class="test-card" onclick="openTest('${rec.testId}')" style="--card-accent:${rt.color};cursor:pointer;margin-bottom:0.5rem">
+          return `<div class="test-card" onclick="openTest('${rec.testId}')" onkeydown="event.key==='Enter'&&openTest('${rec.testId}')" tabindex="0" role="button" style="--card-accent:${rt.color};cursor:pointer;margin-bottom:0.5rem">
             <div class="card-accent" style="background:${rt.color}"></div>
             <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
               <span style="font-size:1.2rem">${rt.icon}</span>
@@ -2251,6 +2338,14 @@ function nativeShare() {
 // ═══════════════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
   if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+  // Global: Escape closes modals
+  if (e.key === 'Escape') {
+    const modal = document.querySelector('.modal-overlay');
+    if (modal) { modal.remove(); return; }
+  }
+
+  // Test keyboard nav only in immersive mode
   if (!document.body.classList.contains('immersive-mode') || !activeTest) return;
   if (!document.getElementById('screen-test').classList.contains('active')) return;
 
