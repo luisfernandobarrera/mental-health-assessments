@@ -508,9 +508,16 @@
       50% { transform: scale(0.97); box-shadow: 0 0 0 12px transparent; }
       100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
     }
-    .option.pressed label { 
-      animation: pulsePress 0.3s var(--ease-spring); 
-      border-color: var(--accent); background: var(--accent-glow); 
+    .option.pressed label {
+      animation: pulsePress 0.3s var(--ease-spring);
+      border-color: var(--accent); background: var(--accent-glow);
+    }
+    @keyframes pulseHint {
+      0%, 100% { transform: scale(1); box-shadow: var(--shadow-sm); }
+      50% { transform: scale(1.03); box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md); }
+    }
+    .btn.pulse-hint {
+      animation: pulseHint 1.2s ease-in-out 2;
     }
 
     kbd {
@@ -1432,7 +1439,7 @@ function renderQuestion() {
       ${optionsHtml}
     </div>
     <div class="keyboard-hint" aria-hidden="true">
-      <kbd>1</kbd>-<kbd>${opts.length}</kbd> ${t('ui.kbAnswer') !== 'ui.kbAnswer' ? t('ui.kbAnswer') : 'para responder'} · <kbd>←</kbd><kbd>→</kbd> ${t('ui.kbNavigate') !== 'ui.kbNavigate' ? t('ui.kbNavigate') : 'para navegar'}
+      <kbd>1</kbd>-<kbd>${opts.length}</kbd> ${t('ui.kbAnswer') !== 'ui.kbAnswer' ? t('ui.kbAnswer') : 'para responder'} · <kbd>←</kbd><kbd>→</kbd> ${t('ui.kbNavigate') !== 'ui.kbNavigate' ? t('ui.kbNavigate') : 'para navegar'}${currentQ === total - 1 ? ' · <kbd>Enter</kbd> ver resultados' : ''}
     </div>
   `;
   area.style.animation = 'none'; area.offsetHeight; area.style.animation = '';
@@ -1454,6 +1461,11 @@ function selectAnswer(val) {
         nextQuestion();
       }
     }, 250);
+  } else {
+    // Last question: highlight the results button
+    const btnNext = document.getElementById('btn-next');
+    btnNext.classList.add('pulse-hint');
+    btnNext.focus();
   }
 }
 
