@@ -63,6 +63,8 @@
   <link rel="alternate" hreflang="el" href="https://mentalhealth.powali.com/?lang=el">
   <link rel="alternate" hreflang="pa" href="https://mentalhealth.powali.com/?lang=pa">
   <link rel="alternate" hreflang="pa" href="https://mentalhealth.powali.com/?lang=pa">
+  <link rel="alternate" hreflang="vi" href="https://mentalhealth.powali.com/?lang=vi">
+  <link rel="alternate" hreflang="fa" href="https://mentalhealth.powali.com/?lang=fa">
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -900,6 +902,8 @@
         <option value="el">🇬🇷 Ελληνικά</option>
         <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
         <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
+        <option value="vi">🇻🇳 Tiếng Việt</option>
+        <option value="fa">🇮🇷 فارسی</option>
       </select>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar a modo oscuro">☀️</button>
     </div>
@@ -992,6 +996,8 @@
 <script src="i18n/el.js"></script>
 <script src="i18n/pa.js"></script>
 <script src="i18n/pa.js"></script>
+<script src="i18n/vi.js"></script>
+<script src="i18n/fa.js"></script>
 <script src="tests/bfi44.js"></script>
 <script src="tests/mbti.js"></script>
 <script src="tests/ipip300.js"></script>
@@ -1038,6 +1044,8 @@ if (typeof LANG_HU !== 'undefined') LANGS['hu'] = LANG_HU;
 if (typeof LANG_EL !== 'undefined') LANGS['el'] = LANG_EL;
 if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
 if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
+if (typeof LANG_VI !== 'undefined') LANGS['vi'] = LANG_VI;
+if (typeof LANG_FA !== 'undefined') LANGS['fa'] = LANG_FA;
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
 function t(key) {
   const keys = key.split('.');
@@ -1050,7 +1058,7 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('mental_health_lang', lang);
   document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.dir = ['ar','fa'].includes(lang) ? 'rtl' : 'ltr';
   const langSelect = document.getElementById('lang-select');
   if (langSelect) langSelect.value = lang;
   document.title = t('ui.appTitle') + ' — ' + t('ui.appSubtitle');
