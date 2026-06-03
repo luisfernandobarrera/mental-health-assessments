@@ -1741,7 +1741,11 @@ function getTranslatedOptions(testId, idx) {
   return null;
 }
 
+// ─── Auto-advance timeout guard ───
+let _autoAdvanceTimer = null;
+
 function renderQuestion() {
+  if (_autoAdvanceTimer) { clearTimeout(_autoAdvanceTimer); _autoAdvanceTimer = null; }
   _kbFocusedOption = null;
   const test = activeTest;
   const q = test.questions[currentQ];
@@ -1797,7 +1801,9 @@ function selectAnswer(val) {
   saveProgress();
   
   if (currentQ < activeTest.questions.length - 1) {
-    setTimeout(() => {
+    if (_autoAdvanceTimer) clearTimeout(_autoAdvanceTimer);
+    _autoAdvanceTimer = setTimeout(() => {
+      _autoAdvanceTimer = null;
       if (answers[currentQ] !== null && activeTest && document.getElementById('screen-test').classList.contains('active')) {
         nextQuestion();
       }
@@ -1811,6 +1817,7 @@ function selectAnswer(val) {
 }
 
 function nextQuestion() {
+  if (_autoAdvanceTimer) { clearTimeout(_autoAdvanceTimer); _autoAdvanceTimer = null; }
   if (answers[currentQ] === null) return;
   if (currentQ < activeTest.questions.length - 1) {
     currentQ++;
