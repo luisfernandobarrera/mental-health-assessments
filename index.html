@@ -2410,22 +2410,6 @@ function clearHistory() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// KEYBOARD NAV
-// ═══════════════════════════════════════════════════════════════
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('screen-test').classList.contains('active')) return;
-  const opts = activeTest.sharedOptions || activeTest.questions[currentQ].options;
-  if (e.key >= '1' && e.key <= String(opts.length)) {
-    const idx = parseInt(e.key) - 1;
-    const r = document.getElementById(`q${currentQ}_${idx}`);
-    if (r) { r.checked = true; selectAnswer(idx); }
-  }
-  if (e.key === 'ArrowRight' || e.key === 'Enter') { if (answers[currentQ] !== null) nextQuestion(); }
-  if (e.key === 'ArrowLeft') prevQuestion();
-  if (e.key === 'Escape') goHome();
-});
-
-// ═══════════════════════════════════════════════════════════════
 // ANSWER DETAIL & SHARE
 // ═══════════════════════════════════════════════════════════════
 function getEntryQuestions(entry) {
