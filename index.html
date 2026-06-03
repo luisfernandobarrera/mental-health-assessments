@@ -1047,6 +1047,39 @@ if (typeof LANG_PA !== 'undefined') LANGS['pa'] = LANG_PA;
 if (typeof LANG_VI !== 'undefined') LANGS['vi'] = LANG_VI;
 if (typeof LANG_FA !== 'undefined') LANGS['fa'] = LANG_FA;
 let currentLang = localStorage.getItem('mental_health_lang') || detectLang();
+
+// ─── Country detection for crisis lines ───
+let userCountry = null;
+async function detectCountry() {
+  try {
+    const resp = await fetch('https://get.geojs.io/v1/ip/country.json');
+    const data = await resp.json();
+    userCountry = data.country || null;
+  } catch (e) {
+    userCountry = null;
+  }
+  // Update all visible crisis line elements
+  if (userCountry) {
+    document.querySelectorAll('.crisis-line').forEach(el => {
+      const lines = LANGS[currentLang]?.ui?.helpLines;
+      if (lines) {
+        const line = lines[userCountry] || lines['default'];
+        if (line) el.textContent = '🆘 ' + line;
+      }
+    });
+  }
+}
+detectCountry();
+
+function getCrisisText() {
+  const lines = LANGS[currentLang]?.ui?.helpLines;
+  if (!lines) return t('ui.helpText');
+  const line = userCountry && lines[userCountry] ? lines[userCountry] : lines['default'];
+  if (!line) return t('ui.helpText');
+  const header = t('ui.helpResources') + ' — ';
+  return header + '🆘 ' + line;
+}
+
 function t(key) {
   const keys = key.split('.');
   let val = LANGS[currentLang];
@@ -1993,7 +2026,7 @@ function showResults() {
 
       <div class="resources-box">
         <h4>${t('ui.helpResources')}</h4>
-        <p>${t('ui.helpText')}</p>
+        <p class="crisis-line">${t('ui.helpText')}</p>
       </div>
 
       <div class="results-actions">
@@ -2060,7 +2093,7 @@ function showResults() {
 
       <div class="resources-box">
         <h4>${t('ui.helpResources')}</h4>
-        <p>${t('ui.helpText')}</p>
+        <p class="crisis-line">${t('ui.helpText')}</p>
       </div>
 
       <div class="results-actions">
@@ -2181,7 +2214,7 @@ function showResults() {
 
     <div class="resources-box">
       <h4>${t('ui.helpResources')}</h4>
-      <p>${t('ui.helpText')}</p>
+      <p class="crisis-line">${t('ui.helpText')}</p>
     </div>
 
     <div class="results-actions">

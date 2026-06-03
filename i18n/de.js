@@ -19,6 +19,14 @@ const LANG_DE = {
     "detailByItem": "Detail pro Item",
     "helpResources": "Hilfsangebote",
     "helpText": "Wenn Sie sich in einer emotionalen Krise befinden, suchen Sie professionelle Hilfe. Krisentelefon: 0800 111 0 111 (Deutschland) oder kontaktieren Sie einen Fachmann für psychische Gesundheit.",
+    "helpLines": {
+      "DE": "0800 111 0 111 oder 0800 111 0 222",
+      "AT": "142 (Telefonseelsorge)",
+      "CH": "143 (Dargebotene Hand)",
+      "LU": "45 45 45",
+      "LI": "143",
+      "default": "kontaktieren Sie einen Fachmann für psychische Gesundheit"
+    },
     "disclaimerTitle": "Wichtiger Hinweis:",
     "disclaimerText": "Dieser Test ist ein Selbstbewertungsinstrument und ersetzt nicht die Diagnose eines Fachmanns für psychische Gesundheit. Wenn Sie das Gefühl haben, Hilfe zu benötigen, wenden Sie sich bitte an einen Spezialisten.",
     "privacyTitle": "Ihre Privatsphäre:",

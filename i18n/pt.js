@@ -19,6 +19,13 @@ const LANG_PT = {
     "detailByItem": "Detalhe por item",
     "helpResources": "Recursos de ajuda",
     "helpText": "Se você está passando por uma crise emocional, procure ajuda profissional. CVV (Centro de Valorização da Vida): ligue 188 ou acesse cvv.org.br.",
+    "helpLines": {
+      "BR": "188 (CVV)",
+      "PT": "800 202 669 (Voz de Apoio)",
+      "AO": "150 (linha de crise)",
+      "MZ": "258 21 34 80 00",
+      "default": "consulte um profissional de saúde mental"
+    },
     "disclaimerTitle": "Nota importante:",
     "disclaimerText": "Este teste é uma ferramenta de autoavaliação e não substitui o diagnóstico de um profissional de saúde mental. Se sente que precisa de ajuda, consulte um especialista.",
     "privacyTitle": "Sua privacidade:",

@@ -19,6 +19,14 @@ const LANG_FR = {
     "detailByItem": "Détail par item",
     "helpResources": "Ressources d'aide",
     "helpText": "Si vous traversez une crise émotionnelle, cherchez de l'aide professionnelle. Numéro d'urgence : 3114 (France) ou contactez un professionnel de santé mentale.",
+    "helpLines": {
+      "FR": "3114 (prévention suicide)",
+      "BE": "0800 32 123",
+      "CH": "143 (La Main Tendue)",
+      "CA": "1-833-456-4566 o 988",
+      "LU": "45 45 45",
+      "default": "contactez un professionnel de la santé mentale"
+    },
     "disclaimerTitle": "Note importante :",
     "disclaimerText": "Ce test est un outil d'auto-évaluation et ne remplace pas le diagnostic d'un professionnel de santé mentale. Si vous sentez que vous avez besoin d'aide, veuillez consulter un spécialiste.",
     "privacyTitle": "Votre vie privée :",
